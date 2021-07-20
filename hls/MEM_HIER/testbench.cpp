@@ -25,18 +25,18 @@ CCS_MAIN(int argv, char **argc)
   //bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,0,1};
   //O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
   //bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
-  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,1,1,1,1};
-  bool O_loop_relevancy_L1[nb_cnt]       = {1,1,1,1,1};
-  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,3,3,3,3};
-  bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,0,1};
-  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,2,2,3,5};
-  bool O_loop_relevancy_L3[nb_cnt]       = {1,1,0,0,1};
-  //O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,3,3,3,3};
-  //bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,0,1};
-  //O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,1,1,1,1};
-  //bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
+  //O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,1,1,1,1};
+  //bool O_loop_relevancy_L1[nb_cnt]       = {1,1,1,1,1};
+  //O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,3,3,3,3};
+  //bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,0,1};
   //O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,2,2,3,5};
   //bool O_loop_relevancy_L3[nb_cnt]       = {1,1,0,0,1};
+  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,3,3,3,3};
+  bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,0,1};
+  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,1,1,1,1};
+  bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
+  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,2,2,3,5};
+  bool O_loop_relevancy_L3[nb_cnt]       = {1,1,0,0,1};
 
   I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {3,3,1,1,1};
   bool I_loop_relevancy_L1[nb_cnt]       = {1,1,1,1,1};
@@ -148,11 +148,11 @@ CCS_MAIN(int argv, char **argc)
       for (int k=0; k<IY; k++) {
         input_array[i][j][k] = new I_ref_type[IX];
         for (int l=0; l<IX; l++){
-          //std::random_device rd;
-          //std::default_random_engine eng(rd());
-          //std::uniform_real_distribution<double> distr(inputMIN, inputMAX);
-          //input_array[i][j][k][l] = (I_ref_type) distr(eng);
-          input_array[i][j][k][l] = ia;
+          std::random_device rd;
+          std::default_random_engine eng(rd());
+          std::uniform_real_distribution<double> distr(inputMIN, inputMAX);
+          input_array[i][j][k][l] = (I_ref_type) distr(eng);
+          //input_array[i][j][k][l] = ia;
         }
       }
     }
@@ -167,11 +167,11 @@ CCS_MAIN(int argv, char **argc)
       for (int k=0; k<FY; k++) {
         weight_array[i][j][k] = new W_ref_type[FX];
         for (int l=0; l<FX; l++){
-          //std::random_device rd;
-          //std::default_random_engine eng(rd());
-          //std::uniform_real_distribution<double> distr(weightMIN, weightMAX);
-          //weight_array[i][j][k][l] = (W_ref_type) distr(eng);
-          weight_array[i][j][k][l] = wa;
+          std::random_device rd;
+          std::default_random_engine eng(rd());
+          std::uniform_real_distribution<double> distr(weightMIN, weightMAX);
+          weight_array[i][j][k][l] = (W_ref_type) distr(eng);
+          //weight_array[i][j][k][l] = wa;
         }
       }
     }

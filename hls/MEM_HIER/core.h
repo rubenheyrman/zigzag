@@ -657,7 +657,14 @@ public:
         printf("OUTPUT instruction:\n\n");
 	#endif*/
 
-        data_zg = wr_data_zero_guard.read();
+      //data_zg = wr_data_zero_guard.read();
+
+      wr_data_zero_guard.read(wr_zero_guard);
+
+      skid_buf_wr_zero_guard.push(wr_zero_guard);
+      data_zg = skid_buf_wr_zero_guard.peek();
+
+
 
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
@@ -672,8 +679,7 @@ public:
         rd_irrel_at_max = loop_bound[x] != 1 ? false : rd_irrel_at_max;
         wr_irrel_at_max = loop_bound[x] != 1 ? false : wr_irrel_at_max;
       }
-        if (!(tile_size[0] >= tile_size[nb_cnt-1]))
-          skid_buf_wr_zero_guard.push(data_zg);
+        if (tile_size[0] >= tile_size[nb_cnt-1]){skid_buf_wr_zero_guard.pop();}
 #ifndef __SYNTHESIS__
         printf("TILE SIZE %d \t | \t data in zero guard buffer @ setup: %d\n", tile_size[nb_cnt-1], data_zg);
 #endif
@@ -934,7 +940,7 @@ public:
     flags_zero_guard <<=1;
     flags_zero_guard[0] = skid_buf_zero_guard.not_empty();
 
-    if (!flags_wr_zero_guard[0]){
+    if (!flags_wr_zero_guard[1]){
       zero_guard_top_flag = wr_data_zero_guard.nb_read(wr_zero_guard);
       if (zero_guard_top_flag){
         skid_buf_wr_zero_guard.push(wr_zero_guard);
@@ -952,7 +958,7 @@ public:
       wr_pntr = ((wr_pntr/WORDS_in)*WORDS_in);
 
       // read in data from bot (and top) depending on the reuse opportunities
-      if ((wr_irrel_at_max && !flags_top[1] && (skid_buf_wr_zero_guard.not_empty()) && !read_data_top_flag) || !wr_irrel_at_max){
+      if ((wr_irrel_at_max && !flags_top[1] && skid_buf_wr_zero_guard.not_empty() && !read_data_top_flag) || !wr_irrel_at_max){
         if (!write_flag_bot){write_flag_bot = wr_data_bot.nb_read(write_data_bot);}
         if (!write_flag_top && wr_irrel_at_max && !data_zg){write_flag_top = wr_data_top.nb_read(write_data_top);}
       }
@@ -1034,7 +1040,7 @@ private:
   uint2       flags_top;
   uint3       flags_bot;
   uint1       flags_zero_guard;
-  uint1       flags_wr_zero_guard;
+  uint2       flags_wr_zero_guard;
   packedData<type,WORDS_out> read_data_top;
   packedData<type,WORDS_out> read_data_bot;
   bool        zero_guard;
@@ -1044,7 +1050,7 @@ private:
   fifo<packedData<type,WORDS_out>,3> skid_buf_top;
   fifo<packedData<type,WORDS_out>,4> skid_buf_bot;
   fifo<bool,2> skid_buf_zero_guard;
-  fifo<bool,2> skid_buf_wr_zero_guard;
+  fifo<bool,3> skid_buf_wr_zero_guard;
   bool        write_stall_top;
   bool        write_stall_bot;
   bool        write_stall_zero_guard;

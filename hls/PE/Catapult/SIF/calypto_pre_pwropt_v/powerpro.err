@@ -1,9 +1,0 @@
-<WRN>[PPRO-FRNL]  Cannot use the 'read_fsdb' command in the current session because the shell environment variable 'NOVAS_LD_LIBRARY_PATH' has not been set. To use the command, set the environment variable to specify the directory location that contains the latest version of the dynamic library files libnffr.so and libnsys.so and try again.
-                  Please try 'help PPRO-FRNL' for more detailed help.
-<WRN>[PPRO-VVVM]  Cannot find the required version of Visualizer.
-                  Please try 'help PPRO-VVVM' for more detailed help.
-<WRN>[PPRO-VQVM]  Cannot find the required version of Questa Sim.
-                  Please try 'help PPRO-VQVM' for more detailed help.
-3 warning, 0 error messages
-14.682u 0.677s 15.359 0:17.000   113.921m 198.352p
-(PowerPro process used 198 MB and 15 seconds)

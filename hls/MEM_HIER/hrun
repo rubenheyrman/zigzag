@@ -1,6 +1,0 @@
-#!/bin/csh
-# path to Catapult MGC_HOME dir
-setenv CCS_HOME $MGC_HOME
-
-clear
-$CCS_HOME/bin/g++ -g -O0 -std=c++11 -I $CCS_HOME/shared/include testbench.cpp -o testbench && ./testbench

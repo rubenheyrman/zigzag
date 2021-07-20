@@ -2,7 +2,6 @@ solution new -state initial
 
 solution options defaults
 solution options set /General/PdfViewer okular
-solution options set /ComponentLibs/SearchPath /users/students/r0678912/Downloads/zigzag/hls_impl/memories -append
 solution options set /Input/CppStandard c++11
 solution options set /Input/TargetPlatform x86_64
 solution options set /Input/CompilerFlags -DSTALL
@@ -15,7 +14,7 @@ directive set -DESIGN_GOAL area
 directive set -SPECULATE true
 directive set -MERGEABLE true
 directive set -REGISTER_THRESHOLD 256
-directive set -MEM_MAP_THRESHOLD 32
+directive set -MEM_MAP_THRESHOLD 256
 directive set -LOGIC_OPT false
 directive set -FSM_ENCODING none
 directive set -FSM_BINARY_ENCODING_THRESHOLD 64
@@ -59,23 +58,6 @@ flow package option set /SCVerify/USE_CCS_BLOCK true
 
 go new
 
-#solution design set {tiling_unit<5, O_addr_type_L1>} -block
-#solution design set {config_control_unit<5, O_addr_type_L1, O_addr_type_L2, O_addr_type_L3, I_addr_type_L1, I_addr_type_L2, I_addr_type_L3, W_addr_type_L1, W_addr_type_L2, W_addr_type_L3>} -block
-#solution design set {BW_buffer_down<O_partial_type, 8, 1>} -block
-#solution design set {BW_buffer_up<O_partial_type, 1, 8>} -block
-#solution design set {BW_conv_zero_guard<8, 1>} -block
-#solution design set {addr_cnt_flex<5, O_addr_type_L3>} -block
-#solution design set {O_dp_sb<5, 8640, 8, 8, O_partial_type, O_addr_type_L3>} -block
-#solution design set {O_dp_sb<5, 288, 8, 8, O_partial_type, O_addr_type_L2>} -block
-#solution design set {W_addr_cnt<5, I_addr_type_L3, 8>} -block
-#solution design set {W_dp_sb<5, $mem_word_bit_I_L3, 8, 8, I_type, I_addr_type_L3>} -block
-#solution design set {W_dp_sb<5, 312, 8, 8, I_type, I_addr_type_L2>} -block
-#solution design set {W_dp_sb<5, 55296, 8, 8, W_type, W_addr_type_L3>} -block
-#solution design set {W_dp_sb<5, 1728, 8, 8, W_type, W_addr_type_L2>} -block
-#solution design set {O_addr_cnt<5, O_addr_type_L1, 1>} -block
-#solution design set {rf<5, 32, 32, 32, 1, 1, 1, 1, 1, 1, O_partial_type, O_addr_type_L1, I_type, I_addr_type_L1, W_type, W_addr_type_L1>} -block
-#solution design set {top<5, 32, 1, 1, O_addr_type_L1, 32, 1, 1, I_addr_type_L1, 32, 1, 1, W_addr_type_L1, 5, 288, 8, 8, O_addr_type_L2, 312, 8, 8, I_addr_type_L2, 1728, 8, 8, W_addr_type_L2, 5, 8640, 8, 8, O_addr_type_L3, $mem_word_bit_I_L3, 8, 8, I_addr_type_L3, 55296, 8, 8, W_addr_type_L3, O_partial_type, I_type, W_type>} -top
-
 go analyze
 
 solution library add nangate-45nm_beh -- -rtlsyntool OasysRTL -vendor Nangate -technology 045nm
@@ -93,28 +75,14 @@ directive set -FIFO_DEPTH 0
 
 go assembly
 
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/rf<5,32,32,32,1,1,1,1,1,1,O_partial_type,O_addr_type_L1,I_type,I_addr_type_L1,W_type,W_addr_type_L1>/run/O_mem:rsc -MAP_TO_MODULE ram_nangate-45nm-register-file_beh.REGISTER_FILE
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/rf<5,32,32,32,1,1,1,1,1,1,O_partial_type,O_addr_type_L1,I_type,I_addr_type_L1,W_type,W_addr_type_L1>/run/I_mem:rsc -MAP_TO_MODULE ram_nangate-45nm-register-file_beh.REGISTER_FILE
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/rf<5,32,32,32,1,1,1,1,1,1,O_partial_type,O_addr_type_L1,I_type,I_addr_type_L1,W_type,W_addr_type_L1>/run/W_mem:rsc -MAP_TO_MODULE ram_nangate-45nm-register-file_beh.REGISTER_FILE
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,1728,8,8,W_type,W_addr_type_L2>/run/mem -WORD_WIDTH 128
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,1728,8,8,W_type,W_addr_type_L2>/run/skid_buf.regs.data:rsc -MAP_TO_MODULE {[Register]}
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,55296,8,8,W_type,W_addr_type_L3>/run/mem -WORD_WIDTH 128
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,55296,8,8,W_type,W_addr_type_L3>/run/skid_buf.regs.data:rsc -MAP_TO_MODULE {[Register]}
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,312,8,8,I_type,I_addr_type_L2>/run/mem -WORD_WIDTH 128
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,312,8,8,I_type,I_addr_type_L2>/run/skid_buf.regs.data:rsc -MAP_TO_MODULE {[Register]}
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,624,8,8,I_type,I_addr_type_L3>/run/mem -WORD_WIDTH 128
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,624,8,8,I_type,I_addr_type_L3>/run/skid_buf.regs.data:rsc -MAP_TO_MODULE {[Register]}
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/O_dp_sb<5,288,8,8,O_partial_type,O_addr_type_L2>/run/mem -WORD_WIDTH 128
-#directive set /top<5,32,1,1,O_addr_type_L1,32,1,1,I_addr_type_L1,32,1,1,W_addr_type_L1,5,288,8,8,O_addr_type_L2,312,8,8,I_addr_type_L2,1728,8,8,W_addr_type_L2,5,8640,8,8,O_addr_type_L3,624,8,8,I_addr_type_L3,55296,8,8,W_addr_type_L3,O_partial_type,I_type,W_type>/O_dp_sb<5,8640,8,8,O_partial_type,O_addr_type_L3>/run/mem -WORD_WIDTH 128
-
 options set Message/ErrorOverride ASSERT-1 -remove
 
 go memories
 
 go architect 
 
-ignore_memory_precedences -from *:write_mem(*_mem:rsc.@) -to *:read_mem(*_mem:rsc.@)
-ignore_memory_precedences -from WR_IN_MEM_FROM_BOT:write_mem(mem:rsc.@)* -to RD_OUT_MEM_BOT:read_mem(mem:rsc.@)*
+#ignore_memory_precedences -from *:write_mem(*_mem:rsc.@) -to *:read_mem(*_mem:rsc.@)
+#ignore_memory_precedences -from WR_IN_MEM_FROM_BOT:write_mem(mem:rsc.@)* -to RD_OUT_MEM_BOT:read_mem(mem:rsc.@)*
 
 go allocate
 

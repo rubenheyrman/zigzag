@@ -1,6 +1,0 @@
-<WRN>[UI-FPE]     Forcing the error message "ORC-UTVC" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
-<WRN>[UI-FPE]     Forcing the error message "ORC-SIP" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
-<WRN>[UI-FPE]     Forcing the error message "ORC-DSA" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
-3 warning, 0 error messages
-0.712u 0.070s 0.781 0:01.000   43.416m 73.930p
-(SLEC process used 74 MB and 1 seconds)

@@ -1,9 +1,0 @@
-
-  Primary inputs candidates for modes = 0
-
-
-  Other low activity primary input ports = 1
-
-    O_data_out_rsc_rdy  Probability = 1
-
-
