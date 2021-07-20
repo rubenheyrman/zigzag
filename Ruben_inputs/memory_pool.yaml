@@ -1,0 +1,36 @@
+reg_size_512b_BW_16b :
+  size_bit: 512
+  mem_bw: [16]
+  area: [0]
+  cost:
+    read_word: [0]
+    write_word: [0]
+  mem_type: dual_port_single_buffered
+
+reg_size_512b_BW_8b :
+  size_bit: 512
+  mem_bw: [8]
+  area: [0]
+  cost:
+    read_word: [0]
+    write_word: [0]
+  mem_type: dual_port_single_buffered
+
+sram_216_word_128b_per_word :
+  size_bit: 27648
+  mem_bw: [128]
+  area: [0.087]
+  cost:
+    read_word: [1.771]
+    write_word: [1.771]
+  mem_type: dual_port_single_buffered
+
+sram_1296_word_128b_per_word :
+  size_bit: 165888
+  mem_bw: [128]
+  area: [0.423]
+  cost:
+    read_word: [13.031]
+    write_word: [13.031]
+  mem_type: dual_port_single_buffered
+
