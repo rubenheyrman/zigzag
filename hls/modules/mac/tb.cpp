@@ -1,24 +1,26 @@
 #include "mac.h"
-
+#include <mc_scverify.h>
 
 #include <stdio.h>
 #include <fstream>
 using namespace std;
 
-int main()
+CCS_MAIN(int argv, char **argc)
 {
     ac_int<8,false>  data_in0;
     ac_int<8,false>  data_in1;
     ac_int<16,false> data_psum = 0;
     ac_int<16,false> data_out;
+    
 
     for (int i=0; i<16; i++){
         data_in0 = i;
         data_in1 = 37-i;
 
-        mac(data_in0, data_in1, data_psum, data_out)
+        mac(data_in0, data_in1, data_psum, data_out);
 
         data_psum = data_out;
-        printf("data out = %d\n", data_out.to_uint())
+        printf("data out = %d\n", data_out.to_uint());
     }
+    CCS_RETURN(0);
 }
