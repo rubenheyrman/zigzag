@@ -8,7 +8,7 @@ precision:
   O_partial : 16
   O_final : 16
 
-single_mac_energy_active : 10
+single_mac_energy_active : 0.44 # 44 uW @ 100 MHz = 0.44 pJ
 single_mac_energy_idle : 0
 
 # The characteristics of the systolic flow of data in the array:

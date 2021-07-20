@@ -2,18 +2,18 @@ reg_size_512b_BW_16b :
   size_bit: 512
   mem_bw: [16]
   area: [0]
-  cost:
-    read_word: [0]
-    write_word: [0]
+  cost: # 33 uW @ 100 MHz = 0.33 pJ for both reading and writing
+    read_word: [0.33]
+    write_word: [0.33]
   mem_type: dual_port_single_buffered
 
 reg_size_512b_BW_8b :
   size_bit: 512
   mem_bw: [8]
   area: [0]
-  cost:
-    read_word: [0]
-    write_word: [0]
+  cost: # take same as above
+    read_word: [0.33]
+    write_word: [0.33]
   mem_type: dual_port_single_buffered
 
 sram_216_word_128b_per_word :
