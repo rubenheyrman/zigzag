@@ -1,0 +1,94 @@
+CalyptoResourceStats
+
+      total        good         bad |       total         max        good         bad | name
+
+=== Aggregate Counters ==============================================================================================================================
+
+       506x                         |        0.0s        0.0s                         | CMDs
+         3x                         |        0.0s        0.0s                         | __cdb_exists
+        21x                         |        0.0s        0.0s                         | __is_powerpro
+         1x                         |        0.0s        0.0s                         | _check_fsdb_reader_writer
+         3x                         |        0.0s        0.0s                         | _get_state
+         2x                         |        0.0s        0.0s                         | _get_user_level
+        16x                         |        0.0s        0.0s                         | _log_env_access
+         3x                         |        0.0s        0.0s                         | _set_command_access
+        30x                         |        0.0s        0.0s                         | append_global
+         2x                         |        0.0s        0.0s                         | calypto_product
+         1x                         |        0.0s        0.0s                         | cpt::get_language
+         3x                         |        0.0s        0.0s                         | cpt::linked
+         1x                         |        0.0s        0.0s                         | cpt::mixed_lang_to_cpt
+        15x                         |        0.5s        0.5s                         | cpt::read_mixed_lang
+         4x                         |        0.0s        0.0s                         | disable_msg
+         6x                         |        0.0s        0.0s                         | get_cpu_usage
+       141x                         |        0.0s        0.0s                         | get_global
+         4x                         |        0.0s        0.0s                         | get_mem_usage
+         1x                         |        0.5s        0.5s                         | read_design
+         1x                         |        0.5s        0.5s                         | read_vhdl
+       104x                         |        0.0s        0.0s                         | set_global
+         4x                         |        0.0s        0.0s                         | set_verbosity
+         1x                         |        0.0s        0.0s                         | set_verification_mode
+        69x                         |        0.1s        0.0s                         | source
+        70x                         |        0.1s        0.1s                         | tcl_source
+
+
+=== Counters ========================================================================================================================================
+
+         0x | BDD::NumAborted
+         0x | BDD::NumBypassed
+         0x | BDD::NumFalsifiedwCtrEx
+         0x | BDD::NumFalsifiedwoCtrEx
+         0x | BDD::NumPosed
+         0x | BDD::NumProved
+         0x | BDD::NumSent
+         0x | BDD::NumTriviallyProved
+         0x | BDD::NumUnresolved
+         0x | BLS::NumProbsAborted
+         0x | BLS::NumProbsFalsified
+         0x | BLS::NumProbsPosed
+         0x | BLS::NumProbsProved
+         0x | ESS::NumProbsAborted
+         0x | ESS::NumProbsFalsified
+         0x | ESS::NumProbsPosed
+         0x | ESS::NumProbsProved
+         0x | MultiThreaded::SatExtABC::NumProbsAborted
+         0x | MultiThreaded::SatExtABC::NumProbsFalsified
+         0x | MultiThreaded::SatExtABC::NumProbsPosed
+         0x | MultiThreaded::SatExtABC::NumProbsProved
+         0x | SAT::NumProbsAborted
+         0x | SAT::NumProbsFalsified
+         0x | SAT::NumProbsPosed
+         0x | SAT::NumProbsProved
+         0x | WLS::NumProbsAborted
+         0x | WLS::NumProbsFalsified
+         0x | WLS::NumProbsPosed
+         0x | WLS::NumProbsProved
+
+
+=== Resources Used ==================================================================================================================================
+
+         1x                         |        0.6s        0.6s                         | TOP
+       506x                         |        0.0s        0.0s                         | TOP::CMDs
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::__cdb_exists
+        21x                         |        0.0s        0.0s                         | TOP::CMDs::__is_powerpro
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_check_fsdb_reader_writer
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::_get_state
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::_get_user_level
+        16x                         |        0.0s        0.0s                         | TOP::CMDs::_log_env_access
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::_set_command_access
+        30x                         |        0.0s        0.0s                         | TOP::CMDs::append_global
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::calypto_product
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::get_language
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::linked
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::mixed_lang_to_cpt
+        15x                         |        0.5s        0.5s                         | TOP::CMDs::cpt::read_mixed_lang
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::disable_msg
+         6x                         |        0.0s        0.0s                         | TOP::CMDs::get_cpu_usage
+       141x                         |        0.0s        0.0s                         | TOP::CMDs::get_global
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::get_mem_usage
+         1x                         |        0.5s        0.5s                         | TOP::CMDs::read_design
+         1x                         |        0.5s        0.5s                         | TOP::CMDs::read_vhdl
+       104x                         |        0.0s        0.0s                         | TOP::CMDs::set_global
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::set_verbosity
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_verification_mode
+        69x                         |        0.1s        0.0s                         | TOP::CMDs::source
+        70x                         |        0.1s        0.1s                         | TOP::CMDs::tcl_source

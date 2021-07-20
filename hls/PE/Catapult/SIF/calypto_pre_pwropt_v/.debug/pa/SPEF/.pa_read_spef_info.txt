@@ -1,0 +1,48 @@
+     [PA-PSM]     
+     [PA-PSM]     [1.3] Design setup : SPEF quality
+     [PA-PSM]     =================================
+     [PA-PSM]     
+     [PA-PSM]     (Expectation): - Cells without name or .lib should ideally be 0% (or a very low number).
+     [PA-PSM]     -              - For SPEF to be considered good, almost all the design hierarchies, memories, flops and combinational
+     [PA-PSM]     -               nodes should have coverage from SPEF. Coverage means the node belongs to a hierarchy which is also
+     [PA-PSM]     -               present in SPEF. At least 80% of design objects should be covered by SPEF.
+     [PA-PSM]     
+     [PA-PSM]     SPEF summary:
+     [PA-PSM]     
+     [PA-PSM]     -                 SPEF statistics at the scope of design top
+     [PA-PSM]     -                 ------------------------------------------------------------
+     [PA-PSM]     -                 Total cells in SPEF                  : 0 (100%)
+     [PA-PSM]     -                 Total cells without names in SPEF    : 0 (100%)
+     [PA-PSM]     -                 Total cells without .lib in SPEF     : 0 (100%)
+     [PA-PSM]     -                 ------------------------------------------------------------
+     [PA-PSM]     -                 Total memories in SPEF               : 0
+     [PA-PSM]     -                 Total bit-flops in SPEF              : 0
+     [PA-PSM]     -                 Total CGICs in SPEF                  : 0
+     [PA-PSM]     -                 Total clock buf/inv in SPEF          : 0
+     [PA-PSM]     -                 ------------------------------------------------------------
+     [PA-PSM]     
+     [PA-PSM]     SPEF coverage summary:
+     [PA-PSM]     
+     [PA-PSM]     -                 Design objects covered by information present in SPEF(s)
+     [PA-PSM]     -                 ------------------------------------------------------------------------
+     [PA-PSM]     -                 Total hierarchies in design with correspondence in SPEF : 0 (0%)
+     [PA-PSM]     -                 Total memories in design covered by SPEF                : 0 (100%)
+     [PA-PSM]     -                 Total flops in design covered by SPEF                   : 0 (0%)
+     [PA-PSM]     -                 Total combinational nodes in design covered by SPEF     : 0 (0%)
+     [PA-PSM]     
+     [PA-PSM]     Please refer to file "pa/SPEF/pdb.log" for details of CDB to SPEF hierarchy mapping annotation.
+     [PA-PSM]     
+     [PA-PSM]     <WARN> Low coverage of design hierarchies, flops, combinational nodes
+     [PA-PSM]     (Sugestion):  If the coverage of design objects is low, either SPEF is not from the same design or PowerPro has
+     [PA-PSM]     -             not been able to match names in SPEF to those in design. Use options -instance_name and
+     [PA-PSM]     -             -target_instance of read_spef command to improve coverage. Check whether multiple SPEFs are needed
+     [PA-PSM]     -             to cover different sections of the design.
+     [PA-CNOC]    Total number of combinational cells in SPEF     : 0
+     [PA-CCCA]    Total combinational cells area in SPEF     : 0
+     [PA-CCCVL]   Total vectorless combinational leakage power in SPEF     : 0 uW
+     [PA-CRA]     Total registers area in SPEF     : 0
+     [PA-CRL]     Total registers leakage power in SPEF     : 0 uW
+     [PA-CMA]     Total memories area in SPEF     : 0
+     [PA-CML]     Total memories leakage power in SPEF     : 0 uW
+     [PA-CCA]     Total clock tree area in SPEF     : 0
+     [PA-CCL]     Total clock tree leakage power in SPEF     : 0 uW

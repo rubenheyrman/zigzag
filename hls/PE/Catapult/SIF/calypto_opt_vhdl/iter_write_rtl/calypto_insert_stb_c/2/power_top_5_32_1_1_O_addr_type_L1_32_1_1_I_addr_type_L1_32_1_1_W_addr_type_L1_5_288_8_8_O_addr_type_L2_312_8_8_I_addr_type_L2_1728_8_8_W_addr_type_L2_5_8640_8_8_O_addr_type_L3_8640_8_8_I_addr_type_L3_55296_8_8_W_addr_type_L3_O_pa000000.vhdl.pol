@@ -1,0 +1,18 @@
+Index: /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl
+before 10571,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+after 10662,10 until ';'
+>   --PowerPro-CG
+>   signal rst_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+>   --PowerPro-CG
+>   signal ppro_reset_CLOCKclk_out_port : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+before 10751,3
+>   --PowerPro-CG
+>   rst_1 <= (rst);
+before 10751,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_add
+>   --PowerPro-CG
+>   top_5_32_1_1_O_addr_type_L1_32_1_1_I_add : top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_mod port map (
+>               rst => rst_1,
+>               ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port
+>            );

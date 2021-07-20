@@ -1,0 +1,258 @@
+{
+    "Report": {
+        "Header": {
+            "Title": "Enable Logic Report",
+            "DashboardTicket": "Sequential Redundancy",
+            "NoOfRows": "0",
+            "OrderBy": "Power Change",
+            "ReportToolTip": "Power saving potential due to Observability and Stability based clock-gating.",
+            "GUITabInfo": "Guidance::Flops::Clock Gating",
+            "AtStage": "sls_flow_insert_observability_logic",
+            "ComputeMethod": "STATISTICAL",
+            "PrefixID": "ObjectID-",
+            "ReportRowsTopology": "HIERARCHICAL",
+            "DashboardData": [
+                {
+                    "DashboardTicket": "Sequential Redundancy",
+                    "Title": "Clock Gating",
+                    "TitleToolTip": "Power saving potential due to Observability and Stability based clock-gating.",
+                    "ReportTitle": "Enable Logic Report",
+                    "Values": [
+                        {
+                            "Name": "Power Savings(uW)",
+                            "Value": "0",
+                            "Unit": "uW"
+                        },
+                        {
+                            "Name": "Flop(s)",
+                            "Value": "0",
+                            "Unit": "Flop(s)"
+                        }
+                    ]
+                }
+            ]
+        },
+        "ColumnHeader": [
+            {
+                "ColumnName": "Domain",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "PrimaryKey": "true",
+                "OnClickAction": "ShowDomainInfo",
+                "DomainInfoName": "CG ID",
+                "Type": "String",
+                "ToolTip": "A domain is collection of flop having an identical enable expression. This column displays a unique ID identifying the collection.",
+                "ColumnWidth": "8"
+            },
+            {
+                "ColumnName": "FlipFlop",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "ObjectQualifier": "true",
+                "OnClickAction": "ShowInSchematic",
+                "DomainInfoName": "Flop List",
+                "Type": "ListOfNetlistObject",
+                "ToolTip": "Names of the optimized flops. Clicking the flop name highlights the corresponding flop in the schematic.",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "Assignment",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "OnClickAction": "ShowInSchematic",
+                "DomainInfoName": "Assignment",
+                "Type": "NetlistObject",
+                "ToolTip": "Click will take user to RTL, where flop is first assigned.For flop list, it will show for first flop.",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "Count",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Total Flop Width",
+                "Type": "Int",
+                "ToolTip": "Cumulative width of the flops in the domain.",
+                "ColumnWidth": "7"
+            },
+            {
+                "ColumnName": "Enable Port",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "NetlistObject",
+                "ColumnWidth": "13"
+            },
+            {
+                "ColumnName": "Enable Expression",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "OnClickAction": "ShowInSchematic",
+                "DomainInfoName": "Enable Expression",
+                "Type": "String",
+                "ToolTip": "Enable expression for the optimized flops.",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "One Line Expression",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "OnClickAction": "ShowInSchematic",
+                "Type": "String",
+                "ToolTip": "One line enable expression for the optimized flops.",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Efficiency Change(%)",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Efficiency Change(%)",
+                "Unit": "%",
+                "Type": "String",
+                "ToolTip": "Change in the gating efficiency of the optimized flops.",
+                "ColumnWidth": "22"
+            },
+            {
+                "ColumnName": "Efficiency Change(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "Unit": "%",
+                "Type": "Double",
+                "ToolTip": "Change in the gating efficiency of the optimized flops.",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Power Change(uW)",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Power Change(uW)",
+                "Unit": "uW",
+                "Type": "String",
+                "ToolTip": "Expected Power Savings after optimizing the flops.",
+                "ColumnWidth": "18"
+            },
+            {
+                "ColumnName": "Power Change(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "PotentialPowerSaving": "true",
+                "DomainInfoName": "Register Power Change(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Expected Power Savings after optimizing the flops.",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Type",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Move Type",
+                "Type": "String",
+                "ToolTip": "Type of enable generated.",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Area Change",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Area Change",
+                "Type": "String",
+                "ToolTip": "Change in area as a result of the optimization.",
+                "ColumnWidth": "13"
+            },
+            {
+                "ColumnName": "Area Change",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "Type": "Double",
+                "ToolTip": "Change in area as a result of the optimization.",
+                "ColumnWidth": "12"
+            },
+            {
+                "ColumnName": "Support Signal Depth",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Support Signal Depth",
+                "Type": "String",
+                "ToolTip": "Specifies the combinational depth of the user signals participating in the enable expression.",
+                "ColumnWidth": "22"
+            },
+            {
+                "ColumnName": "Enable Expr Depth",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Enable Expr Depth",
+                "Type": "String",
+                "ToolTip": "Specifies the combinational depth of the enable expression.",
+                "ColumnWidth": "19"
+            },
+            {
+                "ColumnName": "Clock Domain",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "Type": "String",
+                "ToolTip": "Clock domain and polarity.",
+                "ColumnWidth": "12"
+            },
+            {
+                "ColumnName": "Leakage Power",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Unit": "uW",
+                "Type": "Double",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "Visualizer Data",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "WaveformObject",
+                "ColumnWidth": "17"
+            },
+            {
+                "ColumnName": "Local Support Signal(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "DomainInfoName": "Local Support Signal(%)",
+                "Type": "String",
+                "ToolTip": "Specifies the percentage of support signals participating in the enable expression which are local to hierarchy.",
+                "ColumnWidth": "25"
+            },
+            {
+                "ColumnName": "Number Of Support Signals",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Number Of Support Signals",
+                "Type": "String",
+                "ToolTip": "Specifies the total number of support signals participating in the enable expression.",
+                "ColumnWidth": "27"
+            },
+            {
+                "ColumnName": "Number Of Local Support Signals",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Number Of Local Support Signals",
+                "Type": "String",
+                "ToolTip": "Specifies the total number of support signals participating in the enable expression which are local to hierarchy.",
+                "ColumnWidth": "33"
+            },
+            {
+                "ColumnName": "Enable Type",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "DomainInfoName": "Enable Type",
+                "Type": "String",
+                "ToolTip": "Specifies if enable condition is strengthened on already gated flop.",
+                "ColumnWidth": "13"
+            },
+            {
+                "ColumnName": "Effort Level",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "DomainInfoName": "Effort Level",
+                "Type": "Int",
+                "ToolTip": " User implementation effort level hint",
+                "ColumnWidth": "14"
+            }
+        ],
+        "Rows": ""
+    }
+}

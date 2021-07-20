@@ -1,0 +1,4 @@
+     [PA-PSM]     
+     [PA-PSM]     [5] Combinational power
+     [PA-PSM]     =======================
+     [PA-PSM]     

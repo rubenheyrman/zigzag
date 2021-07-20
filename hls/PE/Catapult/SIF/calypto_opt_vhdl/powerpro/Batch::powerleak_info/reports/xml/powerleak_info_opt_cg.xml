@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<report>
+  <title>Enable Logic Report</title>
+  <headings>
+    <domain>Domain</domain>
+    <flip_flop>Flip Flop</flip_flop>
+    <count>Count</count>
+    <efficiency>Efficiency Change</efficiency>
+    <power>Power Change(uW)</power>
+    <enable>Enable</enable>
+    <category>Type</category>
+    <area>Area Change</area>
+    <support_signal_depth>Support Signal Depth</support_signal_depth>
+    <enable_expr_depth>Enable Expr Depth</enable_expr_depth>
+    <clk_domain_info>Clock Domain</clk_domain_info>
+  </headings>
+</report>

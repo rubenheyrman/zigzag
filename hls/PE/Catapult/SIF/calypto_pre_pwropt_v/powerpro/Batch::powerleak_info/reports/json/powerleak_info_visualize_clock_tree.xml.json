@@ -1,0 +1,112 @@
+{
+    "Report": {
+        "Header": {
+            "Title": "Clock Tree Visualization Report",
+            "DashboardTicket": "Clock Tree Statistics",
+            "NoOfRows": "0",
+            "OrderBy": "Unknown",
+            "ReportToolTip": "Prints information about the CGIC cells present in the design. For each CGIC cell, the report is printed in the following format: ICG-Name, Clock-Source-Name, Depth, RICGE (%), AICGE (%), WICGC, Power Reduction (uW), and N(reg_ICG).",
+            "GUITabInfo": "Guidance::Signals::Clock Tree Stats",
+            "AtStage": "sls_flow_genopt",
+            "ComputeMethod": "STATISTICAL",
+            "PrefixID": "ObjectID-",
+            "ReportRowsTopology": "FLAT",
+            "DashboardData": [
+                {
+                    "DashboardTicket": "Clock Tree Statistics",
+                    "Title": "Number of User CGIC cell",
+                    "TitleToolTip": "Number of user instantiated CGICs in the design.",
+                    "ReportTitle": "Clock Tree Visualization Report",
+                    "Values": [
+                        {
+                            "Name": "Number of rows",
+                            "Value": "0",
+                            "Unit": " "
+                        }
+                    ]
+                }
+            ]
+        },
+        "ColumnHeader": [
+            {
+                "ColumnName": "Domain",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "PrimaryKey": "true",
+                "OnClickAction": "ShowDomainInfo",
+                "Type": "String",
+                "ToolTip": "Id of domain.",
+                "ColumnWidth": "8"
+            },
+            {
+                "ColumnName": "ICG-Name",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "ObjectQualifier": "true",
+                "OnClickAction": "ShowInRTL",
+                "Type": "NetlistObject",
+                "ToolTip": "Name of the CGIC cell.",
+                "ColumnWidth": "35"
+            },
+            {
+                "ColumnName": "Clock-Source-Name",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "OnClickAction": "ShowInRTL",
+                "Type": "NetlistObject",
+                "ToolTip": "Name of the root clock port.",
+                "ColumnWidth": "35"
+            },
+            {
+                "ColumnName": "Depth",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "Int",
+                "ToolTip": "Depth of the CGIC cell from the root clock port.",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "RICGE(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Relative Integrated Clock Gating Efficiency (in percentage).(N(CK) - N(ECK)) \/ N(CK).",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "AICGE(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Absolute Integrated Clock Gating Efficiency (in percentage).(N(CK) - N(ECK)) \/ N(CLK).",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "WICGC",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Weight Integrated Clock Gate Impact On Clock Cycle Reduction.(N(CK) - N(ECK)) * N(reg_ICG)",
+                "ColumnWidth": "15"
+            },
+            {
+                "ColumnName": "Power-Reduction(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Unit": "uW",
+                "Type": "Float",
+                "ToolTip": "Power saved by the CGIC cell.",
+                "ColumnWidth": "35"
+            },
+            {
+                "ColumnName": "N(reg_ICG)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "Int",
+                "ToolTip": "Sum of bit numbers of all the registers driven by the CGIC cell.",
+                "ColumnWidth": "35"
+            }
+        ],
+        "Rows": ""
+    }
+}

@@ -1,0 +1,532 @@
+{
+    "Report": {
+        "Header": {
+            "Title": "Hierarchy Info Report",
+            "DashboardTicket": "Dashboard Category Not Specified",
+            "NoOfRows": "89",
+            "OrderBy": "Domain",
+            "ReportToolTip": "Hierarchy Info Report.",
+            "GUITabInfo": "Guidance::Hierarchy::Hierarchy Info Report",
+            "AtStage": "sls_flow_genopt",
+            "ComputeMethod": "SIMULATION",
+            "PrefixID": "ObjectID-",
+            "ReportRowsTopology": "FLAT",
+            "Design Power": "1150.53137"
+        },
+        "ColumnHeader": [
+            {
+                "ColumnName": "Domain",
+                "ForReport": "true",
+                "ForDomainInfo": "false",
+                "PrimaryKey": "true",
+                "DomainInfoName": "Domain Id",
+                "Type": "String",
+                "ToolTip": "Id for row.",
+                "ColumnWidth": "8"
+            },
+            {
+                "ColumnName": "Hierarchy",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "ObjectQualifier": "true",
+                "OnClickAction": "ShowInRTL",
+                "Type": "NetlistObject",
+                "ToolTip": "Name of the Hierarchy.",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Black Box Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Black Box Internal Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Black Box Internal Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Black Box Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Black Box Leakage Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Black Box Leakage Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Black Box Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Black Box Switching Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Black Box Switching Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Black Box Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Black Box Total Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Black Box Total Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Black Box Total Power Percentage(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of Black Box group in the total hierarchy power.",
+                "ColumnWidth": "14"
+            },
+            {
+                "ColumnName": "Combinational Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Combinational Internal Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Combinational Internal Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Combinational Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Combinational Leakage Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Combinational Leakage Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Combinational Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Combinational Switching Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Combinational Switching Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Combinational Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Combinational Total Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Combinational Total Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Combinational Total Power Percentage(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of Combinational group in the total hierarchy power.",
+                "ColumnWidth": "14"
+            },
+            {
+                "ColumnName": "IOPad Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "IO Pad Internal Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "IOPad Internal Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "IOPad Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "IO Pad Leakage Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "IOPad Leakage Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "IOPad Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "IO Pad Switching Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "IOPad Switching Power(uW)",
+                "ColumnWidth": "25"
+            },
+            {
+                "ColumnName": "IOPad Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "IOPad Total Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "IOPad Total Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "IOPad Total Power Percentage(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of IOPad group in the total hierarchy power.",
+                "ColumnWidth": "14"
+            },
+            {
+                "ColumnName": "Memory Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Memory Internal Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Memory Internal Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Memory Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Memory Leakage Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Memory Leakage Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Memory Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Memory Switching Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Memory Switching Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Memory Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Memory Total Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Memory Total Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Memory Total Power Percentage(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of Memory group in the total hierarchy power.",
+                "ColumnWidth": "14"
+            },
+            {
+                "ColumnName": "Sequential Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Sequential Internal Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Sequential Internal Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Sequential Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Sequential Leakage Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Sequential Leakage Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Sequential Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Sequential Switching Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Sequential Switching Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Sequential Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Sequential Total Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Sequential Total Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Sequential Total Power Percentage(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of Sequential group in the total hierarchy power.",
+                "ColumnWidth": "14"
+            },
+            {
+                "ColumnName": "Register Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Register Internal Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Register Internal Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Register Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Register Leakage Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Register Leakage Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Register Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Register Switching Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Register Switching Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Register Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "DomainInfoName": "Register Total Power(uW)",
+                "Unit": "uW",
+                "Type": "Double",
+                "ToolTip": "Register Total Power(uW)",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Register Total Power Percentage(%)",
+                "ForReport": "false",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of Register group in the total hierarchy power.",
+                "ColumnWidth": "14"
+            },
+            {
+                "ColumnName": "Asserted Primary Input Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Primary Input Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Total Primary Input Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Total Primary Input Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted Flop Output Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Flop Output Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Total Flop Output Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Total Flop Output Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted Flop Clock Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Flop Clock Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Total Flop Clock Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Total Flop Clock Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted CGIC Output Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted CGIC Output Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Total CGIC Output Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Total CGIC Output Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted Memory Output Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Memory Output Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Total Memory Output Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Total Memory Output Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted Memory Clock Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Memory Clock Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Total Memory Clock Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Total Memory Clock Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted Flop Xes Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Flop Xes Ports in the hierarchy",
+                "ColumnWidth": "10"
+            },
+            {
+                "ColumnName": "Asserted Flop No TD Ports",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "Type": "Int",
+                "ToolTip": "Asserted Flop Ports with no TD in the hierarchy",
+                "ColumnWidth": "10"
+            }
+        ],
+        "Rows": {
+            "RowOrderList": [
+                "ObjectID-1",
+                "ObjectID-2",
+                "ObjectID-3",
+                "ObjectID-4",
+                "ObjectID-5",
+                "ObjectID-6",
+                "ObjectID-7",
+                "ObjectID-8",
+                "ObjectID-9",
+                "ObjectID-10",
+                "ObjectID-11",
+                "ObjectID-12",
+                "ObjectID-13",
+                "ObjectID-14",
+                "ObjectID-15",
+                "ObjectID-16",
+                "ObjectID-17",
+                "ObjectID-18",
+                "ObjectID-19",
+                "ObjectID-20",
+                "ObjectID-21",
+                "ObjectID-22",
+                "ObjectID-23",
+                "ObjectID-24",
+                "ObjectID-25",
+                "ObjectID-26",
+                "ObjectID-27",
+                "ObjectID-28",
+                "ObjectID-29",
+                "ObjectID-30",
+                "ObjectID-31",
+                "ObjectID-32",
+                "ObjectID-33",
+                "ObjectID-34",
+                "ObjectID-35",
+                "ObjectID-36",
+                "ObjectID-37",
+                "ObjectID-38",
+                "ObjectID-39",
+                "ObjectID-40",
+                "ObjectID-41",
+                "ObjectID-42",
+                "ObjectID-43",
+                "ObjectID-44",
+                "ObjectID-45",
+                "ObjectID-46",
+                "ObjectID-47",
+                "ObjectID-48",
+                "ObjectID-49",
+                "ObjectID-50",
+                "ObjectID-51",
+                "ObjectID-52",
+                "ObjectID-53",
+                "ObjectID-54",
+                "ObjectID-55",
+                "ObjectID-56",
+                "ObjectID-57",
+                "ObjectID-58",
+                "ObjectID-59",
+                "ObjectID-60",
+                "ObjectID-61",
+                "ObjectID-62",
+                "ObjectID-63",
+                "ObjectID-64",
+                "ObjectID-65",
+                "ObjectID-66",
+                "ObjectID-67",
+                "ObjectID-68",
+                "ObjectID-69",
+                "ObjectID-70",
+                "ObjectID-71",
+                "ObjectID-72",
+                "ObjectID-73",
+                "ObjectID-74",
+                "ObjectID-75",
+                "ObjectID-76",
+                "ObjectID-77",
+                "ObjectID-78",
+                "ObjectID-79",
+                "ObjectID-80",
+                "ObjectID-81",
+                "ObjectID-82",
+                "ObjectID-83",
+                "ObjectID-84",
+                "ObjectID-85",
+                "ObjectID-86",
+                "ObjectID-87",
+                "ObjectID-88",
+                "ObjectID-89"
+            ]
+        }
+    }
+}

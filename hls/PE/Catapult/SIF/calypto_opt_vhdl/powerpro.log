@@ -1,0 +1,430 @@
++-----------------------------------------------------------------------+
+|                                                                       |
+|                                                                       |
+|                             MENTOR(tm)                                |
+|                                                                       |
+|                       PowerPro(tm) Software                           |
+|                                                                       |
+|                                                                       |
+| This program contains confidential, trade secret information of       |
+| Mentor Graphics Corporation.  Any reproduction, use or disclosure     |
+| of this program, including any attempt to obtain a human-readable     |
+| version of this program, without the express, prior written consent   |
+| of Mentor Graphics Corporation is strictly prohibited.                |
+|                                                                       |
+|       Copyright (c) 2002 - 2019, Mentor Graphics Corporation          |
+|                         All rights reserved.                          |
+|                                                                       |
+| Mentor acknowledges trademarks or registered trademarks of other      |
+| organizations for their respective products and services.             |
+|                                                                       |
+| PowerPro-10.3c_2/849904   (Jan 10 2020)  linux64  P2001101230         |
+|                                                                       |
+|                                                                       |
+| 64-bit mode                                                           |
+| CentOS Linux release 8.4.2105 x86_64                                  |
+| Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz x 48                        |
+| 396150728 kB                                                          |
+| amazone.esat.kuleuven.be                     Tue Jul 13 11:47:37 2021 |
+|                                                                       |
++-----------------------------------------------------------------------+
+Command-line: /esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/bin/powerpro -connect 12606 -64 -cg -workdir /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl
+
+     [APP-SCP]    Setting the currently running product to PowerPro CG.
+
+  
+	License daemon :	mgcld
+	License file :		
+	Following are the checked out license features :
+		PProBase PProAnalysis PProCGopt PProWriteRTL
+<WRN>[PPRO-FRNL]  Cannot use the 'read_fsdb' command in the current session because the shell environment variable 'NOVAS_LD_LIBRARY_PATH' has not been set. To use the command, set the environment variable to specify the directory location that contains the latest version of the dynamic library files libnffr.so and libnsys.so and try again.
+                  Please try 'help PPRO-FRNL' for more detailed help.
+     [PPRO-EVND]  Environment variable 'PPRO_QUESTA_HOME' not defined.
+     [PPRO-EVND]  Environment variable 'PPRO_VISUALIZER_HOME' not defined.
+<WRN>[PPRO-VVVM]  Cannot find the required version of Visualizer.
+                  Please try 'help PPRO-VVVM' for more detailed help.
+<WRN>[PPRO-VQVM]  Cannot find the required version of Questa Sim.
+                  Please try 'help PPRO-VQVM' for more detailed help.
+powerpro> eval puts {$::env(VERDI_HOME)}
+*** ERROR: can't read "::env(VERDI_HOME)": no such variable
+
+powerpro> eval puts {$::env(POWERPRO_PLUGIN)}
+/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/platform/linux64/lib/libpowerleaks.so
+powerpro> eval puts {$::env(PPRO_QUESTA_HOME)}
+*** ERROR: can't read "::env(PPRO_QUESTA_HOME)": no such variable
+
+powerpro> eval puts {$::env(PPRO_VISUALIZER_HOME)}
+*** ERROR: can't read "::env(PPRO_VISUALIZER_HOME)": no such variable
+
+powerpro> eval puts {$::env(VISUALIZER_HOME)}
+*** ERROR: can't read "::env(VISUALIZER_HOME)": no such variable
+
+powerpro> get_global build_ident
+PowerPro-10.3c_2/849904   (Jan 10 2020)  linux64  P2001101230
+
+powerpro> cd /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF
+powerpro> set_global message_wrap_at 10000
+10000
+
+powerpro> set_global fsdb_lib_version 17
+17
+
+powerpro> config_write_rtl -use_iterative_write_rtl yes
+powerpro> config_write_rtl -enlogic_file_naming_scheme top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000024_enLogic
+powerpro> config_write_rtl -vhdl_new_logic_package_name top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package
+powerpro> config_write_rtl -vhdl_tc_package_name top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_tc_package
+powerpro> config_write_rtl -generate_X_aware_enable no
+powerpro> set_global __idcsa_filt_ff_intercept 0.01
+0.01
+
+powerpro> set_global __idcsa_filt_support_intercept 0.01
+0.01
+
+powerpro> set_global __idcsa_filt_combnode_intercept 0.01
+0.01
+
+powerpro> read_library /esat/micas-data/software/Mentor/catapult_10.5c/pkgs/siflibs/nangate/nangate45nm_nldm.lib
+     [PPRO-SOC]   Setting the operating condition 'typical' from the library 'NangateOpenCellLibrary' as the active 'operating_condition' for the design. Specifying the values for process as '1', temperature as '25' and voltage as '1.1'. Use the 'set_operating_condition' command to explicitly specify the default operating condition.
+     [CDBL-LRS]   Library "/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/siflibs/nangate/nangate45nm_nldm.lib" read successfully.
+     [UI-STATS]   PowerPro process is using 59 MB, peak 95 MB, and 1 seconds [+59MB, +95MB, +1s] @ Tue Jul 13 11:47:39 2021
+powerpro> read_design -vhdl -library calypto_lib /esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/platform/common/powerpro/powerpro_cg_package.vhd
+     [UI-BDLM]    Please refer to /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/build_design.log for a comprehensive list of messages and warnings issued in build_design. These may provide hints for debugging issues (if any) related to performance, potential out of bound accesses etc.
+
+                  (Subsequent repetitions of this message will be suppressed.
+                   Use 'enable_msg UI-BDLM' to show all repetitions.)
+
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+49MB, +15MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library calypto_lib /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000024_enLogic.vhd
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library mgc_hls /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000001.vhd
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library mgc_hls /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000003.vhd
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library mgc_hls /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000007.vhd
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library mgc_hls /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000009.vhd
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005_1.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005_2.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005_3.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005_4.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005_5.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> read_design -vhdl -library work /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/./power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 110 MB, and 1 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:39 2021
+
+powerpro> link_design -top top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000
+     [CPT-LDF]    Linking the 'work' design library.
+     [CPT-RDFD]   RTL design files dump enabled.
+     [UI-STATS]   PowerPro process is using 126 MB, peak 171 MB, and 2 seconds [+18MB, +61MB, +1s] @ Tue Jul 13 11:47:40 2021
+
+     [UI-STATS]   PowerPro process is using 126 MB, peak 171 MB, and 2 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:40 2021
+
+1
+
+powerpro> build_db
+     [CPT-STN]    Synthesizing the 'work' design library.
+     [CDB-STH]    Setting 'top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000' as the top module of the 'work' design library.
+     [CPT-FBD]    Finished synthesizing the 'work' design library.
+     [UI-STATS]   PowerPro process is using 89 MB, peak 171 MB, and 2 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:40 2021
+
+powerpro> set_operating_condition typical -library NangateOpenCellLibrary
+     [PPRO-SOC]   Setting the operating condition 'typical' from the library 'NangateOpenCellLibrary' as the active 'operating_condition' for the design. Specifying the values for process as '1', temperature as '25' and voltage as '1.1'. Use the 'set_operating_condition' command to explicitly specify the default operating condition.
+powerpro> set_wire_load_mode top
+     [PPRO-WLCS]  Storing constraint for command 'set_wire_load_mode', to be applied later in the flow.
+                  Please try 'help PPRO-WLCS' for more detailed help.
+powerpro> create_clock -name CLOCKclk -period 10.0 clk
+     [STA-SCCOP]  Created a clock with name 'CLOCKclk' on port 'clk'.
+powerpro> read_saif -name_divider / -instance_name scverify_top/rtl /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/switching_vhdl/default.saif
+     [PA-PRSF]    Reading SAIF File : "/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/switching_vhdl/default.saif".
+     [PA-PSSIN]   Start instance in Saif file : scverify_top.rtl. Start design instance : Top Level Module
+     [PA-RSS]     
+                  ------------------------------------------------------------
+                  Total Primary Inputs/Inouts            : 542 (100%)
+                  Asserted Primary Inputs/Inouts         : 542 (100%)
+                  ------------------------------------------------------------
+                  Total Flop Outputs                     : 3447 (100%)
+                  Asserted Flop Outputs                  : 3443 (99.88%)
+                  Asserted Flop Clock Ports              : 3447 (100%)
+                  Total CGIC Output Ports                : 0 (0%)
+                  Asserted CGIC Output Ports             : 0 (0%)
+                  ------------------------------------------------------------
+                  Total Memories                         : 0 (0%)
+                  Memories With All Inputs Asserted      : 0 (0%)
+                  Memories With All Outputs Asserted     : 0 (0%)
+                  Memories With All Clock Ports Asserted : 0 (0%)
+                  ------------------------------------------------------------
+                  Total Data Path Operators                    : 7 (100%)
+                  Total Data Path Operators with Any Input User Net : 7 (100%)
+                  Data Path Operators With All Inputs Asserted : 7 (100%)
+                  Total Data Path Operators with Any Output User Net: 7 (100%)
+                  Data Path Operators With All Outputs Asserted: 7 (100%)
+                  ------------------------------------------------------------
+                  Total IO Pad Cells                    : 0 (0%)
+                  IO Pad Cells With All Inputs Asserted : 0 (0%)
+                  IO Pad Cells With All Outputs Asserted: 0 (0%)
+                  ------------------------------------------------------------
+                  Total Nets                             : 17398 (100%)
+                  User Nets                              : 7850 (45.12%)
+                  Asserted User Nets                     : 7843 (99.91%)
+                  ------------------------------------------------------------
+
+                  Please try 'help PA-RSS' for more detailed help.
+powerpro> config_clock_tree -buffer BUF_X2 -fanout 16 -root_buffer BUF_X2 -root_buffer_fanout 8 -final_buffer BUF_X2 -final_buffer_fanout 32
+     [PPRO-CCTFV] Clock tree fanout is set to 16.
+     [PPRO-CCTFV] Clock tree final_buffer_fanout is set to 32.
+     [PPRO-CCTFV] Clock tree root_buffer_fanout is set to 8.
+     [PPRO-CCTFV] Clock tree buffer is set to BUF_X2.
+     [PPRO-CCTFV] Clock tree final_buffer is set to BUF_X2.
+     [PPRO-CCTFV] Clock tree root_buffer is set to BUF_X2.
+     [PPRO-CTC]   Clock tree configuration is saved for power analysis.
+powerpro> prototype_design
+     [PPRO-SGO]   Prototyping 'top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000'.
+     [UI-STATS]   PowerPro process is using 102 MB, peak 187 MB, and 3 seconds [+1MB, +0MB, +0s] @ Tue Jul 13 11:47:42 2021
+     [PPRO-SWLM]  Setting wireload_mode to top, previously it was none.
+                  Please try 'help PPRO-SWLM' for more detailed help.
+     [PPRO-FWDO]  Flops marked with the dont-optimize constraint: 0(0.00%)
+     [PPRO-SWDU]  Signals marked with the stability dont-use constraint: 0(0.00%) Signals marked with the observability dont-use constraint: 0(0.00%)
+     [SCHEME-TSF] Total "0" 2-Flop synchronizers found in design.
+     [PPRO-RMISN] Reset hierarchy instance name is modified from 'top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_inst' to 'top_5_32_1_1_O_addr_type_L1_32_1_1_I_add' to honor STARC instance naming guidelines.
+     [PPRO-EGO]   Finished prototyping.
+     [PPRO-GSF]   Design statistics after prototyping are as follows:
+
+     [PPRO-PST]   
+                  Please try 'help PPRO-PST' for more detailed help.
+                  --------------------------------------------------------------
+                  Total Flops                                      :   3447(100%)   
+                  Total Data Latches                               :      0(0.00%)  
+                  Always ON Flops                                  :     19(0.5512%)
+                  Enabled Flops                                    :   3428(99.45%) 
+                      Combinational Enabled Flops                  :   3428(99.45%) 
+                      CGIC Enabled Flops                           :      0(0.00%)  
+                  Clock Gating Efficiency                          :        90.67%   
+                  --------------------------------------------------------------
+
+     [PPRO-NODF]  Total number of dead flops are: 1234.
+     [PPRO-SCEF]  Total number of flops with efficiency in the range of [95.00% - 98.99%]: 277(8.04%).
+     [PPRO-SCEF]  Total number of flops with efficiency in the range of [99.00% - 99.99%]: 2822(81.87%).
+     [PPRO-SFEFC] Total number of flops with efficiency 100%: 0(0%).
+     [PPRO-GDSF]  Design characteristics can be viewed from: '/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/characteristics.log'
+     [PPRO-GDC]   Information about register arrays, gray boxes, data latches and dead flops can be viewed from: '/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/detail_characteristics.log'
+     [PPRO-SSSIA] { Stage PROTO_SEQ_POWER START_RUNTIME } { Stats 'PowerPro process is using 116 MB, peak 187 MB, and 5 seconds [-1MB, +0MB, +0s] @ Tue Jul 13 11:47:44 2021' }
+     [PA-ISPC]    Starting memory, register and sequential power computation.
+     [OPT-ENGF]   Number of clock-gated flip-flops during power estimation : 3390 (98.35%)
+     [PA-SPCD]    Finished memory, register and sequential power computation.
+     [PPRO-SSSIA] { Stage PROTO_SEQ_POWER END_RUNTIME } { Stats 'PowerPro process is using 123 MB, peak 187 MB, and 6 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:44 2021' }
+     [UI-STATS]   PowerPro process is using 123 MB, peak 187 MB, and 6 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:44 2021
+
+     [PPRO-WSSB]  Writing verification script '/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/self_verify/self_verify_script.tcl'.
+     [PPRO-OTRD]  The debugging information for the stage "prototype_design" has been written to the "/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/opt_technician.log" file. To see hints for debugging your setup at respective stages, refer the log file.
+     [UI-STATS]   PowerPro process is using 125 MB, peak 187 MB, and 7 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:47:45 2021
+
+powerpro> set_powerpro_reset -synchronizer_needed no -target_clock CLOCKclk -target_polarity pos -active_high -sync rst
+powerpro> insert_observability_logic -effort high
+     [OPT-OIEO]   Options : Effort = high Objective = efficiency.
+     [OPT-OCSA]   Limiting max area increase to 18483.5.
+                  Please try 'help OPT-OCSA' for more detailed help.
+     [OPT-OAS]    Start of output Observability based sequential analysis.
+     [PPRO-PMSS]  0.737786 seconds elapsed : 504 sequential elements are processed for observability based sequential analysis, 2943 remaining.
+     [PPRO-PMSS]  7.59461 seconds elapsed : 1007 sequential elements are processed for observability based sequential analysis, 2440 remaining.
+     [PPRO-PMSS]  20.9717 seconds elapsed : 1520 sequential elements are processed for observability based sequential analysis, 1927 remaining.
+     [PPRO-PMSS]  21.4668 seconds elapsed : 2186 sequential elements are processed for observability based sequential analysis, 1261 remaining.
+     [PPRO-ROB]   Flops found with redundant Resets : 0
+     [OPT-BOSL]   Begin optimizing enable logic for 13 sequential gating domains.
+     [OPT-EOSL]   End optimizing enable logic: Modified 5, deleted 1 and kept 12 sequential gating domains.
+     [OPT-CGSI]   Clk Gating summary: 4 moves accepted.
+     [WRTL-IWRS]  Implicit 'write_rtl' called. If PowerPro is running in the 'guided' mode, set the 'opt_call_implicit_write_rtl' to 0. This will turn off implicit write_rtl.
+     [WRTL-IDF]   write_rtl decommitted '65' flops during iterative_write_rtl.
+                  Please try 'help WRTL-IDF' for more detailed help.
+<WRN>[WRTL-TMMD]  Decommitted 65 of 65 (100%) gating conditions while creating a syntactically-valid patched RTL.
+     [WRTL-IWRE]  Implicit write-RTL completed.
+     [PA-ISPC]    Starting memory, register and sequential power computation.
+     [PA-SPCD]    Finished memory, register and sequential power computation.
+     [PA-CRPS]    Register Power Savings during Observability-based Sequential Optimization: 0%
+                  Please try 'help PA-CRPS' for more detailed help.
+     [UI-STATS]   PowerPro process is using 108 MB, peak 221 MB, and 46 seconds [+0MB, +0MB, +1s] @ Tue Jul 13 11:48:29 2021
+     [UI-STATS]   PowerPro process is using 108 MB, peak 221 MB, and 46 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:48:29 2021
+     [OPT-OAE]    End of output Observability based sequential analysis.
+     [PPRO-SCFFS] Total flops added for this stage = 0
+     [OPT-OGAIC]  New Enable Logic Area: 0 (0.0 %)
+                  Please try 'help OPT-OGAIC' for more detailed help.
+     [OPT-OGAIJ]  New Enable Logic (justified to user signals) Area: 4 (0.01 %)
+                  Please try 'help OPT-OGAIJ' for more detailed help.
+
+     [PPRO-SOST]  
+                  Please try 'help PPRO-SOST' for more detailed help.
+                  --------------------------------------------------------------
+                  Total PowerPro Enabled Flops                     :      0(0.00%)  
+                  Additional PowerPro Enabled Flops                :      0(0.00%)  
+                  Strengthened PowerPro Enabled Flops              :      0(0.00%)  
+                  CGIC Inferred PowerPro Enabled Flops             :      0(0.00%)  
+                  Clock Gating Domains for Newly Enabled Flops     :      0         
+                  --------------------------------------------------------------
+                  Observability Based Enabled Flops                :      0(0.00%)  
+                  New Observability Based Enabled Flops            :      0(0.00%)  
+                  Strengthened Observability Based Enabled Flops   :      0(0.00%)  
+                  CGIC Inferred Observability Based Enabled Flops  :      0(0.00%)  
+                  --------------------------------------------------------------
+                  Stability Based Enabled Flops                    :      0(0.00%)  
+                  New Stability Based Enabled Flops                :      0(0.00%)  
+                  Strengthened Stability Based Enabled Flops       :      0(0.00%)  
+                  CGIC Inferred Stability Based Enabled Flops      :      0(0.00%)  
+                  --------------------------------------------------------------
+                  Total Number of Enabled Flops                    :   3428(99.45%) 
+                  Clock Gating Efficiency                          :        90.67%   
+                  --------------------------------------------------------------
+
+     [UI-STATS]   PowerPro process is using 108 MB, peak 221 MB, and 46 seconds [+0MB, +0MB, +0s] @ Tue Jul 13 11:48:29 2021
+
+powerpro> insert_stability_logic -type C -effort high
+     [OPT-ISLC]   insert_stability_logic -type C
+     [OPT-OIEO]   Options : Effort = high Objective = efficiency.
+     [OPT-OCSA]   Limiting max area increase to 18485.6.
+                  Please try 'help OPT-OCSA' for more detailed help.
+     [OPT-OAS]    Start of input Constant-only based sequential analysis.
+<WRN>[PPRO-GCMI]  Comparator based constant stability gating expression found in the design.
+                  Please try 'help PPRO-GCMI' for more detailed help.
+     [OPT-BOSL]   Begin optimizing enable logic for 93 sequential gating domains.
+     [OPT-EOSL]   End optimizing enable logic: Modified 0, deleted 0 and kept 93 sequential gating domains.
+     [OPT-CGSI]   Clk Gating summary: 20 moves accepted.
+     [WRTL-IWRS]  Implicit 'write_rtl' called. If PowerPro is running in the 'guided' mode, set the 'opt_call_implicit_write_rtl' to 0. This will turn off implicit write_rtl.
+<WRN>[WRTL-RHFPM] The reset module 'top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_mod' in the patched RTL will most likely cause compilation issues. Manually update the patched reset module instantiation and then run SLEC.
+                  Please try 'help WRTL-RHFPM' for more detailed help.
+     [WRTL-IDF]   write_rtl decommitted '131' flops during iterative_write_rtl.
+                  Please try 'help WRTL-IDF' for more detailed help.
+<WRN>[WRTL-TMMD]  Decommitted 131 of 131 (100%) gating conditions while creating a syntactically-valid patched RTL.
+     [WRTL-IWRE]  Implicit write-RTL completed.
+     [PA-ISPC]    Starting memory, register and sequential power computation.
+     [PA-SPCD]    Finished memory, register and sequential power computation.
+     [PA-CRPS]    Register Power Savings during Constant Stability-based Sequential Optimization: 0%
+                  Please try 'help PA-CRPS' for more detailed help.
+     [UI-STATS]   PowerPro process is using 109 MB, peak 221 MB, and 71 seconds, 1:11 [+0MB, +0MB, +0s] @ Tue Jul 13 11:48:57 2021
+     [UI-STATS]   PowerPro process is using 109 MB, peak 221 MB, and 71 seconds, 1:11 [+0MB, +0MB, +0s] @ Tue Jul 13 11:48:57 2021
+     [OPT-OAE]    End of input Constant-only based sequential analysis.
+     [PPRO-SCFFS] Total flops added for this stage = 0
+     [OPT-OGAIC]  New Enable Logic Area: 0 (0.0 %)
+                  Please try 'help OPT-OGAIC' for more detailed help.
+     [OPT-OGAIJ]  New Enable Logic (justified to user signals) Area: 17 (0.05 %)
+                  Please try 'help OPT-OGAIJ' for more detailed help.
+
+     [PPRO-SOST]  
+                  Please try 'help PPRO-SOST' for more detailed help.
+                  --------------------------------------------------------------
+                  Total PowerPro Enabled Flops                     :      0(0.00%)  
+                  Additional PowerPro Enabled Flops                :      0(0.00%)  
+                  Strengthened PowerPro Enabled Flops              :      0(0.00%)  
+                  CGIC Inferred PowerPro Enabled Flops             :      0(0.00%)  
+                  Clock Gating Domains for Newly Enabled Flops     :      0         
+                  --------------------------------------------------------------
+                  Observability Based Enabled Flops                :      0(0.00%)  
+                  New Observability Based Enabled Flops            :      0(0.00%)  
+                  Strengthened Observability Based Enabled Flops   :      0(0.00%)  
+                  CGIC Inferred Observability Based Enabled Flops  :      0(0.00%)  
+                  --------------------------------------------------------------
+                  Stability Based Enabled Flops                    :      0(0.00%)  
+                  New Stability Based Enabled Flops                :      0(0.00%)  
+                  Strengthened Stability Based Enabled Flops       :      0(0.00%)  
+                  CGIC Inferred Stability Based Enabled Flops      :      0(0.00%)  
+                  --------------------------------------------------------------
+                  Total Number of Enabled Flops                    :   3428(99.45%) 
+                  Clock Gating Efficiency                          :        90.67%   
+                  --------------------------------------------------------------
+
+     [UI-STATS]   PowerPro process is using 109 MB, peak 221 MB, and 71 seconds, 1:11 [+0MB, +0MB, +0s] @ Tue Jul 13 11:48:57 2021
+
+powerpro> insert_stability_logic -type S -effort high
+     [OPT-ISLC]   insert_stability_logic -type S
+     [OPT-OIEO]   Options : Effort = high Objective = efficiency.
+     [OPT-OCSA]   Limiting max area increase to 18494.1.
+                  Please try 'help OPT-OCSA' for more detailed help.
+     [OPT-OAS]    Start of input Stability-only based sequential analysis.
+     [OPT-BOSL]   Begin optimizing enable logic for 2 sequential gating domains.
+     [OPT-EOSL]   End optimizing enable logic: Modified 0, deleted 0 and kept 2 sequential gating domains.
+     [OPT-CGSI]   Clk Gating summary: 1 moves accepted.
+     [WRTL-IWRS]  Implicit 'write_rtl' called. If PowerPro is running in the 'guided' mode, set the 'opt_call_implicit_write_rtl' to 0. This will turn off implicit write_rtl.
+<WRN>[WRTL-RHFPM] The reset module 'top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_mod' in the patched RTL will most likely cause compilation issues. Manually update the patched reset module instantiation and then run SLEC.
+                  Please try 'help WRTL-RHFPM' for more detailed help.
+     [WRTL-IDF]   write_rtl decommitted '25' flops during iterative_write_rtl.
+                  Please try 'help WRTL-IDF' for more detailed help.
+<WRN>[WRTL-TMMD]  Decommitted 25 of 25 (100%) gating conditions while creating a syntactically-valid patched RTL.
+     [WRTL-IWRE]  Implicit write-RTL completed.
+     [PA-ISPC]    Starting memory, register and sequential power computation.
+     [PA-SPCD]    Finished memory, register and sequential power computation.
+     [PA-CRPS]    Register Power Savings during Symbolic Stability-based Sequential Optimization: 0%
+                  Please try 'help PA-CRPS' for more detailed help.
+     [UI-STATS]   PowerPro process is using 110 MB, peak 221 MB, and 85 seconds, 1:25 [+0MB, +0MB, +0s] @ Tue Jul 13 11:49:13 2021
+     [UI-STATS]   PowerPro process is using 110 MB, peak 221 MB, and 85 seconds, 1:25 [+0MB, +0MB, +0s] @ Tue Jul 13 11:49:13 2021
+     [OPT-OAE]    End of input Stability-only based sequential analysis.
+     [PPRO-SCFFS] Total flops added for this stage = 0
+     [OPT-OGAIC]  New Enable Logic Area: 0.0 (0.0 %)
+                  Please try 'help OPT-OGAIC' for more detailed help.
+     [OPT-OGAIJ]  New Enable Logic (justified to user signals) Area: 0.0 (0.0 %)
+                  Please try 'help OPT-OGAIJ' for more detailed help.
+
+     [PPRO-SOST]  
+                  Please try 'help PPRO-SOST' for more detailed help.
+                  --------------------------------------------------------------
+                  Total PowerPro Enabled Flops                     :      0(0.00%)  
+                  Additional PowerPro Enabled Flops                :      0(0.00%)  
+                  Strengthened PowerPro Enabled Flops              :      0(0.00%)  
+                  CGIC Inferred PowerPro Enabled Flops             :      0(0.00%)  
+                  Clock Gating Domains for Newly Enabled Flops     :      0         
+                  --------------------------------------------------------------
+                  Observability Based Enabled Flops                :      0(0.00%)  
+                  New Observability Based Enabled Flops            :      0(0.00%)  
+                  Strengthened Observability Based Enabled Flops   :      0(0.00%)  
+                  CGIC Inferred Observability Based Enabled Flops  :      0(0.00%)  
+                  --------------------------------------------------------------
+                  Stability Based Enabled Flops                    :      0(0.00%)  
+                  New Stability Based Enabled Flops                :      0(0.00%)  
+                  Strengthened Stability Based Enabled Flops       :      0(0.00%)  
+                  CGIC Inferred Stability Based Enabled Flops      :      0(0.00%)  
+                  --------------------------------------------------------------
+                  Total Number of Enabled Flops                    :   3428(99.45%) 
+                  Clock Gating Efficiency                          :        90.67%   
+                  --------------------------------------------------------------
+
+     [UI-STATS]   PowerPro process is using 110 MB, peak 221 MB, and 85 seconds, 1:25 [+0MB, +0MB, +0s] @ Tue Jul 13 11:49:13 2021
+
+powerpro> write_rtl -force -o /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/powerpro_vhdl
+     [WRTL-TMMDI] During 'write_rtl' more than 50% gating conditions were decommitted while creating a syntactically-correct patched RTL.
+     [PPRO-WRFNC] No clock gating opportunities found.
+<WRN>[PPRO-NGOF]  PowerPro could not find any gating opportunities. The patched RTL will not be generated.
+                  Please try 'help PPRO-NGOF' for more detailed help.
+powerpro> get_clock_gating_info -sequential
+0
+
+10 warning, 0 error messages
+81.972u 3.158s 85.131 1:40.000   96.437m 221.219p
+(PowerPro process used 221 MB and 85 seconds, 1:25)

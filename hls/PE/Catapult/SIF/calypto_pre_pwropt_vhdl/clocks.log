@@ -1,0 +1,17 @@
+######################################################################
+#####                Existing clock roots section                #####
+######################################################################
+# create_clock -name CLOCKclk -period 10 clk
+
+######################################################################
+#####                Constant clock roots section                #####
+######################################################################
+
+######################################################################
+#####                Inferred clock roots section                #####
+#####                                                            #####
+#####   WARNING:  ports specified in this section are intended   #####
+#####   to be guides.  If they are not primary input or black    #####
+#####   box output ports, then such ports in the transitive      #####
+#####   fanin of these "guide" ports must be used instead.       #####
+######################################################################

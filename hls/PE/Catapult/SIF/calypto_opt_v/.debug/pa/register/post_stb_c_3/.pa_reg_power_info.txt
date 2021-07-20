@@ -1,0 +1,4 @@
+     [PA-PSM]     
+     [PA-PSM]     [3] Register power
+     [PA-PSM]     ==================
+     [PA-PSM]     

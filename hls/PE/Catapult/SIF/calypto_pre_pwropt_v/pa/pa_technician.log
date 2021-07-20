@@ -1,0 +1,293 @@
+Sections:                   
+=========                   
+                   
+-      [1] Design Setup                   
+-          1.1 Technology libraries (warnings = 0, errors = 0)                   
+-          1.2 FSDB/SAIF quality (warnings = 0, errors = 0)                   
+-          1.3 SPEF quality (warnings = 1, errors = 0)                   
+-      [2] Memory power (warnings = 0, errors = 0)                   
+-      [3] Register power (warnings = 5, errors = 0)                   
+-      [4] Clock tree power (warnings = 4, errors = 0)                   
+-      [5] Combinational power (warnings = 3, errors = 0)                   
+                   
+Navigation tips for this doc:                   
+=============================                   
+-      i.   Jump to specific section using section names as mentioned above                   
+-      ii.  Look at suggestion below each warning/error for additional help                   
+-      iii. Search for WARN/ERROR keywords and resolve these issues to improve the correctness of power numbers                    
+-      iv.  All the file-paths mentioned are wrt run directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_pre_pwropt_v                   
+                   
+                   
+[1.1] Design setup : Technology libraries                   
+=========================================                   
+                   
+(Expectation): - Libraries read into PowerPro should be same as that for implementation tool which generated the SPEF.                   
+-              - Confirm the correctness of operating-conditions and voltages being used in PowerPro.                   
+                   
+Library(s) Used          =  "pa/setup/pa_read_lib_info.txt" has complete list of files read into PowerPro.                   
+                   
+Global Operating Voltage = 1.1                    
+Voltage Units = 1V                   
+Operating condition      = typical (picked from NangateOpenCellLibrary)                   
+                   
+Suggestion: Check that operating condition matches with the reference flow. By default, PowerPro uses op-cond from                   
+-           first .lib. To change operating condition, either change the order of read_library commands or use                    
+-           command set_operating_condition.                   
+                   
+                   
+[1.2] Design setup : FSDB/SAIF quality                   
+======================================                   
+                   
+(Expectation): - The time duration of FSDB/SAIF file should be same between PowerPro and reference tool.                   
+-              - Activity assertion on primary inputs/outputs, flop outputs, flop clock ports, CGIC outputs,                   
+-              - memory outputs, memory clock ports should be 100% (value of 80% would classify as ok).                   
+-              - User signal assertion should be about 80% (value of 60% would classify as ok).                   
+                   
+Activity assertion summary:                   
+                   
+-                  ------------------------------------------------------------                   
+-                  Total Primary Inputs/Inouts            : 542 (100%)                   
+-                  Asserted Primary Inputs/Inouts         : 542 (100%)                   
+-                  ------------------------------------------------------------                   
+-                  Total Flop Outputs                     : 3447 (100%)                   
+-                  Asserted Flop Outputs                  : 3447 (100%)                   
+-                  Asserted Flop Clock Ports              : 3447 (100%)                   
+-                  Total CGIC Output Ports                : 0 (0%)                   
+-                  Asserted CGIC Output Ports             : 0 (0%)                   
+-                  ------------------------------------------------------------                   
+-                  Total Memories                         : 0 (0%)                   
+-                  Memories With All Inputs Asserted      : 0 (0%)                   
+-                  Memories With All Outputs Asserted     : 0 (0%)                   
+-                  Memories With All Clock Ports Asserted : 0 (0%)                   
+-                  ------------------------------------------------------------                   
+-                  Total Data Path Operators                    : 7 (100%)                   
+-                  Total Data Path Operators with Any Input User Net : 7 (100%)                   
+-                  Data Path Operators With All Inputs Asserted : 7 (100%)                   
+-                  Total Data Path Operators with Any Output User Net: 7 (100%)                   
+-                  Data Path Operators With All Outputs Asserted: 7 (100%)                   
+-                  ------------------------------------------------------------                   
+-                  Total IO Pad Cells                    : 0 (0%)                   
+-                  IO Pad Cells With All Inputs Asserted : 0 (0%)                   
+-                  IO Pad Cells With All Outputs Asserted: 0 (0%)                   
+-                  ------------------------------------------------------------                   
+-                  Total Nets                             : 17459 (100%)                   
+-                  User Nets                              : 7424 (42.52%)                   
+-                  Asserted User Nets                     : 7424 (100%)                   
+-                  ------------------------------------------------------------                   
+-                   
+Please refer to file "sa.log" for details of switching-activity annotation on various types of objects.                   
+                   
+                   
+[1.3] Design setup : SPEF quality                   
+=================================                   
+                   
+(Expectation): - Cells without name or .lib should ideally be 0% (or a very low number).                   
+-              - For SPEF to be considered good, almost all the design hierarchies, memories, flops and combinational                   
+-               nodes should have coverage from SPEF. Coverage means the node belongs to a hierarchy which is also                   
+-               present in SPEF. At least 80% of design objects should be covered by SPEF.                   
+                   
+SPEF summary:                   
+                   
+-                 SPEF statistics at the scope of design top                   
+-                 ------------------------------------------------------------                   
+-                 Total cells in SPEF                  : 0 (100%)                   
+-                 Total cells without names in SPEF    : 0 (100%)                   
+-                 Total cells without .lib in SPEF     : 0 (100%)                   
+-                 ------------------------------------------------------------                   
+-                 Total memories in SPEF               : 0                   
+-                 Total bit-flops in SPEF              : 0                   
+-                 Total CGICs in SPEF                  : 0                   
+-                 Total clock buf/inv in SPEF          : 0                   
+-                 ------------------------------------------------------------                   
+                   
+SPEF coverage summary:                   
+                   
+-                 Design objects covered by information present in SPEF(s)                   
+-                 ------------------------------------------------------------------------                   
+-                 Total hierarchies in design with correspondence in SPEF : 0 (0%)                   
+-                 Total memories in design covered by SPEF                : 0 (100%)                   
+-                 Total flops in design covered by SPEF                   : 0 (0%)                   
+-                 Total combinational nodes in design covered by SPEF     : 0 (0%)                   
+                   
+Please refer to file "pa/SPEF/pdb.log" for details of CDB to SPEF hierarchy mapping annotation.                   
+                   
+<WARN> Low coverage of design hierarchies, flops, combinational nodes                   
+(Sugestion):  If the coverage of design objects is low, either SPEF is not from the same design or PowerPro has                   
+-             not been able to match names in SPEF to those in design. Use options -instance_name and                   
+-             -target_instance of read_spef command to improve coverage. Check whether multiple SPEFs are needed                   
+-             to cover different sections of the design.                   
+                   
+[2] Memory power                   
+================                   
+                   
+Power Summary Report                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+Power Group    Count          Leakage Power(uW)     Internal Power(uW)    Switching Power(uW)   Total Power(uW)       Percentage(%)                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+memory         0              0                     0                     0                     0                     0%                          
+                   
+                   
+(Expectations):                   
+- Number of memories in PowerPro should be same as in SPEF.                   
+- Activity assertion at memory output ports should be 100%.                   
+- Activity assertion at memory clock ports should be 100%.                   
+                   
+                   
+                   
+[3] Register power                   
+==================                   
+                   
+Power Summary Report                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+Power Group    Count          Leakage Power(uW)     Internal Power(uW)    Switching Power(uW)   Total Power(uW)       Percentage(%)                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+register       3447           273.411               271.393               7.55348               552.358               48.01%                      
+                   
+                   
+(Expectations):                   
+- Number of bit-flops in PowerPro should be roughly same as in SPEF.                   
+- Activity assertion at flop output/clock ports should be 100%.                   
+- SPEF should cover large percentage (around 80% or more) design flops.                   
+- Flop cell profile from PowerPro should roughly match with cell profile in SPEF.                   
+- Number of CGICs inferred by PowerPro should roughly be same as that in SPEF.                   
+                   
+Total number of flops in PowerPro            : 3447                   
+Total number of flops in SPEF                : 0                   
+Total number of multi-bit flops in PowerPro  : 0                   
+Total number of multi-bit flops in SPEF      : 0                   
+                   
+                   
+Total flops in design covered by SPEF : 0(0%)                   
+                   
+Total number of pre-existing tech-flops in RTL design  : 0 (0)                   
+                   
+Flop cell profile (top 1) in PowerPro:                   
+-                               Cell Name      : BitCount                   
+-                               ============================                   
+-                               DFF_X1 : 3447                   
+                   
+Value of global opt_cg_min_size in PowerPro  :4                   
+                   
+Total number of CGICs in PowerPro : 126                   
+Total number of CGICs in SPEF     : 0                   
+                   
+Total registers area in PowerPro : 15587.4                   
+Total registers area in SPEF     : 0                   
+                   
+Total registers leakage power in PowerPro : 272.7 uW                   
+Total registers leakage power in SPEF     : 0 uW                   
+                   
+                   
+<WARN> Mismatch in number of flops in PowerPro and SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+                   
+<WARN> Low coverage of design flops from SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+                   
+<WARN> Large mismatch in number of CGICs between PowerPro and SPEF                   
+(Suggestion): Check whether opt_cg_min_size value in PowerPro matches with implementation tool.                   
+                   
+<WARN> Register area more than 30% different between PowerPro and SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+-             Consider using set_scaling command to adjust the sizes of cells being picked by PowerPro.                   
+                   
+<WARN> Register vectorless leakage power more than 30% different between PowerPro and SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+                   
+                   
+Details of register power computation are in file pa/register/post_proto_1/flop_detail_power_0.log                   
+                   
+[4] Clock tree power                   
+====================                   
+                   
+                   
+Power Summary Report                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+Power Group    Count          Leakage Power(uW)     Internal Power(uW)    Switching Power(uW)   Total Power(uW)       Percentage(%)                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+clock_network  194            8.56752               91.9687               109.145               209.682               18.22%                      
+                   
+                   
+(Expectations):                   
+- Number of buffers at various levels of clock tree in PowerPro should roughly be same as in SPEF.                   
+- Total clock tree net cap in PowerPro should roughly be same as in SPEF.                   
+                   
+                   
+Total number of leaf clock tree buffers in PowerPro          : 57                   
+Total number of leaf clock tree buffers in SPEF              : 0                   
+                   
+Total number of intermediate clock tree buffers in PowerPro  : 10                   
+Total number of intermediate clock tree buffers in SPEF      : 0                   
+                   
+Total number of root clock tree buffers in PowerPro          : 1                   
+Total number of root clock tree buffers in SPEF              : 0                   
+                   
+Total clock tree net cap in PowerPro :6.10715pF                   
+Total clock tree net cap in SPEF     :0pF                   
+                   
+Total clock tree area in PowerPro : 72.352                   
+Total clock tree area in SPEF     : 0                   
+                   
+Total clock tree leakage power in PowerPro : 2.92813 uW                   
+Total clock tree leakage power in SPEF     : 0 uW                   
+                   
+                   
+<WARN> Mismatch in number of clock tree buffers in PowerPro and SPEF.                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+-             Use config_clock_tree command to increase/decrease number of buffers at various levels of clock-tree.                   
+-             Use set_scaling command to fix switching, internal and/or leakage power mismatch.                   
+                   
+<WARN> Mismatch in clock tree net cap in PowerPro and SPEF.                   
+(Suggestion): Use set_scaling command to match clock tree switching cap between PowerPro and SPEF.                   
+                   
+<WARN> Clock tree area more than 30% different between PowerPro and SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+                   
+<WARN> Clock tree vectorless leakage power more than 30% different between PowerPro and SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+                   
+                   
+[5] Combinational power                   
+=======================                   
+                   
+Power Summary Report                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+Power Group    Count          Leakage Power(uW)     Internal Power(uW)    Switching Power(uW)   Total Power(uW)       Percentage(%)                   
+----------------------------------------------------------------------------------------------------------------------------------                   
+combinational  10043          245.707               59.5821               83.2026               388.492               33.77%                      
+                   
+                   
+(Expectation): - Number of combinational cells, area and vectorless leakage power should roughly be same between                   
+-                PowerPro and SPEF.                   
+-              - Activity assertion on primary inputs, flop/memory outputs and user nets should be more than 80%.                   
+-                SPEF should cover major portion of the design (>80%).                   
+                   
+Total number of combinational cells in PowerPro : 9997                   
+Total number of combinational cells in SPEF     : 0                   
+                   
+Total combinational cells area in PowerPro : 11266.2                   
+Total combinational cells area in SPEF     : 0                   
+                   
+Total vectorless combinational leakage power in PowerPro : 259.252 uW                   
+Total vectorless combinational leakage power in SPEF     : 0 uW                   
+                   
+Total hierarchies in design with correspondence in SPEF  : 0 (0%)                   
+Total combinational nodes in design covered by SPEF      : 0 (0%)                   
+                   
+<WARN> Combinational area more than 30% different between PowerPro and SPEF                   
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+-             Consider using set_scaling command to adjust the sizes of cells being picked by PowerPro.                   
+                   
+<WARN> Combinational vectorless leakage power more than 30% different between PowerPro and SPEF                   
+(Suggestion): To improve leakage power accuracy, check whether different Vth groups need to be created using                   
+-              set_multi_vth_constraint command.                   
+                   
+<WARN> Less than 80% of combinational nodes covered by SPEF                    
+(Suggestion): Check with provider of SPEF whether correct SPEF for design has been given.                   
+                   
+                   
+To compare cell distribution for various hierarchies between PowerPro and SPEF, please look at following files                   
+pa/comb/post_proto_1//ppro_comb_implementation_profile_1.log                   
+                   
+                   
+Consider using set_scaling command to fix switching, internal and/or leakage power differences.                   

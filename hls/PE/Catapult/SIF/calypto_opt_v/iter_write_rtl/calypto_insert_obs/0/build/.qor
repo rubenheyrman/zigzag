@@ -1,0 +1,1 @@
+hostname=amazone.esat.kuleuven.be; cpu=1; optimalcpu=1; realtime=1; leak=45; mem=74; verification_mode=powerpro; verilog=1

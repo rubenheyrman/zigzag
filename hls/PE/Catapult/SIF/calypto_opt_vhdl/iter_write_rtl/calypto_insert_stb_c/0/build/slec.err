@@ -1,0 +1,9 @@
+<WRN>[UI-FPE]     Forcing the error message "ORC-UTVC" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
+<WRN>[UI-FPE]     Forcing the error message "ORC-SIP" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
+<WRN>[UI-FPE]     Forcing the error message "ORC-DSA" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/0/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl:642) Type error near ''counter_or_nl'' ; expected type ''std_logic_vector''
+*** ERROR: VHDL-1272
+
+3 warning, 1 error messages
+0.726u 0.061s 0.787 0:01.000   77.264m 81.922p
+(SLEC process used 82 MB and 1 seconds)

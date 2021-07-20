@@ -1,0 +1,725 @@
+<?xml version="1.0"?>
+<report>
+  <title>Hierarchical Power Report</title>
+  <headings>
+    <hier_inst>Hierarchy</hier_inst>
+    <leakage_power>Leakage Power(uW)</leakage_power>
+    <dynamic_power>Internal Power(uW)</dynamic_power>
+    <net_power>Switching Power(uW)</net_power>
+    <total_power>Total Power(uW)</total_power>
+    <percentage>Percentage(%)</percentage>
+  </headings>
+  <data>
+    <hier_inst guiaction="highlight"></hier_inst>
+    <leakage_power>8.56752</leakage_power>
+    <dynamic_power>91.9687</dynamic_power>
+    <net_power>109.145</net_power>
+    <total_power>209.682</total_power>
+    <percentage>100%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001</inst></hier_inst>
+    <leakage_power>8.56752</leakage_power>
+    <dynamic_power>91.9687</dynamic_power>
+    <net_power>108.893</net_power>
+    <total_power>209.429</total_power>
+    <percentage>99.88%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE</inst></hier_inst>
+    <leakage_power>6.40746</leakage_power>
+    <dynamic_power>84.136</dynamic_power>
+    <net_power>95.9024</net_power>
+    <total_power>186.446</total_power>
+    <percentage>88.92%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst</inst></hier_inst>
+    <leakage_power>6.40746</leakage_power>
+    <dynamic_power>84.136</dynamic_power>
+    <net_power>95.9024</net_power>
+    <total_power>186.446</total_power>
+    <percentage>88.92%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst</inst></hier_inst>
+    <leakage_power>1.98782</leakage_power>
+    <dynamic_power>3.99005</dynamic_power>
+    <net_power>0.331643</net_power>
+    <total_power>6.30951</total_power>
+    <percentage>3.01%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst</inst></hier_inst>
+    <leakage_power>1.89994</leakage_power>
+    <dynamic_power>3.00729</dynamic_power>
+    <net_power>0.31934</net_power>
+    <total_power>5.22657</total_power>
+    <percentage>2.49%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.0531785</leakage_power>
+    <dynamic_power>1.52014</dynamic_power>
+    <net_power>3.11449</net_power>
+    <total_power>4.68781</total_power>
+    <percentage>2.24%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst</inst></hier_inst>
+    <leakage_power>0.0531785</leakage_power>
+    <dynamic_power>1.52014</dynamic_power>
+    <net_power>3.11449</net_power>
+    <total_power>4.68781</total_power>
+    <percentage>2.24%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst</inst></hier_inst>
+    <leakage_power>0.0486724</leakage_power>
+    <dynamic_power>1.00965</dynamic_power>
+    <net_power>1.60168</net_power>
+    <total_power>2.66</total_power>
+    <percentage>1.27%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.0486724</leakage_power>
+    <dynamic_power>1.00965</dynamic_power>
+    <net_power>1.60168</net_power>
+    <total_power>2.66</total_power>
+    <percentage>1.27%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_layer_instruction_in_rsci_inst</inst></hier_inst>
+    <leakage_power>0.73291</leakage_power>
+    <dynamic_power>0.502835</dynamic_power>
+    <net_power>0.0633455</net_power>
+    <total_power>1.29909</total_power>
+    <percentage>0.62%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_layer_instruction_in_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_layer_instruction_in_rsci_layer_instruction_in_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.73291</leakage_power>
+    <dynamic_power>0.502835</dynamic_power>
+    <net_power>0.0633455</net_power>
+    <total_power>1.29909</total_power>
+    <percentage>0.62%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_W_wr_data_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.0451628</leakage_power>
+    <dynamic_power>0.645308</dynamic_power>
+    <net_power>0.432436</net_power>
+    <total_power>1.12291</total_power>
+    <percentage>0.54%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst</inst></hier_inst>
+    <leakage_power>0.0451628</leakage_power>
+    <dynamic_power>0.645308</dynamic_power>
+    <net_power>0.432436</net_power>
+    <total_power>1.12291</total_power>
+    <percentage>0.54%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst</inst></hier_inst>
+    <leakage_power>0.0878742</leakage_power>
+    <dynamic_power>0.982766</dynamic_power>
+    <net_power>0.0123028</net_power>
+    <total_power>1.08294</total_power>
+    <percentage>0.52%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp</inst></hier_inst>
+    <leakage_power>0.0878742</leakage_power>
+    <dynamic_power>0.982766</dynamic_power>
+    <net_power>0.0123028</net_power>
+    <total_power>1.08294</total_power>
+    <percentage>0.52%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_instr_in_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_instr_in_rsci_I_instr_in_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.130054</leakage_power>
+    <dynamic_power>0.491868</dynamic_power>
+    <net_power>0.00646941</net_power>
+    <total_power>0.628391</total_power>
+    <percentage>0.3%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_instr_in_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_instr_in_rsci_W_instr_in_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.130054</leakage_power>
+    <dynamic_power>0.491868</dynamic_power>
+    <net_power>0.00646941</net_power>
+    <total_power>0.628391</total_power>
+    <percentage>0.3%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_instr_in_rsci_inst</inst></hier_inst>
+    <leakage_power>0.130054</leakage_power>
+    <dynamic_power>0.491868</dynamic_power>
+    <net_power>0.00646941</net_power>
+    <total_power>0.628391</total_power>
+    <percentage>0.3%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_instr_in_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_instr_in_rsci_O_instr_in_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0.130054</leakage_power>
+    <dynamic_power>0.491868</dynamic_power>
+    <net_power>0.00646941</net_power>
+    <total_power>0.628391</total_power>
+    <percentage>0.3%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_instr_in_rsci_inst</inst></hier_inst>
+    <leakage_power>0.130054</leakage_power>
+    <dynamic_power>0.491868</dynamic_power>
+    <net_power>0.00646941</net_power>
+    <total_power>0.628391</total_power>
+    <percentage>0.3%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_instr_in_rsci_inst</inst></hier_inst>
+    <leakage_power>0.130054</leakage_power>
+    <dynamic_power>0.491868</dynamic_power>
+    <net_power>0.00646941</net_power>
+    <total_power>0.628391</total_power>
+    <percentage>0.3%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L1_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L3_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L3_out_rsci_O_instr_L3_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L1_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L1_out_rsci_W_instr_L1_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L3_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L1_out_rsci_inst.I_instr_L1_out_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L1_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L1_out_rsci_I_instr_L1_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.loops_relevancy_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L1_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L1_out_rsci_I_instr_L1_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L3_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L3_out_rsci_I_instr_L3_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L2_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L2_out_rsci_I_instr_L2_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L2_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L2_out_rsci_I_instr_L2_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L2_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L1_out_rsci_inst.W_instr_L1_out_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L3_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L3_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_I_instr_L3_out_rsci_I_instr_L3_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L3_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L3_out_rsci_O_instr_L3_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.instr_bound_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L2_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L2_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L2_out_rsci_O_instr_L2_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L2_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L2_out_rsci_O_instr_L2_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L1_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L1_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L1_out_rsci_O_instr_L1_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L1_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L1_out_rsci_O_instr_L1_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.instr_tile_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.loops_bound_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_O_instr_L1_out_rsci_inst.O_instr_L1_out_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_layer_instruction_in_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_layer_instruction_in_rsci_layer_instruction_in_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_layer_instruction_in_rsci_inst.layer_instruction_in_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.ccs_ccore_start_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.tile_size_out_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.O_tiling_unit_L1_run_cmp.tiling_unit_5_O_addr_type_L1_run_inst.tile_size_in_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_wr_data_zero_guard_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.I_wr_data_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.W_wr_data_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_W_wr_data_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_wr_data_zero_guard_rsci_inst.wr_data_zero_guard_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_wr_data_zero_guard_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_wr_data_zero_guard_rsci_wr_data_zero_guard_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_wr_data_zero_guard_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_wr_data_zero_guard_rsci_wr_data_zero_guard_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_O_rd_data_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_instr_in_rsci_inst.O_instr_in_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_instr_in_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_instr_in_rsci_O_instr_in_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_instr_in_rsci_inst.I_instr_in_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_instr_in_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_instr_in_rsci_I_instr_in_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_instr_in_rsci_inst.W_instr_in_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_instr_in_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_instr_in_rsci_W_instr_in_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_staller_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_run_fsm_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_staller_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L1_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L2_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L2_out_rsci_W_instr_L2_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L2_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L2_out_rsci_W_instr_L2_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L2_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L3_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L3_out_rsci_W_instr_L3_out_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L3_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L3_out_rsci_W_instr_L3_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L3_out_rsci_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L1_out_rsci_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_W_instr_L1_out_rsci_W_instr_L1_out_wait_dp_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.CCInst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_inst.config_control_unit_5_O_addr_type_L1_O_addr_type_L2_O_addr_type_L3_I_addr_type_L1_I_addr_type_L2_I_addr_type_L3_W_addr_type_L1_W_addr_type_L2_W_addr_type_L3_run_run_fsm_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_pntr_cntInst_run_rg</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.W_mac_pntr_cntInst_run_rg</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_pntr_cntInst_run_rg</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.O_wr_data_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_inst.O_rd_data_rsci</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <hier_inst guiaction="highlight"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_O_rd_data_wait_ctrl_inst</inst></hier_inst>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+</report>
+

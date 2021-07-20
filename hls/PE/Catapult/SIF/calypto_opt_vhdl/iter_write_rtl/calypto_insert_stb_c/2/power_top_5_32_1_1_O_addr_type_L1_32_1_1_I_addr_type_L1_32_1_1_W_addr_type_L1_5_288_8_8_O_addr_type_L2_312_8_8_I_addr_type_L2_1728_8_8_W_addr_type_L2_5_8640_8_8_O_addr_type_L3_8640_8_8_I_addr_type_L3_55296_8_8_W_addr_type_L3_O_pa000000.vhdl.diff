@@ -1,0 +1,36 @@
+--- /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl	2021-07-13 11:47:37.149352146 +0200
++++ /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/2/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl	2021-07-13 11:48:49.147231725 +0200
+@@ -10568,6 +10568,8 @@
+   );
+ END top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000
+     IS
+   -- Default Constants
+@@ -10661,6 +10663,10 @@
+       : STD_LOGIC_VECTOR (4 DOWNTO 0);
+   SIGNAL top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000023
+       : STD_LOGIC_VECTOR (69 DOWNTO 0);
++  --PowerPro-CG
++  signal rst_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal ppro_reset_CLOCKclk_out_port : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+ 
+ BEGIN
+   top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001
+@@ -10748,6 +10754,13 @@
+   top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000023
+       <= layer_instruction_in_rsc_dat(69 DOWNTO 0);
+ 
++  --PowerPro-CG
++  rst_1 <= (rst);
++  --PowerPro-CG
++  top_5_32_1_1_O_addr_type_L1_32_1_1_I_add : top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_mod port map (
++              rst => rst_1,
++              ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port
++           );
+   O_data_out_rsc_dat <= O_data_out_rsc_dat_data;
+ END v2;
+ 

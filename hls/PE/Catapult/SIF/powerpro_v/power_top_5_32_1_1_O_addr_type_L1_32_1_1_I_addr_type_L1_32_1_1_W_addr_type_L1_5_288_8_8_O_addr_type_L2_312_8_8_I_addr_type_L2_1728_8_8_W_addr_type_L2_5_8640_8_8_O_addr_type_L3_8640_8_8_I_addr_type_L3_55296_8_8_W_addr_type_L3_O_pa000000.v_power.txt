@@ -1,0 +1,1 @@
+This file is a placholder only.  Power analysis does not use external scripts

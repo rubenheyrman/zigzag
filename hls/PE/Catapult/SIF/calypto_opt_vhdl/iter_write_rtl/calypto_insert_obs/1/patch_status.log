@@ -1,0 +1,218 @@
+
+New: /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/1/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl
+Old: /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl
+1-1723 was 1-1723
+1724-1725 new
+1726-1739 was 1724-1737
+1740-1741 new
+1742-1749 was 1738-1745
+1750 was 1746
+1751-1756 new
+1757-1796 was 1747-1786
+1797-1802 new cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_W_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm
+1803-1813 was 1787-1797
+1814-1815 new
+1816-1817 new
+1818-1822 was 1798-1802
+1823 new
+1824 was 1803
+1825 new
+1826-1827 was 1804-1805
+1828 new
+1829 was 1806
+1830 new
+1831-1879 was 1807-1855
+1880-1881 new
+1882-1891 was 1856-1865
+1892-1893 was 1866-1867
+1894-1904 new
+1905-1907 was 1867-1869
+1908-1909 new
+1910-1917 was 1870-1877
+1918 was 1878
+1919-1928 new
+1929-1968 was 1879-1918
+1969-1981 new cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm
+1982-1992 was 1919-1929
+1993-1994 new
+1995-1996 new
+1997-1998 new
+1999-2000 new
+2001-2005 was 1930-1934
+2006 new
+2007 was 1935
+2008 new
+2009-2010 was 1936-1937
+2011 new
+2012 was 1938
+2013 new
+2014-2168 was 1939-2093
+2169-2170 new
+2171-2180 was 2094-2103
+2181-2182 was 2104-2105
+2183-2189 new
+2190-2192 was 2105-2107
+2193-2194 new
+2195-2202 was 2108-2115
+2203 was 2116
+2204-2213 new
+2214-2253 was 2117-2156
+2254-2264 new cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm
+2265-2275 was 2157-2167
+2276-2277 new
+2278-2279 new
+2280-2281 new
+2282-2283 new
+2284-2287 was 2168-2171
+2288 new
+2289 was 2172
+2290 new
+2291 new
+2292 was 2173
+2293 new
+2294 was 2174
+2295 new
+2296 was 2175
+2297 new
+2298 new
+2299 was 2176
+2300 new
+2301-3859 was 2177-3735
+3860-3861 new
+3862-3877 was 3736-3751
+3878-3879 new
+3880-3901 was 3752-3773
+3902-3903 was 3774-3775
+3904-3911 was 3776-3783
+3912-3913 was 3784-3785
+3914 was 3785 endreplicate
+3915-3926 was 3774-3785
+3927-3988 was 3785-3846
+3989-3990 new
+3991-4002 was 3847-3858
+4003-4004 was 3859-3860
+4005-4011 new
+4012-4014 was 3860-3862
+4015-4016 new
+4017-4038 was 3863-3884
+4039-4040 was 3885-3886
+4041-4047 was 3887-3893
+4048-4049 was 3894-3895
+4050-4060 new
+4061-4062 was 3895-3896
+4063 was 3896 endreplicate
+4064-4075 was 3885-3896
+4076-4078 was 3896-3898
+4079-4080 was 3899-3900
+4081-4084 new
+4085-4121 was 3901-3937
+4122-4124 was 3938-3939
+4125-4135 new
+4136-4137 was 3939-3940
+4138-4139 new
+4140-4141 new
+4142-4255 was 3941-4054
+4256-4257 new
+4258-4269 was 4055-4066
+4270-4271 was 4067-4068
+4272-4274 new
+4275-4277 was 4068-4070
+4278-4279 new
+4280-4301 was 4071-4092
+4302-4303 was 4093-4094
+4304-4310 was 4095-4101
+4311-4312 was 4102-4103
+4313-4319 new
+4320-4321 was 4103-4104
+4322 was 4104 endreplicate
+4323-4334 was 4093-4104
+4335-4337 was 4104-4106
+4338-4339 was 4107-4108
+4340-4343 new
+4344-4380 was 4109-4145
+4381-4383 was 4146-4147
+4384-4390 new
+4391-4392 was 4147-4148
+4393-4394 new
+4395-4396 new
+4397-5291 was 4149-5043
+5292-5293 new
+5294-5325 was 5044-5075
+5326-5327 new
+5328-6469 was 5076-6217
+6470-6471 was 6218-6219
+6472-6480 was 6220-6228
+6481-6482 was 6229-6230
+6483-6485 new
+6486-6487 was 6230-6231
+6488 was 6231 endreplicate
+6489-6502 was 6218-6231
+6503-6527 was 6231-6255
+6528-6529 was 6256-6257
+6530-6538 was 6258-6266
+6539-6540 was 6267-6268
+6541-6547 new
+6548-6549 was 6268-6269
+6550 was 6269 endreplicate
+6551-6564 was 6256-6269
+6565-6570 was 6269-6274
+6571-6572 was 6275-6276
+6573-6582 was 6277-6286
+6583-6584 was 6287-6288
+6585 was 6288 endreplicate
+6586-6599 was 6275-6288
+6600-6692 was 6288-6380
+6693-6694 was 6381-6382
+6695-6708 new
+6709-7067 was 6383-6741
+7068-7070 was 6742-6743
+7071-7073 new
+7074-7108 was 6743-6777
+7109-7111 was 6778-6779
+7112-7118 new
+7119-8035 was 6779-7695
+8036-8042 new cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_obs_topless_5comma_32comma_1comm
+8043-9213 was 7696-8866
+9214 new
+9215 was 8867
+9216 new
+9217 was 8868
+9218 new
+9219 was 8869
+9220 new
+9221-9790 was 8870-9439
+9791-9792 new
+9793-9794 new
+9795-9796 new
+9797-9798 new
+9799-9800 new
+9801-9802 new
+9803-10490 was 9440-10127
+10491-10492 new
+10493-10524 was 10128-10159
+10525-10526 new
+10527-10530 was 10160-10163
+10531-10532 was 10164-10165
+10533-10558 was 10166-10191
+10559-10560 was 10192-10193
+10561 was 10193 endreplicate
+10562-10591 was 10164-10193
+10592-10666 was 10193-10267
+10667-10668 new
+10669-10711 was 10268-10310
+10712-10713 new
+10714-10795 was 10311-10392
+10796-10797 was 10393-10394
+10798-10823 was 10395-10420
+10824-10825 was 10421-10422
+10826 was 10422 endreplicate
+10827-10856 was 10393-10422
+10857-11005 was 10422-10570
+11006-11007 new
+11008-11015 was 10571-10578
+11016-11017 was 10579-10580
+11018-11054 was 10581-10617
+11055-11056 was 10618-10619
+11057 was 10619 endreplicate
+11058-11098 was 10579-10619
+11099-11235 was 10619-10755

@@ -1,0 +1,4 @@
+     [PA-PSM]     
+     [PA-PSM]     [4] Clock tree power
+     [PA-PSM]     ====================
+     [PA-PSM]     

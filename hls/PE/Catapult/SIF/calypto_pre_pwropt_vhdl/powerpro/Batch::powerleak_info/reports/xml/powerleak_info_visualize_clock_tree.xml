@@ -1,0 +1,50 @@
+
+Prints information about the CGIC cells present in the design. For each CGIC cell, the report is printed in the following format: ICG-Name, Clock-Source-Name, Depth, RICGE (%), AICGE (%), WICGC, Power Reduction (uW), and N(reg_ICG).
+
+These terms are explained below in more detail.
+
+    1) ICG-Name: Name of the CGIC cell.
+
+    2) Clock-Source-Name: Name of the root clock port.
+
+    3) Depth: Depth of the CGIC cell from the root clock port.
+
+    4) RICGE (%): Relative Integrated Clock Gating Efficiency (in percentage).
+       (N(CK) - N(ECK)) / N(CK).
+
+    5) AICGE (%): Absolute Integrated Clock Gating Efficiency (in percentage).
+       (N(CK) - N(ECK)) / N(CLK).
+
+    6) WICGC: Weight Integrated Clock Gate Impact On Clock Cycle Reduction.
+       (N(CK) - N(ECK)) * N(reg_ICG)
+
+    7) Power Reduction (uW): Power saved by the CGIC cell.
+
+    8) N(reg_ICG)
+
+where,
+
+    N(CK)      : Number of clock cycles at the input clock port of the CGIC cell.
+    N(ECK)     : Number of clock cycles at the output clock port of the CGIC cell.
+    N(CLK)     : Number of clock cycles at the clock root of the CGIC cell (the clock root is printed in the report).
+    N(reg_ICG) : Sum of bit numbers of all the registers driven by the CGIC cell.
+
+NOTE : The information will be printed for only those CGIC cells that have the user SA data available.
+
+
+<?xml version="1.0"?>
+<report>
+  <title>Clock Tree Visualization Report</title>
+  <headings>
+    <cgic_name_>ICG-Name </cgic_name_>
+    <src_clk_edge_>Clock-Source-Name</src_clk_edge_>
+    <depth_>Depth</depth_>
+    <relative_integrated_clk_gate_efficieny_>RICGE(%)</relative_integrated_clk_gate_efficieny_>
+    <absolute_integrated_clk_gate_efficieny_>AICGE(%)</absolute_integrated_clk_gate_efficieny_>
+    <weight_integrated_ck_gate_impact_on_ck_cycle_reduction_>WICGC</weight_integrated_ck_gate_impact_on_ck_cycle_reduction_>
+    <power_reduction_>Power-Reduction(uW)</power_reduction_>
+    <bit_flops_driven_>N(reg_ICG)</bit_flops_driven_>
+  </headings>
+</report>
+    
+

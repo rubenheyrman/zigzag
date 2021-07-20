@@ -1,0 +1,375 @@
++-----------------------------------------------------------------------+
+|                                                                       |
+|                                                                       |
+|                             MENTOR(tm)                                |
+|                                                                       |
+|                         SLEC(tm) Software                             |
+|                                                                       |
+|                          Enabling ESL(tm)                             |
+|                                                                       |
+|                                                                       |
+| This program contains confidential, trade secret information of       |
+| Mentor Graphics Corporation.  Any reproduction, use or disclosure     |
+| of this program, including any attempt to obtain a human-readable     |
+| version of this program, without the express, prior written consent   |
+| of Mentor Graphics Corporation is strictly prohibited.                |
+|                                                                       |
+|       Copyright (c) 2002 - 2019, Mentor Graphics Corporation          |
+|                         All rights reserved.                          |
+|                                                                       |
+| Mentor acknowledges trademarks or registered trademarks of other      |
+| organizations for their respective products and services.             |
+|                                                                       |
+| SLEC-10.3c_2/849904   (Jan 10 2020)  linux64  P2001101230             |
+|                                                                       |
+|                                                                       |
+| 64-bit mode                                                           |
+| CentOS Linux release 8.4.2105 x86_64                                  |
+| Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz x 48                        |
+| 396150728 kB                                                          |
+| amazone.esat.kuleuven.be                     Tue Jul 13 11:48:16 2021 |
+|                                                                       |
++-----------------------------------------------------------------------+
+Command-line: /esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/bin/powerpro /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2/build.tcl -slec -workdir /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2/build -logfile build.log -e 'set_global exit_on_error 1; set_global __exit_after_tcl_script_because 1' -license_daemon mgcld -mgls_license_file 
+
+
+Tue Jul 13 11:48:16 CEST 2021
+Linux amazone.esat.kuleuven.be 4.18.0-305.3.1.el8.x86_64 #1 SMP Tue Jun 1 16:14:33 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+LSB Version:	:core-4.1-amd64:core-4.1-noarch
+Distributor ID:	CentOS
+Description:	CentOS Linux release 8.4.2105
+Release:	8.4.2105
+Codename:	n/a
+
+top - 11:48:17 up 27 days,  3:05,  5 users,  load average: 4.93, 5.40, 6.22
+Tasks: 790 total,   5 running, 785 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  8.4 us,  0.1 sy,  0.0 ni, 91.4 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem : 386865.9 total, 362244.3 free,   7766.4 used,  16855.2 buff/cache
+MiB Swap:  65536.0 total,  65536.0 free,      0.0 used. 375758.8 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+3057416 r0678912  20   0 6245340 229636 132660 R 106.2   0.1 865:44.52 kwin_x11
+  53275 r0678912  20   0 6218936 211384 125940 R 100.0   0.1  38346:38 kwin_x11
+  68484 r0678912  20   0 6210432 214480 127320 R 100.0   0.1  38122:36 kwin_x11
+ 125234 r0678912  20   0 6236916 242684 150360 R 100.0   0.1  37219:38 kwin_x11
+3177978 r0678912  20   0   63152   5348   4012 R   6.2   0.0   0:00.02 top
+      1 root      20   0  252484  14976   9780 S   0.0   0.0   9:17.90 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:08.62 kthreadd
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par+
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker+
+      8 root      20   0       0      0      0 I   0.0   0.0   4:28.62 kworker+
+     10 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_perc+
+     11 root      20   0       0      0      0 S   0.0   0.0   0:36.40 ksoftir+
+     12 root      20   0       0      0      0 I   0.0   0.0  22:58.55 rcu_sch+
+     13 root      rt   0       0      0      0 S   0.0   0.0   0:00.72 migrati+
+     14 root      rt   0       0      0      0 S   0.0   0.0   0:00.23 watchdo+
+     15 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+
+Filesystem                                             Size  Used Avail Use% Mounted on
+kwak.esat.kuleuven.be:/san/students/students/r0678912  2.0T  1.5T  536G  74% /users/students/r0678912
+
+Soft limits
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1547275
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 16384
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 5166
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+Hard limits
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1547275
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 32768
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 5166
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+ *)
+ *v*)
+ *v*x*)
+ *x*)
+ /usr/bin/scl "$@";
+ ;;
+ ;;
+ ;;
+ ;;
+ IFS=$_mlIFS;
+ IFS=' ';
+ MODULES_USE_COMPAT_VERSION=1;
+ _mlIFS=$IFS;
+ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";
+ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";
+ _mlrv="MODULES_RUNENV_${_mlv}";
+ _mlshdbg=''
+ _mlshdbg='v'
+ _mlshdbg='vx'
+ _mlshdbg='x'
+ _mlstatus=$?;
+ case "$-" in 
+ do
+ done;
+ echo "Cannot switch to Modules $swname version, command not found";
+ echo "Switching to Modules $swname version";
+ else
+ else
+ else
+ else
+ else
+ esac;
+ eval "module $@";
+ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;
+ eval `eval ${_mlre} /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;
+ export MODULES_USE_COMPAT_VERSION;
+ fi
+ fi
+ fi;
+ fi;
+ fi;
+ fi;
+ fi;
+ fi;
+ fi;
+ fi;
+ fi;
+ fi;
+ for _mlv in ${MODULES_RUN_QUARANTINE:-};
+ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then
+ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then
+ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then
+ if [ $swfound -eq 0 ]; then
+ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then
+ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then
+ if [ -n "${IFS+x}" ]; then
+ if [ -n "${_mlIFS+x}" ]; then
+ if [ -n "${_mlre:-}" ]; then
+ if [ -n "${_mlshdbg:-}" ]; then
+ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then
+ return $_mlstatus
+ return 1;
+ set +v;
+ set +vx;
+ set +x;
+ set -$_mlshdbg;
+ source /usr/share/Modules/init/bash;
+ typeset swfound=0;
+ typeset swfound=0;
+ typeset swname='compatibility';
+ typeset swname='main';
+ unset IFS;
+ unset MODULES_USE_COMPAT_VERSION;
+ unset _mlre _mlIFS;
+ unset _mlre _mlv _mlrv _mlIFS;
+ unset _mlshdbg;
+BASH_FUNC__module_raw%%=() {  unset _mlshdbg;
+BASH_FUNC_ml%%=() {  module ml "$@"
+BASH_FUNC_module%%=() {  _module_raw "$@" 2>&1
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then
+BASH_FUNC_switchml%%=() {  typeset swfound=1;
+CALYPTO_ARGV0=/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/bin/powerpro
+CALYPTO_INSTALL_PATH=/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls
+CALYPTO_LD_LIBRARY_PATH=/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/platform/linux64/lib:/esat/micas-data/software/Mentor/catapult_10.5c/lib:/esat/micas-data/software/Mentor/catapult_10.5c/shared/lib:
+CALYPTO_LICENSE_LOG=252764@amazone.esat.kuleuven.be:3177588,1626169657
+CALYPTO_SLEC_FROM_POWERPRO=1
+CATAPULT_HOME=/esat/micas-data/software/Mentor/catapult_10.5c
+CDS_GENUS=/esat/micas-data/software/Cadence/genus_19.11
+CDS_INNOVUS=/esat/micas-data/software/Cadence/innovus_17.11
+COLORFGBG=0;15
+COLORTERM=truecolor
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-NA5XFOofCu,guid=a8ae738f80f25561de5f7df560ed524e
+DISPLAY=:2
+EDITOR=vi
+ENSCRIPT_LIBRARY=/usr/share/enscript
+ESAT_ARCH=linux-x86_64
+FREEPDK45=/esat/micas-data/data/design/freepdk45
+GDK_CORE_DEVICE_EVENTS=1
+GLIBCPP_FORCE_NEW=1
+GLIBCXX_FORCE_NEW=1
+GS_OPTIONS=-sPAPERSIZE=a4
+GTK2_RC_FILES=/users/students/r0678912/.gtkrc-2.0-kde4
+HISTCONTROL=ignoredups
+HISTSIZE=1000
+HOME=/users/students/r0678912
+HOSTNAME=amazone.esat.kuleuven.be
+ITCL_LIBRARY=/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/platform/common/tcl/itcl
+KDEDIRS=/usr
+KDED_STARTED_BY_KDEINIT=1
+KDE_FULL_SESSION=true
+KDE_SESSION_UID=252764
+KDE_SESSION_VERSION=5
+KONSOLE_DBUS_SERVICE=:1.34
+KONSOLE_DBUS_SESSION=/Sessions/1
+KONSOLE_DBUS_WINDOW=/Windows/1
+KONSOLE_VERSION=191202
+KRB5CCNAME=KCM:
+LD_LIBRARY_PATH=/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/platform/linux64/lib:/esat/micas-data/software/Mentor/catapult_10.5c/lib:/esat/micas-data/software/Mentor/catapult_10.5c/shared/lib:
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LOADEDMODULES=
+LOGNAME=r0678912
+LPDEST=ulstudent
+LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+MAIL=/var/spool/mail/r0678912
+MAILCHECK=0
+MANPATH=::/opt/puppetlabs/puppet/share/man:/freeware/man:/software/man:/esat/micas-data/software/Cadence/innovus_17.11/share/fe/man:/esat/micas-data/software/Cadence/innovus_17.11/share/fe/man
+MGC_ENV_ORIG_MGC_HOME=/esat/micas-data/software/Mentor/catapult_10.5c
+MGC_ENV_ORIG_PATH=/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/freeware/bin/gnu-tools:/freeware/bin:/software/bin:/esat/micas-data/software/Mentor/catapult_10.5c/bin:/esat/micas-data/software/Mentor/questasim_2020.4/questasim/bin:/esat/micas-data/software/Cadence/innovus_17.11/bin:/esat/micas-data/software/Cadence/genus_19.11/bin:/esat/micas-data/software/Mentor/catapult_10.5c/bin:/esat/micas-data/software/Mentor/questasim_2020.4/questasim/bin:/esat/micas-data/software/Cadence/innovus_17.11/bin:/esat/micas-data/software/Cadence/genus_19.11/bin
+MGC_EXENAME=catapult
+MGC_HOME=/esat/micas-data/software/Mentor/catapult_10.5c
+MGC_QUESTA_HOME=/esat/micas-data/software/Mentor/questasim_2020.4
+MGLS_LICENSE_FILE=1717@licserv
+MICAS_LICENSE_FILE=/users/micas/micas/license/license.dat
+MODULEPATH=/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MODULEPATH_modshare=/usr/share/modulefiles:1:/usr/share/Modules/modulefiles:1:/etc/modulefiles:1
+MODULESHOME=/usr/share/Modules
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+OLDPWD=/users/students/r0678912/Downloads/zigzag/hls_impl/COREmem/memories
+OPENRAM_HOME=/users/students/r0678912/openram/compiler
+OPENRAM_TECH=/users/students/r0678912/openram/technology
+PATH=/esat/micas-data/software/Mentor/catapult_10.5c/bin:/esat/micas-data/software/Mentor/catapult_10.5c/lib:/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/sif/.lib:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/freeware/bin/gnu-tools:/freeware/bin:/software/bin:/esat/micas-data/software/Mentor/catapult_10.5c/bin:/esat/micas-data/software/Mentor/questasim_2020.4/questasim/bin:/esat/micas-data/software/Cadence/innovus_17.11/bin:/esat/micas-data/software/Cadence/genus_19.11/bin:/esat/micas-data/software/Mentor/catapult_10.5c/bin:/esat/micas-data/software/Mentor/questasim_2020.4/questasim/bin:/esat/micas-data/software/Cadence/innovus_17.11/bin:/esat/micas-data/software/Cadence/genus_19.11/bin
+POWERPRO_PLUGIN=/esat/micas-data/software/Mentor/catapult_10.5c/pkgs/cds_ppro/rls/platform/linux64/lib/libpowerleaks.so
+PPRO_ENVCONFIG_STATUS=0
+PRINTER=ulstudent
+PROFILEHOME=
+PWD=/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl
+PYTHONPATH=:/users/students/r0678912/openram/compiler:/users/students/r0678912/openram/compiler
+QT_AUTO_SCREEN_SCALE_FACTOR=0
+SELINUX_LEVEL_REQUESTED=
+SELINUX_ROLE_REQUESTED=
+SELINUX_USE_CURRENT_RANGE=
+SHELL=/bin/bash
+SHELL_SESSION_ID=9c500abd127d4dbc8a0c15fe695aa649
+SHLVL=6
+SSH_AGENT_PID=3160730
+SSH_ASKPASS=/usr/bin/ksshaskpass
+SSH_AUTH_SOCK=/tmp/ssh-0tMchTkQmbTf/agent.3160671
+SSH_CLIENT=134.58.56.167 52702 22
+SSH_CONNECTION=134.58.56.167 52702 10.87.20.53 22
+SSH_TTY=/dev/pts/0
+S_COLORS=auto
+TCL_PRINTER_CONFFILE=/dev/null
+TERM=xterm-256color
+TK_LIBRARY=/esat/micas-data/software/Mentor/catapult_10.5c/lib/tk8.5
+TMPDIR=/tmp
+USER=r0678912
+VCO=aol
+VISUAL=vi
+VNCDESKTOP=amazone.esat.kuleuven.be:2 (r0678912)
+WINDOWID=8388615
+XCURSOR_THEME=breeze_cursors
+XDG_CONFIG_DIRS=/etc/xdg:/usr/share/kde-settings/kde-profile/default/xdg
+XDG_CURRENT_DESKTOP=KDE
+XDG_DATA_DIRS=/users/students/r0678912/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+XDG_MENU_PREFIX=kf5-
+XDG_RUNTIME_DIR=/run/user/252764
+XDG_SESSION_ID=9044
+_=/usr/bin/printenv
+}
+}
+}
+}
+}
+
+Auto-loading slec_utils.tcl ...
+slec> eval {set_global exit_on_error 1; set_global __exit_after_tcl_script_because 1}
+1
+
+slec> # build_design script generated by PowerPro
+slec> set_verification_mode -powerpro
+set_global -if_unchanged ignore_intermediate_points                     1
+set_global -if_unchanged map_z_as_symbolic                              1
+set_global -if_unchanged replace_matching_x_with_constant               0
+set_global -if_unchanged replace_constxz_with_zero                      1
+set_global -if_unchanged sim_based_validation                           0
+set_global -if_unchanged assume_array_indices_in_range                  1
+set_global -if_unchanged enable_bdd_sweep                               0
+set_global -if_unchanged ta_insert_bbox_on_clk_to_data_path             1
+set_global -if_unchanged auto_remap_multiple_clock_domain_outputs       1
+set_global -if_unchanged auto_black_box_unsupported_designware          1
+set_global -if_unchanged bit_level_solver_only                          1
+set_global -if_unchanged exit_on_error                                  1
+set_global -if_unchanged stop_at_first_falsification                    0
+set_global -if_unchanged flop_checking_at_reset                   relaxed
+     [UI-MPTE]    Warning message 'TDB-CIWI' is now an error message.
+     [UI-MPTE]    Warning message 'TDB-COWI' is now an error message.
+     [UI-MPTE]    Warning message 'TDB-XPNS' is now an error message.
+     [UI-MPTE]    Warning message 'TDB-IMCD' is now an error message.
+     [UI-MID]     Message "TDB-CDFOO" is now disabled.
+     [UI-MID]     Message "ORC-UTVC" is now disabled.
+<WRN>[UI-FPE]     Forcing the error message "ORC-UTVC" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
+     [UI-MID]     Message "ORC-SIP" is now disabled.
+<WRN>[UI-FPE]     Forcing the error message "ORC-SIP" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
+     [UI-MID]     Message "ORC-DSA" is now disabled.
+<WRN>[UI-FPE]     Forcing the error message "ORC-DSA" to continue beyond the stopping point is not recommended. This may cause instability and/or unexpected result.
+set_global -if_unchanged sim_disable_waveform_dumping                   1
+slec> 
+slec> # Global For Mixed Language Support.
+slec> set_global enable_mixed_language_support 1
+1
+
+slec> 
+slec> # Turning off global For SV Assertion synthesis Support.
+slec> set_global _enable_sv_assertion_synthesis 0
+0
+
+slec> 
+slec> # Global For SV Language Support.
+slec> set_global _allow_sv_in_mixed_language 1
+1
+
+slec> 
+slec> # Global For invoking new FE for slec.
+slec> set_global _slec_new_fe_enable 1
+1
+
+slec> pushd [file dirname [info script]]
+/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2
+slec> read_design -f rtl_mod_rel_vhdl.f -vhdl
+     [UI-BDLM]    Please refer to /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2/build/build_design.log for a comprehensive list of messages and warnings issued in build_design. These may provide hints for debugging issues (if any) related to performance, potential out of bound accesses etc.
+
+                  (Subsequent repetitions of this message will be suppressed.
+                   Use 'enable_msg UI-BDLM' to show all repetitions.)
+
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+     [CPT-RDF]    Reading design files into the 'work' design library.
+slec> cpt::mixed_lang_to_cpt top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000 -bb_list { } -cpt_lib work  -only_elaborate_no_cpt 1 
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1815) Type error near ''rst'' ; expected type ''std_logic_vector''
+*** ERROR: VHDL-1272
+
+     [APP-EAT]    Automatically exiting after the Tcl script finished because the global 'exit_on_error' was set.
+3 warning, 1 error messages
+0.728u 0.076s 0.804 0:01.000   78.332m 82.922p
+(SLEC process used 83 MB and 1 seconds)

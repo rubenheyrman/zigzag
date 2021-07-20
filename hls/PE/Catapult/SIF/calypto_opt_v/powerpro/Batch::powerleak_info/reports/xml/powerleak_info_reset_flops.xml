@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<report>
+  <title>Redundant Reset Flops Report</title>
+  <headings>
+    <domain_number>Domain</domain_number>
+    <p_flip_flop>Flip Flop</p_flip_flop>
+    <flop_width>Width</flop_width>
+    <p_reset_signal>Reset Signal</p_reset_signal>
+    <reset_polarity>Polarity</reset_polarity>
+    <reset_type>Type</reset_type>
+    <potential_power_saving   >Power Change(uW)</potential_power_saving   >
+    <area_change>Area Change</area_change>
+    <file_name>File Name</file_name>
+    <line_number>Line Number</line_number>
+  </headings>
+</report>
+

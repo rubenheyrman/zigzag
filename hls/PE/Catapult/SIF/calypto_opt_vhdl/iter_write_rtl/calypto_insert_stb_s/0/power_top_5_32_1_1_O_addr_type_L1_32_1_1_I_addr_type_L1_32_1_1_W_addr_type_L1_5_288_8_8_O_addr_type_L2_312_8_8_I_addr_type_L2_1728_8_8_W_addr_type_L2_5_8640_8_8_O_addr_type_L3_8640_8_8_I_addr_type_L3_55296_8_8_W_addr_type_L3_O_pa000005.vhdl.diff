@@ -1,0 +1,714 @@
+--- /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl	2021-07-13 11:47:33.646211795 +0200
++++ /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/0/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl	2021-07-13 11:49:04.804854136 +0200
+@@ -17,6 +17,60 @@
+ USE IEEE.STD_LOGIC_ARITH.ALL;
+ 
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
++--PowerPro-CG
++ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000153_PP_0 IS
++  PORT(
++    loop_bound : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++    tile_sizes : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++    pntr_in : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++    pntr_out : OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
++    irrel_at_max_out : OUT STD_LOGIC;
++    irrel_at_zero_out : OUT STD_LOGIC;
++    all_at_max_1_out : OUT STD_LOGIC;
++    counter_in : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++    counter_out : OUT STD_LOGIC_VECTOR (24 DOWNTO 0);
++    tile_bound_in : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++    tile_bound_out : OUT STD_LOGIC_VECTOR (24 DOWNTO 0);
++    --PowerPro-CG
++    counter_nand_2_nl_5 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    counter_or_nl_3 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    mux_14_cse_21 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    for_1_for_1_for_1_for_1_nor_tmp_22 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    and_dcpl_3_23 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    mux_tmp_25_24 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    and_dcpl_25 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    for_1_unequal_3_tmp_27 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    and_dcpl_64_28 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    counter_nand_1_nl_6 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    counter_nand_3_nl_7 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    counter_nand_nl_4 : out ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    operator_5_false_1_acc_4_nl_5_5 : out ieee.std_logic_1164.std_logic_vector(5 downto 5);
++    --PowerPro-CG
++    operator_5_false_1_acc_1_nl_5_5 : out ieee.std_logic_1164.std_logic_vector(5 downto 5);
++    --PowerPro-CG
++    operator_5_false_1_acc_nl_5_5 : out ieee.std_logic_1164.std_logic_vector(5 downto 5) );
++    
++END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000153_PP_0;
++                                                                                                                                                                                                                                                
++library IEEE;
++USE IEEE.STD_LOGIC_1164.ALL;
++USE IEEE.STD_LOGIC_ARITH.ALL;
++
++
+ ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000153 IS
+   PORT(
+     loop_bound : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
+@@ -33,6 +87,650 @@
+   );
+ END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000153;
+ 
++ARCHITECTURE v1 of topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000153_PP_0 IS
++
++                                                                                                                                                                                                                                                                    -- Default Constants
++
++  -- Interconnect Declarations
++  SIGNAL for_1_unequal_4_tmp :  STD_LOGIC;
++  SIGNAL operator_5_false_acc_4_tmp :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL for_1_unequal_3_tmp :  STD_LOGIC;
++  SIGNAL operator_5_false_acc_3_tmp :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL for_1_unequal_2_tmp :  STD_LOGIC;
++  SIGNAL operator_5_false_acc_2_tmp :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL for_1_unequal_1_tmp :  STD_LOGIC;
++  SIGNAL operator_5_false_acc_1_tmp :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL for_1_for_1_for_1_for_1_nor_tmp :  STD_LOGIC;
++  SIGNAL and_dcpl :  STD_LOGIC;
++  SIGNAL and_dcpl_3 :  STD_LOGIC;
++  SIGNAL and_dcpl_4 :  STD_LOGIC;
++  SIGNAL and_dcpl_9 :  STD_LOGIC;
++  SIGNAL and_dcpl_10 :  STD_LOGIC;
++  SIGNAL and_dcpl_12 :  STD_LOGIC;
++  SIGNAL or_tmp_4 :  STD_LOGIC;
++  SIGNAL and_tmp :  STD_LOGIC;
++  SIGNAL and_dcpl_24 :  STD_LOGIC;
++  SIGNAL or_tmp_14 :  STD_LOGIC;
++  SIGNAL mux_tmp_24 :  STD_LOGIC;
++  SIGNAL mux_tmp_25 :  STD_LOGIC;
++  SIGNAL and_dcpl_27 :  STD_LOGIC;
++  SIGNAL and_dcpl_28 :  STD_LOGIC;
++  SIGNAL or_dcpl_10 :  STD_LOGIC;
++  SIGNAL or_tmp_31 :  STD_LOGIC;
++  SIGNAL mux_tmp_30 :  STD_LOGIC;
++  SIGNAL and_dcpl_35 :  STD_LOGIC;
++  SIGNAL or_dcpl_13 :  STD_LOGIC;
++  SIGNAL or_tmp_41 :  STD_LOGIC;
++  SIGNAL not_tmp_24 :  STD_LOGIC;
++  SIGNAL and_dcpl_38 :  STD_LOGIC;
++  SIGNAL and_dcpl_46 :  STD_LOGIC;
++  SIGNAL or_dcpl_16 :  STD_LOGIC;
++  SIGNAL or_dcpl_18 :  STD_LOGIC;
++  SIGNAL or_dcpl_21 :  STD_LOGIC;
++  SIGNAL and_dcpl_53 :  STD_LOGIC;
++  SIGNAL or_dcpl_23 :  STD_LOGIC;
++  SIGNAL or_dcpl_25 :  STD_LOGIC;
++  SIGNAL or_tmp_48 :  STD_LOGIC;
++  SIGNAL and_dcpl_64 :  STD_LOGIC;
++  SIGNAL and_dcpl_65 :  STD_LOGIC;
++  SIGNAL counter_buf_4_1_mx0 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_buf_3_1_mx0 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_buf_2_1_mx0 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_buf_1_1_mx0 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL equal_mdf_1 :  STD_LOGIC;
++  SIGNAL operator_5_false_acc_cse_1 :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL counter_buf_0_1_mx1 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL mux_9_cse :  STD_LOGIC;
++  SIGNAL or_89_cse :  STD_LOGIC;
++  SIGNAL or_79_cse :  STD_LOGIC;
++  SIGNAL or_75_cse :  STD_LOGIC;
++  SIGNAL or_82_cse :  STD_LOGIC;
++  SIGNAL or_20_cse :  STD_LOGIC;
++  SIGNAL nor_16_cse :  STD_LOGIC;
++  SIGNAL nand_4_cse :  STD_LOGIC;
++  SIGNAL and_84_cse :  STD_LOGIC;
++  SIGNAL mux_14_cse :  STD_LOGIC;
++  SIGNAL for_1_unequal_itm :  STD_LOGIC;
++  SIGNAL and_dcpl_103 :  STD_LOGIC;
++  SIGNAL and_dcpl_109 :  STD_LOGIC;
++  SIGNAL and_dcpl_113 :  STD_LOGIC;
++  SIGNAL and_dcpl_116 :  STD_LOGIC;
++  SIGNAL and_dcpl_118 :  STD_LOGIC;
++  SIGNAL and_dcpl_121 :  STD_LOGIC;
++  SIGNAL z_out_3 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL z_out_6 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL pntr_buf_2 :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL or_21_cse :  STD_LOGIC;
++  SIGNAL for_1_for_1_for_1_for_1_nor_4_cse :  STD_LOGIC;
++  SIGNAL or_100_cse :  STD_LOGIC;
++  SIGNAL operator_5_false_1_acc_4_itm_5_1 :  STD_LOGIC;
++  SIGNAL operator_5_false_1_acc_3_itm_5_1 :  STD_LOGIC;
++  SIGNAL operator_5_false_1_acc_2_itm_5_1 :  STD_LOGIC;
++  SIGNAL operator_5_false_1_acc_1_itm_5_1 :  STD_LOGIC;
++  SIGNAL operator_5_false_1_acc_itm_5_1 :  STD_LOGIC;
++  SIGNAL mux_53_cse :  STD_LOGIC;
++  SIGNAL mux_54_cse :  STD_LOGIC;
++
++  SIGNAL tile_bound_mux1h_4_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_acc_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_mux_6_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL tile_bound_or_nl :  STD_LOGIC;
++  SIGNAL tile_bound_mux1h_3_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_acc_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_for_2_if_for_mux_5_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL and_175_nl :  STD_LOGIC;
++  SIGNAL tile_bound_or_1_nl :  STD_LOGIC;
++  SIGNAL tile_bound_mux1h_2_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL acc_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_for_2_if_for_mux_7_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL and_177_nl :  STD_LOGIC;
++  SIGNAL tile_bound_or_2_nl :  STD_LOGIC;
++  SIGNAL tile_bound_mux1h_1_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_acc_12_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_for_2_if_for_mux_6_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL and_176_nl :  STD_LOGIC;
++  SIGNAL tile_bound_or_3_nl :  STD_LOGIC;
++  SIGNAL tile_bound_mux1h_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_acc_13_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_for_2_if_for_mux_4_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL and_174_nl :  STD_LOGIC;
++  SIGNAL mux_52_nl :  STD_LOGIC;
++  SIGNAL tile_bound_or_4_nl :  STD_LOGIC;
++  SIGNAL tile_pntr_and_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL tile_pntr_nand_nl :  STD_LOGIC;
++  SIGNAL mux_44_nl :  STD_LOGIC;
++  SIGNAL mux_43_nl :  STD_LOGIC;
++  SIGNAL mux_42_nl :  STD_LOGIC;
++  SIGNAL mux_41_nl :  STD_LOGIC;
++  SIGNAL mux_40_nl :  STD_LOGIC;
++  SIGNAL mux_39_nl :  STD_LOGIC;
++  SIGNAL mux_8_nl :  STD_LOGIC;
++  SIGNAL mux_7_nl :  STD_LOGIC;
++  SIGNAL and_88_nl :  STD_LOGIC;
++  SIGNAL for_2_if_for_for_2_if_for_and_1_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_for_mux_1_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL nor_24_nl :  STD_LOGIC;
++  SIGNAL counter_nand_4_nl :  STD_LOGIC;
++  SIGNAL mux_24_nl :  STD_LOGIC;
++  SIGNAL mux_23_nl :  STD_LOGIC;
++  SIGNAL nor_21_nl :  STD_LOGIC;
++  SIGNAL mux_22_nl :  STD_LOGIC;
++  SIGNAL mux_21_nl :  STD_LOGIC;
++  SIGNAL nand_3_nl :  STD_LOGIC;
++  SIGNAL or_26_nl :  STD_LOGIC;
++  SIGNAL or_24_nl :  STD_LOGIC;
++  SIGNAL mux_20_nl :  STD_LOGIC;
++  SIGNAL mux_32_nl :  STD_LOGIC;
++  SIGNAL mux_31_nl :  STD_LOGIC;
++  SIGNAL nor_18_nl :  STD_LOGIC;
++  SIGNAL mux_30_nl :  STD_LOGIC;
++  SIGNAL nand_1_nl :  STD_LOGIC;
++  SIGNAL or_44_nl :  STD_LOGIC;
++  SIGNAL mux_29_nl :  STD_LOGIC;
++  SIGNAL nor_5_nl :  STD_LOGIC;
++  SIGNAL mux_38_nl :  STD_LOGIC;
++  SIGNAL mux_37_nl :  STD_LOGIC;
++  SIGNAL mux_36_nl :  STD_LOGIC;
++  SIGNAL or_59_nl :  STD_LOGIC;
++  SIGNAL mux_35_nl :  STD_LOGIC;
++  SIGNAL or_56_nl :  STD_LOGIC;
++  SIGNAL mux_34_nl :  STD_LOGIC;
++  SIGNAL nor_7_nl :  STD_LOGIC;
++  SIGNAL mux_45_nl :  STD_LOGIC;
++  SIGNAL nor_30_nl :  STD_LOGIC;
++  SIGNAL nand_7_nl :  STD_LOGIC;
++  SIGNAL nor_10_nl :  STD_LOGIC;
++  SIGNAL mux_13_nl :  STD_LOGIC;
++  SIGNAL mux_12_nl :  STD_LOGIC;
++  SIGNAL mux_11_nl :  STD_LOGIC;
++  SIGNAL mux_10_nl :  STD_LOGIC;
++  SIGNAL for_2_if_for_mux_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_nand_3_nl :  STD_LOGIC;
++  SIGNAL for_2_if_for_mux_2_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_nand_2_nl :  STD_LOGIC;
++  SIGNAL for_2_if_for_mux_3_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_nand_1_nl :  STD_LOGIC;
++  SIGNAL for_2_if_for_mux_4_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_or_nl :  STD_LOGIC;
++  SIGNAL counter_mux_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL counter_nand_nl :  STD_LOGIC;
++  SIGNAL operator_5_false_1_acc_4_nl :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL operator_5_false_1_acc_3_nl :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL operator_5_false_1_acc_2_nl :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL operator_5_false_1_acc_1_nl :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL operator_5_false_1_acc_nl :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL nand_nl :  STD_LOGIC;
++  SIGNAL or_34_nl :  STD_LOGIC;
++  SIGNAL mux_26_nl :  STD_LOGIC;
++  SIGNAL mux_25_nl :  STD_LOGIC;
++  SIGNAL or_32_nl :  STD_LOGIC;
++  SIGNAL or_31_nl :  STD_LOGIC;
++  SIGNAL and_171_nl :  STD_LOGIC;
++  SIGNAL acc_3_nl :  STD_LOGIC_VECTOR (5 DOWNTO 0);
++  SIGNAL for_2_if_mux1h_3_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_mux1h_4_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL for_2_if_mux1h_5_nl :  STD_LOGIC_VECTOR (4 DOWNTO 0);
++  SIGNAL and_179_nl :  STD_LOGIC;
++  --PowerPro-CG
++  signal counter_nand_2_nl_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal counter_or_nl_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal mux_14_cse_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal for_1_for_1_for_1_for_1_nor_tmp_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal and_dcpl_3_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal mux_tmp_25_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal and_dcpl_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal for_1_unequal_3_tmp_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal and_dcpl_64_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal counter_nand_1_nl_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal counter_nand_3_nl_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal counter_nand_nl_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal operator_5_false_1_acc_4_nl_5_5_1 : ieee.std_logic_1164.std_logic_vector(5 downto 5);
++  --PowerPro-CG
++  signal operator_5_false_1_acc_1_nl_5_5_1 : ieee.std_logic_1164.std_logic_vector(5 downto 5);
++  --PowerPro-CG
++  signal operator_5_false_1_acc_nl_5_5_1 : ieee.std_logic_1164.std_logic_vector(5 downto 5);
++  FUNCTION CONV_SL_1_1(input_val:BOOLEAN)
++  RETURN STD_LOGIC IS
++  BEGIN
++    IF input_val THEN RETURN '1';ELSE RETURN '0';END IF;
++  END;
++
++  FUNCTION MUX1HOT_v_5_3_2(input_2 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_1 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_0 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  sel :  STD_LOGIC_VECTOR(2 DOWNTO 0))
++  RETURN STD_LOGIC_VECTOR IS
++    VARIABLE result :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++    VARIABLE tmp :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++
++    BEGIN
++      tmp := (OTHERS=>sel(0));
++      result := input_0 and tmp;
++      tmp := (OTHERS=>sel( 1));
++      result := result or ( input_1 and tmp);
++      tmp := (OTHERS=>sel( 2));
++      result := result or ( input_2 and tmp);
++    RETURN result;
++  END;
++
++  FUNCTION MUX1HOT_v_5_5_2(input_4 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_3 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_2 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_1 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_0 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  sel :  STD_LOGIC_VECTOR(4 DOWNTO 0))
++  RETURN STD_LOGIC_VECTOR IS
++    VARIABLE result :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++    VARIABLE tmp :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++
++    BEGIN
++      tmp := (OTHERS=>sel(0));
++      result := input_0 and tmp;
++      tmp := (OTHERS=>sel( 1));
++      result := result or ( input_1 and tmp);
++      tmp := (OTHERS=>sel( 2));
++      result := result or ( input_2 and tmp);
++      tmp := (OTHERS=>sel( 3));
++      result := result or ( input_3 and tmp);
++      tmp := (OTHERS=>sel( 4));
++      result := result or ( input_4 and tmp);
++    RETURN result;
++  END;
++
++  FUNCTION MUX_s_1_2_2(input_0 :  STD_LOGIC;
++  input_1 :  STD_LOGIC;
++  sel :  STD_LOGIC)
++  RETURN STD_LOGIC IS
++    VARIABLE result :  STD_LOGIC;
++
++    BEGIN
++      CASE sel IS
++        WHEN '0' =>
++          result := input_0;
++        WHEN others =>
++          result := input_1;
++      END CASE;
++    RETURN result;
++  END;
++
++  FUNCTION MUX_v_5_2_2(input_0 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  input_1 :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++  sel :  STD_LOGIC)
++  RETURN STD_LOGIC_VECTOR IS
++    VARIABLE result :  STD_LOGIC_VECTOR(4 DOWNTO 0);
++
++    BEGIN
++      CASE sel IS
++        WHEN '0' =>
++          result := input_0;
++        WHEN others =>
++          result := input_1;
++      END CASE;
++    RETURN result;
++  END;
++
++BEGIN
++  counter_out <= counter_buf_4_1_mx0 & counter_buf_3_1_mx0 & counter_buf_2_1_mx0
++      & counter_buf_1_1_mx0 & counter_buf_0_1_mx1;
++  for_2_if_mux_6_nl <= MUX_v_5_2_2(z_out_3, (tile_bound_in(24 DOWNTO 20)), for_1_for_1_for_1_for_1_nor_4_cse);
++  for_2_if_acc_nl <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_mux_6_nl) +
++      UNSIGNED(tile_sizes(24 DOWNTO 20)), 5));
++  tile_bound_or_nl <= and_dcpl_53 OR (and_dcpl_64 AND (NOT equal_mdf_1) AND operator_5_false_1_acc_4_itm_5_1
++      AND (NOT for_1_unequal_3_tmp) AND and_dcpl);
++  tile_bound_mux1h_4_nl <= MUX1HOT_v_5_3_2(STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_acc_nl),
++      5)), (tile_sizes(24 DOWNTO 20)), (tile_bound_in(24 DOWNTO 20)), STD_LOGIC_VECTOR'(
++      tile_bound_or_nl & and_dcpl_65 & or_dcpl_25));
++  and_175_nl <= (NOT(or_82_cse AND operator_5_false_1_acc_4_itm_5_1)) AND and_dcpl_103;
++  for_2_if_for_for_2_if_for_mux_5_nl <= MUX_v_5_2_2(z_out_3, (tile_bound_in(19 DOWNTO
++      15)), and_175_nl);
++  for_2_if_for_acc_nl <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_for_2_if_for_mux_5_nl)
++      + UNSIGNED(tile_sizes(19 DOWNTO 15)), 5));
++  tile_bound_or_1_nl <= and_dcpl_53 OR and_dcpl_46 OR ((nor_16_cse OR (NOT operator_5_false_1_acc_4_itm_5_1))
++      AND and_dcpl_3 AND and_dcpl_12 AND operator_5_false_1_acc_3_itm_5_1 AND and_dcpl_38);
++  tile_bound_mux1h_3_nl <= MUX1HOT_v_5_3_2(STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_acc_nl),
++      5)), (tile_sizes(19 DOWNTO 15)), (tile_bound_in(19 DOWNTO 15)), STD_LOGIC_VECTOR'(
++      tile_bound_or_1_nl & and_dcpl_65 & or_dcpl_21));
++  and_177_nl <= (NOT mux_54_cse) AND and_dcpl_12;
++  for_2_if_for_for_2_if_for_mux_7_nl <= MUX_v_5_2_2(z_out_3, (tile_bound_in(14 DOWNTO
++      10)), and_177_nl);
++  acc_nl <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_for_2_if_for_mux_7_nl)
++      + UNSIGNED(tile_sizes(14 DOWNTO 10)), 5));
++  tile_bound_or_2_nl <= and_dcpl_53 OR and_dcpl_46 OR and_dcpl_35 OR ((NOT mux_tmp_30)
++      AND and_dcpl_4 AND (NOT (operator_5_false_acc_2_tmp(5))) AND operator_5_false_1_acc_2_itm_5_1
++      AND for_1_for_1_for_1_for_1_nor_tmp);
++  tile_bound_mux1h_2_nl <= MUX1HOT_v_5_3_2(STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(acc_nl),
++      5)), (tile_sizes(14 DOWNTO 10)), (tile_bound_in(14 DOWNTO 10)), STD_LOGIC_VECTOR'(
++      tile_bound_or_2_nl & and_dcpl_65 & or_dcpl_13));
++  and_176_nl <= (NOT mux_53_cse) AND and_dcpl_3;
++  for_2_if_for_for_2_if_for_mux_6_nl <= MUX_v_5_2_2(z_out_3, (tile_bound_in(9 DOWNTO
++      5)), and_176_nl);
++  for_2_if_for_acc_12_nl <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_for_2_if_for_mux_6_nl)
++      + UNSIGNED(tile_sizes(9 DOWNTO 5)), 5));
++  tile_bound_or_3_nl <= and_dcpl_53 OR and_dcpl_46 OR and_dcpl_35 OR and_dcpl_28
++      OR ((NOT mux_tmp_25) AND and_dcpl_3 AND and_dcpl_27);
++  tile_bound_mux1h_1_nl <= MUX1HOT_v_5_3_2(STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_acc_12_nl),
++      5)), (tile_sizes(9 DOWNTO 5)), (tile_bound_in(9 DOWNTO 5)), STD_LOGIC_VECTOR'(
++      tile_bound_or_3_nl & and_dcpl_65 & or_dcpl_10));
++  mux_52_nl <= MUX_s_1_2_2(mux_53_cse, operator_5_false_1_acc_1_itm_5_1, or_20_cse);
++  and_174_nl <= (NOT mux_52_nl) AND for_1_for_1_for_1_for_1_nor_tmp;
++  for_2_if_for_for_2_if_for_mux_4_nl <= MUX_v_5_2_2(z_out_3, (tile_bound_in(4 DOWNTO
++      0)), and_174_nl);
++  for_2_if_for_acc_13_nl <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_for_2_if_for_mux_4_nl)
++      + UNSIGNED(tile_sizes(4 DOWNTO 0)), 5));
++  tile_bound_or_4_nl <= and_dcpl_53 OR and_dcpl_46 OR and_dcpl_35 OR and_dcpl_28
++      OR ((NOT for_1_for_1_for_1_for_1_nor_tmp) AND operator_5_false_1_acc_itm_5_1)
++      OR ((NOT mux_14_cse) AND for_1_for_1_for_1_for_1_nor_tmp AND operator_5_false_1_acc_itm_5_1);
++  tile_bound_mux1h_nl <= MUX1HOT_v_5_3_2(STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_for_acc_13_nl),
++      5)), (tile_sizes(4 DOWNTO 0)), (tile_bound_in(4 DOWNTO 0)), STD_LOGIC_VECTOR'(
++      tile_bound_or_4_nl & and_dcpl_65 & and_dcpl_24));
++  tile_bound_out <= tile_bound_mux1h_4_nl & tile_bound_mux1h_3_nl & tile_bound_mux1h_2_nl
++      & tile_bound_mux1h_1_nl & tile_bound_mux1h_nl;
++  or_89_cse <= equal_mdf_1 OR for_1_unequal_4_tmp OR (operator_5_false_acc_4_tmp(5));
++  or_79_cse <= for_1_unequal_3_tmp OR (operator_5_false_acc_3_tmp(5));
++  or_75_cse <= for_1_unequal_2_tmp OR (operator_5_false_acc_2_tmp(5));
++  and_84_cse <= or_89_cse AND operator_5_false_1_acc_4_itm_5_1;
++  tile_pntr_nand_nl <= NOT(and_dcpl_10 AND (NOT (operator_5_false_acc_4_tmp(5)))
++      AND (NOT for_1_unequal_3_tmp) AND and_dcpl);
++  tile_pntr_and_nl <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), z_out_3, tile_pntr_nand_nl);
++  mux_41_nl <= MUX_s_1_2_2(and_tmp, or_tmp_48, and_84_cse);
++  mux_40_nl <= MUX_s_1_2_2(and_tmp, or_tmp_48, operator_5_false_1_acc_3_itm_5_1);
++  mux_42_nl <= MUX_s_1_2_2(mux_41_nl, mux_40_nl, or_79_cse);
++  mux_39_nl <= MUX_s_1_2_2(and_tmp, or_tmp_48, operator_5_false_1_acc_2_itm_5_1);
++  mux_43_nl <= MUX_s_1_2_2(mux_42_nl, mux_39_nl, or_75_cse);
++  mux_44_nl <= MUX_s_1_2_2(operator_5_false_1_acc_itm_5_1, mux_43_nl, for_1_for_1_for_1_for_1_nor_tmp);
++  pntr_out <= MUX_v_5_2_2(pntr_buf_2, tile_pntr_and_nl, mux_44_nl);
++  and_88_nl <= (equal_mdf_1 OR for_1_unequal_4_tmp) AND operator_5_false_1_acc_4_itm_5_1;
++  mux_7_nl <= MUX_s_1_2_2(and_88_nl, operator_5_false_1_acc_3_itm_5_1, for_1_unequal_3_tmp);
++  mux_8_nl <= MUX_s_1_2_2(mux_7_nl, operator_5_false_1_acc_2_itm_5_1, for_1_unequal_2_tmp);
++  mux_9_cse <= MUX_s_1_2_2(mux_8_nl, operator_5_false_1_acc_1_itm_5_1, for_1_unequal_1_tmp);
++  nor_24_nl <= NOT((mux_9_cse AND for_1_for_1_for_1_for_1_nor_tmp) OR operator_5_false_1_acc_itm_5_1);
++  for_2_if_for_mux_1_nl <= MUX_v_5_2_2(z_out_6, (counter_in(4 DOWNTO 0)), nor_24_nl);
++  counter_nand_4_nl <= NOT((mux_9_cse OR operator_5_false_1_acc_itm_5_1) AND for_1_for_1_for_1_for_1_nor_tmp);
++  for_2_if_for_for_2_if_for_and_1_nl <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), for_2_if_for_mux_1_nl,
++      counter_nand_4_nl);
++  irrel_at_max_out <= (NOT(CONV_SL_1_1(UNSIGNED(for_2_if_for_for_2_if_for_and_1_nl)
++      /= UNSIGNED(operator_5_false_acc_cse_1(4 DOWNTO 0))) OR (operator_5_false_acc_cse_1(5))))
++      AND (NOT((operator_5_false_acc_1_tmp(5)) OR CONV_SL_1_1(UNSIGNED(counter_buf_1_1_mx0)
++      /= UNSIGNED(operator_5_false_acc_1_tmp(4 DOWNTO 0))))) AND (NOT((operator_5_false_acc_2_tmp(5))
++      OR CONV_SL_1_1(UNSIGNED(counter_buf_2_1_mx0) /= UNSIGNED(operator_5_false_acc_2_tmp(4
++      DOWNTO 0))))) AND (NOT((operator_5_false_acc_3_tmp(5)) OR CONV_SL_1_1(UNSIGNED(counter_buf_3_1_mx0)
++      /= UNSIGNED(operator_5_false_acc_3_tmp(4 DOWNTO 0))))) AND (NOT((operator_5_false_acc_4_tmp(5))
++      OR CONV_SL_1_1(UNSIGNED(counter_buf_4_1_mx0) /= UNSIGNED(operator_5_false_acc_4_tmp(4
++      DOWNTO 0)))));
++  or_82_cse <= for_1_unequal_4_tmp OR (operator_5_false_acc_4_tmp(5));
++  or_20_cse <= for_1_unequal_1_tmp OR (operator_5_false_acc_1_tmp(5));
++  nor_16_cse <= NOT(equal_mdf_1 OR for_1_unequal_4_tmp OR (operator_5_false_acc_4_tmp(5)));
++  nand_4_cse <= NOT(or_89_cse AND operator_5_false_1_acc_4_itm_5_1);
++  or_21_cse <= CONV_SL_1_1(z_out_6/=STD_LOGIC_VECTOR'("00000"));
++  nand_3_nl <= NOT(nand_4_cse AND or_tmp_14);
++  or_26_nl <= operator_5_false_1_acc_3_itm_5_1 OR (NOT or_tmp_14);
++  mux_21_nl <= MUX_s_1_2_2(nand_3_nl, or_26_nl, or_79_cse);
++  or_24_nl <= operator_5_false_1_acc_2_itm_5_1 OR (NOT or_tmp_14);
++  mux_22_nl <= MUX_s_1_2_2(mux_21_nl, or_24_nl, or_75_cse);
++  nor_21_nl <= NOT(operator_5_false_1_acc_1_itm_5_1 OR mux_22_nl);
++  mux_20_nl <= MUX_s_1_2_2(or_tmp_14, or_21_cse, operator_5_false_1_acc_1_itm_5_1);
++  mux_23_nl <= MUX_s_1_2_2(nor_21_nl, mux_20_nl, or_20_cse);
++  mux_24_nl <= MUX_s_1_2_2(or_tmp_14, mux_23_nl, for_1_for_1_for_1_for_1_nor_tmp);
++  nand_1_nl <= NOT(nand_4_cse AND or_tmp_31);
++  or_44_nl <= operator_5_false_1_acc_3_itm_5_1 OR (NOT or_tmp_31);
++  mux_30_nl <= MUX_s_1_2_2(nand_1_nl, or_44_nl, or_79_cse);
++  nor_18_nl <= NOT(operator_5_false_1_acc_2_itm_5_1 OR mux_30_nl);
++  mux_29_nl <= MUX_s_1_2_2(or_tmp_31, or_21_cse, operator_5_false_1_acc_2_itm_5_1);
++  mux_31_nl <= MUX_s_1_2_2(nor_18_nl, mux_29_nl, or_75_cse);
++  nor_5_nl <= NOT(for_1_unequal_1_tmp OR (operator_5_false_acc_1_tmp(5)) OR (NOT
++      for_1_for_1_for_1_for_1_nor_tmp));
++  mux_32_nl <= MUX_s_1_2_2(or_tmp_31, mux_31_nl, nor_5_nl);
++  or_59_nl <= nor_16_cse OR (NOT operator_5_false_1_acc_4_itm_5_1) OR for_1_unequal_2_tmp
++      OR (operator_5_false_acc_2_tmp(5)) OR for_1_unequal_1_tmp OR (operator_5_false_acc_1_tmp(5));
++  mux_36_nl <= MUX_s_1_2_2(not_tmp_24, or_tmp_41, or_59_nl);
++  or_56_nl <= for_1_unequal_2_tmp OR (operator_5_false_acc_2_tmp(5)) OR for_1_unequal_1_tmp
++      OR (operator_5_false_acc_1_tmp(5));
++  mux_35_nl <= MUX_s_1_2_2(not_tmp_24, or_tmp_41, or_56_nl);
++  mux_37_nl <= MUX_s_1_2_2(mux_36_nl, mux_35_nl, operator_5_false_1_acc_3_itm_5_1);
++  nor_7_nl <= NOT((NOT operator_5_false_1_acc_3_itm_5_1) OR for_1_unequal_2_tmp OR
++      (operator_5_false_acc_2_tmp(5)) OR for_1_unequal_1_tmp OR (operator_5_false_acc_1_tmp(5))
++      OR (NOT for_1_for_1_for_1_for_1_nor_tmp));
++  mux_34_nl <= MUX_s_1_2_2(or_tmp_41, or_21_cse, nor_7_nl);
++  mux_38_nl <= MUX_s_1_2_2(mux_37_nl, mux_34_nl, or_79_cse);
++  nor_30_nl <= NOT(CONV_SL_1_1(counter_in(24 DOWNTO 20)/=STD_LOGIC_VECTOR'("00000")));
++  nand_7_nl <= NOT(or_82_cse AND or_21_cse);
++  nor_10_nl <= NOT((NOT operator_5_false_1_acc_4_itm_5_1) OR for_1_unequal_3_tmp
++      OR (operator_5_false_acc_3_tmp(5)) OR for_1_unequal_2_tmp OR (operator_5_false_acc_2_tmp(5))
++      OR for_1_unequal_1_tmp OR (operator_5_false_acc_1_tmp(5)) OR (NOT for_1_for_1_for_1_for_1_nor_tmp));
++  mux_45_nl <= MUX_s_1_2_2(nor_30_nl, nand_7_nl, nor_10_nl);
++  irrel_at_zero_out <= (NOT(CONV_SL_1_1(counter_buf_0_1_mx1/=STD_LOGIC_VECTOR'("00000"))
++      OR mux_24_nl OR mux_32_nl OR mux_38_nl)) AND mux_45_nl;
++  for_1_for_1_for_1_for_1_nor_4_cse <= NOT(for_1_unequal_4_tmp OR (operator_5_false_acc_4_tmp(5)));
++  all_at_max_1_out <= for_1_for_1_for_1_for_1_nor_4_cse AND (NOT(or_dcpl_16 OR (operator_5_false_acc_2_tmp(5))
++      OR (NOT equal_mdf_1) OR or_dcpl_23));
++  mux_12_nl <= MUX_s_1_2_2(and_tmp, or_tmp_4, and_84_cse);
++  mux_11_nl <= MUX_s_1_2_2(and_tmp, or_tmp_4, operator_5_false_1_acc_3_itm_5_1);
++  mux_13_nl <= MUX_s_1_2_2(mux_12_nl, mux_11_nl, or_79_cse);
++  mux_10_nl <= MUX_s_1_2_2(and_tmp, or_tmp_4, operator_5_false_1_acc_2_itm_5_1);
++  mux_14_cse <= MUX_s_1_2_2(mux_13_nl, mux_10_nl, or_75_cse);
++  for_2_if_for_mux_nl <= MUX_v_5_2_2(z_out_6, (counter_in(4 DOWNTO 0)), and_dcpl_24);
++  counter_nand_3_nl <= NOT((mux_14_cse OR operator_5_false_1_acc_itm_5_1) AND for_1_for_1_for_1_for_1_nor_tmp);
++  counter_buf_0_1_mx1 <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), for_2_if_for_mux_nl,
++      counter_nand_3_nl);
++  for_2_if_for_mux_2_nl <= MUX_v_5_2_2(z_out_6, (counter_in(9 DOWNTO 5)), or_dcpl_10);
++  counter_nand_2_nl <= NOT((mux_tmp_25 OR operator_5_false_1_acc_1_itm_5_1) AND and_dcpl_3
++      AND for_1_for_1_for_1_for_1_nor_tmp);
++  counter_buf_1_1_mx0 <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), for_2_if_for_mux_2_nl,
++      counter_nand_2_nl);
++  pntr_buf_2 <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(pntr_in) + UNSIGNED'( "00001"),
++      5));
++  for_2_if_for_mux_3_nl <= MUX_v_5_2_2(z_out_6, (counter_in(14 DOWNTO 10)), or_dcpl_13);
++  counter_nand_1_nl <= NOT((mux_tmp_30 OR operator_5_false_1_acc_2_itm_5_1) AND and_dcpl_4
++      AND (NOT (operator_5_false_acc_2_tmp(5))) AND for_1_for_1_for_1_for_1_nor_tmp);
++  counter_buf_2_1_mx0 <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), for_2_if_for_mux_3_nl,
++      counter_nand_1_nl);
++  for_2_if_for_mux_4_nl <= MUX_v_5_2_2(z_out_6, (counter_in(19 DOWNTO 15)), or_dcpl_21);
++  counter_or_nl <= (NOT(and_84_cse OR operator_5_false_1_acc_3_itm_5_1)) OR for_1_unequal_1_tmp
++      OR (operator_5_false_acc_1_tmp(5)) OR for_1_unequal_2_tmp OR (operator_5_false_acc_2_tmp(5))
++      OR (NOT and_dcpl_38);
++  counter_buf_3_1_mx0 <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), for_2_if_for_mux_4_nl,
++      counter_or_nl);
++  counter_mux_nl <= MUX_v_5_2_2(z_out_6, (counter_in(24 DOWNTO 20)), or_dcpl_25);
++  counter_nand_nl <= NOT(and_dcpl_10 AND (NOT (operator_5_false_acc_4_tmp(5))) AND
++      operator_5_false_1_acc_4_itm_5_1 AND (NOT for_1_unequal_3_tmp) AND and_dcpl);
++  counter_buf_4_1_mx0 <= MUX_v_5_2_2(STD_LOGIC_VECTOR'("00000"), counter_mux_nl,
++      counter_nand_nl);
++  for_1_unequal_4_tmp <= CONV_SL_1_1(UNSIGNED(counter_in(24 DOWNTO 20)) /= UNSIGNED(operator_5_false_acc_4_tmp(4
++      DOWNTO 0)));
++  operator_5_false_acc_cse_1 <= STD_LOGIC_VECTOR(CONV_SIGNED(CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(loop_bound(4
++      DOWNTO 0)), 5), 6) + SIGNED'( "111111"), 6));
++  operator_5_false_acc_4_tmp <= STD_LOGIC_VECTOR(CONV_SIGNED(CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(loop_bound(24
++      DOWNTO 20)), 5), 6) + SIGNED'( "111111"), 6));
++  operator_5_false_acc_3_tmp <= STD_LOGIC_VECTOR(CONV_SIGNED(CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(loop_bound(19
++      DOWNTO 15)), 5), 6) + SIGNED'( "111111"), 6));
++  operator_5_false_acc_2_tmp <= STD_LOGIC_VECTOR(CONV_SIGNED(CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(loop_bound(14
++      DOWNTO 10)), 5), 6) + SIGNED'( "111111"), 6));
++  operator_5_false_acc_1_tmp <= STD_LOGIC_VECTOR(CONV_SIGNED(CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(loop_bound(9
++      DOWNTO 5)), 5), 6) + SIGNED'( "111111"), 6));
++  equal_mdf_1 <= CONV_SL_1_1(UNSIGNED(pntr_buf_2) = UNSIGNED(tile_sizes(24 DOWNTO
++      20)));
++  operator_5_false_1_acc_4_nl <= STD_LOGIC_VECTOR(CONV_SIGNED(SIGNED('1' & (tile_bound_in(24
++      DOWNTO 20))) + CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(NOT pntr_buf_2), 5), 6),
++      6));
++  operator_5_false_1_acc_4_itm_5_1 <= operator_5_false_1_acc_4_nl(5);
++  operator_5_false_1_acc_3_nl <= STD_LOGIC_VECTOR(CONV_SIGNED(SIGNED('1' & (tile_bound_in(19
++      DOWNTO 15))) + CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(NOT pntr_buf_2), 5), 6),
++      6));
++  operator_5_false_1_acc_3_itm_5_1 <= operator_5_false_1_acc_3_nl(5);
++  for_1_unequal_3_tmp <= CONV_SL_1_1(UNSIGNED(counter_in(19 DOWNTO 15)) /= UNSIGNED(operator_5_false_acc_3_tmp(4
++      DOWNTO 0)));
++  operator_5_false_1_acc_2_nl <= STD_LOGIC_VECTOR(CONV_SIGNED(SIGNED('1' & (tile_bound_in(14
++      DOWNTO 10))) + CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(NOT pntr_buf_2), 5), 6),
++      6));
++  operator_5_false_1_acc_2_itm_5_1 <= operator_5_false_1_acc_2_nl(5);
++  for_1_unequal_2_tmp <= CONV_SL_1_1(UNSIGNED(counter_in(14 DOWNTO 10)) /= UNSIGNED(operator_5_false_acc_2_tmp(4
++      DOWNTO 0)));
++  operator_5_false_1_acc_1_nl <= STD_LOGIC_VECTOR(CONV_SIGNED(SIGNED('1' & (tile_bound_in(9
++      DOWNTO 5))) + CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(NOT pntr_buf_2), 5), 6), 6));
++  operator_5_false_1_acc_1_itm_5_1 <= operator_5_false_1_acc_1_nl(5);
++  for_1_unequal_1_tmp <= CONV_SL_1_1(UNSIGNED(counter_in(9 DOWNTO 5)) /= UNSIGNED(operator_5_false_acc_1_tmp(4
++      DOWNTO 0)));
++  operator_5_false_1_acc_nl <= STD_LOGIC_VECTOR(CONV_SIGNED(SIGNED('1' & (tile_bound_in(4
++      DOWNTO 0))) + CONV_SIGNED(CONV_UNSIGNED(UNSIGNED(NOT pntr_buf_2), 5), 6), 6));
++  operator_5_false_1_acc_itm_5_1 <= operator_5_false_1_acc_nl(5);
++  for_1_unequal_itm <= CONV_SL_1_1(UNSIGNED(counter_in(4 DOWNTO 0)) /= UNSIGNED(operator_5_false_acc_cse_1(4
++      DOWNTO 0)));
++  for_1_for_1_for_1_for_1_nor_tmp <= NOT(for_1_unequal_itm OR (operator_5_false_acc_cse_1(5)));
++  and_dcpl <= (NOT (operator_5_false_acc_3_tmp(5))) AND for_1_for_1_for_1_for_1_nor_tmp;
++  and_dcpl_3 <= NOT(for_1_unequal_1_tmp OR (operator_5_false_acc_1_tmp(5)));
++  and_dcpl_4 <= and_dcpl_3 AND (NOT for_1_unequal_2_tmp);
++  and_dcpl_9 <= NOT((operator_5_false_acc_2_tmp(5)) OR for_1_unequal_4_tmp);
++  and_dcpl_10 <= and_dcpl_4 AND and_dcpl_9;
++  and_dcpl_12 <= NOT(for_1_unequal_2_tmp OR (operator_5_false_acc_2_tmp(5)));
++  or_tmp_4 <= operator_5_false_1_acc_1_itm_5_1 OR (NOT or_20_cse);
++  and_tmp <= operator_5_false_1_acc_1_itm_5_1 AND or_20_cse;
++  and_dcpl_24 <= NOT((mux_14_cse AND for_1_for_1_for_1_for_1_nor_tmp) OR operator_5_false_1_acc_itm_5_1);
++  or_tmp_14 <= CONV_SL_1_1(counter_in(9 DOWNTO 5)/=STD_LOGIC_VECTOR'("00000"));
++  nand_nl <= NOT(operator_5_false_1_acc_4_itm_5_1 AND (NOT(nor_16_cse OR (operator_5_false_acc_2_tmp(5))
++      OR for_1_unequal_2_tmp)));
++  or_34_nl <= (NOT operator_5_false_1_acc_3_itm_5_1) OR (operator_5_false_acc_2_tmp(5))
++      OR for_1_unequal_2_tmp;
++  mux_tmp_24 <= MUX_s_1_2_2(nand_nl, or_34_nl, or_79_cse);
++  or_32_nl <= equal_mdf_1 OR (operator_5_false_acc_4_tmp(5)) OR for_1_unequal_4_tmp
++      OR (operator_5_false_acc_2_tmp(5)) OR for_1_unequal_2_tmp;
++  mux_25_nl <= MUX_s_1_2_2(or_75_cse, or_32_nl, operator_5_false_1_acc_4_itm_5_1);
++  or_31_nl <= operator_5_false_1_acc_3_itm_5_1 OR (operator_5_false_acc_2_tmp(5))
++      OR for_1_unequal_2_tmp;
++  mux_26_nl <= MUX_s_1_2_2(mux_25_nl, or_31_nl, or_79_cse);
++  mux_tmp_25 <= MUX_s_1_2_2((NOT mux_tmp_24), mux_26_nl, operator_5_false_1_acc_2_itm_5_1);
++  and_dcpl_27 <= operator_5_false_1_acc_1_itm_5_1 AND for_1_for_1_for_1_for_1_nor_tmp;
++  and_dcpl_28 <= or_20_cse AND and_dcpl_27;
++  or_dcpl_10 <= NOT(((NOT((NOT mux_tmp_25) OR or_20_cse)) OR operator_5_false_1_acc_1_itm_5_1)
++      AND for_1_for_1_for_1_for_1_nor_tmp);
++  or_tmp_31 <= CONV_SL_1_1(counter_in(14 DOWNTO 10)/=STD_LOGIC_VECTOR'("00000"));
++  mux_tmp_30 <= MUX_s_1_2_2(and_84_cse, operator_5_false_1_acc_3_itm_5_1, or_79_cse);
++  and_dcpl_35 <= or_75_cse AND (NOT for_1_unequal_1_tmp) AND (NOT (operator_5_false_acc_1_tmp(5)))
++      AND operator_5_false_1_acc_2_itm_5_1 AND for_1_for_1_for_1_for_1_nor_tmp;
++  or_dcpl_13 <= (mux_tmp_24 AND (NOT operator_5_false_1_acc_2_itm_5_1)) OR or_20_cse
++      OR (NOT for_1_for_1_for_1_for_1_nor_tmp);
++  or_tmp_41 <= CONV_SL_1_1(counter_in(19 DOWNTO 15)/=STD_LOGIC_VECTOR'("00000"));
++  not_tmp_24 <= NOT(for_1_for_1_for_1_for_1_nor_tmp OR (NOT or_tmp_41));
++  and_dcpl_38 <= (NOT for_1_unequal_3_tmp) AND (NOT (operator_5_false_acc_3_tmp(5)))
++      AND for_1_for_1_for_1_for_1_nor_tmp;
++  and_dcpl_46 <= and_dcpl_3 AND or_79_cse AND and_dcpl_12 AND operator_5_false_1_acc_3_itm_5_1
++      AND for_1_for_1_for_1_for_1_nor_tmp;
++  or_dcpl_16 <= or_20_cse OR for_1_unequal_2_tmp;
++  or_dcpl_18 <= (NOT operator_5_false_1_acc_4_itm_5_1) OR for_1_unequal_3_tmp;
++  or_dcpl_21 <= (NOT((NOT(nor_16_cse OR or_dcpl_18 OR (operator_5_false_acc_3_tmp(5))))
++      OR operator_5_false_1_acc_3_itm_5_1)) OR or_dcpl_16 OR (operator_5_false_acc_2_tmp(5))
++      OR (NOT for_1_for_1_for_1_for_1_nor_tmp);
++  and_dcpl_53 <= and_dcpl_4 AND or_82_cse AND (NOT (operator_5_false_acc_2_tmp(5)))
++      AND operator_5_false_1_acc_4_itm_5_1 AND (NOT for_1_unequal_3_tmp) AND and_dcpl;
++  or_dcpl_23 <= or_dcpl_18 OR (operator_5_false_acc_3_tmp(5)) OR (NOT for_1_for_1_for_1_for_1_nor_tmp);
++  or_dcpl_25 <= or_20_cse OR or_75_cse OR or_dcpl_23;
++  or_tmp_48 <= and_dcpl_3 OR operator_5_false_1_acc_1_itm_5_1;
++  and_dcpl_64 <= and_dcpl_4 AND and_dcpl_9 AND (NOT (operator_5_false_acc_4_tmp(5)));
++  and_dcpl_65 <= and_dcpl_64 AND equal_mdf_1 AND operator_5_false_1_acc_4_itm_5_1
++      AND (NOT for_1_unequal_3_tmp) AND and_dcpl;
++  or_100_cse <= (operator_5_false_acc_cse_1(5)) OR for_1_unequal_itm;
++  and_dcpl_103 <= NOT((operator_5_false_acc_3_tmp(5)) OR for_1_unequal_3_tmp);
++  and_dcpl_109 <= for_1_for_1_for_1_for_1_nor_tmp AND or_20_cse;
++  and_dcpl_113 <= NOT(and_dcpl_12 OR (operator_5_false_acc_cse_1(5)) OR for_1_unequal_itm
++      OR (operator_5_false_acc_1_tmp(5)) OR for_1_unequal_1_tmp);
++  and_dcpl_116 <= NOT((operator_5_false_acc_2_tmp(5)) OR for_1_unequal_2_tmp OR (operator_5_false_acc_1_tmp(5))
++      OR for_1_unequal_1_tmp);
++  and_dcpl_118 <= for_1_for_1_for_1_for_1_nor_tmp AND or_79_cse AND and_dcpl_116;
++  and_dcpl_121 <= for_1_for_1_for_1_for_1_nor_tmp AND and_dcpl_103 AND and_dcpl_116;
++  and_171_nl <= or_82_cse AND operator_5_false_1_acc_4_itm_5_1;
++  mux_54_cse <= MUX_s_1_2_2(and_171_nl, operator_5_false_1_acc_3_itm_5_1, or_79_cse);
++  mux_53_cse <= MUX_s_1_2_2(mux_54_cse, operator_5_false_1_acc_2_itm_5_1, or_75_cse);
++  for_2_if_mux1h_3_nl <= MUX1HOT_v_5_5_2((tile_bound_in(4 DOWNTO 0)), (tile_bound_in(9
++      DOWNTO 5)), (tile_bound_in(14 DOWNTO 10)), (tile_bound_in(19 DOWNTO 15)), (tile_bound_in(24
++      DOWNTO 20)), STD_LOGIC_VECTOR'( or_100_cse & and_dcpl_109 & and_dcpl_113 &
++      and_dcpl_118 & and_dcpl_121));
++  for_2_if_mux1h_4_nl <= MUX1HOT_v_5_5_2((NOT (tile_sizes(4 DOWNTO 0))), (NOT (tile_sizes(9
++      DOWNTO 5))), (NOT (tile_sizes(14 DOWNTO 10))), (NOT (tile_sizes(19 DOWNTO 15))),
++      (NOT (tile_sizes(24 DOWNTO 20))), STD_LOGIC_VECTOR'( or_100_cse & and_dcpl_109
++      & and_dcpl_113 & and_dcpl_118 & and_dcpl_121));
++  acc_3_nl <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_mux1h_3_nl & '1')
++      + UNSIGNED(for_2_if_mux1h_4_nl & '1'), 6));
++  z_out_3 <= acc_3_nl(5 DOWNTO 1);
++  and_179_nl <= (NOT(and_dcpl_12 OR for_1_unequal_itm)) AND (NOT((operator_5_false_acc_cse_1(5))
++      OR (operator_5_false_acc_1_tmp(5)) OR for_1_unequal_1_tmp));
++  for_2_if_mux1h_5_nl <= MUX1HOT_v_5_5_2((counter_in(4 DOWNTO 0)), (counter_in(9
++      DOWNTO 5)), (counter_in(14 DOWNTO 10)), (counter_in(19 DOWNTO 15)), (counter_in(24
++      DOWNTO 20)), STD_LOGIC_VECTOR'( or_100_cse & and_dcpl_109 & and_179_nl & and_dcpl_118
++      & and_dcpl_121));
++  --PowerPro-CG
++  counter_nand_2_nl_5 <= (counter_nand_2_nl_1);
++  --PowerPro-CG
++  counter_nand_2_nl_1 <= (counter_nand_2_nl);
++  --PowerPro-CG
++  counter_or_nl_3 <= (counter_or_nl_1);
++  --PowerPro-CG
++  counter_or_nl_1 <= (counter_or_nl);
++  --PowerPro-CG
++  mux_14_cse_21 <= (mux_14_cse_1);
++  --PowerPro-CG
++  mux_14_cse_1 <= (mux_14_cse);
++  --PowerPro-CG
++  for_1_for_1_for_1_for_1_nor_tmp_22 <= (for_1_for_1_for_1_for_1_nor_tmp_1);
++  --PowerPro-CG
++  for_1_for_1_for_1_for_1_nor_tmp_1 <= (for_1_for_1_for_1_for_1_nor_tmp);
++  --PowerPro-CG
++  and_dcpl_3_23 <= (and_dcpl_3_1);
++  --PowerPro-CG
++  and_dcpl_3_1 <= (and_dcpl_3);
++  --PowerPro-CG
++  mux_tmp_25_24 <= (mux_tmp_25_1);
++  --PowerPro-CG
++  mux_tmp_25_1 <= (mux_tmp_25);
++  --PowerPro-CG
++  and_dcpl_25 <= (and_dcpl_1);
++  --PowerPro-CG
++  and_dcpl_1 <= (and_dcpl);
++  --PowerPro-CG
++  for_1_unequal_3_tmp_27 <= (for_1_unequal_3_tmp_1);
++  --PowerPro-CG
++  for_1_unequal_3_tmp_1 <= (for_1_unequal_3_tmp);
++  --PowerPro-CG
++  and_dcpl_64_28 <= (and_dcpl_64_1);
++  --PowerPro-CG
++  and_dcpl_64_1 <= (and_dcpl_64);
++  --PowerPro-CG
++  counter_nand_1_nl_6 <= (counter_nand_1_nl_1);
++  --PowerPro-CG
++  counter_nand_1_nl_1 <= (counter_nand_1_nl);
++  --PowerPro-CG
++  counter_nand_3_nl_7 <= (counter_nand_3_nl_1);
++  --PowerPro-CG
++  counter_nand_3_nl_1 <= (counter_nand_3_nl);
++  --PowerPro-CG
++  counter_nand_nl_4 <= (counter_nand_nl_1);
++  --PowerPro-CG
++  counter_nand_nl_1 <= (counter_nand_nl);
++  --PowerPro-CG
++  operator_5_false_1_acc_4_nl_5_5 <= (operator_5_false_1_acc_4_nl_5_5_1);
++  --PowerPro-CG
++  operator_5_false_1_acc_4_nl_5_5_1 <= (operator_5_false_1_acc_4_nl(5));
++  --PowerPro-CG
++  operator_5_false_1_acc_1_nl_5_5 <= (operator_5_false_1_acc_1_nl_5_5_1);
++  --PowerPro-CG
++  operator_5_false_1_acc_1_nl_5_5_1 <= (operator_5_false_1_acc_1_nl(5));
++  --PowerPro-CG
++  operator_5_false_1_acc_nl_5_5 <= (operator_5_false_1_acc_nl_5_5_1);
++  --PowerPro-CG
++  operator_5_false_1_acc_nl_5_5_1 <= (operator_5_false_1_acc_nl(5));
++  z_out_6 <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(for_2_if_mux1h_5_nl) + UNSIGNED'(
++      "00001"), 5));
++END v1;
+ ARCHITECTURE v1 OF topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000153 IS
+   -- Default Constants
+ 

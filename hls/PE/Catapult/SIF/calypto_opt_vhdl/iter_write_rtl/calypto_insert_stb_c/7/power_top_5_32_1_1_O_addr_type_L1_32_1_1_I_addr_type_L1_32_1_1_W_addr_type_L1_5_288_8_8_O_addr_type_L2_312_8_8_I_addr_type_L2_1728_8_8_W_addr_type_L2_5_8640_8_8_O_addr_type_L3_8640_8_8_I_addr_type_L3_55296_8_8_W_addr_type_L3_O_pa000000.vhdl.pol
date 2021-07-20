@@ -1,0 +1,159 @@
+Index: /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl
+before 1856,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+edit 1866,5-1866 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    I_data_in_rsc_vld : in ieee.std_logic_1164.std_logic_vector(0 downto 0);\n    --PowerPro-CG\n    I_data_in_rsc_dat : in ieee.std_logic_1164.std_logic_vector(15 downto 0);\n    --PowerPro-CG\n    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+before 1870,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+after 1878,10 until ';'
+>   --PowerPro-CG
+>   signal I_wr_data_rsci_biwt_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+>   --PowerPro-CG
+>   signal clk_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+>   --PowerPro-CG
+>   signal rst_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+>   --PowerPro-CG
+>   signal cg_c_I_wr_data_rsci_idat_bfwt_en : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+before 1919,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst.inst_cg_const_stb_topless_5comma_32comma
+>   --PowerPro-CG
+>   inst_cg_const_stb_topless_5comma_32comma : cg_const_stb_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026 port map (
+>               I_wr_data_rsci_biwt => I_wr_data_rsci_biwt_1,
+>               I_wr_data_rsc_vld => I_data_in_rsc_vld,
+>               I_wr_data_rsc_dat => I_data_in_rsc_dat,
+>               I_wr_data_rsci_idat_bfwt_en => cg_c_I_wr_data_rsci_idat_bfwt_en,
+>               o => o,
+>               ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port,
+>               clk => clk_1,
+>               rst => rst_1
+>            );
+before 1930,3
+>   --PowerPro-CG
+>   I_wr_data_rsci_biwt_1 <= (I_wr_data_rsci_biwt);
+before 1930,3
+>   --PowerPro-CG
+>   clk_1 <= (clk);
+before 1930,3
+>   --PowerPro-CG
+>   rst_1 <= (rst);
+before 1935,9
+>        if ( calypto_lib.powerpro_cg_package.is_enabled(cg_c_I_wr_data_rsci_idat_bfwt_en) ) then --PowerPro-CG
+before 1935,76
+>        end if;
+before 1938,9
+>          if ( calypto_lib.powerpro_cg_package.is_enabled(cg_c_I_wr_data_rsci_idat_bfwt_en) ) then --PowerPro-CG
+before 1938,61
+>        end if;
+before 3847,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+edit 3859,5-3859 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+before 3863,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+replicate 3885,3-3896,16 for topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026
+edit 3885,3-3887,6
+> s/component\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026/component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026/i
+edit 3894,7 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    I_data_in_rsc_vld : in ieee.std_logic_1164.std_logic_vector(0 downto 0);\n    --PowerPro-CG\n    I_data_in_rsc_dat : in ieee.std_logic_1164.std_logic_vector(15 downto 0);\n    --PowerPro-CG\n    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+edit 3895-3896,16
+> s/(end\s+component)\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026/$1 topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026/i or 1
+endreplicate
+delete 3885,3-3896,16
+after 3899,10 until ';'
+>   --PowerPro-CG
+>   signal I_wr_data_rsc_vld_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+>   --PowerPro-CG
+>   signal I_wr_data_rsc_dat_1 : ieee.std_logic_1164.std_logic_vector(15 downto 0);
+edit 3938,30-3939 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4,$6\n      --PowerPro-CG\n      I_data_in_rsc_vld => I_wr_data_rsc_vld_1,\n      --PowerPro-CG\n      I_data_in_rsc_dat => I_wr_data_rsc_dat_1,\n      --PowerPro-CG\n      o => o,\n      --PowerPro-CG\n      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );\n/s
+before 3941,3
+>   --PowerPro-CG
+>   I_wr_data_rsc_vld_1 <= (I_wr_data_rsc_vld);
+before 3941,3
+>   --PowerPro-CG
+>   I_wr_data_rsc_dat_1 <= (I_wr_data_rsc_dat);
+before 5044,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+edit 5072,5-5072 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+before 5076,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+replicate 6256,3-6269,16 for topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007
+edit 6256,3-6258,6
+> s/component\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007/component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007/i
+edit 6267,7 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+edit 6268-6269,16
+> s/(end\s+component)\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007/$1 topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007/i or 1
+endreplicate
+delete 6256,3-6269,16
+after 6381,10 until ';'
+>   --PowerPro-CG
+>   signal o : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+>   --PowerPro-CG
+>   signal ppro_reset_CLOCKclk_out_port_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+edit 6778,35-6779 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4,$6\n      --PowerPro-CG\n      o => o,\n      --PowerPro-CG\n      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port_1 );\n/s
+before 9440,3
+>   --PowerPro-CG
+>   ppro_reset_CLOCKclk_out_port_1 <= ppro_reset_CLOCKclk_out_port;
+before 10128,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+edit 10156,5-10156 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+before 10160,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+replicate 10164,3-10193,16 for topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003
+edit 10164,3-10166,6
+> s/component\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003/component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003/i
+edit 10191,7 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+edit 10192-10193,16
+> s/(end\s+component)\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003/$1 topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003/i or 1
+endreplicate
+delete 10164,3-10193,16
+edit 10238,29-10239 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4,$6\n      --PowerPro-CG\n      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );\n/s
+before 10268,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+edit 10307,5-10307 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+before 10311,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+replicate 10393,3-10422,16 for topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002
+edit 10393,3-10395,6
+> s/component\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002/component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002/i
+edit 10420,7 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+edit 10421-10422,16
+> s/(end\s+component)\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002/$1 topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002/i or 1
+endreplicate
+delete 10393,3-10422,16
+edit 10514,29-10515 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4,$6\n      --PowerPro-CG\n      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );\n/s
+before 10571,1
+> library ieee, calypto_lib;
+> use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+replicate 10579,3-10619,16 for topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
+edit 10579,3-10581,6
+> s/component\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000/component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000/i
+edit 10617,7 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4;$6\n    --PowerPro-CG\n    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );\n/s
+edit 10618-10619,16
+> s/(end\s+component)\s+topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000/$1 topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000/i or 1
+endreplicate
+delete 10579,3-10619,16
+after 10662,10 until ';'
+>   --PowerPro-CG
+>   signal ppro_reset_CLOCKclk_out_port : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+edit 10705,39-10706 until ';'
+> s/(.*?)((--.*)*)\s*\)\s*((--.*)*)\s*;\s*((--.*)*)$/$1$2$4,$6\n      --PowerPro-CG\n      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );\n/s

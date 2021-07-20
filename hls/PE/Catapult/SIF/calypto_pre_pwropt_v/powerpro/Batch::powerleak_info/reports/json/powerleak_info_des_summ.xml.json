@@ -1,0 +1,197 @@
+{
+    "Report": {
+        "Header": {
+            "Title": "Power Summary Report",
+            "DashboardTicket": "Design Power",
+            "NoOfRows": "8",
+            "OrderBy": "Unknown",
+            "ReportToolTip": "High-level power report for the various power groups.",
+            "GUITabInfo": "Estimator::Power Summary Report",
+            "AtStage": "sls_flow_genopt",
+            "ComputeMethod": "STATISTICAL",
+            "PrefixID": "ObjectID-",
+            "ReportRowsTopology": "FLAT"
+        },
+        "ColumnHeader": [
+            {
+                "ColumnName": "Domain",
+                "ForReport": "false",
+                "ForDomainInfo": "false",
+                "PrimaryKey": "true",
+                "Type": "String",
+                "ToolTip": "Domain Id for each power group",
+                "ColumnWidth": "8"
+            },
+            {
+                "ColumnName": "Power Group",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Name of power group for which power consumption is being reported.",
+                "ColumnWidth": "13"
+            },
+            {
+                "ColumnName": "Count",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Number of cells in this power group. For clock_network, count specifies the number of separate clock tree networks that are independently balanced.",
+                "ColumnWidth": "13"
+            },
+            {
+                "ColumnName": "Leakage Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Unit": "uW",
+                "Type": "Float",
+                "ToolTip": "Leakage (or static) power consumed by design.",
+                "ColumnWidth": "19"
+            },
+            {
+                "ColumnName": "Internal Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Unit": "uW",
+                "Type": "Float",
+                "ToolTip": "Dynamic power consumed by design.",
+                "ColumnWidth": "20"
+            },
+            {
+                "ColumnName": "Switching Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Unit": "uW",
+                "Type": "Float",
+                "ToolTip": "Switching power consumed by design.",
+                "ColumnWidth": "21"
+            },
+            {
+                "ColumnName": "Total Power(uW)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Unit": "uW",
+                "Type": "Float",
+                "ToolTip": "Sum of leakage, switching and dynamic power.",
+                "ColumnWidth": "17"
+            },
+            {
+                "ColumnName": "Percentage(%)",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Percentage share of this group in the total design power.",
+                "ColumnWidth": "18"
+            }
+        ],
+        "Rows": {
+            "RowOrderList": [
+                "ObjectID-1",
+                "ObjectID-2",
+                "ObjectID-3",
+                "ObjectID-4",
+                "ObjectID-5",
+                "ObjectID-6",
+                "ObjectID-7",
+                "ObjectID-8"
+            ],
+            "RowList": {
+                "ObjectID-1": {
+                    "Data": [
+                        "1",
+                        "io_pad",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0%"
+                    ]
+                },
+                "ObjectID-2": {
+                    "Data": [
+                        "2",
+                        "memory",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0%"
+                    ]
+                },
+                "ObjectID-3": {
+                    "Data": [
+                        "3",
+                        "black_box",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0%"
+                    ]
+                },
+                "ObjectID-4": {
+                    "Data": [
+                        "4",
+                        "register",
+                        "3447",
+                        "273.411133",
+                        "271.393036",
+                        "7.55347967",
+                        "552.357666",
+                        "48.01%"
+                    ]
+                },
+                "ObjectID-5": {
+                    "Data": [
+                        "5",
+                        "combinational",
+                        "10043",
+                        "245.707428",
+                        "59.5821114",
+                        "83.2025757",
+                        "388.492126",
+                        "33.77%"
+                    ]
+                },
+                "ObjectID-6": {
+                    "Data": [
+                        "6",
+                        "sequential",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0",
+                        "0%"
+                    ]
+                },
+                "ObjectID-7": {
+                    "Data": [
+                        "7",
+                        "clock_network",
+                        "194",
+                        "8.56752205",
+                        "91.9686813",
+                        "109.145447",
+                        "209.681656",
+                        "18.22%"
+                    ]
+                },
+                "ObjectID-8": {
+                    "Data": [
+                        "8",
+                        "total",
+                        "13684",
+                        "527.685974",
+                        "422.943878",
+                        "199.901489",
+                        "1150.53125",
+                        "100%"
+                    ]
+                }
+            }
+        }
+    }
+}

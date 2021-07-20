@@ -1,0 +1,271 @@
+{
+    "Report": {
+        "Header": {
+            "Title": "PPRO Summary",
+            "DashboardTicket": "Dashboard Category Not Specified",
+            "NoOfRows": "0",
+            "OrderBy": "Unknown",
+            "ReportToolTip": "",
+            "GUITabInfo": "",
+            "AtStage": "sls_flow_first_normalize",
+            "ComputeMethod": "STATISTICAL",
+            "PrefixID": "ObjectID-",
+            "ReportRowsTopology": "FLAT"
+        },
+        "ColumnHeader": [
+            {
+                "ColumnName": "Domain",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "PrimaryKey": "true",
+                "OnClickAction": "ShowDomainInfo",
+                "Type": "Int",
+                "ToolTip": "Domain for each summary.",
+                "ColumnWidth": "8"
+            },
+            {
+                "ColumnName": "MsgObj",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "ListMsgObj",
+                "ToolTip": "Message object containing the message data.",
+                "ColumnWidth": "12"
+            },
+            {
+                "ColumnName": "Stage",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "Int",
+                "ToolTip": "Stage at which the message is created.",
+                "ColumnWidth": "12"
+            },
+            {
+                "ColumnName": "MsgID",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Powerpro message id of the message.",
+                "ColumnWidth": "12"
+            },
+            {
+                "ColumnName": "Formatter",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Formating instruction to print message.",
+                "ColumnWidth": "12"
+            },
+            {
+                "ColumnName": "MergeGuidance",
+                "ForReport": "true",
+                "ForDomainInfo": "true",
+                "Type": "String",
+                "ToolTip": "Merge guidance for the data.",
+                "ColumnWidth": "12"
+            }
+        ],
+        "Rows": {
+            "RowOrderList": [
+                "ObjectID-PA-SAAS_22",
+                "ObjectID-PPRO-PST_6"
+            ],
+            "RowList": {
+                "ObjectID-PA-SAAS_22": {
+                    "Data": [
+                        "PA-SAAS_22",
+                        [
+                            {
+                                "Msg": "Total Primary Inputs\/Inouts            : ",
+                                "Numerator": "542",
+                                "Denominator": "542",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Asserted Primary Inputs\/Inouts         : ",
+                                "Numerator": "542",
+                                "Denominator": "542",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Total Flop Outputs                     : ",
+                                "Numerator": "3447",
+                                "Denominator": "3447",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Asserted Flop Outputs                  : ",
+                                "Numerator": "3447",
+                                "Denominator": "3447",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Asserted Flop Clock Ports              : ",
+                                "Numerator": "3447",
+                                "Denominator": "3447",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Total CGIC Output Ports                : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Asserted CGIC Output Ports             : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Total Memories                         : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Memories With All Inputs Asserted      : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Memories With All Outputs Asserted     : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Memories With All Clock Ports Asserted : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Total Data Path Operators                    : ",
+                                "Numerator": "7",
+                                "Denominator": "7",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Total Data Path Operators with Any Input User Net : ",
+                                "Numerator": "7",
+                                "Denominator": "7",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Data Path Operators With All Inputs Asserted : ",
+                                "Numerator": "7",
+                                "Denominator": "7",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Total Data Path Operators with Any Output User Net: ",
+                                "Numerator": "7",
+                                "Denominator": "7",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Data Path Operators With All Outputs Asserted: ",
+                                "Numerator": "7",
+                                "Denominator": "7",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Total IO Pad Cells                    : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "IO Pad Cells With All Inputs Asserted : ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "IO Pad Cells With All Outputs Asserted: ",
+                                "Numerator": "0",
+                                "Denominator": "0",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Total Nets                             : ",
+                                "Numerator": "17459",
+                                "Denominator": "17459",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "User Nets                              : ",
+                                "Numerator": "7424",
+                                "Denominator": "17459",
+                                "Percent": "42.5200005"
+                            },
+                            {
+                                "Msg": "Asserted User Nets                     : ",
+                                "Numerator": "7424",
+                                "Denominator": "7424",
+                                "Percent": "100"
+                            }
+                        ],
+                        "22",
+                        "PA-SAAS",
+                        "",
+                        ""
+                    ]
+                },
+                "ObjectID-PPRO-PST_6": {
+                    "Data": [
+                        "PPRO-PST_6",
+                        [
+                            {
+                                "Msg": "Total Flops",
+                                "Numerator": "3447",
+                                "Percent": "100"
+                            },
+                            {
+                                "Msg": "Total Data Latches",
+                                "Numerator": "0",
+                                "Denominator": "3447",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Always ON Flops",
+                                "Numerator": "19",
+                                "Denominator": "3447",
+                                "Percent": "0.551203966"
+                            },
+                            {
+                                "Msg": "Enabled Flops",
+                                "Numerator": "3428",
+                                "Denominator": "3447",
+                                "Percent": "99.4487991"
+                            },
+                            {
+                                "Msg": "Combinational Enabled Flops",
+                                "Numerator": "3428",
+                                "Denominator": "3447",
+                                "Percent": "99.4487991"
+                            },
+                            {
+                                "Msg": "CGIC Enabled Flops",
+                                "Numerator": "0",
+                                "Denominator": "3447",
+                                "Percent": "0"
+                            },
+                            {
+                                "Msg": "Clock Gating Efficiency",
+                                "Numerator": "3125.50806",
+                                "Denominator": "3447",
+                                "Percent": "90.6732864"
+                            }
+                        ],
+                        "6",
+                        "PPRO-PST",
+                        "",
+                        ""
+                    ]
+                }
+            }
+        }
+    }
+}

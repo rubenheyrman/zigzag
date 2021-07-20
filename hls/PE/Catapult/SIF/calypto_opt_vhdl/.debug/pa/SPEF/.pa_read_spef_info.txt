@@ -1,0 +1,9 @@
+     [PA-PSM]     
+     [PA-PSM]     [1.3] Design setup : SPEF quality
+     [PA-PSM]     =================================
+     [PA-PSM]     
+     [PA-PSM]     (Expectation): - Cells without name or .lib should ideally be 0% (or a very low number).
+     [PA-PSM]     -              - For SPEF to be considered good, almost all the design hierarchies, memories, flops and combinational
+     [PA-PSM]     -               nodes should have coverage from SPEF. Coverage means the node belongs to a hierarchy which is also
+     [PA-PSM]     -               present in SPEF. At least 80% of design objects should be covered by SPEF.
+     [PA-PSM]     

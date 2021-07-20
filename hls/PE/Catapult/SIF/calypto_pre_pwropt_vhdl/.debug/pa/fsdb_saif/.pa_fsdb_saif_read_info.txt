@@ -1,0 +1,44 @@
+     [PA-PSM]     
+     [PA-PSM]     
+     [PA-PSM]     [1.2] Design setup : FSDB/SAIF quality
+     [PA-PSM]     ======================================
+     [PA-PSM]     
+     [PA-PSM]     (Expectation): - The time duration of FSDB/SAIF file should be same between PowerPro and reference tool.
+     [PA-PSM]     -              - Activity assertion on primary inputs/outputs, flop outputs, flop clock ports, CGIC outputs,
+     [PA-PSM]     -              - memory outputs, memory clock ports should be 100% (value of 80% would classify as ok).
+     [PA-PSM]     -              - User signal assertion should be about 80% (value of 60% would classify as ok).
+     [PA-PSM]     
+     [PA-PSM]     Activity assertion summary:
+     [PA-PSM]     
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -                  Total Primary Inputs/Inouts            : 542 (100%)
+     [PA-PSM]     -                  Asserted Primary Inputs/Inouts         : 542 (100%)
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -                  Total Flop Outputs                     : 3447 (100%)
+     [PA-PSM]     -                  Asserted Flop Outputs                  : 3443 (99.88%)
+     [PA-PSM]     -                  Asserted Flop Clock Ports              : 3447 (100%)
+     [PA-PSM]     -                  Total CGIC Output Ports                : 0 (0%)
+     [PA-PSM]     -                  Asserted CGIC Output Ports             : 0 (0%)
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -                  Total Memories                         : 0 (0%)
+     [PA-PSM]     -                  Memories With All Inputs Asserted      : 0 (0%)
+     [PA-PSM]     -                  Memories With All Outputs Asserted     : 0 (0%)
+     [PA-PSM]     -                  Memories With All Clock Ports Asserted : 0 (0%)
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -                  Total Data Path Operators                    : 7 (100%)
+     [PA-PSM]     -                  Total Data Path Operators with Any Input User Net : 7 (100%)
+     [PA-PSM]     -                  Data Path Operators With All Inputs Asserted : 7 (100%)
+     [PA-PSM]     -                  Total Data Path Operators with Any Output User Net: 7 (100%)
+     [PA-PSM]     -                  Data Path Operators With All Outputs Asserted: 7 (100%)
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -                  Total IO Pad Cells                    : 0 (0%)
+     [PA-PSM]     -                  IO Pad Cells With All Inputs Asserted : 0 (0%)
+     [PA-PSM]     -                  IO Pad Cells With All Outputs Asserted: 0 (0%)
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -                  Total Nets                             : 17398 (100%)
+     [PA-PSM]     -                  User Nets                              : 7850 (45.12%)
+     [PA-PSM]     -                  Asserted User Nets                     : 7843 (99.91%)
+     [PA-PSM]     -                  ------------------------------------------------------------
+     [PA-PSM]     -
+     [PA-PSM]     Please refer to file "sa.log" for details of switching-activity annotation on various types of objects.
+     [PA-PSM]     

@@ -1,0 +1,236 @@
+********************************************************************************
+Starting Iterative write_rtl for : calypto_insert_obs
+********************************************************************************
+Generate Complete RTL for verification in directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/0
+Verify RTL in directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/0
+Verification on Complete Patched RTL : Failed
+Number of Success Hier from Previous optimization are : 0
+Iterative Write RTL Kicked In With Total Size : 4
+=====================================================
+Node 1 Hiers 4
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/1
+Node 1 failed 
+Patched RTL created for node 1. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/1/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1815) Type error near ''rst'' ; expected type ''std_logic_vector''
+
+Total Hiers   : 4
+Two Partition : 2 , 2
+Two child created with ID's  : 2 3
+=====================================================
+Node 2 Hiers 2
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2
+Node 2 failed 
+Patched RTL created for node 2. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/2/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1815) Type error near ''rst'' ; expected type ''std_logic_vector''
+
+Total Hiers   : 2
+Two Partition : 1 , 1
+Two child created with ID's  : 4 5
+=====================================================
+Node 3 Hiers 2
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/3
+Node 3 failed 
+Patched RTL created for node 3. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/3/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1968) Type error near ''i_wr_data_rsci_biwt'' ; expected type ''std_logic_vector''
+
+Total Hiers   : 2
+Two Partition : 1 , 1
+Two child created with ID's  : 6 7
+=====================================================
+Node 4 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/4
+Node 4 failed 
+Patched RTL created for node 4. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/4/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:9464) Type error near ''rst'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_obs_topless_5comma_32comma_1comm
+=====================================================
+Node 5 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/5
+Node 5 failed 
+Patched RTL created for node 5. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/5/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1815) Type error near ''rst'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_obs_topless_5comma_32comma_1comm
+=====================================================
+Node 6 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/6
+Node 6 failed 
+Patched RTL created for node 6. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/6/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1968) Type error near ''i_wr_data_rsci_biwt'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_obs_topless_5comma_32comma_1comm
+=====================================================
+Node 7 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/7
+Node 7 failed 
+Patched RTL created for node 7. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_obs/7/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:2200) Type error near ''o_wr_data_rsci_biwt'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_obs_topless_5comma_32comma_1comm
+Number of Nodes in IWR-Tree: 7
+===============================================
+IWR decommitted flop O_write_data_data_sva with width 16
+IWR decommitted flop W_wr_data_rsci_idat_bfwt with width 16
+IWR decommitted flop I_wr_data_rsci_idat_bfwt with width 16
+IWR decommitted flop O_wr_data_rsci_ivld_bfwt with width 1
+IWR decommitted flop O_wr_data_rsci_idat_bfwt with width 16
+Total Hiers   : 4
+Failed Hiers  : 4
+Success Hiers : 0
+Iterative Write RTL Kicked Out  
+********************************************************************************
+Ending Iterative write_rtl for : calypto_insert_obs
+********************************************************************************
+********************************************************************************
+Starting Iterative write_rtl for : calypto_insert_stb_c
+********************************************************************************
+Generate Complete RTL for verification in directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/0
+Verify RTL in directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/0
+Verification on Complete Patched RTL : Failed
+Number of Success Hier from Previous optimization are : 0
+Iterative Write RTL Kicked In With Total Size : 3
+=====================================================
+Node 1 Hiers 3
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/1
+Node 1 failed 
+Patched RTL created for node 1. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/1/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl:642) Type error near ''counter_or_nl'' ; expected type ''std_logic_vector''
+
+Total Hiers   : 3
+Two Partition : 1 , 2
+Two child created with ID's  : 2 3
+=====================================================
+Node 2 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/2
+Node 2 failed 
+Patched RTL created for node 2. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/2/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:10758) Type error near ''rst'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : top_5_32_1_1_O_addr_type_L1_32_1_1_I_add
+=====================================================
+Node 3 Hiers 2
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/3
+Node 3 failed 
+Patched RTL created for node 3. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/3/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl:642) Type error near ''counter_or_nl'' ; expected type ''std_logic_vector''
+
+Total Hiers   : 2
+Two Partition : 1 , 1
+Two child created with ID's  : 6 7
+=====================================================
+Node 6 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/6
+Node 6 failed 
+Patched RTL created for node 6. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/6/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl:642) Type error near ''counter_or_nl'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_const_stb_topless_5comma_32comma
+=====================================================
+Node 7 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/7
+Node 7 failed 
+Patched RTL created for node 7. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/7/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:1962) Type error near ''i_wr_data_rsci_biwt'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_const_stb_topless_5comma_32comma
+Number of Nodes in IWR-Tree: 5
+===============================================
+             : reset hier also failed but not reported in count
+Found Driven CG hiers , total size :: 2
+Dependent of failed CG Hier Name :: inst_cg_const_stb_topless_5comma_32comma
+Adding CG Hier as failed :: inst_cg_const_stb_topless_5comma_32comma
+Dependent of failed CG Hier Name :: inst_cg_const_stb_topless_5comma_32comma
+Adding CG Hier as failed :: inst_cg_const_stb_topless_5comma_32comma
+IWR decommitted flop O_mac_counter_0_sva with width 5
+IWR decommitted flop O_mac_counter_1_sva with width 5
+IWR decommitted flop O_mac_counter_2_sva with width 5
+IWR decommitted flop O_mac_counter_3_sva with width 5
+IWR decommitted flop O_mac_counter_4_sva with width 5
+IWR decommitted flop O_vld_zg_pntr_sva with width 5
+IWR decommitted flop O_mac_pntr_sva with width 5
+IWR decommitted flop I_mac_counter_1_sva with width 5
+IWR decommitted flop I_mac_counter_2_sva with width 5
+IWR decommitted flop I_mac_counter_3_sva with width 5
+IWR decommitted flop W_mac_counter_4_sva with width 5
+IWR decommitted flop W_mac_counter_1_sva with width 5
+IWR decommitted flop W_mac_counter_2_sva with width 5
+IWR decommitted flop I_mac_counter_0_sva with width 5
+IWR decommitted flop O_mac_tile_bound_2_lpi_1 with width 5
+IWR decommitted flop O_mac_tile_bound_1_lpi_1 with width 5
+IWR decommitted flop O_mac_tile_bound_3_lpi_1 with width 5
+IWR decommitted flop O_mac_tile_bound_0_lpi_1 with width 5
+IWR decommitted flop O_mac_tile_bound_4_lpi_1 with width 5
+IWR decommitted flop I_mac_tile_bound_4_lpi_1 with width 5
+IWR decommitted flop I_mac_tile_bound_3_lpi_1 with width 5
+IWR decommitted flop W_mac_tile_bound_4_lpi_1 with width 5
+IWR decommitted flop I_mac_tile_bound_2_lpi_1 with width 5
+IWR decommitted flop I_wr_data_rsci_idat_bfwt with width 16
+Total Hiers   : 3
+Failed Hiers  : 3
+Success Hiers : 0
+Iterative Write RTL Kicked Out  
+********************************************************************************
+Ending Iterative write_rtl for : calypto_insert_stb_c
+********************************************************************************
+********************************************************************************
+Starting Iterative write_rtl for : calypto_insert_stb_s
+********************************************************************************
+Generate Complete RTL for verification in directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/0
+Verify RTL in directory /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/0
+Verification on Complete Patched RTL : Failed
+Number of Success Hier from Previous optimization are : 0
+Iterative Write RTL Kicked In With Total Size : 2
+=====================================================
+Node 1 Hiers 2
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/1
+Node 1 failed 
+Patched RTL created for node 1. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/1/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl:674) Type error near ''counter_nand_2_nl'' ; expected type ''std_logic_vector''
+
+Total Hiers   : 2
+Two Partition : 1 , 1
+Two child created with ID's  : 2 3
+=====================================================
+Node 2 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/2
+Node 2 failed 
+Patched RTL created for node 2. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/2/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl:10758) Type error near ''rst'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : top_5_32_1_1_O_addr_type_L1_32_1_1_I_add
+=====================================================
+Node 3 Hiers 1
+Write_rtl in dir : /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/3
+Node 3 failed 
+Patched RTL created for node 3. The following lines have been taken from slec.log, regarding patched RTL.
+<ERR>[VHDL-1272]  (/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_s/3/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.vhdl:674) Type error near ''counter_nand_2_nl'' ; expected type ''std_logic_vector''
+
+Failed Hiers  : 1
+       Names  : inst_cg_sym_stb_topless_5comma_32comma_1
+Number of Nodes in IWR-Tree: 3
+===============================================
+             : reset hier also failed but not reported in count
+Found Driven CG hiers , total size :: 1
+Dependent of failed CG Hier Name :: inst_cg_sym_stb_topless_5comma_32comma_1
+Adding CG Hier as failed :: inst_cg_sym_stb_topless_5comma_32comma_1
+IWR decommitted flop O_mac_counter_0_sva with width 5
+IWR decommitted flop O_mac_counter_1_sva with width 5
+IWR decommitted flop O_mac_counter_2_sva with width 5
+IWR decommitted flop O_mac_counter_3_sva with width 5
+IWR decommitted flop O_mac_counter_4_sva with width 5
+Total Hiers   : 2
+Failed Hiers  : 2
+Success Hiers : 0
+Iterative Write RTL Kicked Out  
+********************************************************************************
+Ending Iterative write_rtl for : calypto_insert_stb_s
+********************************************************************************

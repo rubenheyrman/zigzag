@@ -1,0 +1,9 @@
+{
+    "run_info": {
+        "User": "r0678912",
+        "Design": "top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000",
+        "ToolArgs": "#\/esat\/micas-data\/software\/Mentor\/catapult_10.5c\/pkgs\/cds_ppro\/rls\/platform\/linux64\/bin\/powerpro#-connect#10628#-64#-cg#-workdir#\/users\/students\/r0678912\/Downloads\/zigzag\/hls_impl\/PE\/Catapult\/SIF\/calypto_pre_pwropt_vhdl",
+        "Time": "Tuesday:13-July-2021:11:46:43.991",
+        "Clock": "1626169603"
+    }
+}

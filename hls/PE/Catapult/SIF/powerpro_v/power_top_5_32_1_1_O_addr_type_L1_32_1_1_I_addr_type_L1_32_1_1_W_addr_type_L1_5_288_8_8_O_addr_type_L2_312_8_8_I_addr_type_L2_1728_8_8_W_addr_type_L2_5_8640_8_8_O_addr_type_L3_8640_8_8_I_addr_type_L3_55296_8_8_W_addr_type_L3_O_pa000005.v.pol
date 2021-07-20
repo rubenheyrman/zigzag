@@ -1,0 +1,52 @@
+Index: /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000005.v
+replicate 16,1-601,9 for topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151
+> s|//(.*?)topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151|//${1}topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151|g or 1
+before 16,1
+> //PowerPro-CG
+edit 16,1-17,2 for replicate topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151 to topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151_PP_0 for top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_pntr_cntInst_run_rg
+> s'\btopless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151\b'topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151_PP_0'
+after 18,78
+>   , //PowerPro-CG
+>   counter_or_nl_2
+>   , //PowerPro-CG
+>   counter_nand_nl_3
+>   , //PowerPro-CG
+>   counter_nand_2_nl_4
+>   , //PowerPro-CG
+>   counter_nand_1_nl_5
+>   , //PowerPro-CG
+>   counter_nand_3_nl_6
+>   , //PowerPro-CG
+>   mux_44_nl_7
+>   , //PowerPro-CG
+>   tile_pntr_nand_nl_8
+after 30,17 until ';'
+>  output	wire		[0:0]		counter_or_nl_2; // PowerPro-CG
+>  output	wire		[0:0]		counter_nand_nl_3; // PowerPro-CG
+>  output	wire		[0:0]		counter_nand_2_nl_4; // PowerPro-CG
+>  output	wire		[0:0]		counter_nand_1_nl_5; // PowerPro-CG
+>  output	wire		[0:0]		counter_nand_3_nl_6; // PowerPro-CG
+>  output	wire		[0:0]		mux_44_nl_7; // PowerPro-CG
+>  output	wire		[0:0]		tile_pntr_nand_nl_8; // PowerPro-CG
+before 500,3
+>  //PowerPro-CG
+>  assign counter_or_nl_2 = counter_or_nl;
+before 500,3
+>  //PowerPro-CG
+>  assign counter_nand_nl_3 = counter_nand_nl;
+before 500,3
+>  //PowerPro-CG
+>  assign counter_nand_2_nl_4 = counter_nand_2_nl;
+before 500,3
+>  //PowerPro-CG
+>  assign counter_nand_1_nl_5 = counter_nand_1_nl;
+before 500,3
+>  //PowerPro-CG
+>  assign counter_nand_3_nl_6 = counter_nand_3_nl;
+before 500,3
+>  //PowerPro-CG
+>  assign mux_44_nl_7 = mux_44_nl;
+before 500,3
+>  //PowerPro-CG
+>  assign tile_pntr_nand_nl_8 = tile_pntr_nand_nl;
+endreplicate

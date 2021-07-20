@@ -1,0 +1,642 @@
+--- /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v	2021-07-13 11:49:24.175629541 +0200
++++ /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_v/iter_write_rtl/calypto_insert_stb_c/0/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v	2021-07-13 11:50:16.102709876 +0200
+@@ -1353,6 +1353,7 @@
+   reg W_wr_data_rsci_ivld_bfwt;
+   wire [15:0] W_wr_data_rsci_idat_gtd;
+   reg [15:0] W_wr_data_rsci_idat_bfwt;
++ wire				cg_o_W_wr_data_rsci_idat_bfwt_en; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations for Component Instantiations 
+@@ -1362,6 +1363,10 @@
+       W_wr_data_rsci_ivld);
+   assign W_wr_data_rsci_idat_mxwt = MUX_v_16_2_2(W_wr_data_rsci_idat_gtd, W_wr_data_rsci_idat_bfwt,
+       W_wr_data_rsci_bcwt);
++ //PowerPro-CG
++ cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000031 inst_cg_obs_topless_5comma_32comma_1comm( .rst( rst ),
++	 .W_wr_data_rsci_ivld( W_wr_data_rsci_ivld ),
++	 .W_wr_data_rsci_idat_bfwt_en( cg_o_W_wr_data_rsci_idat_bfwt_en ));
+   always @(posedge clk) begin
+     if ( rst ) begin
+       W_wr_data_rsci_bcwt <= 1'b0;
+@@ -1373,10 +1378,12 @@
+   always @(posedge clk) begin
+     if ( rst ) begin
+       W_wr_data_rsci_ivld_bfwt <= 1'b0;
++       if ( cg_o_W_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       W_wr_data_rsci_idat_bfwt <= 16'b0000000000000000;
+     end
+     else if ( W_wr_data_rsci_biwt ) begin
+       W_wr_data_rsci_ivld_bfwt <= W_wr_data_rsci_ivld;
++         if ( cg_o_W_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       W_wr_data_rsci_idat_bfwt <= W_wr_data_rsci_idat_gtd;
+     end
+   end
+@@ -1451,6 +1458,16 @@
+     (
+   clk, rst, I_wr_data_rsci_ivld_mxwt, I_wr_data_rsci_idat_mxwt, I_wr_data_rsci_biwt,
+       I_wr_data_rsci_bdwt, I_wr_data_rsci_ivld, I_wr_data_rsci_idat
++  , //PowerPro-CG
++  reg_I_wr_data_rsci_irdy_run_psct_cse
++  , //PowerPro-CG
++  fsm_output
++  , //PowerPro-CG
++  run_wen
++  , //PowerPro-CG
++  and_tmp_80
++  , //PowerPro-CG
++  mux_360_nl
+ );
+   input clk;
+   input rst;
+@@ -1460,6 +1477,11 @@
+   input I_wr_data_rsci_bdwt;
+   input I_wr_data_rsci_ivld;
+   input [15:0] I_wr_data_rsci_idat;
++ input wire		[0:0]		reg_I_wr_data_rsci_irdy_run_psct_cse; // PowerPro-CG
++ input wire		[1:0]		fsm_output; // PowerPro-CG
++ input wire		[0:0]		run_wen; // PowerPro-CG
++ input wire		[0:0]		and_tmp_80; // PowerPro-CG
++ input wire		[0:0]		mux_360_nl; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations
+@@ -1467,6 +1489,7 @@
+   reg I_wr_data_rsci_ivld_bfwt;
+   wire [15:0] I_wr_data_rsci_idat_gtd;
+   reg [15:0] I_wr_data_rsci_idat_bfwt;
++ wire				cg_o_I_wr_data_rsci_idat_bfwt_en; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations for Component Instantiations 
+@@ -1476,6 +1499,17 @@
+       I_wr_data_rsci_ivld);
+   assign I_wr_data_rsci_idat_mxwt = MUX_v_16_2_2(I_wr_data_rsci_idat_gtd, I_wr_data_rsci_idat_bfwt,
+       I_wr_data_rsci_bcwt);
++ //PowerPro-CG
++ cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026 inst_cg_obs_topless_5comma_32comma_1comm( .I_wr_data_rsci_oswt( reg_I_wr_data_rsci_irdy_run_psct_cse ),
++	 .fsm_output( fsm_output ),
++	 .I_wr_data_rsci_biwt( I_wr_data_rsci_biwt ),
++	 .I_wr_data_rsci_bdwt( I_wr_data_rsci_bdwt ),
++	 .I_wr_data_rsci_idat_bfwt_en( cg_o_I_wr_data_rsci_idat_bfwt_en ),
++	 .I_wr_data_rsci_bcwt( I_wr_data_rsci_bcwt ),
++	 .rst_3( rst ),
++	 .run_wen_1( run_wen ),
++	 .and_tmp_80( and_tmp_80 ),
++	 .mux_360_nl( mux_360_nl ));
+   always @(posedge clk) begin
+     if ( rst ) begin
+       I_wr_data_rsci_bcwt <= 1'b0;
+@@ -1487,10 +1521,12 @@
+   always @(posedge clk) begin
+     if ( rst ) begin
+       I_wr_data_rsci_ivld_bfwt <= 1'b0;
++       if ( cg_o_I_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       I_wr_data_rsci_idat_bfwt <= 16'b0000000000000000;
+     end
+     else if ( I_wr_data_rsci_biwt ) begin
+       I_wr_data_rsci_ivld_bfwt <= I_wr_data_rsci_ivld;
++         if ( cg_o_I_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       I_wr_data_rsci_idat_bfwt <= I_wr_data_rsci_idat_gtd;
+     end
+   end
+@@ -1649,6 +1685,12 @@
+     (
+   clk, rst, O_wr_data_rsci_ivld_mxwt, O_wr_data_rsci_idat_mxwt, O_wr_data_rsci_biwt,
+       O_wr_data_rsci_bdwt, O_wr_data_rsci_ivld, O_wr_data_rsci_idat
++  , //PowerPro-CG
++  reg_O_wr_data_rsci_irdy_run_psct_cse
++  , //PowerPro-CG
++  run_wen
++  , //PowerPro-CG
++  or_tmp_242
+ );
+   input clk;
+   input rst;
+@@ -1658,6 +1700,9 @@
+   input O_wr_data_rsci_bdwt;
+   input O_wr_data_rsci_ivld;
+   input [15:0] O_wr_data_rsci_idat;
++ input wire		[0:0]		reg_O_wr_data_rsci_irdy_run_psct_cse; // PowerPro-CG
++ input wire		[0:0]		run_wen; // PowerPro-CG
++ input wire		[0:0]		or_tmp_242; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations
+@@ -1665,6 +1710,7 @@
+   reg O_wr_data_rsci_ivld_bfwt;
+   wire [15:0] O_wr_data_rsci_idat_gtd;
+   reg [15:0] O_wr_data_rsci_idat_bfwt;
++ wire				cg_o_O_wr_data_rsci_idat_bfwt_en; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations for Component Instantiations 
+@@ -1674,6 +1720,15 @@
+       O_wr_data_rsci_ivld);
+   assign O_wr_data_rsci_idat_mxwt = MUX_v_16_2_2(O_wr_data_rsci_idat_gtd, O_wr_data_rsci_idat_bfwt,
+       O_wr_data_rsci_bcwt);
++ //PowerPro-CG
++ cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000016 inst_cg_obs_topless_5comma_32comma_1comm( .O_wr_data_rsci_oswt( reg_O_wr_data_rsci_irdy_run_psct_cse ),
++	 .O_wr_data_rsci_biwt( O_wr_data_rsci_biwt ),
++	 .O_wr_data_rsci_bdwt( O_wr_data_rsci_bdwt ),
++	 .O_wr_data_rsci_idat_bfwt_en( cg_o_O_wr_data_rsci_idat_bfwt_en ),
++	 .run_wen_1( run_wen ),
++	 .O_wr_data_rsci_bcwt( O_wr_data_rsci_bcwt ),
++	 .rst_2( rst ),
++	 .or_tmp_242( or_tmp_242 ));
+   always @(posedge clk) begin
+     if ( rst ) begin
+       O_wr_data_rsci_bcwt <= 1'b0;
+@@ -1684,11 +1739,15 @@
+   end
+   always @(posedge clk) begin
+     if ( rst ) begin
++       if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       O_wr_data_rsci_ivld_bfwt <= 1'b0;
++       if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       O_wr_data_rsci_idat_bfwt <= 16'b0000000000000000;
+     end
+     else if ( O_wr_data_rsci_biwt ) begin
++         if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       O_wr_data_rsci_ivld_bfwt <= O_wr_data_rsci_ivld;
++         if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+       O_wr_data_rsci_idat_bfwt <= O_wr_data_rsci_idat_gtd;
+     end
+   end
+@@ -2735,6 +2794,12 @@
+     (
+   clk, rst, I_wr_data_rsc_dat, I_wr_data_rsc_vld, I_wr_data_rsc_rdy, run_wen, run_wten,
+       I_wr_data_rsci_oswt, I_wr_data_rsci_ivld_mxwt, I_wr_data_rsci_idat_mxwt
++  , //PowerPro-CG
++  fsm_output
++  , //PowerPro-CG
++  and_tmp_80
++  , //PowerPro-CG
++  mux_360_nl
+ );
+   input clk;
+   input rst;
+@@ -2746,6 +2811,9 @@
+   input I_wr_data_rsci_oswt;
+   output I_wr_data_rsci_ivld_mxwt;
+   output [15:0] I_wr_data_rsci_idat_mxwt;
++ input wire		[1:0]		fsm_output; // PowerPro-CG
++ input wire		[0:0]		and_tmp_80; // PowerPro-CG
++ input wire		[0:0]		mux_360_nl; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations
+@@ -2786,6 +2854,16 @@
+       .I_wr_data_rsci_bdwt(I_wr_data_rsci_bdwt),
+       .I_wr_data_rsci_ivld(I_wr_data_rsci_ivld),
+       .I_wr_data_rsci_idat(I_wr_data_rsci_idat)
++      , //PowerPro-CG
++       .reg_I_wr_data_rsci_irdy_run_psct_cse( I_wr_data_rsci_oswt )
++      , //PowerPro-CG
++       .fsm_output( fsm_output )
++      , //PowerPro-CG
++       .run_wen( run_wen )
++      , //PowerPro-CG
++       .and_tmp_80( and_tmp_80 )
++      , //PowerPro-CG
++       .mux_360_nl( mux_360_nl )
+     );
+ endmodule
+ 
+@@ -2858,6 +2936,8 @@
+     (
+   clk, rst, O_wr_data_rsc_dat, O_wr_data_rsc_vld, O_wr_data_rsc_rdy, run_wen, O_wr_data_rsci_oswt,
+       run_wten, O_wr_data_rsci_ivld_mxwt, O_wr_data_rsci_idat_mxwt
++  , //PowerPro-CG
++  or_tmp_242
+ );
+   input clk;
+   input rst;
+@@ -2869,6 +2949,7 @@
+   input run_wten;
+   output O_wr_data_rsci_ivld_mxwt;
+   output [15:0] O_wr_data_rsci_idat_mxwt;
++ input wire		[0:0]		or_tmp_242; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations
+@@ -2909,6 +2990,12 @@
+       .O_wr_data_rsci_bdwt(O_wr_data_rsci_bdwt),
+       .O_wr_data_rsci_ivld(O_wr_data_rsci_ivld),
+       .O_wr_data_rsci_idat(O_wr_data_rsci_idat)
++      , //PowerPro-CG
++       .reg_O_wr_data_rsci_irdy_run_psct_cse( O_wr_data_rsci_oswt )
++      , //PowerPro-CG
++       .run_wen( run_wen )
++      , //PowerPro-CG
++       .or_tmp_242( or_tmp_242 )
+     );
+ endmodule
+ 
+@@ -3535,6 +3622,8 @@
+       O_instr_in_rsc_dat, O_instr_in_rsc_vld, O_instr_in_rsc_rdy, I_instr_in_rsc_dat,
+       I_instr_in_rsc_vld, I_instr_in_rsc_rdy, W_instr_in_rsc_dat, W_instr_in_rsc_vld,
+       W_instr_in_rsc_rdy
++  , //PowerPro-CG
++  ppro_reset_CLOCKclk_out_port
+ );
+   input clk;
+   input rst;
+@@ -3562,6 +3651,7 @@
+   input [49:0] W_instr_in_rsc_dat;
+   input W_instr_in_rsc_vld;
+   output W_instr_in_rsc_rdy;
++ input wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations
+@@ -4683,10 +4773,38 @@
+   assign nl_I_mac_pntr_cntInst_run_rg_counter_in = {I_mac_counter_4_sva , I_mac_counter_3_sva
+       , I_mac_counter_2_sva , I_mac_counter_1_sva , I_mac_counter_0_sva};
+   wire [24:0] nl_I_mac_pntr_cntInst_run_rg_tile_bound_in;
++ wire				cg_o_O_write_data_data_sva_en; // PowerPro-CG
++ wire		[0:0]		counter_or_nl; // PowerPro-CG
++ wire		[0:0]		counter_nand_nl; // PowerPro-CG
++ wire		[0:0]		counter_nand_2_nl; // PowerPro-CG
++ wire		[0:0]		counter_nand_1_nl; // PowerPro-CG
++ wire		[0:0]		counter_nand_3_nl; // PowerPro-CG
++ wire		[0:0]		mux_44_nl; // PowerPro-CG
++ wire		[0:0]		tile_pntr_nand_nl; // PowerPro-CG
++ wire				cg_c_O_mac_counter_4_sva_en; // PowerPro-CG
++ wire				cg_c_O_vld_zg_pntr_sva_en; // PowerPro-CG
++ wire				cg_c_O_mac_pntr_sva_en; // PowerPro-CG
++ wire				cg_c_I_mac_counter_1_sva_en; // PowerPro-CG
++ wire				cg_c_I_mac_counter_2_sva_en; // PowerPro-CG
++ wire				cg_c_I_mac_counter_3_sva_en; // PowerPro-CG
++ wire				cg_c_W_mac_counter_4_sva_en; // PowerPro-CG
++ wire				cg_c_W_mac_counter_1_sva_en; // PowerPro-CG
++ wire				cg_c_W_mac_counter_2_sva_en; // PowerPro-CG
++ wire				cg_c_I_mac_counter_0_sva_en; // PowerPro-CG
++ wire				cg_c_O_mac_tile_bound_2_lpi_1_en; // PowerPro-CG
++ wire				cg_c_O_mac_tile_bound_0_lpi_1_en; // PowerPro-CG
++ wire				cg_c_O_mac_tile_bound_3_lpi_1_en; // PowerPro-CG
++ wire				cg_c_O_mac_tile_bound_4_lpi_1_en; // PowerPro-CG
++ wire				cg_c_O_mac_tile_bound_1_lpi_1_en; // PowerPro-CG
++ wire				cg_c_I_mac_tile_bound_3_lpi_1_en; // PowerPro-CG
++ wire				cg_c_I_mac_tile_bound_4_lpi_1_en; // PowerPro-CG
++ wire				cg_c_W_mac_tile_bound_4_lpi_1_en; // PowerPro-CG
++ wire				cg_c_I_mac_tile_bound_2_lpi_1_en; // PowerPro-CG
+   assign nl_I_mac_pntr_cntInst_run_rg_tile_bound_in = {I_mac_tile_bound_4_lpi_1_dfm_mx0
+       , I_mac_tile_bound_3_lpi_1_dfm_mx0 , I_mac_tile_bound_2_lpi_1_dfm_mx0 , I_mac_tile_bound_1_lpi_1_dfm_mx0
+       , I_mac_tile_bound_0_lpi_1_dfm_mx0};
+-  topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151
++  //PowerPro-CG
++  topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151_PP_0
+       O_mac_pntr_cntInst_run_rg (
+       .loop_bound(nl_O_mac_pntr_cntInst_run_rg_loop_bound[24:0]),
+       .tile_sizes(nl_O_mac_pntr_cntInst_run_rg_tile_sizes[24:0]),
+@@ -4699,6 +4817,20 @@
+       .counter_out(libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_24),
+       .tile_bound_in(nl_O_mac_pntr_cntInst_run_rg_tile_bound_in[24:0]),
+       .tile_bound_out(libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25)
++      , //PowerPro-CG
++       .counter_or_nl_2( counter_or_nl )
++      , //PowerPro-CG
++       .counter_nand_nl_3( counter_nand_nl )
++      , //PowerPro-CG
++       .counter_nand_2_nl_4( counter_nand_2_nl )
++      , //PowerPro-CG
++       .counter_nand_1_nl_5( counter_nand_1_nl )
++      , //PowerPro-CG
++       .counter_nand_3_nl_6( counter_nand_3_nl )
++      , //PowerPro-CG
++       .mux_44_nl_7( mux_44_nl )
++      , //PowerPro-CG
++       .tile_pntr_nand_nl_8( tile_pntr_nand_nl )
+     );
+   topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151
+       W_mac_pntr_cntInst_run_rg (
+@@ -4741,6 +4873,8 @@
+       .run_wten(run_wten),
+       .O_wr_data_rsci_ivld_mxwt(O_wr_data_rsci_ivld_mxwt),
+       .O_wr_data_rsci_idat_mxwt(O_wr_data_rsci_idat_mxwt)
++      , //PowerPro-CG
++       .or_tmp_242( or_tmp_242 )
+     );
+   topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000006
+       rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_inst
+@@ -4769,6 +4903,12 @@
+       .I_wr_data_rsci_oswt(reg_I_wr_data_rsci_irdy_run_psct_cse),
+       .I_wr_data_rsci_ivld_mxwt(I_wr_data_rsci_ivld_mxwt),
+       .I_wr_data_rsci_idat_mxwt(I_wr_data_rsci_idat_mxwt)
++      , //PowerPro-CG
++       .fsm_output( fsm_output )
++      , //PowerPro-CG
++       .and_tmp_80( and_tmp_80 )
++      , //PowerPro-CG
++       .mux_360_nl( mux_360_nl )
+     );
+   topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000008
+       rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst
+@@ -5653,6 +5793,64 @@
+       and_526_cse);
+   assign mux_661_nl = MUX_s_1_2_2((fsm_output[1]), nor_tmp_217, and_526_cse);
+   assign mux_663_itm = MUX_s_1_2_2(mux_662_nl, mux_661_nl, or_756_cse);
++ //PowerPro-CG
++ cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003 inst_cg_obs_topless_5comma_32comma_1comm( .rst( rst ),
++	 .fsm_output( fsm_output ),
++	 .O_write_data_data_sva_en( cg_o_O_write_data_data_sva_en ),
++	 .land_9_lpi_1_dfm_1( land_9_lpi_1_dfm_1 ));
++ //PowerPro-CG
++ cg_const_stb_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003 inst_cg_const_stb_topless_5comma_32comma( .tile_bound_out( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_35 ),
++	 .counter_out( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34 ),
++	 .run_wen( run_wen ),
++	 .fsm_output( fsm_output ),
++	 .O_mac_counter_4_sva_en( cg_c_O_mac_counter_4_sva_en ),
++	 .O_vld_zg_pntr_sva_en( cg_c_O_vld_zg_pntr_sva_en ),
++	 .O_mac_pntr_sva_en( cg_c_O_mac_pntr_sva_en ),
++	 .I_mac_counter_1_sva_en( cg_c_I_mac_counter_1_sva_en ),
++	 .I_mac_counter_2_sva_en( cg_c_I_mac_counter_2_sva_en ),
++	 .I_mac_counter_3_sva_en( cg_c_I_mac_counter_3_sva_en ),
++	 .W_mac_counter_4_sva_en( cg_c_W_mac_counter_4_sva_en ),
++	 .W_mac_counter_1_sva_en( cg_c_W_mac_counter_1_sva_en ),
++	 .W_mac_counter_2_sva_en( cg_c_W_mac_counter_2_sva_en ),
++	 .I_mac_counter_0_sva_en( cg_c_I_mac_counter_0_sva_en ),
++	 .O_mac_tile_bound_2_lpi_1_en( cg_c_O_mac_tile_bound_2_lpi_1_en ),
++	 .O_mac_tile_bound_0_lpi_1_en( cg_c_O_mac_tile_bound_0_lpi_1_en ),
++	 .O_mac_tile_bound_3_lpi_1_en( cg_c_O_mac_tile_bound_3_lpi_1_en ),
++	 .O_mac_tile_bound_4_lpi_1_en( cg_c_O_mac_tile_bound_4_lpi_1_en ),
++	 .O_mac_tile_bound_1_lpi_1_en( cg_c_O_mac_tile_bound_1_lpi_1_en ),
++	 .I_mac_tile_bound_3_lpi_1_en( cg_c_I_mac_tile_bound_3_lpi_1_en ),
++	 .I_mac_tile_bound_4_lpi_1_en( cg_c_I_mac_tile_bound_4_lpi_1_en ),
++	 .W_mac_tile_bound_4_lpi_1_en( cg_c_W_mac_tile_bound_4_lpi_1_en ),
++	 .I_mac_tile_bound_2_lpi_1_en( cg_c_I_mac_tile_bound_2_lpi_1_en ),
++	 .counter_or_nl( counter_or_nl ),
++	 .counter_nand_nl( counter_nand_nl ),
++	 .counter_nand_2_nl( counter_nand_2_nl ),
++	 .counter_nand_1_nl( counter_nand_1_nl ),
++	 .counter_nand_3_nl( counter_nand_3_nl ),
++	 .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port ),
++	 .W_mac_pntr_and_cse( W_mac_pntr_and_cse ),
++	 .mux_614_nl( mux_614_nl ),
++	 .mux_44_nl( mux_44_nl ),
++	 .tile_pntr_nand_nl( tile_pntr_nand_nl ),
++	 .counter_out_2( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29 ),
++	 .O_mac_tile_bound_2_lpi_1_dfm_mx0( O_mac_tile_bound_2_lpi_1_dfm_mx0 ),
++	 .reg_W_instr_in_rsci_oswt_cse_1( reg_W_instr_in_rsci_oswt_cse_1 ),
++	 .and_395_cse( and_395_cse ),
++	 .O_mac_tile_bound_0_lpi_1_dfm_mx0( O_mac_tile_bound_0_lpi_1_dfm_mx0 ),
++	 .O_mac_tile_bound_3_lpi_1_dfm_mx0( O_mac_tile_bound_3_lpi_1_dfm_mx0 ),
++	 .O_mac_tile_bound_4_lpi_1_dfm_mx0( O_mac_tile_bound_4_lpi_1_dfm_mx0 ),
++	 .O_mac_tile_bound_1_lpi_1_dfm_mx0( O_mac_tile_bound_1_lpi_1_dfm_mx0 ),
++	 .tile_bound_out_3( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25 ),
++	 .I_mac_tile_bound_3_lpi_1_dfm_mx0( I_mac_tile_bound_3_lpi_1_dfm_mx0 ),
++	 .I_mac_tile_bound_4_lpi_1_dfm_mx0( I_mac_tile_bound_4_lpi_1_dfm_mx0 ),
++	 .W_mac_tile_bound_4_lpi_1_dfm_mx0( W_mac_tile_bound_4_lpi_1_dfm_mx0 ),
++	 .tile_bound_out_2( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_30 ),
++	 .I_mac_tile_bound_2_lpi_1_dfm_mx0( I_mac_tile_bound_2_lpi_1_dfm_mx0 ),
++	 .mux_tmp_76( mux_tmp_76 ),
++	 .if_6_or_itm( if_6_or_itm ),
++	 .if_6_if_if_not_5_nl( if_6_if_if_not_5_nl ),
++	 .clk( clk ),
++	 .rst( rst ));
+   always @(posedge clk) begin
+     if ( rst ) begin
+       reg_W_instr_in_rsci_oswt_cse_1 <= 1'b0;
+@@ -5978,45 +6176,71 @@
+     if ( rst ) begin
+       W_mac_pntr_sva <= 5'b00000;
+       I_mac_pntr_sva <= 5'b00000;
++       if ( cg_c_O_mac_pntr_sva_en ) //PowerPro-CG
+       O_mac_pntr_sva <= 5'b00000;
+       W_irrel_cnt_sva_0 <= 1'b0;
+       I_irrel_cnt_sva_0 <= 1'b0;
++       if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_4_sva <= 5'b00000;
++       if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_3_sva <= 5'b00000;
++       if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_2_sva <= 5'b00000;
++       if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_1_sva <= 5'b00000;
++       if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_0_sva <= 5'b00000;
++       if ( cg_c_W_mac_counter_4_sva_en ) //PowerPro-CG
+       W_mac_counter_4_sva <= 5'b00000;
+       W_mac_counter_3_sva <= 5'b00000;
++       if ( cg_c_W_mac_counter_2_sva_en ) //PowerPro-CG
+       W_mac_counter_2_sva <= 5'b00000;
++       if ( cg_c_W_mac_counter_1_sva_en ) //PowerPro-CG
+       W_mac_counter_1_sva <= 5'b00000;
+       W_mac_counter_0_sva <= 5'b00000;
+       I_mac_counter_4_sva <= 5'b00000;
++       if ( cg_c_I_mac_counter_3_sva_en ) //PowerPro-CG
+       I_mac_counter_3_sva <= 5'b00000;
++       if ( cg_c_I_mac_counter_2_sva_en ) //PowerPro-CG
+       I_mac_counter_2_sva <= 5'b00000;
++       if ( cg_c_I_mac_counter_1_sva_en ) //PowerPro-CG
+       I_mac_counter_1_sva <= 5'b00000;
++       if ( cg_c_I_mac_counter_0_sva_en ) //PowerPro-CG
+       I_mac_counter_0_sva <= 5'b00000;
+     end
+     else if ( W_mac_pntr_and_cse ) begin
+       W_mac_pntr_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_19;
+       I_mac_pntr_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_20;
++         if ( cg_c_O_mac_pntr_sva_en ) //PowerPro-CG
+       O_mac_pntr_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_18;
+       W_irrel_cnt_sva_0 <= (W_irrel_cnt_sva_dfm_mx0[0]) & if_6_unequal_tmp_2;
+       I_irrel_cnt_sva_0 <= (I_irrel_cnt_sva_dfm_mx0[0]) & if_6_unequal_tmp_3;
++         if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_4_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_24[24:20];
++         if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_3_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_24[19:15];
++         if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_2_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_24[14:10];
++         if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_1_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_24[9:5];
++         if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+       O_mac_counter_0_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_24[4:0];
++         if ( cg_c_W_mac_counter_4_sva_en ) //PowerPro-CG
+       W_mac_counter_4_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29[24:20];
+       W_mac_counter_3_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29[19:15];
++         if ( cg_c_W_mac_counter_2_sva_en ) //PowerPro-CG
+       W_mac_counter_2_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29[14:10];
++         if ( cg_c_W_mac_counter_1_sva_en ) //PowerPro-CG
+       W_mac_counter_1_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29[9:5];
+       W_mac_counter_0_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29[4:0];
+       I_mac_counter_4_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34[24:20];
++         if ( cg_c_I_mac_counter_3_sva_en ) //PowerPro-CG
+       I_mac_counter_3_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34[19:15];
++         if ( cg_c_I_mac_counter_2_sva_en ) //PowerPro-CG
+       I_mac_counter_2_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34[14:10];
++         if ( cg_c_I_mac_counter_1_sva_en ) //PowerPro-CG
+       I_mac_counter_1_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34[9:5];
++         if ( cg_c_I_mac_counter_0_sva_en ) //PowerPro-CG
+       I_mac_counter_0_sva <= libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34[4:0];
+     end
+   end
+@@ -6567,10 +6791,16 @@
+   end
+   always @(posedge clk) begin
+     if ( rst ) begin
++    begin
++       if ( cg_o_O_write_data_data_sva_en ) //PowerPro-CG
+       O_write_data_data_sva <= 16'b0000000000000000;
++       end
+     end
+     else if ( land_9_lpi_1_dfm_1_1 & run_wen ) begin
++    begin
++         if ( cg_o_O_write_data_data_sva_en ) //PowerPro-CG
+       O_write_data_data_sva <= O_write_data_data_sva_mx0;
++       end
+     end
+   end
+   always @(posedge clk) begin
+@@ -6647,10 +6877,16 @@
+   end
+   always @(posedge clk) begin
+     if ( rst ) begin
++    begin
++       if ( cg_c_O_vld_zg_pntr_sva_en ) //PowerPro-CG
+       O_vld_zg_pntr_sva <= 5'b00000;
++       end
+     end
+     else if ( mux_614_nl & run_wen & (~ (fsm_output[0])) ) begin
++    begin
++         if ( cg_c_O_vld_zg_pntr_sva_en ) //PowerPro-CG
+       O_vld_zg_pntr_sva <= if_6_if_6_mux1h_tmp;
++       end
+     end
+   end
+   always @(posedge clk) begin
+@@ -6686,33 +6922,48 @@
+   end
+   always @(posedge clk) begin
+     if ( rst ) begin
++       if ( cg_c_O_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_4_lpi_1 <= 5'b00000;
++       if ( cg_c_O_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_3_lpi_1 <= 5'b00000;
++       if ( cg_c_O_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_2_lpi_1 <= 5'b00000;
++       if ( cg_c_O_mac_tile_bound_1_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_1_lpi_1 <= 5'b00000;
++       if ( cg_c_O_mac_tile_bound_0_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_0_lpi_1 <= 5'b00000;
++       if ( cg_c_W_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+       W_mac_tile_bound_4_lpi_1 <= 5'b00000;
+       W_mac_tile_bound_3_lpi_1 <= 5'b00000;
+       W_mac_tile_bound_2_lpi_1 <= 5'b00000;
+       W_mac_tile_bound_1_lpi_1 <= 5'b00000;
+       W_mac_tile_bound_0_lpi_1 <= 5'b00000;
++       if ( cg_c_I_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+       I_mac_tile_bound_4_lpi_1 <= 5'b00000;
++       if ( cg_c_I_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+       I_mac_tile_bound_3_lpi_1 <= 5'b00000;
++       if ( cg_c_I_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+       I_mac_tile_bound_2_lpi_1 <= 5'b00000;
+       I_mac_tile_bound_1_lpi_1 <= 5'b00000;
+       I_mac_tile_bound_0_lpi_1 <= 5'b00000;
+     end
+     else if ( and_395_cse ) begin
++         if ( cg_c_O_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_4_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25[24:20]),
+           O_mac_tile_bound_4_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_O_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_3_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25[19:15]),
+           O_mac_tile_bound_3_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_O_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_2_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25[14:10]),
+           O_mac_tile_bound_2_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_O_mac_tile_bound_1_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_1_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25[9:5]),
+           O_mac_tile_bound_1_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_O_mac_tile_bound_0_lpi_1_en ) //PowerPro-CG
+       O_mac_tile_bound_0_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25[4:0]),
+           O_mac_tile_bound_0_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_W_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+       W_mac_tile_bound_4_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_30[24:20]),
+           W_mac_tile_bound_4_lpi_1_dfm_mx0, mux_tmp_76);
+       W_mac_tile_bound_3_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_30[19:15]),
+@@ -6723,10 +6974,13 @@
+           W_mac_tile_bound_1_lpi_1_dfm_mx0, mux_tmp_76);
+       W_mac_tile_bound_0_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_30[4:0]),
+           W_mac_tile_bound_0_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_I_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+       I_mac_tile_bound_4_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_35[24:20]),
+           I_mac_tile_bound_4_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_I_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+       I_mac_tile_bound_3_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_35[19:15]),
+           I_mac_tile_bound_3_lpi_1_dfm_mx0, mux_tmp_76);
++         if ( cg_c_I_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+       I_mac_tile_bound_2_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_35[14:10]),
+           I_mac_tile_bound_2_lpi_1_dfm_mx0, mux_tmp_76);
+       I_mac_tile_bound_1_lpi_1 <= MUX_v_5_2_2((libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_35[9:5]),
+@@ -7634,6 +7888,8 @@
+       O_instr_in_rsc_dat, O_instr_in_rsc_vld, O_instr_in_rsc_rdy, I_instr_in_rsc_dat,
+       I_instr_in_rsc_vld, I_instr_in_rsc_rdy, W_instr_in_rsc_dat, W_instr_in_rsc_vld,
+       W_instr_in_rsc_rdy
++  , //PowerPro-CG
++  ppro_reset_CLOCKclk_out_port
+ );
+   input clk;
+   input rst;
+@@ -7661,6 +7917,7 @@
+   input [49:0] W_instr_in_rsc_dat;
+   input W_instr_in_rsc_vld;
+   output W_instr_in_rsc_rdy;
++ input wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+ 
+ 
+ 
+@@ -7694,6 +7951,8 @@
+       .W_instr_in_rsc_dat(W_instr_in_rsc_dat),
+       .W_instr_in_rsc_vld(W_instr_in_rsc_vld),
+       .W_instr_in_rsc_rdy(W_instr_in_rsc_rdy)
++      , //PowerPro-CG
++       .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port )
+     );
+ endmodule
+ 
+@@ -7717,6 +7976,8 @@
+       layer_instruction_in_rsc_dat_bound_6, layer_instruction_in_rsc_dat_relevancy_7,
+       layer_instruction_in_rsc_dat_bound_7, layer_instruction_in_rsc_dat_relevancy_8,
+       layer_instruction_in_rsc_dat_bound_8, layer_instruction_in_rsc_vld, layer_instruction_in_rsc_rdy
++  , //PowerPro-CG
++  ppro_reset_CLOCKclk_out_port
+ );
+   input clk;
+   input rst;
+@@ -7755,6 +8016,7 @@
+   input [69:0] layer_instruction_in_rsc_dat_bound_8;
+   input layer_instruction_in_rsc_vld;
+   output layer_instruction_in_rsc_rdy;
++ input wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+ 
+ 
+   // Interconnect Declarations
+@@ -7863,6 +8125,8 @@
+       .W_instr_in_rsc_dat(W_instr_L1_out_rsc_dat_nCCInst),
+       .W_instr_in_rsc_vld(W_instr_L1_out_rsc_vld_nCCInst_bud),
+       .W_instr_in_rsc_rdy(W_instr_in_rsc_rdy_nPE_bud)
++      , //PowerPro-CG
++       .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port )
+     );
+   assign O_data_out_rsc_dat_data = O_rd_data_rsc_dat_nPE;
+   assign layer_instruction_in_rsc_rdy = layer_instruction_in_rsc_rdy_nCCInst_bud;
+@@ -7965,6 +8229,7 @@
+   assign nl_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_parti000016
+       = layer_instruction_in_rsc_dat[74:70];
+   wire [69:0] nl_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_parti000017;
++ wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+   assign nl_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_parti000017
+       = layer_instruction_in_rsc_dat[69:0];
+   topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
+@@ -8007,7 +8272,12 @@
+       .layer_instruction_in_rsc_dat_bound_8(nl_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_parti000017[69:0]),
+       .layer_instruction_in_rsc_vld(layer_instruction_in_rsc_vld),
+       .layer_instruction_in_rsc_rdy(layer_instruction_in_rsc_rdy)
++      , //PowerPro-CG
++       .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port )
+     );
++ //PowerPro-CG
++ top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_mod top_5_32_1_1_O_addr_type_L1_32_1_1_I_add( .rst( rst ),
++	 .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port ));
+   assign O_data_out_rsc_dat = O_data_out_rsc_dat_data;
+ endmodule
+ 

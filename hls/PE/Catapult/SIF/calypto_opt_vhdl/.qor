@@ -1,0 +1,1 @@
+hostname=amazone.esat.kuleuven.be; cpu=85; optimalcpu=85; realtime=100; leak=99; mem=221; vhdl=1; MCHSOL_FALSIFIED_count=443; MCHSOL_POSED_count=580; ReadCounterExampleFromFile_count=39; insert_enable_vhdl=1; SUBSESSIONS_count=18; write_rtl_line_count=10905

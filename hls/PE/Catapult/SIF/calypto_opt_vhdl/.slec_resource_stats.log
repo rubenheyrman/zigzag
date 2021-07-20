@@ -1,0 +1,633 @@
+CalyptoResourceStats
+
+      total        good         bad |       total         max        good         bad | name
+
+=== Aggregate Counters ==============================================================================================================================
+
+        65x         65x          0x |        4.1s        0.1s        4.1s        0.0s | ABC
+       126x         66x          0x |        6.6s        0.2s        6.5s        0.0s | BLS
+         0x                         |        0.0s                                     | CBdd
+        66x                         |        0.4s        0.0s                         | CGEN_BIT_BLAST
+      5298x                         |        0.8s        0.0s                         | CGEN_GENERATE_COMPONENT
+     44105x                         |        0.1s        0.0s                         | CMDs
+        71x          5x         66x |        1.8s        0.1s        0.1s        1.7s | CUT_MGR
+        66x         66x          0x |        4.1s        0.1s        4.1s        0.0s | CalyptoSAT
+        66x                         |        0.6s        0.0s                         | CutMgr
+       285x        232x         53x |        2.2s        0.1s        1.0s        1.2s | MCH
+       443x                         |        0.0s                                     | MCHSOL_FALSIFIED
+       580x                         |        0.0s                                     | MCHSOL_POSED
+      2063x                         |        0.2s        0.0s                         | OPT_CONST_PROP
+      2063x                         |        0.4s        0.0s                         | OPT_CSE
+      2063x                         |        0.1s        0.0s                         | OPT_DEAD_CODE
+         3x                         |        0.1s        0.0s                         | OPT_UF_CONST_PROP
+         3x                         |        0.0s        0.0s                         | OPT_UF_DEAD_CODE1
+         3x                         |        0.0s        0.0s                         | OPT_UF_RED_BSEL_CONCAT
+         3x                         |        0.1s        0.0s                         | OPT_UF_STR_REDUX
+        39x                         |        0.0s                                     | ReadCounterExampleFromFile
+       570x        270x          0x |        9.3s        0.6s        8.0s        0.0s | SLS_CFF_HS
+        60x         60x          0x |        6.8s        0.6s        6.8s        0.0s | SOLVE_OUT::BLS
+        60x          0x         60x |        0.0s        0.0s        0.0s        0.0s | SOLVE_OUT::WLS
+        18x                         |        0.0s        0.0s                         | SUBSESSIONS
+        18x                         |       10.8s        0.6s                         | TOP
+      9108x                         |        0.0s                                     | TOP::CMDs
+        54x                         |        0.0s                                     | TOP::CMDs::__cdb_exists
+       378x                         |        0.0s                                     | TOP::CMDs::__is_powerpro
+        18x                         |        0.0s                                     | TOP::CMDs::_check_fsdb_reader_writer
+        54x                         |        0.0s                                     | TOP::CMDs::_get_state
+        36x                         |        0.0s                                     | TOP::CMDs::_get_user_level
+       288x                         |        0.0s                                     | TOP::CMDs::_log_env_access
+        54x                         |        0.0s                                     | TOP::CMDs::_set_command_access
+       540x                         |        0.0s                                     | TOP::CMDs::append_global
+        36x                         |        0.0s                                     | TOP::CMDs::calypto_product
+        18x                         |        0.0s                                     | TOP::CMDs::cpt::get_language
+        54x                         |        0.0s                                     | TOP::CMDs::cpt::linked
+        18x                         |        0.3s        0.1s                         | TOP::CMDs::cpt::mixed_lang_to_cpt
+       270x                         |        9.0s        0.5s                         | TOP::CMDs::cpt::read_mixed_lang
+        72x                         |        0.0s                                     | TOP::CMDs::disable_msg
+       108x                         |        0.0s                                     | TOP::CMDs::get_cpu_usage
+      2538x                         |        0.0s                                     | TOP::CMDs::get_global
+        72x                         |        0.0s                                     | TOP::CMDs::get_mem_usage
+        18x                         |        9.0s        0.5s                         | TOP::CMDs::read_design
+        18x                         |        9.0s        0.5s                         | TOP::CMDs::read_vhdl
+      1872x                         |        0.0s                                     | TOP::CMDs::set_global
+        72x                         |        0.0s                                     | TOP::CMDs::set_verbosity
+        18x                         |        0.0s                                     | TOP::CMDs::set_verification_mode
+      1242x                         |        1.8s                                     | TOP::CMDs::source
+      1260x                         |        1.8s        0.1s                         | TOP::CMDs::tcl_source
+         0x                         |        0.0s                                     | WLS
+         1x                         |        0.0s        0.0s                         | __annotate_default_sa_vectorless_flow
+         1x                         |        0.0s        0.0s                         | __assign_hier_depths
+         1x                         |        0.0s        0.0s                         | __auto_infer_clocks
+         1x                         |        0.7s        0.7s                         | __calc_all_seq_power
+        54x                         |        0.0s                                     | __cdb_exists
+         1x                         |        0.0s        0.0s                         | __cdb_resolve_power_intent
+        18x                         |        0.0s        0.0s                         | __check_and_fix_routing_for_rtl
+        40x                         |        0.0s        0.0s                         | __find_cg_mg_inst_count
+         1x                         |        0.0s        0.0s                         | __generate_identity_powerpro_maps
+         4x                         |        0.0s        0.0s                         | __handle_complex_clocks
+         2x                         |        0.0s        0.0s                         | __handle_constant_clocks
+         1x                         |        0.0s        0.0s                         | __handle_dw_comp
+         1x                         |        0.0s        0.0s                         | __has_inout
+      2623x                         |        0.0s        0.0s                         | __is_powerpro
+         3x                         |       35.1s       15.5s                         | __iterative_write_rtl
+         1x                         |        0.0s        0.0s                         | __mark_clock_fanin_constraints
+         1x                         |        0.0s        0.0s                         | __mark_constraint_on_const_flops
+         1x                         |        0.0s        0.0s                         | __mark_constraint_on_internal_flops
+         1x                         |        0.0s        0.0s                         | __mark_constraints_on_power_domain_boundary
+         1x                         |        0.0s        0.0s                         | __mark_constraints_on_power_opt_ports
+         2x                         |        0.0s        0.0s                         | __multiple_instance_prop_on_hier
+         1x                         |        0.0s        0.0s                         | __opt_constrain_memories
+        18x                         |        0.1s        0.0s                         | __opt_write_enlogic
+         1x                         |        0.0s        0.0s                         | __optimize_libcells
+         1x                         |        0.0s        0.0s                         | __pa_batched_mem_ctrl_sim
+         1x                         |        0.0s        0.0s                         | __pa_cmd_compare_clk_period_with_td
+         1x                         |        0.0s        0.0s                         | __pa_do_phy_based_setup
+         1x                         |        0.0s        0.0s                         | __pa_name_matching_based_netcap_annotation
+         1x                         |        0.0s        0.0s                         | __pa_preserve_user_sa_during_miter
+         1x                         |        0.0s        0.0s                         | __phy_create_models_from_spef
+         1x                         |        0.0s        0.0s                         | __phy_get_info
+         1x                         |        0.0s        0.0s                         | __phy_spef_sanity
+         1x                         |        0.0s        0.0s                         | __postprocess_multi_vth_constraint
+         1x                         |        0.0s        0.0s                         | __process_hier_power_models
+         1x                         |        0.0s        0.0s                         | __process_memories
+         1x                         |        0.0s        0.0s                         | __propagate_user_sa_across_buf_inv
+         1x                         |        0.0s        0.0s                         | __set_default_sa_inout_bbox_ports
+         1x                         |        0.0s        0.0s                         | __sls_check_mem_tech_cell_area
+         1x                         |        0.0s        0.0s                         | __sls_check_poweropt
+         3x                         |        0.0s        0.0s                         | __sls_clean_mg_guided_attr
+         6x                         |        0.0s        0.0s                         | __sls_count_cg_flops
+         2x                         |        0.0s        0.0s                         | __sls_flops_clock_gated_percentage
+         1x                         |        0.0s        0.0s                         | __sls_fsdb_vcd_saif_executed
+         3x                         |        0.0s        0.0s                         | __sls_generate_synchronizer_scheme_files
+        26x                         |        0.0s        0.0s                         | __sls_is_cg_mg_optimization_allowed
+         2x                         |        0.0s        0.0s                         | __sls_perform_case_anal_clk_ntwk
+         2x                         |        0.0s        0.0s                         | __sls_preserve_port_prob
+         2x                         |        0.0s        0.0s                         | __sls_process_verification_global
+         1x                         |        0.0s        0.0s                         | __sls_q_vs_d_stability_attr_cleaner
+         1x                         |        0.0s        0.0s                         | __sls_sanitize_mem_libcell_binding
+         9x                         |        0.0s        0.0s                         | __sls_scheme_list_schemes
+         4x                         |        0.1s        0.1s                         | __sls_scheme_match_scheme_in_design
+         4x                         |        0.0s        0.0s                         | __sls_scheme_read_scheme_file
+         4x                         |        0.0s        0.0s                         | __sls_scheme_remove_scheme
+         3x                         |        0.0s        0.0s                         | __sls_scheme_set_status
+         1x                         |        0.0s        0.0s                         | __sls_set_dont_optimize_arst_one_flops
+         1x                         |        0.0s        0.0s                         | __sta_get_clock_domain_for_clock_root
+         2x                         |        0.0s        0.0s                         | __sta_propagate_clock_info
+         1x                         |        0.0s        0.0s                         | __warn_toggle_change_accross_flop
+        18x                         |        0.6s        0.0s                         | __write_cg_patch_files
+         1x                         |        0.0s        0.0s                         | _apply_mode_constraint
+         1x                         |        0.0s        0.0s                         | _apply_set_driving_cell
+         1x                         |        0.0s        0.0s                         | _auto_replace_matching_cgic
+         1x                         |        0.0s        0.0s                         | _bit_blast_constant_sinks
+         3x                         |        0.0s        0.0s                         | _break_comb_loops
+         2x                         |        0.0s        0.0s                         | _buf_rm
+         2x                         |        0.2s        0.2s                         | _characterize_library_impl
+        19x                         |        0.0s        0.0s                         | _check_fsdb_reader_writer
+         1x                         |        0.0s        0.0s                         | _clock_def_check
+         1x                         |        0.0s        0.0s                         | _clocked_data_ports_check
+         2x                         |        0.1s        0.0s                         | _consistency_check
+         1x                         |        0.0s        0.0s                         | _convert_macroff_to_nmacroff
+         3x                         |        0.2s        0.1s                         | _db_normalize
+         4x                         |        0.1s        0.0s                         | _deadcode_elim
+        98x                         |        0.0s        0.0s                         | _defer_messages
+         1x                         |        0.0s        0.0s                         | _detect_powerpro_generated_netlist
+         1x                         |        0.0s        0.0s                         | _disable_resetting_cg_min_size
+         1x                         |        0.0s        0.0s                         | _do_unmap
+         1x                         |        0.1s        0.1s                         | _do_width_optimize
+         1x                         |        0.3s        0.3s                         | _do_wls_extract
+         1x                         |        0.0s        0.0s                         | _ecc_logic_detection
+         1x                         |        0.0s        0.0s                         | _fsdb_to_sa
+         1x                         |        0.0s        0.0s                         | _generate_clocked_data_ports
+         9x                         |        0.1s        0.0s                         | _get_area
+         3x                         |        0.0s        0.0s                         | _get_new_mods
+         1x                         |        0.0s        0.0s                         | _get_registered_clock_roots
+        54x                         |        0.0s                                     | _get_state
+        36x                         |        0.0s                                     | _get_user_level
+         1x                         |        0.0s        0.0s                         | _infer_muxlatch
+         2x                         |        0.0s        0.0s                         | _insert_bbox_on_hardop
+         1x                         |        0.0s        0.0s                         | _isolate_inout_ports
+      3801x                         |        0.0s        0.0s                         | _issue_msg
+       316x                         |        0.0s        0.0s                         | _log_env_access
+         1x                         |        0.0s        0.0s                         | _mem_cell_2_mem_mod
+         1x                         |        0.0s        0.0s                         | _merge_cdbmerge_node
+         1x                         |        0.0s        0.0s                         | _mux_opt
+       601x                         |        0.0s        0.0s                         | _normalize_path
+         1x                         |        0.0s        0.0s                         | _old_report_redundant_reset_flops
+         3x                         |        0.4s        0.1s                         | _optimize_
+         2x                         |        0.0s        0.0s                         | _pla_merge
+         5x                         |        0.1s        0.1s                         | _ppro_print_prototype_summary
+         1x                         |        0.0s        0.0s                         | _ppro_remove_userenable_attr_on_always_enable_flops
+         6x                         |        0.0s        0.0s                         | _preserve_nodes
+         1x                         |        0.0s        0.0s                         | _process_bit_level_clocks
+         1x                         |        0.0s        0.0s                         | _process_resets
+         1x                         |        0.0s        0.0s                         | _reduce_comparators
+         1x                         |        0.0s        0.0s                         | _remove_transparent_latch
+         1x                         |        0.0s        0.0s                         | _rename_operators
+         1x                         |        0.0s        0.0s                         | _replace_latches_with_ff
+         1x                         |        0.0s        0.0s                         | _report_bitlevel_hiers
+        12x                         |        0.3s        0.1s                         | _report_design
+         1x                         |        0.0s        0.0s                         | _report_dut_tree
+         3x                         |        0.0s        0.0s                         | _report_enable_logic
+         1x                         |        0.0s        0.0s                         | _resolve_multi_drivers
+         1x                         |        0.0s        0.0s                         | _restruct
+        62x                         |        0.0s        0.0s                         | _set_command_access
+        94x                         |        0.0s        0.0s                         | _set_message_audience
+         1x                         |        0.0s        0.0s                         | _sls_bist_detection
+         1x                         |        0.0s        0.0s                         | _sls_cmd_report_tech_cells
+       214x                         |        0.0s        0.0s                         | _sls_flow_state
+     13522x                         |        0.0s        0.0s                         | _sls_is_core_cg_hier
+         3x                         |        0.0s        0.0s                         | _sls_mark_popt_constraint_for_current_hierarchy
+         1x                         |        0.0s        0.0s                         | _split_flop
+         1x                         |        0.0s        0.0s                         | _syn_bsel_concat
+         1x                         |        0.0s        0.0s                         | _synthesize_write_enable
+         1x                         |        0.0s        0.0s                         | _ta_get_default_clock
+         1x                         |        0.0s        0.0s                         | _tcldict_to_json
+         1x                         |        0.0s        0.0s                         | _uniqify
+         1x                         |        0.0s        0.0s                         | analyze_cycle_based_redundancies
+       570x                         |        0.0s        0.0s                         | append_global
+         1x                         |        0.0s        0.0s                         | apply_multicycle_path_constraints
+        18x                         |        0.4s        0.0s                         | apply_patch_files
+         1x                         |        0.0s        0.0s                         | bls_node
+         1x                         |        0.5s        0.5s                         | build_db
+       531x                         |        0.0s        0.0s                         | calypto_product
+         2x                         |        0.4s        0.4s                         | cdb_read_library
+         2x                         |        0.6s        0.4s                         | cdb_write_db
+        22x                         |        0.0s        0.0s                         | check_license_availability
+         1x                         |        0.0s        0.0s                         | check_upf_sanity
+         3x                         |        0.0s        0.0s                         | compute_reports
+         1x                         |        0.0s        0.0s                         | config_clock_tree
+         5x                         |        0.0s        0.0s                         | config_write_rtl
+         1x                         |        0.2s        0.2s                         | cpt::build_cdb_from_verific_netlist
+        18x                         |        0.0s        0.0s                         | cpt::compute_checksums
+        18x                         |        0.0s        0.0s                         | cpt::foreach2for
+        90x                         |        0.0s        0.0s                         | cpt::generate_node_heat_map
+        39x                         |        0.0s        0.0s                         | cpt::get_cptroot
+       268x                         |        0.0s        0.0s                         | cpt::get_language
+         1x                         |        0.0s        0.0s                         | cpt::get_top_cptroot
+        56x                         |        0.0s        0.0s                         | cpt::linked
+         2x                         |        0.0s        0.0s                         | cpt::linked_and_build
+        37x                         |        6.4s        0.5s                         | cpt::mixed_lang_to_cpt
+       517x                         |       18.4s        0.5s                         | cpt::read_mixed_lang
+        18x                         |        0.2s        0.0s                         | cpt::remove
+        18x                         |        0.0s        0.0s                         | cpt::rename_param_modules
+        18x                         |        0.0s        0.0s                         | cpt::repeat2for
+        18x                         |        0.1s        0.0s                         | cpt::report_hierarchy
+        18x                         |        0.6s        0.0s                         | cpt::sanity_check
+         1x                         |        0.0s        0.0s                         | cpt::validate_link_design_top
+         2x                         |        0.0s        0.0s                         | create_clock
+         1x                         |        0.0s        0.0s                         | create_ext_sat_script
+       234x                         |        0.0s        0.0s                         | create_power_opt
+         1x                         |        0.0s        0.0s                         | debug_clock_gate_log
+        87x                         |        0.0s        0.0s                         | disable_msg
+         1x                         |        0.1s        0.1s                         | dump_verify_script
+         4x                         |        0.0s        0.0s                         | enable_msg
+       133x                         |        0.1s        0.0s                         | find
+         1x                         |        0.0s        0.0s                         | generate_clock_roots
+         1x                         |        0.0s        0.0s                         | get_cgc_edges
+         1x                         |        0.0s        0.0s                         | get_clock_gating_info
+       328x                         |        0.0s        0.0s                         | get_cpu_usage
+         3x                         |        0.0s        0.0s                         | get_current_working_hierarchy
+     10746x                         |        0.0s        0.0s                         | get_global
+        24x                         |        0.0s        0.0s                         | get_hierarchy
+       301x                         |        0.0s        0.0s                         | get_info
+        40x                         |        0.0s        0.0s                         | get_mem_gating_info
+       363x                         |        0.0s        0.0s                         | get_mem_usage
+       144x                         |        0.0s        0.0s                         | get_process_usage
+         1x                         |        0.0s        0.0s                         | get_version
+         3x                         |       78.2s       38.9s                         | insert_enable_logic
+         1x                         |       39.1s       39.1s                         | insert_observability_logic
+         2x                         |       39.5s       25.7s                         | insert_stability_logic
+         5x                         |        0.0s        0.0s                         | is_adviser_allowed
+         1x                         |        0.5s        0.5s                         | link_design
+         3x                         |        0.1s        0.1s                         | mark_synchronizer
+         1x                         |        0.0s        0.0s                         | move_clk_from_cgic_to_flop
+         1x                         |        3.2s        3.2s                         | prototype_design
+       265x                         |       18.6s        0.5s                         | read_design
+         2x                         |        0.4s        0.4s                         | read_library
+         1x                         |        1.3s        1.3s                         | read_saif
+       265x                         |       18.5s        0.5s                         | read_vhdl
+         2x                         |        0.0s        0.0s                         | replace_user_cgic_module
+         3x                         |        0.0s        0.0s                         | report_enable_logic
+         2x                         |        0.0s        0.0s                         | report_mem_cycle_based_redundancies
+         1x                         |        0.0s        0.0s                         | set_attrs_inout_mux
+         1x                         |        0.0s        0.0s                         | set_boundary_opt
+         1x                         |        0.0s        0.0s                         | set_dont_use_inoutblackbox_port
+         1x                         |        0.0s        0.0s                         | set_dont_use_unreadable_signal
+      4086x                         |        0.0s        0.0s                         | set_global
+         1x                         |        0.0s        0.0s                         | set_hierarchy
+         1x                         |        0.0s        0.0s                         | set_operating_condition
+         1x                         |        0.0s        0.0s                         | set_powerpro_reset
+        72x                         |        0.0s                                     | set_verbosity
+        18x                         |        0.0s                                     | set_verification_mode
+         2x                         |        0.0s        0.0s                         | set_wire_load_mode
+         2x                         |        0.0s        0.0s                         | sls_create_clock
+         1x                         |        0.0s        0.0s                         | sls_set_attrs_parallel_case_mux
+      1262x                         |        1.8s        0.0s                         | source
+         1x                         |        2.6s        2.6s                         | synthesize_design
+      1281x                         |        1.9s        0.1s                         | tcl_source
+       247x                         |        0.1s        0.0s                         | update_read_design
+         1x                         |        0.0s        0.0s                         | vdb_report_hierarchy
+         2x                         |        0.6s        0.4s                         | write_db
+        18x                         |       16.4s        1.0s                         | write_patch_files
+        22x                         |       17.0s        1.0s                         | write_rtl
+         1x                         |        0.1s        0.1s                         | write_verify_script
+
+
+=== Counters ========================================================================================================================================
+
+         0x | BDD::NumAborted
+         0x | BDD::NumBypassed
+         0x | BDD::NumFalsifiedwCtrEx
+         0x | BDD::NumFalsifiedwoCtrEx
+         0x | BDD::NumPosed
+         0x | BDD::NumProved
+         0x | BDD::NumSent
+         0x | BDD::NumTriviallyProved
+         0x | BDD::NumUnresolved
+         0x | BLS::NumProbsAborted
+        27x | BLS::NumProbsAbortedWLSProvedBLS
+        39x | BLS::NumProbsFalsified
+        71x | BLS::NumProbsPosed
+        27x | BLS::NumProbsProved
+         5x | BLS::NumStitchings
+         0x | ESS::NumProbsAborted
+         0x | ESS::NumProbsFalsified
+         0x | ESS::NumProbsPosed
+         0x | ESS::NumProbsProved
+       438x | MCH::NumProbsFalsified
+       509x | MCH::NumProbsPosed
+         0x | MultiThreaded::SatExtABC::NumProbsAborted
+        39x | MultiThreaded::SatExtABC::NumProbsFalsified
+        66x | MultiThreaded::SatExtABC::NumProbsPosed
+        27x | MultiThreaded::SatExtABC::NumProbsProved
+         0x | SAT::NumProbsAborted
+        39x | SAT::NumProbsFalsified
+        66x | SAT::NumProbsPosed
+        27x | SAT::NumProbsProved
+       443x | TOP::MCHSOL_FALSIFIED
+       580x | TOP::MCHSOL_POSED
+        39x | TOP::ReadCounterExampleFromFile
+         0x | TOP::SUBSESSIONS::BDD::NumAborted
+         0x | TOP::SUBSESSIONS::BDD::NumBypassed
+         0x | TOP::SUBSESSIONS::BDD::NumFalsifiedwCtrEx
+         0x | TOP::SUBSESSIONS::BDD::NumFalsifiedwoCtrEx
+         0x | TOP::SUBSESSIONS::BDD::NumPosed
+         0x | TOP::SUBSESSIONS::BDD::NumProved
+         0x | TOP::SUBSESSIONS::BDD::NumSent
+         0x | TOP::SUBSESSIONS::BDD::NumTriviallyProved
+         0x | TOP::SUBSESSIONS::BDD::NumUnresolved
+         0x | TOP::SUBSESSIONS::BLS::NumProbsAborted
+         0x | TOP::SUBSESSIONS::BLS::NumProbsFalsified
+         0x | TOP::SUBSESSIONS::BLS::NumProbsPosed
+         0x | TOP::SUBSESSIONS::BLS::NumProbsProved
+         0x | TOP::SUBSESSIONS::ESS::NumProbsAborted
+         0x | TOP::SUBSESSIONS::ESS::NumProbsFalsified
+         0x | TOP::SUBSESSIONS::ESS::NumProbsPosed
+         0x | TOP::SUBSESSIONS::ESS::NumProbsProved
+         0x | TOP::SUBSESSIONS::MultiThreaded::SatExtABC::NumProbsAborted
+         0x | TOP::SUBSESSIONS::MultiThreaded::SatExtABC::NumProbsFalsified
+         0x | TOP::SUBSESSIONS::MultiThreaded::SatExtABC::NumProbsPosed
+         0x | TOP::SUBSESSIONS::MultiThreaded::SatExtABC::NumProbsProved
+         0x | TOP::SUBSESSIONS::SAT::NumProbsAborted
+         0x | TOP::SUBSESSIONS::SAT::NumProbsFalsified
+         0x | TOP::SUBSESSIONS::SAT::NumProbsPosed
+         0x | TOP::SUBSESSIONS::SAT::NumProbsProved
+         0x | TOP::SUBSESSIONS::WLS::NumProbsAborted
+         0x | TOP::SUBSESSIONS::WLS::NumProbsFalsified
+         0x | TOP::SUBSESSIONS::WLS::NumProbsPosed
+         0x | TOP::SUBSESSIONS::WLS::NumProbsProved
+        71x | WLS::NumProbsAborted
+         0x | WLS::NumProbsFalsified
+        71x | WLS::NumProbsPosed
+         0x | WLS::NumProbsProved
+
+
+=== Resources Used ==================================================================================================================================
+
+         1x                         |       84.9s       84.9s                         | TOP
+         0x                         |        0.0s                                     | TOP::CBdd
+        66x                         |        0.4s        0.0s                         | TOP::CGEN_BIT_BLAST
+      5298x                         |        0.8s        0.0s                         | TOP::CGEN_GENERATE_COMPONENT
+     34997x                         |        0.1s        0.0s                         | TOP::CMDs
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__annotate_default_sa_vectorless_flow
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__assign_hier_depths
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__auto_infer_clocks
+         1x                         |        0.7s        0.7s                         | TOP::CMDs::__calc_all_seq_power
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__cdb_resolve_power_intent
+        18x                         |        0.0s        0.0s                         | TOP::CMDs::__check_and_fix_routing_for_rtl
+        40x                         |        0.0s        0.0s                         | TOP::CMDs::__find_cg_mg_inst_count
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__generate_identity_powerpro_maps
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::__handle_complex_clocks
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__handle_constant_clocks
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__handle_dw_comp
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__has_inout
+      2245x                         |        0.0s        0.0s                         | TOP::CMDs::__is_powerpro
+         3x                         |       35.1s       15.5s                         | TOP::CMDs::__iterative_write_rtl
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__mark_clock_fanin_constraints
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__mark_constraint_on_const_flops
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__mark_constraint_on_internal_flops
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__mark_constraints_on_power_domain_boundary
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__mark_constraints_on_power_opt_ports
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__multiple_instance_prop_on_hier
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__opt_constrain_memories
+        18x                         |        0.1s        0.0s                         | TOP::CMDs::__opt_write_enlogic
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__optimize_libcells
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__pa_batched_mem_ctrl_sim
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__pa_cmd_compare_clk_period_with_td
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__pa_do_phy_based_setup
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__pa_name_matching_based_netcap_annotation
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__pa_preserve_user_sa_during_miter
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__phy_create_models_from_spef
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__phy_get_info
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__phy_spef_sanity
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__postprocess_multi_vth_constraint
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__process_hier_power_models
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__process_memories
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__propagate_user_sa_across_buf_inv
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__set_default_sa_inout_bbox_ports
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_check_mem_tech_cell_area
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_check_poweropt
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_clean_mg_guided_attr
+         6x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_count_cg_flops
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_flops_clock_gated_percentage
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_fsdb_vcd_saif_executed
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_generate_synchronizer_scheme_files
+        26x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_is_cg_mg_optimization_allowed
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_perform_case_anal_clk_ntwk
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_preserve_port_prob
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_process_verification_global
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_q_vs_d_stability_attr_cleaner
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_sanitize_mem_libcell_binding
+         9x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_scheme_list_schemes
+         4x                         |        0.1s        0.1s                         | TOP::CMDs::__sls_scheme_match_scheme_in_design
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_scheme_read_scheme_file
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_scheme_remove_scheme
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_scheme_set_status
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sls_set_dont_optimize_arst_one_flops
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__sta_get_clock_domain_for_clock_root
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::__sta_propagate_clock_info
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::__warn_toggle_change_accross_flop
+        18x                         |        0.6s        0.0s                         | TOP::CMDs::__write_cg_patch_files
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_apply_mode_constraint
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_apply_set_driving_cell
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_auto_replace_matching_cgic
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_bit_blast_constant_sinks
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::_break_comb_loops
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::_buf_rm
+         2x                         |        0.2s        0.2s                         | TOP::CMDs::_characterize_library_impl
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_check_fsdb_reader_writer
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_clock_def_check
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_clocked_data_ports_check
+         2x                         |        0.1s        0.0s                         | TOP::CMDs::_consistency_check
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_convert_macroff_to_nmacroff
+         3x                         |        0.2s        0.1s                         | TOP::CMDs::_db_normalize
+         4x                         |        0.1s        0.0s                         | TOP::CMDs::_deadcode_elim
+        98x                         |        0.0s        0.0s                         | TOP::CMDs::_defer_messages
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_detect_powerpro_generated_netlist
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_disable_resetting_cg_min_size
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_do_unmap
+         1x                         |        0.1s        0.1s                         | TOP::CMDs::_do_width_optimize
+         1x                         |        0.3s        0.3s                         | TOP::CMDs::_do_wls_extract
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_ecc_logic_detection
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_fsdb_to_sa
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_generate_clocked_data_ports
+         9x                         |        0.1s        0.0s                         | TOP::CMDs::_get_area
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::_get_new_mods
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_get_registered_clock_roots
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_infer_muxlatch
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::_insert_bbox_on_hardop
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_isolate_inout_ports
+      3801x                         |        0.0s        0.0s                         | TOP::CMDs::_issue_msg
+        28x                         |        0.0s        0.0s                         | TOP::CMDs::_log_env_access
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_mem_cell_2_mem_mod
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_merge_cdbmerge_node
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_mux_opt
+       601x                         |        0.0s        0.0s                         | TOP::CMDs::_normalize_path
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_old_report_redundant_reset_flops
+         3x                         |        0.4s        0.1s                         | TOP::CMDs::_optimize_
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::_pla_merge
+         5x                         |        0.1s        0.1s                         | TOP::CMDs::_ppro_print_prototype_summary
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_ppro_remove_userenable_attr_on_always_enable_flops
+         6x                         |        0.0s        0.0s                         | TOP::CMDs::_preserve_nodes
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_process_bit_level_clocks
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_process_resets
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_reduce_comparators
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_remove_transparent_latch
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_rename_operators
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_replace_latches_with_ff
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_report_bitlevel_hiers
+        12x                         |        0.3s        0.1s                         | TOP::CMDs::_report_design
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_report_dut_tree
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::_report_enable_logic
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_resolve_multi_drivers
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_restruct
+         8x                         |        0.0s        0.0s                         | TOP::CMDs::_set_command_access
+        94x                         |        0.0s        0.0s                         | TOP::CMDs::_set_message_audience
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_sls_bist_detection
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_sls_cmd_report_tech_cells
+       214x                         |        0.0s        0.0s                         | TOP::CMDs::_sls_flow_state
+     13522x                         |        0.0s        0.0s                         | TOP::CMDs::_sls_is_core_cg_hier
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::_sls_mark_popt_constraint_for_current_hierarchy
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_split_flop
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_syn_bsel_concat
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_synthesize_write_enable
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_ta_get_default_clock
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_tcldict_to_json
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::_uniqify
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::analyze_cycle_based_redundancies
+        30x                         |        0.0s        0.0s                         | TOP::CMDs::append_global
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::apply_multicycle_path_constraints
+        18x                         |        0.4s        0.0s                         | TOP::CMDs::apply_patch_files
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::bls_node
+         1x                         |        0.5s        0.5s                         | TOP::CMDs::build_db
+       495x                         |        0.0s        0.0s                         | TOP::CMDs::calypto_product
+         2x                         |        0.4s        0.4s                         | TOP::CMDs::cdb_read_library
+         2x                         |        0.6s        0.4s                         | TOP::CMDs::cdb_write_db
+        22x                         |        0.0s        0.0s                         | TOP::CMDs::check_license_availability
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::check_upf_sanity
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::compute_reports
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::config_clock_tree
+         5x                         |        0.0s        0.0s                         | TOP::CMDs::config_write_rtl
+         1x                         |        0.2s        0.2s                         | TOP::CMDs::cpt::build_cdb_from_verific_netlist
+        18x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::compute_checksums
+        18x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::foreach2for
+        90x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::generate_node_heat_map
+        39x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::get_cptroot
+       250x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::get_language
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::get_top_cptroot
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::linked
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::linked_and_build
+        19x                         |        6.1s        0.5s                         | TOP::CMDs::cpt::mixed_lang_to_cpt
+       247x                         |        9.4s        0.5s                         | TOP::CMDs::cpt::read_mixed_lang
+        18x                         |        0.2s        0.0s                         | TOP::CMDs::cpt::remove
+        18x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::rename_param_modules
+        18x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::repeat2for
+        18x                         |        0.1s        0.0s                         | TOP::CMDs::cpt::report_hierarchy
+        18x                         |        0.6s        0.0s                         | TOP::CMDs::cpt::sanity_check
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::cpt::validate_link_design_top
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::create_clock
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::create_ext_sat_script
+       234x                         |        0.0s        0.0s                         | TOP::CMDs::create_power_opt
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::debug_clock_gate_log
+        15x                         |        0.0s        0.0s                         | TOP::CMDs::disable_msg
+         1x                         |        0.1s        0.1s                         | TOP::CMDs::dump_verify_script
+         4x                         |        0.0s        0.0s                         | TOP::CMDs::enable_msg
+       133x                         |        0.1s        0.0s                         | TOP::CMDs::find
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::generate_clock_roots
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::get_cgc_edges
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::get_clock_gating_info
+       220x                         |        0.0s        0.0s                         | TOP::CMDs::get_cpu_usage
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::get_current_working_hierarchy
+      8208x                         |        0.0s        0.0s                         | TOP::CMDs::get_global
+        24x                         |        0.0s        0.0s                         | TOP::CMDs::get_hierarchy
+       301x                         |        0.0s        0.0s                         | TOP::CMDs::get_info
+        40x                         |        0.0s        0.0s                         | TOP::CMDs::get_mem_gating_info
+       291x                         |        0.0s        0.0s                         | TOP::CMDs::get_mem_usage
+       144x                         |        0.0s        0.0s                         | TOP::CMDs::get_process_usage
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::get_version
+         3x                         |       78.2s       38.9s                         | TOP::CMDs::insert_enable_logic
+         1x                         |       39.1s       39.1s                         | TOP::CMDs::insert_observability_logic
+         2x                         |       39.5s       25.7s                         | TOP::CMDs::insert_stability_logic
+         5x                         |        0.0s        0.0s                         | TOP::CMDs::is_adviser_allowed
+         1x                         |        0.5s        0.5s                         | TOP::CMDs::link_design
+         3x                         |        0.1s        0.1s                         | TOP::CMDs::mark_synchronizer
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::move_clk_from_cgic_to_flop
+         1x                         |        3.2s        3.2s                         | TOP::CMDs::prototype_design
+       247x                         |        9.6s        0.5s                         | TOP::CMDs::read_design
+         2x                         |        0.4s        0.4s                         | TOP::CMDs::read_library
+         1x                         |        1.3s        1.3s                         | TOP::CMDs::read_saif
+       247x                         |        9.5s        0.5s                         | TOP::CMDs::read_vhdl
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::replace_user_cgic_module
+         3x                         |        0.0s        0.0s                         | TOP::CMDs::report_enable_logic
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::report_mem_cycle_based_redundancies
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_attrs_inout_mux
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_boundary_opt
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_dont_use_inoutblackbox_port
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_dont_use_unreadable_signal
+      2214x                         |        0.0s        0.0s                         | TOP::CMDs::set_global
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_hierarchy
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_operating_condition
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::set_powerpro_reset
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::set_wire_load_mode
+         2x                         |        0.0s        0.0s                         | TOP::CMDs::sls_create_clock
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::sls_set_attrs_parallel_case_mux
+        20x                         |        0.0s        0.0s                         | TOP::CMDs::source
+         1x                         |        2.6s        2.6s                         | TOP::CMDs::synthesize_design
+        21x                         |        0.1s        0.0s                         | TOP::CMDs::tcl_source
+       247x                         |        0.1s        0.0s                         | TOP::CMDs::update_read_design
+         1x                         |        0.0s        0.0s                         | TOP::CMDs::vdb_report_hierarchy
+         2x                         |        0.6s        0.4s                         | TOP::CMDs::write_db
+        18x                         |       16.4s        1.0s                         | TOP::CMDs::write_patch_files
+        22x                         |       17.0s        1.0s                         | TOP::CMDs::write_rtl
+         1x                         |        0.1s        0.1s                         | TOP::CMDs::write_verify_script
+      2063x                         |        0.2s        0.0s                         | TOP::OPT_CONST_PROP
+      2063x                         |        0.4s        0.0s                         | TOP::OPT_CSE
+      2063x                         |        0.1s        0.0s                         | TOP::OPT_DEAD_CODE
+         3x                         |        0.1s        0.0s                         | TOP::OPT_UF_CONST_PROP
+         3x                         |        0.0s        0.0s                         | TOP::OPT_UF_DEAD_CODE1
+         3x                         |        0.0s        0.0s                         | TOP::OPT_UF_RED_BSEL_CONCAT
+         3x                         |        0.1s        0.0s                         | TOP::OPT_UF_STR_REDUX
+       570x        270x          0x |        9.3s        0.6s        8.0s        0.0s | TOP::SLS_CFF_HS
+       126x         66x          0x |        6.6s        0.2s        6.5s        0.0s | TOP::SLS_CFF_HS::BLS
+         0x                         |        0.0s                                     | TOP::SLS_CFF_HS::BLS::CBdd
+        71x          5x         66x |        1.8s        0.1s        0.1s        1.7s | TOP::SLS_CFF_HS::BLS::CUT_MGR
+        66x         66x          0x |        4.1s        0.1s        4.1s        0.0s | TOP::SLS_CFF_HS::BLS::CalyptoSAT
+        65x         65x          0x |        4.1s        0.1s        4.1s        0.0s | TOP::SLS_CFF_HS::BLS::CalyptoSAT::ABC
+        66x                         |        0.6s        0.0s                         | TOP::SLS_CFF_HS::BLS::CutMgr
+         0x                         |        0.0s                                     | TOP::SLS_CFF_HS::BLS::CutMgr::MCH
+       285x        232x         53x |        2.2s        0.1s        1.0s        1.2s | TOP::SLS_CFF_HS::MCH
+        60x         60x          0x |        6.8s        0.6s        6.8s        0.0s | TOP::SLS_CFF_HS::SOLVE_OUT::BLS
+        60x          0x         60x |        0.0s        0.0s        0.0s        0.0s | TOP::SLS_CFF_HS::SOLVE_OUT::WLS
+         0x                         |        0.0s                                     | TOP::SLS_CFF_HS::WLS
+        18x                         |        0.0s        0.0s                         | TOP::SUBSESSIONS
+      9108x                         |        0.0s                                     | TOP::SUBSESSIONS::CMDs
+        18x                         |       10.8s        0.6s                         | TOP::SUBSESSIONS::TOP
+      9108x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::__cdb_exists
+       378x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::__is_powerpro
+        18x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::_check_fsdb_reader_writer
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::_get_state
+        36x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::_get_user_level
+       288x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::_log_env_access
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::_set_command_access
+       540x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::append_global
+        36x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::calypto_product
+        18x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::cpt::get_language
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::cpt::linked
+        18x                         |        0.3s        0.1s                         | TOP::SUBSESSIONS::TOP::CMDs::cpt::mixed_lang_to_cpt
+       270x                         |        9.0s        0.5s                         | TOP::SUBSESSIONS::TOP::CMDs::cpt::read_mixed_lang
+        72x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::disable_msg
+       108x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::get_cpu_usage
+      2538x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::get_global
+        72x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::get_mem_usage
+        18x                         |        9.0s        0.5s                         | TOP::SUBSESSIONS::TOP::CMDs::read_design
+        18x                         |        9.0s        0.5s                         | TOP::SUBSESSIONS::TOP::CMDs::read_vhdl
+      1872x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::set_global
+        72x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::set_verbosity
+        18x                         |        0.0s                                     | TOP::SUBSESSIONS::TOP::CMDs::set_verification_mode
+      1242x                         |        1.8s                                     | TOP::SUBSESSIONS::TOP::CMDs::source
+      1260x                         |        1.8s        0.1s                         | TOP::SUBSESSIONS::TOP::CMDs::tcl_source
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::__cdb_exists
+       378x                         |        0.0s                                     | TOP::SUBSESSIONS::__is_powerpro
+        18x                         |        0.0s                                     | TOP::SUBSESSIONS::_check_fsdb_reader_writer
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::_get_state
+        36x                         |        0.0s                                     | TOP::SUBSESSIONS::_get_user_level
+       288x                         |        0.0s                                     | TOP::SUBSESSIONS::_log_env_access
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::_set_command_access
+       540x                         |        0.0s                                     | TOP::SUBSESSIONS::append_global
+        36x                         |        0.0s                                     | TOP::SUBSESSIONS::calypto_product
+        18x                         |        0.0s                                     | TOP::SUBSESSIONS::cpt::get_language
+        54x                         |        0.0s                                     | TOP::SUBSESSIONS::cpt::linked
+        18x                         |        0.3s        0.1s                         | TOP::SUBSESSIONS::cpt::mixed_lang_to_cpt
+       270x                         |        9.0s        0.5s                         | TOP::SUBSESSIONS::cpt::read_mixed_lang
+        72x                         |        0.0s                                     | TOP::SUBSESSIONS::disable_msg
+       108x                         |        0.0s                                     | TOP::SUBSESSIONS::get_cpu_usage
+      2538x                         |        0.0s                                     | TOP::SUBSESSIONS::get_global
+        72x                         |        0.0s                                     | TOP::SUBSESSIONS::get_mem_usage
+        18x                         |        9.0s        0.5s                         | TOP::SUBSESSIONS::read_design
+        18x                         |        9.0s        0.5s                         | TOP::SUBSESSIONS::read_vhdl
+      1872x                         |        0.0s                                     | TOP::SUBSESSIONS::set_global
+        72x                         |        0.0s                                     | TOP::SUBSESSIONS::set_verbosity
+        18x                         |        0.0s                                     | TOP::SUBSESSIONS::set_verification_mode
+      1242x                         |        1.8s                                     | TOP::SUBSESSIONS::source
+      1260x                         |        1.8s        0.1s                         | TOP::SUBSESSIONS::tcl_source

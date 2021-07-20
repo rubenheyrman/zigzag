@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<report>
+  <title>Enable Logic Report</title>
+  <headings>
+    <domain>Domain</domain>
+    <flip_flop>Flip Flop</flip_flop>
+    <count>Count</count>
+    <efficiency>Efficiency Change</efficiency>
+    <power>Power Change(uW)</power>
+    <enable>Enable</enable>
+    <category>Type</category>
+    <area>Area Change</area>
+    <support_signal_depth>Support Signal Depth</support_signal_depth>
+    <enable_expr_depth>Enable Expr Depth</enable_expr_depth>
+    <clk_domain_info>Clock Domain</clk_domain_info>
+  </headings>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-168.5</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_4_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.31">99.14</efficiency>
+    <power guiaction="3.47198 -> 0.0240524">3.45</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="128.744">15.694</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-168.4</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_3_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.31">99.14</efficiency>
+    <power guiaction="3.47198 -> 0.0240524">3.45</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="128.744">15.694</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-168.3</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_2_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.31">99.14</efficiency>
+    <power guiaction="3.47198 -> 0.0240524">3.45</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="128.744">15.694</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-168.2</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_1_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.31">99.14</efficiency>
+    <power guiaction="3.47198 -> 0.0240524">3.45</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="128.744">15.694</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-168.1</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_0_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.31">99.14</efficiency>
+    <power guiaction="3.47207 -> 0.0240907">3.45</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="128.744">15.694</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-168</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_0_sva</inst><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_1_sva</inst><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_2_sva</inst><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_3_sva</inst><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_counter_4_sva</inst></flip_flop>
+    <count>25</count>
+    <efficiency guiaction="99.31">99.14</efficiency>
+    <power guiaction="17.36 -> 0.1203">17.24</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_counter_4_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="128.744">15.694</area>
+    <support_signal_depth>19</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGOBS-26.2</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::1685"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.O_wr_data_rsci_idat_bfwt</inst></flip_flop>
+    <count>16</count>
+    <efficiency guiaction="96.01">94</efficiency>
+    <power guiaction="12.3753 -> 1.54299">10.83</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="82.726">5.852</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGOBS-26.1</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::1685"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.O_wr_data_rsci_ivld_bfwt</inst></flip_flop>
+    <count>1</count>
+    <efficiency guiaction="96.01">94</efficiency>
+    <power guiaction="0.740052 -> 0.0302684">0.71</power>
+    <enable guiaction="highlight"></enable>
+    <category></category>
+    <area guiaction="82.726">5.852</area>
+    <support_signal_depth></support_signal_depth>
+    <enable_expr_depth></enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGOBS-26</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::1685:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::1685"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.O_wr_data_rsci_idat_bfwt</inst><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.O_wr_data_rsci_ivld_bfwt</inst></flip_flop>
+    <count>17</count>
+    <efficiency guiaction="96.01">94</efficiency>
+    <power guiaction="13.1154 -> 1.57326">11.54</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm.O_wr_data_rsci_idat_bfwt_en</pin></enable>
+    <category>Obs</category>
+    <area guiaction="82.726">5.852</area>
+    <support_signal_depth>51</support_signal_depth>
+    <enable_expr_depth>7</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGOBS-17</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6568"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_write_data_data_sva</inst></flip_flop>
+    <count>16</count>
+    <efficiency guiaction="97.95">95.85</efficiency>
+    <power guiaction="12.3671 -> 1.31983">11.05</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_obs_topless_5comma_32comma_1comm.O_write_data_data_sva_en</pin></enable>
+    <category>Obs</category>
+    <area guiaction="75.012">2.66</area>
+    <support_signal_depth>38</support_signal_depth>
+    <enable_expr_depth>3</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-162</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_counter_1_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="100">99.83</efficiency>
+    <power guiaction="3.47198 -> 6.63331e-06">3.47</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_counter_1_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-163</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_counter_2_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="100">99.83</efficiency>
+    <power guiaction="3.47198 -> 6.63331e-06">3.47</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_counter_2_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-164</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_counter_3_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="100">99.83</efficiency>
+    <power guiaction="3.47198 -> 6.63331e-06">3.47</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_counter_3_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-167</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.W_mac_counter_4_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="100">99.83</efficiency>
+    <power guiaction="3.47198 -> 6.63331e-06">3.47</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.W_mac_counter_4_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-165</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.W_mac_counter_1_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="100">99.83</efficiency>
+    <power guiaction="3.47198 -> 6.63331e-06">3.47</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.W_mac_counter_1_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-166</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.W_mac_counter_2_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="100">99.83</efficiency>
+    <power guiaction="3.47198 -> 6.63331e-06">3.47</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.W_mac_counter_2_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-138</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6648"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_vld_zg_pntr_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.91">99.56</efficiency>
+    <power guiaction="3.4656 -> 0.00319368">3.46</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_vld_zg_pntr_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="35.644">13.034</area>
+    <support_signal_depth>13</support_signal_depth>
+    <enable_expr_depth>7</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-131</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_tile_bound_0_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.92">99.51</efficiency>
+    <power guiaction="3.5228 -> 0.00297566">3.52</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_tile_bound_0_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-133</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_tile_bound_2_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.92">99.5</efficiency>
+    <power guiaction="3.5228 -> 0.00315108">3.52</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_tile_bound_2_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-137</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_tile_bound_4_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.92">99.5</efficiency>
+    <power guiaction="3.5228 -> 0.00314433">3.52</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_tile_bound_4_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-132</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_tile_bound_1_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.92">99.5</efficiency>
+    <power guiaction="3.5228 -> 0.00317132">3.52</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_tile_bound_1_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-134</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_tile_bound_3_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.91">99.5</efficiency>
+    <power guiaction="3.5228 -> 0.00323879">3.52</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_tile_bound_3_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-171</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_pntr_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.66">99.5</efficiency>
+    <power guiaction="3.47198 -> 0.0117675">3.46</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.O_mac_pntr_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="35.644">13.034</area>
+    <support_signal_depth>18</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-128</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_tile_bound_3_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.79">99.37</efficiency>
+    <power guiaction="3.5822 -> 0.0080218">3.57</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_tile_bound_3_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-129</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_tile_bound_4_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.78">99.37</efficiency>
+    <power guiaction="3.5822 -> 0.00808354">3.57</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_tile_bound_4_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-130</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.W_mac_tile_bound_4_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.74">99.33</efficiency>
+    <power guiaction="3.58218 -> 0.0095996">3.57</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.W_mac_tile_bound_4_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-127</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::6687"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_tile_bound_2_lpi_1</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="99.57">99.16</efficiency>
+    <power guiaction="3.70103 -> 0.0165813">3.68</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_tile_bound_2_lpi_1_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>24</support_signal_depth>
+    <enable_expr_depth>6</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGSTB(CONSTANT)-161</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::5977"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.I_mac_counter_0_sva</inst></flip_flop>
+    <count>5</count>
+    <efficiency guiaction="98">97.84</efficiency>
+    <power guiaction="3.47208 -> 0.0694237">3.4</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma.I_mac_counter_0_sva_en</pin></enable>
+    <category>Stb(constant)</category>
+    <area guiaction="41.452">18.842</area>
+    <support_signal_depth>23</support_signal_depth>
+    <enable_expr_depth>4</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGOBS-24</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::1487"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst.I_wr_data_rsci_idat_bfwt</inst></flip_flop>
+    <count>16</count>
+    <efficiency guiaction="68.6">18.87</efficiency>
+    <power guiaction="5.62443 -> 3.51302">2.11</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm.I_wr_data_rsci_idat_bfwt_en</pin></enable>
+    <category>Obs</category>
+    <area guiaction="78.204">5.852</area>
+    <support_signal_depth>16</support_signal_depth>
+    <enable_expr_depth>8</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+  <data>
+    <domain guiaction="show_domain:::" visualizer_action="">CGOBS-22</domain>
+    <flip_flop guiaction="highlight:::/users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v::1373"><inst>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_W_wr_data_wait_dp_inst.W_wr_data_rsci_idat_bfwt</inst></flip_flop>
+    <count>16</count>
+    <efficiency guiaction="87.19">0.29</efficiency>
+    <power guiaction="1.70057 -> 1.66745">0.03</power>
+    <enable guiaction="highlight"><pin>top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_W_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm.W_wr_data_rsci_idat_bfwt_en</pin></enable>
+    <category>Obs</category>
+    <area guiaction="73.416">1.064</area>
+    <support_signal_depth>0</support_signal_depth>
+    <enable_expr_depth>1</enable_expr_depth>
+    <clk_domain_info>CLOCKclk:pos</clk_domain_info>
+  </data>
+</report>

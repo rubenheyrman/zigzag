@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<report>
+  <title>Power Summary Report</title>
+  <headings>
+    <power_group>Power Group</power_group>
+    <count>Count</count>
+    <leakage_power>Leakage Power(uW)</leakage_power>
+    <dynamic_power>Internal Power(uW)</dynamic_power>
+    <net_power>Switching Power(uW)</net_power>
+    <total_power>Total Power(uW)</total_power>
+    <percentage>Percentage(%)</percentage>
+  </headings>
+  <data>
+    <power_group>io_pad</power_group>
+    <count>0</count>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <power_group>memory</power_group>
+    <count>0</count>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <power_group>black_box</power_group>
+    <count>0</count>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <power_group>register</power_group>
+    <count>3447</count>
+    <leakage_power>273.409</leakage_power>
+    <dynamic_power>271.402</dynamic_power>
+    <net_power>7.55344</net_power>
+    <total_power>552.364</total_power>
+    <percentage>47.93%</percentage>
+  </data>
+  <data>
+    <power_group>combinational</power_group>
+    <count>10030</count>
+    <leakage_power>244.944</leakage_power>
+    <dynamic_power>61.7062</dynamic_power>
+    <net_power>83.8488</net_power>
+    <total_power>390.499</total_power>
+    <percentage>33.88%</percentage>
+  </data>
+  <data>
+    <power_group>sequential</power_group>
+    <count>0</count>
+    <leakage_power>0</leakage_power>
+    <dynamic_power>0</dynamic_power>
+    <net_power>0</net_power>
+    <total_power>0</total_power>
+    <percentage>0%</percentage>
+  </data>
+  <data>
+    <power_group>clock_network</power_group>
+    <count>194</count>
+    <leakage_power>8.56752</leakage_power>
+    <dynamic_power>91.9682</dynamic_power>
+    <net_power>109.143</net_power>
+    <total_power>209.679</total_power>
+    <percentage>18.19%</percentage>
+  </data>
+  <data>
+    <power_group>total</power_group>
+    <count>13671</count>
+    <leakage_power>526.92</leakage_power>
+    <dynamic_power>425.076</dynamic_power>
+    <net_power>200.546</net_power>
+    <total_power>1152.54</total_power>
+    <percentage>100%</percentage>
+  </data>
+</report>
+

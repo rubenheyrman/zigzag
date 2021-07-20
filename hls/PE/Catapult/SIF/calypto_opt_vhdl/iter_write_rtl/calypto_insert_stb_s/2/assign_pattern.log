@@ -1,0 +1,3 @@
+     [WRTL-DOF]   0 flops are gated using old patching scheme.
+     [WRTL-DNF]   0 flops are gated using new patching scheme.
+     [WRTL-DDF]   0 flops are decommitted.

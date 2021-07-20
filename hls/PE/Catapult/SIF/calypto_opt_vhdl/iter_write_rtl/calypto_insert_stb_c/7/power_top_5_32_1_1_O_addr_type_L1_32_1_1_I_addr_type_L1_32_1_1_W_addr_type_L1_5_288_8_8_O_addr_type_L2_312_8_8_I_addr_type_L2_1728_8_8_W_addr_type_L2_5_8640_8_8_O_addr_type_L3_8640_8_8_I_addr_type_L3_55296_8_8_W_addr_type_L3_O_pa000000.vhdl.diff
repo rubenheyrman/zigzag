@@ -1,0 +1,585 @@
+--- /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl	2021-07-13 11:47:37.149352146 +0200
++++ /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/calypto_opt_vhdl/iter_write_rtl/calypto_insert_stb_c/7/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.vhdl	2021-07-13 11:48:55.931501409 +0200
+@@ -1853,6 +1853,8 @@
+ USE mgc_hls.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151.ALL;
+ 
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026
+     IS
+   PORT(
+@@ -1863,10 +1865,20 @@
+     I_wr_data_rsci_biwt : IN STD_LOGIC;
+     I_wr_data_rsci_bdwt : IN STD_LOGIC;
+     I_wr_data_rsci_ivld : IN STD_LOGIC;
+-    I_wr_data_rsci_idat : IN STD_LOGIC_VECTOR (15 DOWNTO 0)
+-  );
++    I_wr_data_rsci_idat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++    --PowerPro-CG
++    I_data_in_rsc_vld : in ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    I_data_in_rsc_dat : in ieee.std_logic_1164.std_logic_vector(15 downto 0);
++    --PowerPro-CG
++    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++    
+ END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026
+     IS
+   -- Default Constants
+@@ -1876,6 +1888,14 @@
+   SIGNAL I_wr_data_rsci_ivld_bfwt : STD_LOGIC;
+   SIGNAL I_wr_data_rsci_idat_gtd : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL I_wr_data_rsci_idat_bfwt : STD_LOGIC_VECTOR (15 DOWNTO 0);
++  --PowerPro-CG
++  signal I_wr_data_rsci_biwt_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal clk_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal rst_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal cg_c_I_wr_data_rsci_idat_bfwt_en : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+ 
+   FUNCTION MUX_s_1_2_2(input_0 : STD_LOGIC;
+   input_1 : STD_LOGIC;
+@@ -1916,6 +1936,17 @@
+       I_wr_data_rsci_idat, I_wr_data_rsci_ivld);
+   I_wr_data_rsci_idat_mxwt <= MUX_v_16_2_2(I_wr_data_rsci_idat_gtd, I_wr_data_rsci_idat_bfwt,
+       I_wr_data_rsci_bcwt);
++  --PowerPro-CG
++  inst_cg_const_stb_topless_5comma_32comma : cg_const_stb_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026 port map (
++              I_wr_data_rsci_biwt => I_wr_data_rsci_biwt_1,
++              I_wr_data_rsc_vld => I_data_in_rsc_vld,
++              I_wr_data_rsc_dat => I_data_in_rsc_dat,
++              I_wr_data_rsci_idat_bfwt_en => cg_c_I_wr_data_rsci_idat_bfwt_en,
++              o => o,
++              ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port,
++              clk => clk_1,
++              rst => rst_1
++           );
+   PROCESS (clk)
+   BEGIN
+     IF clk'EVENT AND ( clk = '1' ) THEN
+@@ -1927,15 +1958,25 @@
+       END IF;
+     END IF;
+   END PROCESS;
++  --PowerPro-CG
++  I_wr_data_rsci_biwt_1 <= (I_wr_data_rsci_biwt);
++  --PowerPro-CG
++  clk_1 <= (clk);
++  --PowerPro-CG
++  rst_1 <= (rst);
+   PROCESS (clk)
+   BEGIN
+     IF clk'EVENT AND ( clk = '1' ) THEN
+       IF (rst = '1') THEN
+         I_wr_data_rsci_ivld_bfwt <= '0';
++       if ( calypto_lib.powerpro_cg_package.is_enabled(cg_c_I_wr_data_rsci_idat_bfwt_en) ) then --PowerPro-CG
+         I_wr_data_rsci_idat_bfwt <= STD_LOGIC_VECTOR'( "0000000000000000");
++       end if;
+       ELSIF ( I_wr_data_rsci_biwt = '1' ) THEN
+         I_wr_data_rsci_ivld_bfwt <= I_wr_data_rsci_ivld;
++         if ( calypto_lib.powerpro_cg_package.is_enabled(cg_c_I_wr_data_rsci_idat_bfwt_en) ) then --PowerPro-CG
+         I_wr_data_rsci_idat_bfwt <= I_wr_data_rsci_idat_gtd;
++       end if;
+       END IF;
+     END IF;
+   END PROCESS;
+@@ -3844,6 +3885,8 @@
+ USE mgc_hls.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151.ALL;
+ 
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007
+     IS
+   PORT(
+@@ -3856,10 +3899,16 @@
+     run_wten : IN STD_LOGIC;
+     I_wr_data_rsci_oswt : IN STD_LOGIC;
+     I_wr_data_rsci_ivld_mxwt : OUT STD_LOGIC;
+-    I_wr_data_rsci_idat_mxwt : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+-  );
++    I_wr_data_rsci_idat_mxwt : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
++    --PowerPro-CG
++    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++    
+ END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007
+     IS
+   -- Default Constants
+@@ -3882,7 +3931,7 @@
+       I_wr_data_rsci_bdwt : OUT STD_LOGIC
+     );
+   END COMPONENT;
+-  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026
++  component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026
+     PORT(
+       clk : IN STD_LOGIC;
+       rst : IN STD_LOGIC;
+@@ -3891,13 +3940,39 @@
+       I_wr_data_rsci_biwt : IN STD_LOGIC;
+       I_wr_data_rsci_bdwt : IN STD_LOGIC;
+       I_wr_data_rsci_ivld : IN STD_LOGIC;
+-      I_wr_data_rsci_idat : IN STD_LOGIC_VECTOR (15 DOWNTO 0)
+-    );
+-  END COMPONENT;
++      I_wr_data_rsci_idat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++    --PowerPro-CG
++    I_data_in_rsc_vld : in ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    I_data_in_rsc_dat : in ieee.std_logic_1164.std_logic_vector(15 downto 0);
++    --PowerPro-CG
++    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++      
++  END COMPONENT;
++                
++--  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026
++--    PORT(
++--      clk : IN STD_LOGIC;
++--      rst : IN STD_LOGIC;
++--      I_wr_data_rsci_ivld_mxwt : OUT STD_LOGIC;
++--      I_wr_data_rsci_idat_mxwt : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      I_wr_data_rsci_biwt : IN STD_LOGIC;
++--      I_wr_data_rsci_bdwt : IN STD_LOGIC;
++--      I_wr_data_rsci_ivld : IN STD_LOGIC;
++--      I_wr_data_rsci_idat : IN STD_LOGIC_VECTOR (15 DOWNTO 0)
++--    );
++--  END COMPONENT;
++                
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst_I_wr_data_rsci_idat_mxwt
+       : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst_I_wr_data_rsci_idat
+       : STD_LOGIC_VECTOR (15 DOWNTO 0);
++  --PowerPro-CG
++  signal I_wr_data_rsc_vld_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal I_wr_data_rsc_dat_1 : ieee.std_logic_1164.std_logic_vector(15 downto 0);
+ 
+ BEGIN
+   I_wr_data_rsci : mgc_hls.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000149.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000150
+@@ -3935,9 +4010,21 @@
+       I_wr_data_rsci_biwt => I_wr_data_rsci_biwt,
+       I_wr_data_rsci_bdwt => I_wr_data_rsci_bdwt,
+       I_wr_data_rsci_ivld => I_wr_data_rsci_ivld,
+-      I_wr_data_rsci_idat => rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst_I_wr_data_rsci_idat
+-    );
++      I_wr_data_rsci_idat =>                              rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst_I_wr_data_rsci_idat,
++      --PowerPro-CG
++      I_data_in_rsc_vld => I_wr_data_rsc_vld_1,
++      --PowerPro-CG
++      I_data_in_rsc_dat => I_wr_data_rsc_dat_1,
++      --PowerPro-CG
++      o => o,
++      --PowerPro-CG
++      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );
++      
+   I_wr_data_rsci_idat_mxwt <= rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst_I_wr_data_rsci_idat_mxwt;
++  --PowerPro-CG
++  I_wr_data_rsc_vld_1 <= (I_wr_data_rsc_vld);
++  --PowerPro-CG
++  I_wr_data_rsc_dat_1 <= (I_wr_data_rsc_dat);
+   rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst_I_wr_data_rsci_idat
+       <= I_wr_data_rsci_idat;
+ 
+@@ -5041,6 +5128,8 @@
+ USE mgc_hls.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151.ALL;
+ 
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003
+     IS
+   PORT(
+@@ -5069,10 +5158,14 @@
+     I_instr_in_rsc_rdy : OUT STD_LOGIC;
+     W_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
+     W_instr_in_rsc_vld : IN STD_LOGIC;
+-    W_instr_in_rsc_rdy : OUT STD_LOGIC
+-  );
++    W_instr_in_rsc_rdy : OUT STD_LOGIC;
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++    
+ END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003
+     IS
+   -- Default Constants
+@@ -6253,7 +6346,7 @@
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_rd_data_rsci_inst_O_rd_data_rsci_idat
+       : STD_LOGIC_VECTOR (15 DOWNTO 0);
+ 
+-  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007
++  component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007
+     PORT(
+       clk : IN STD_LOGIC;
+       rst : IN STD_LOGIC;
+@@ -6264,9 +6357,29 @@
+       run_wten : IN STD_LOGIC;
+       I_wr_data_rsci_oswt : IN STD_LOGIC;
+       I_wr_data_rsci_ivld_mxwt : OUT STD_LOGIC;
+-      I_wr_data_rsci_idat_mxwt : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+-    );
+-  END COMPONENT;
++      I_wr_data_rsci_idat_mxwt : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
++    --PowerPro-CG
++    o : in ieee.std_logic_1164.std_logic_vector(0 downto 0);
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++      
++  END COMPONENT;
++                
++--  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000007
++--    PORT(
++--      clk : IN STD_LOGIC;
++--      rst : IN STD_LOGIC;
++--      I_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      I_wr_data_rsc_vld : IN STD_LOGIC;
++--      I_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      run_wen : IN STD_LOGIC;
++--      run_wten : IN STD_LOGIC;
++--      I_wr_data_rsci_oswt : IN STD_LOGIC;
++--      I_wr_data_rsci_ivld_mxwt : OUT STD_LOGIC;
++--      I_wr_data_rsci_idat_mxwt : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
++--    );
++--  END COMPONENT;
++                
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst_I_wr_data_rsc_dat
+       : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst_I_wr_data_rsci_idat_mxwt
+@@ -6380,6 +6493,10 @@
+   END COMPONENT;
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_run_fsm_inst_fsm_output
+       : STD_LOGIC_VECTOR (1 DOWNTO 0);
++  --PowerPro-CG
++  signal o : ieee.std_logic_1164.std_logic_vector(0 downto 0);
++  --PowerPro-CG
++  signal ppro_reset_CLOCKclk_out_port_1 : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+ 
+   FUNCTION CONV_SL_1_1(input_val:BOOLEAN)
+   RETURN STD_LOGIC IS
+@@ -6775,8 +6892,12 @@
+       run_wten => run_wten,
+       I_wr_data_rsci_oswt => reg_I_wr_data_rsci_irdy_run_psct_cse,
+       I_wr_data_rsci_ivld_mxwt => I_wr_data_rsci_ivld_mxwt,
+-      I_wr_data_rsci_idat_mxwt => rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst_I_wr_data_rsci_idat_mxwt
+-    );
++      I_wr_data_rsci_idat_mxwt =>                                   rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst_I_wr_data_rsci_idat_mxwt,
++      --PowerPro-CG
++      o => o,
++      --PowerPro-CG
++      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port_1 );
++      
+   rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst_I_wr_data_rsc_dat
+       <= I_wr_data_rsc_dat;
+   I_wr_data_rsci_idat_mxwt <= rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst_I_wr_data_rsci_idat_mxwt;
+@@ -9437,6 +9558,8 @@
+   and_549_nl <= if_5_and_svs_1 AND (fsm_output(1));
+   skid_buf_top_pop_1_mux_1_nl <= MUX_v_2_2_2(skid_buf_top_cnt_sva, skid_buf_top_cnt_sva_1_1,
+       and_549_nl);
++  --PowerPro-CG
++  ppro_reset_CLOCKclk_out_port_1 <= ppro_reset_CLOCKclk_out_port;
+   z_out_3 <= STD_LOGIC_VECTOR(CONV_UNSIGNED(UNSIGNED(skid_buf_top_pop_1_mux_1_nl)
+       + UNSIGNED'( "11"), 2));
+ END v2;
+@@ -10125,6 +10248,8 @@
+ USE mgc_hls.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151.ALL;
+ 
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002
+     IS
+   PORT(
+@@ -10153,15 +10278,19 @@
+     I_instr_in_rsc_rdy : OUT STD_LOGIC;
+     W_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
+     W_instr_in_rsc_vld : IN STD_LOGIC;
+-    W_instr_in_rsc_rdy : OUT STD_LOGIC
+-  );
++    W_instr_in_rsc_rdy : OUT STD_LOGIC;
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++    
+ END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002
+     IS
+   -- Default Constants
+ 
+-  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003
++  component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003
+     PORT(
+       clk : IN STD_LOGIC;
+       rst : IN STD_LOGIC;
+@@ -10188,9 +10317,43 @@
+       I_instr_in_rsc_rdy : OUT STD_LOGIC;
+       W_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
+       W_instr_in_rsc_vld : IN STD_LOGIC;
+-      W_instr_in_rsc_rdy : OUT STD_LOGIC
+-    );
+-  END COMPONENT;
++      W_instr_in_rsc_rdy : OUT STD_LOGIC;
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++      
++  END COMPONENT;
++                
++--  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003
++--    PORT(
++--      clk : IN STD_LOGIC;
++--      rst : IN STD_LOGIC;
++--      O_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      O_wr_data_rsc_vld : IN STD_LOGIC;
++--      O_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      O_rd_data_rsc_dat : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      O_rd_data_rsc_vld : OUT STD_LOGIC;
++--      O_rd_data_rsc_rdy : IN STD_LOGIC;
++--      I_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      I_wr_data_rsc_vld : IN STD_LOGIC;
++--      I_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      W_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      W_wr_data_rsc_vld : IN STD_LOGIC;
++--      W_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      wr_data_zero_guard_rsc_dat : IN STD_LOGIC;
++--      wr_data_zero_guard_rsc_vld : IN STD_LOGIC;
++--      wr_data_zero_guard_rsc_rdy : OUT STD_LOGIC;
++--      O_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
++--      O_instr_in_rsc_vld : IN STD_LOGIC;
++--      O_instr_in_rsc_rdy : OUT STD_LOGIC;
++--      I_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
++--      I_instr_in_rsc_vld : IN STD_LOGIC;
++--      I_instr_in_rsc_rdy : OUT STD_LOGIC;
++--      W_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
++--      W_instr_in_rsc_vld : IN STD_LOGIC;
++--      W_instr_in_rsc_rdy : OUT STD_LOGIC
++--    );
++--  END COMPONENT;
++                
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst_O_wr_data_rsc_dat
+       : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst_O_rd_data_rsc_dat
+@@ -10235,8 +10398,10 @@
+       I_instr_in_rsc_rdy => I_instr_in_rsc_rdy,
+       W_instr_in_rsc_dat => rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst_W_instr_in_rsc_dat,
+       W_instr_in_rsc_vld => W_instr_in_rsc_vld,
+-      W_instr_in_rsc_rdy => W_instr_in_rsc_rdy
+-    );
++      W_instr_in_rsc_rdy =>                             W_instr_in_rsc_rdy,
++      --PowerPro-CG
++      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );
++      
+   rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst_O_wr_data_rsc_dat
+       <= O_wr_data_rsc_dat;
+   O_rd_data_rsc_dat <= rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst_O_rd_data_rsc_dat;
+@@ -10265,6 +10430,8 @@
+ USE mgc_hls.topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151.ALL;
+ 
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ENTITY topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
+     IS
+   PORT(
+@@ -10304,10 +10471,14 @@
+     layer_instruction_in_rsc_dat_relevancy_8 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+     layer_instruction_in_rsc_dat_bound_8 : IN STD_LOGIC_VECTOR (69 DOWNTO 0);
+     layer_instruction_in_rsc_vld : IN STD_LOGIC;
+-    layer_instruction_in_rsc_rdy : OUT STD_LOGIC
+-  );
++    layer_instruction_in_rsc_rdy : OUT STD_LOGIC;
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++    
+ END topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
+     IS
+   -- Default Constants
+@@ -10390,7 +10561,7 @@
+   SIGNAL CCInst_W_instr_L2_out_rsc_dat : STD_LOGIC_VECTOR (109 DOWNTO 0);
+   SIGNAL CCInst_W_instr_L3_out_rsc_dat : STD_LOGIC_VECTOR (159 DOWNTO 0);
+ 
+-  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002
++  component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002
+     PORT(
+       clk : IN STD_LOGIC;
+       rst : IN STD_LOGIC;
+@@ -10417,9 +10588,43 @@
+       I_instr_in_rsc_rdy : OUT STD_LOGIC;
+       W_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
+       W_instr_in_rsc_vld : IN STD_LOGIC;
+-      W_instr_in_rsc_rdy : OUT STD_LOGIC
+-    );
+-  END COMPONENT;
++      W_instr_in_rsc_rdy : OUT STD_LOGIC;
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++      
++  END COMPONENT;
++                
++--  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000002
++--    PORT(
++--      clk : IN STD_LOGIC;
++--      rst : IN STD_LOGIC;
++--      O_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      O_wr_data_rsc_vld : IN STD_LOGIC;
++--      O_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      O_rd_data_rsc_dat : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      O_rd_data_rsc_vld : OUT STD_LOGIC;
++--      O_rd_data_rsc_rdy : IN STD_LOGIC;
++--      I_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      I_wr_data_rsc_vld : IN STD_LOGIC;
++--      I_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      W_wr_data_rsc_dat : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      W_wr_data_rsc_vld : IN STD_LOGIC;
++--      W_wr_data_rsc_rdy : OUT STD_LOGIC;
++--      wr_data_zero_guard_rsc_dat : IN STD_LOGIC;
++--      wr_data_zero_guard_rsc_vld : IN STD_LOGIC;
++--      wr_data_zero_guard_rsc_rdy : OUT STD_LOGIC;
++--      O_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
++--      O_instr_in_rsc_vld : IN STD_LOGIC;
++--      O_instr_in_rsc_rdy : OUT STD_LOGIC;
++--      I_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
++--      I_instr_in_rsc_vld : IN STD_LOGIC;
++--      I_instr_in_rsc_rdy : OUT STD_LOGIC;
++--      W_instr_in_rsc_dat : IN STD_LOGIC_VECTOR (49 DOWNTO 0);
++--      W_instr_in_rsc_vld : IN STD_LOGIC;
++--      W_instr_in_rsc_rdy : OUT STD_LOGIC
++--    );
++--  END COMPONENT;
++                
+   SIGNAL PE_O_wr_data_rsc_dat : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL PE_O_rd_data_rsc_dat : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL PE_I_wr_data_rsc_dat : STD_LOGIC_VECTOR (15 DOWNTO 0);
+@@ -10511,8 +10716,10 @@
+       I_instr_in_rsc_rdy => I_instr_in_rsc_rdy_nPE_bud,
+       W_instr_in_rsc_dat => PE_W_instr_in_rsc_dat,
+       W_instr_in_rsc_vld => W_instr_L1_out_rsc_vld_nCCInst_bud,
+-      W_instr_in_rsc_rdy => W_instr_in_rsc_rdy_nPE_bud
+-    );
++      W_instr_in_rsc_rdy =>                             W_instr_in_rsc_rdy_nPE_bud,
++      --PowerPro-CG
++      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );
++      
+   PE_O_wr_data_rsc_dat <= O_data_in_rsc_dat_data;
+   O_rd_data_rsc_dat_nPE <= PE_O_rd_data_rsc_dat;
+   PE_I_wr_data_rsc_dat <= I_data_in_rsc_dat_data;
+@@ -10568,6 +10775,8 @@
+   );
+ END top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000;
+ 
++library ieee, calypto_lib;
++use calypto_lib.top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_calypto_package.all;
+ ARCHITECTURE v2 OF top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000
+     IS
+   -- Default Constants
+@@ -10576,7 +10785,7 @@
+   -- Interconnect Declarations
+   SIGNAL O_data_out_rsc_dat_data : STD_LOGIC_VECTOR (15 DOWNTO 0);
+ 
+-  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
++  component topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
+     PORT(
+       clk : IN STD_LOGIC;
+       rst : IN STD_LOGIC;
+@@ -10614,9 +10823,54 @@
+       layer_instruction_in_rsc_dat_relevancy_8 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
+       layer_instruction_in_rsc_dat_bound_8 : IN STD_LOGIC_VECTOR (69 DOWNTO 0);
+       layer_instruction_in_rsc_vld : IN STD_LOGIC;
+-      layer_instruction_in_rsc_rdy : OUT STD_LOGIC
+-    );
+-  END COMPONENT;
++      layer_instruction_in_rsc_rdy : OUT STD_LOGIC;
++    --PowerPro-CG
++    ppro_reset_CLOCKclk_out_port : in ieee.std_logic_1164.std_logic_vector(0 downto 0) );
++      
++  END COMPONENT;
++                
++--  COMPONENT topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000000
++--    PORT(
++--      clk : IN STD_LOGIC;
++--      rst : IN STD_LOGIC;
++--      O_data_in_rsc_dat_data : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      O_data_in_rsc_vld : IN STD_LOGIC;
++--      O_data_in_rsc_rdy : OUT STD_LOGIC;
++--      O_data_out_rsc_dat_data : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      O_data_out_rsc_vld : OUT STD_LOGIC;
++--      O_data_out_rsc_rdy : IN STD_LOGIC;
++--      I_data_in_rsc_dat_data : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      I_data_in_rsc_vld : IN STD_LOGIC;
++--      I_data_in_rsc_rdy : OUT STD_LOGIC;
++--      W_data_in_rsc_dat_data : IN STD_LOGIC_VECTOR (15 DOWNTO 0);
++--      W_data_in_rsc_vld : IN STD_LOGIC;
++--      W_data_in_rsc_rdy : OUT STD_LOGIC;
++--      zero_guard_in_rsc_dat : IN STD_LOGIC;
++--      zero_guard_in_rsc_vld : IN STD_LOGIC;
++--      zero_guard_in_rsc_rdy : OUT STD_LOGIC;
++--      layer_instruction_in_rsc_dat_relevancy : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_1 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_1 : IN STD_LOGIC_VECTOR (54 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_2 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_2 : IN STD_LOGIC_VECTOR (79 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_3 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_3 : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_4 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_4 : IN STD_LOGIC_VECTOR (44 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_5 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_5 : IN STD_LOGIC_VECTOR (69 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_6 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_6 : IN STD_LOGIC_VECTOR (24 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_7 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_7 : IN STD_LOGIC_VECTOR (44 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_relevancy_8 : IN STD_LOGIC_VECTOR (4 DOWNTO 0);
++--      layer_instruction_in_rsc_dat_bound_8 : IN STD_LOGIC_VECTOR (69 DOWNTO 0);
++--      layer_instruction_in_rsc_vld : IN STD_LOGIC;
++--      layer_instruction_in_rsc_rdy : OUT STD_LOGIC
++--    );
++--  END COMPONENT;
++                
+   SIGNAL top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000002
+       : STD_LOGIC_VECTOR (15 DOWNTO 0);
+   SIGNAL top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000003
+@@ -10661,6 +10915,8 @@
+       : STD_LOGIC_VECTOR (4 DOWNTO 0);
+   SIGNAL top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000023
+       : STD_LOGIC_VECTOR (69 DOWNTO 0);
++  --PowerPro-CG
++  signal ppro_reset_CLOCKclk_out_port : ieee.std_logic_1164.std_logic_vector(0 downto 0);
+ 
+ BEGIN
+   top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001
+@@ -10702,8 +10958,10 @@
+       layer_instruction_in_rsc_dat_relevancy_8 => top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000022,
+       layer_instruction_in_rsc_dat_bound_8 => top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000023,
+       layer_instruction_in_rsc_vld => layer_instruction_in_rsc_vld,
+-      layer_instruction_in_rsc_rdy => layer_instruction_in_rsc_rdy
+-    );
++      layer_instruction_in_rsc_rdy =>                                       layer_instruction_in_rsc_rdy,
++      --PowerPro-CG
++      ppro_reset_CLOCKclk_out_port => ppro_reset_CLOCKclk_out_port );
++      
+   top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000002
+       <= O_data_in_rsc_dat;
+   O_data_out_rsc_dat_data <= top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000003;

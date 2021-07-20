@@ -1,0 +1,367 @@
+Index: /users/students/r0678912/Downloads/zigzag/hls_impl/PE/Catapult/SIF/power_top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_pa000000.v
+after 1355,14 until ';'
+>  wire				cg_o_W_wr_data_rsci_idat_bfwt_en; // PowerPro-CG
+before 1365,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_W_wr_data_rsci_W_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm
+>  //PowerPro-CG
+>  cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000031 inst_cg_obs_topless_5comma_32comma_1comm( .rst( rst ),
+> 	 .W_wr_data_rsci_ivld( W_wr_data_rsci_ivld ),
+> 	 .W_wr_data_rsci_idat_bfwt_en( cg_o_W_wr_data_rsci_idat_bfwt_en ));
+before 1376,7
+>        if ( cg_o_W_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+before 1380,7
+>          if ( cg_o_W_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+after 1453,67
+>   , //PowerPro-CG
+>   reg_I_wr_data_rsci_irdy_run_psct_cse
+>   , //PowerPro-CG
+>   fsm_output
+>   , //PowerPro-CG
+>   run_wen
+>   , //PowerPro-CG
+>   and_tmp_80
+>   , //PowerPro-CG
+>   mux_360_nl
+after 1462,16 until ';'
+>  input wire		[0:0]		reg_I_wr_data_rsci_irdy_run_psct_cse; // PowerPro-CG
+>  input wire		[1:0]		fsm_output; // PowerPro-CG
+>  input wire		[0:0]		run_wen; // PowerPro-CG
+>  input wire		[0:0]		and_tmp_80; // PowerPro-CG
+>  input wire		[0:0]		mux_360_nl; // PowerPro-CG
+after 1469,14 until ';'
+>  wire				cg_o_I_wr_data_rsci_idat_bfwt_en; // PowerPro-CG
+before 1479,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_I_wr_data_rsci_I_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm
+>  //PowerPro-CG
+>  cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000026 inst_cg_obs_topless_5comma_32comma_1comm( .I_wr_data_rsci_oswt( reg_I_wr_data_rsci_irdy_run_psct_cse ),
+> 	 .fsm_output( fsm_output ),
+> 	 .I_wr_data_rsci_biwt( I_wr_data_rsci_biwt ),
+> 	 .I_wr_data_rsci_bdwt( I_wr_data_rsci_bdwt ),
+> 	 .I_wr_data_rsci_idat_bfwt_en( cg_o_I_wr_data_rsci_idat_bfwt_en ),
+> 	 .I_wr_data_rsci_bcwt( I_wr_data_rsci_bcwt ),
+> 	 .rst_3( rst ),
+> 	 .run_wen_1( run_wen ),
+> 	 .and_tmp_80( and_tmp_80 ),
+> 	 .mux_360_nl( mux_360_nl ));
+before 1490,7
+>        if ( cg_o_I_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+before 1494,7
+>          if ( cg_o_I_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+after 1651,67
+>   , //PowerPro-CG
+>   reg_O_wr_data_rsci_irdy_run_psct_cse
+>   , //PowerPro-CG
+>   run_wen
+>   , //PowerPro-CG
+>   or_tmp_242
+after 1660,16 until ';'
+>  input wire		[0:0]		reg_O_wr_data_rsci_irdy_run_psct_cse; // PowerPro-CG
+>  input wire		[0:0]		run_wen; // PowerPro-CG
+>  input wire		[0:0]		or_tmp_242; // PowerPro-CG
+after 1667,14 until ';'
+>  wire				cg_o_O_wr_data_rsci_idat_bfwt_en; // PowerPro-CG
+before 1677,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_inst.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_O_wr_data_rsci_O_wr_data_wait_dp_inst.inst_cg_obs_topless_5comma_32comma_1comm
+>  //PowerPro-CG
+>  cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000016 inst_cg_obs_topless_5comma_32comma_1comm( .O_wr_data_rsci_oswt( reg_O_wr_data_rsci_irdy_run_psct_cse ),
+> 	 .O_wr_data_rsci_biwt( O_wr_data_rsci_biwt ),
+> 	 .O_wr_data_rsci_bdwt( O_wr_data_rsci_bdwt ),
+> 	 .O_wr_data_rsci_idat_bfwt_en( cg_o_O_wr_data_rsci_idat_bfwt_en ),
+> 	 .run_wen_1( run_wen ),
+> 	 .O_wr_data_rsci_bcwt( O_wr_data_rsci_bcwt ),
+> 	 .rst_2( rst ),
+> 	 .or_tmp_242( or_tmp_242 ));
+before 1687,7
+>        if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+before 1688,7
+>        if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+before 1691,7
+>          if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+before 1692,7
+>          if ( cg_o_O_wr_data_rsci_idat_bfwt_en ) //PowerPro-CG
+after 2737,77
+>   , //PowerPro-CG
+>   fsm_output
+>   , //PowerPro-CG
+>   and_tmp_80
+>   , //PowerPro-CG
+>   mux_360_nl
+after 2748,17 until ';'
+>  input wire		[1:0]		fsm_output; // PowerPro-CG
+>  input wire		[0:0]		and_tmp_80; // PowerPro-CG
+>  input wire		[0:0]		mux_360_nl; // PowerPro-CG
+after 2788,47
+>       , //PowerPro-CG
+>        .reg_I_wr_data_rsci_irdy_run_psct_cse( I_wr_data_rsci_oswt )
+>       , //PowerPro-CG
+>        .fsm_output( fsm_output )
+>       , //PowerPro-CG
+>        .run_wen( run_wen )
+>       , //PowerPro-CG
+>        .and_tmp_80( and_tmp_80 )
+>       , //PowerPro-CG
+>        .mux_360_nl( mux_360_nl )
+after 2860,66
+>   , //PowerPro-CG
+>   or_tmp_242
+after 2871,17 until ';'
+>  input wire		[0:0]		or_tmp_242; // PowerPro-CG
+after 2911,47
+>       , //PowerPro-CG
+>        .reg_O_wr_data_rsci_irdy_run_psct_cse( O_wr_data_rsci_oswt )
+>       , //PowerPro-CG
+>        .run_wen( run_wen )
+>       , //PowerPro-CG
+>        .or_tmp_242( or_tmp_242 )
+after 3537,24
+>   , //PowerPro-CG
+>   ppro_reset_CLOCKclk_out_port
+after 3564,10 until ';'
+>  input wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+after 4685,15 until ';'
+>  wire				cg_o_O_write_data_data_sva_en; // PowerPro-CG
+>  wire		[0:0]		counter_or_nl; // PowerPro-CG
+>  wire		[0:0]		counter_nand_nl; // PowerPro-CG
+>  wire		[0:0]		counter_nand_2_nl; // PowerPro-CG
+>  wire		[0:0]		counter_nand_1_nl; // PowerPro-CG
+>  wire		[0:0]		counter_nand_3_nl; // PowerPro-CG
+>  wire		[0:0]		mux_44_nl; // PowerPro-CG
+>  wire		[0:0]		tile_pntr_nand_nl; // PowerPro-CG
+>  wire				cg_c_O_mac_counter_4_sva_en; // PowerPro-CG
+>  wire				cg_c_O_vld_zg_pntr_sva_en; // PowerPro-CG
+>  wire				cg_c_O_mac_pntr_sva_en; // PowerPro-CG
+>  wire				cg_c_I_mac_counter_1_sva_en; // PowerPro-CG
+>  wire				cg_c_I_mac_counter_2_sva_en; // PowerPro-CG
+>  wire				cg_c_I_mac_counter_3_sva_en; // PowerPro-CG
+>  wire				cg_c_W_mac_counter_4_sva_en; // PowerPro-CG
+>  wire				cg_c_W_mac_counter_1_sva_en; // PowerPro-CG
+>  wire				cg_c_W_mac_counter_2_sva_en; // PowerPro-CG
+>  wire				cg_c_I_mac_counter_0_sva_en; // PowerPro-CG
+>  wire				cg_c_O_mac_tile_bound_2_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_O_mac_tile_bound_0_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_O_mac_tile_bound_3_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_O_mac_tile_bound_4_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_O_mac_tile_bound_1_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_I_mac_tile_bound_3_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_I_mac_tile_bound_4_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_W_mac_tile_bound_4_lpi_1_en; // PowerPro-CG
+>  wire				cg_c_I_mac_tile_bound_2_lpi_1_en; // PowerPro-CG
+before 4689,3
+>   //PowerPro-CG
+edit 4689,3-4691,6 for rename topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151 to topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151_PP_0 for top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.O_mac_pntr_cntInst_run_rg
+> s'\btopless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151\b'topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000151_PP_0'
+after 4701,103
+>       , //PowerPro-CG
+>        .counter_or_nl_2( counter_or_nl )
+>       , //PowerPro-CG
+>        .counter_nand_nl_3( counter_nand_nl )
+>       , //PowerPro-CG
+>        .counter_nand_2_nl_4( counter_nand_2_nl )
+>       , //PowerPro-CG
+>        .counter_nand_1_nl_5( counter_nand_1_nl )
+>       , //PowerPro-CG
+>        .counter_nand_3_nl_6( counter_nand_3_nl )
+>       , //PowerPro-CG
+>        .mux_44_nl_7( mux_44_nl )
+>       , //PowerPro-CG
+>        .tile_pntr_nand_nl_8( tile_pntr_nand_nl )
+after 4743,57
+>       , //PowerPro-CG
+>        .or_tmp_242( or_tmp_242 )
+after 4771,57
+>       , //PowerPro-CG
+>        .fsm_output( fsm_output )
+>       , //PowerPro-CG
+>        .and_tmp_80( and_tmp_80 )
+>       , //PowerPro-CG
+>        .mux_360_nl( mux_360_nl )
+before 5656,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_obs_topless_5comma_32comma_1comm
+>  //PowerPro-CG
+>  cg_obs_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003 inst_cg_obs_topless_5comma_32comma_1comm( .rst( rst ),
+> 	 .fsm_output( fsm_output ),
+> 	 .O_write_data_data_sva_en( cg_o_O_write_data_data_sva_en ),
+> 	 .land_9_lpi_1_dfm_1( land_9_lpi_1_dfm_1 ));
+before 5656,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000001.PE.rf_5_32_32_32_1_1_1_1_1_1_O_partial_type_O_addr_type_L1_I_type_I_addr_type_L1_W_type_W_addr_type_L1_run_inst.inst_cg_const_stb_topless_5comma_32comma
+>  //PowerPro-CG
+>  cg_const_stb_topless_5comma_32comma_1comma_1comma_O_addr_type_L1comma_32comma_1comma_1comma_I_addr_type_L1comma_32comma_1comma_1comma_W_addr_type_L1comma_5comma_288comma_8comma_8comma_O_addr_type_L2comma_312comma_8comma_8comma_I_addr_type_L2c000003 inst_cg_const_stb_topless_5comma_32comma( .tile_bound_out( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_35 ),
+> 	 .counter_out( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_34 ),
+> 	 .run_wen( run_wen ),
+> 	 .fsm_output( fsm_output ),
+> 	 .O_mac_counter_4_sva_en( cg_c_O_mac_counter_4_sva_en ),
+> 	 .O_vld_zg_pntr_sva_en( cg_c_O_vld_zg_pntr_sva_en ),
+> 	 .O_mac_pntr_sva_en( cg_c_O_mac_pntr_sva_en ),
+> 	 .I_mac_counter_1_sva_en( cg_c_I_mac_counter_1_sva_en ),
+> 	 .I_mac_counter_2_sva_en( cg_c_I_mac_counter_2_sva_en ),
+> 	 .I_mac_counter_3_sva_en( cg_c_I_mac_counter_3_sva_en ),
+> 	 .W_mac_counter_4_sva_en( cg_c_W_mac_counter_4_sva_en ),
+> 	 .W_mac_counter_1_sva_en( cg_c_W_mac_counter_1_sva_en ),
+> 	 .W_mac_counter_2_sva_en( cg_c_W_mac_counter_2_sva_en ),
+> 	 .I_mac_counter_0_sva_en( cg_c_I_mac_counter_0_sva_en ),
+> 	 .O_mac_tile_bound_2_lpi_1_en( cg_c_O_mac_tile_bound_2_lpi_1_en ),
+> 	 .O_mac_tile_bound_0_lpi_1_en( cg_c_O_mac_tile_bound_0_lpi_1_en ),
+> 	 .O_mac_tile_bound_3_lpi_1_en( cg_c_O_mac_tile_bound_3_lpi_1_en ),
+> 	 .O_mac_tile_bound_4_lpi_1_en( cg_c_O_mac_tile_bound_4_lpi_1_en ),
+> 	 .O_mac_tile_bound_1_lpi_1_en( cg_c_O_mac_tile_bound_1_lpi_1_en ),
+> 	 .I_mac_tile_bound_3_lpi_1_en( cg_c_I_mac_tile_bound_3_lpi_1_en ),
+> 	 .I_mac_tile_bound_4_lpi_1_en( cg_c_I_mac_tile_bound_4_lpi_1_en ),
+> 	 .W_mac_tile_bound_4_lpi_1_en( cg_c_W_mac_tile_bound_4_lpi_1_en ),
+> 	 .I_mac_tile_bound_2_lpi_1_en( cg_c_I_mac_tile_bound_2_lpi_1_en ),
+> 	 .counter_or_nl( counter_or_nl ),
+> 	 .counter_nand_nl( counter_nand_nl ),
+> 	 .counter_nand_2_nl( counter_nand_2_nl ),
+> 	 .counter_nand_1_nl( counter_nand_1_nl ),
+> 	 .counter_nand_3_nl( counter_nand_3_nl ),
+> 	 .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port ),
+> 	 .W_mac_pntr_and_cse( W_mac_pntr_and_cse ),
+> 	 .mux_614_nl( mux_614_nl ),
+> 	 .mux_44_nl( mux_44_nl ),
+> 	 .tile_pntr_nand_nl( tile_pntr_nand_nl ),
+> 	 .counter_out_2( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_29 ),
+> 	 .O_mac_tile_bound_2_lpi_1_dfm_mx0( O_mac_tile_bound_2_lpi_1_dfm_mx0 ),
+> 	 .reg_W_instr_in_rsci_oswt_cse_1( reg_W_instr_in_rsci_oswt_cse_1 ),
+> 	 .and_395_cse( and_395_cse ),
+> 	 .O_mac_tile_bound_0_lpi_1_dfm_mx0( O_mac_tile_bound_0_lpi_1_dfm_mx0 ),
+> 	 .O_mac_tile_bound_3_lpi_1_dfm_mx0( O_mac_tile_bound_3_lpi_1_dfm_mx0 ),
+> 	 .O_mac_tile_bound_4_lpi_1_dfm_mx0( O_mac_tile_bound_4_lpi_1_dfm_mx0 ),
+> 	 .O_mac_tile_bound_1_lpi_1_dfm_mx0( O_mac_tile_bound_1_lpi_1_dfm_mx0 ),
+> 	 .tile_bound_out_3( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_25 ),
+> 	 .I_mac_tile_bound_3_lpi_1_dfm_mx0( I_mac_tile_bound_3_lpi_1_dfm_mx0 ),
+> 	 .I_mac_tile_bound_4_lpi_1_dfm_mx0( I_mac_tile_bound_4_lpi_1_dfm_mx0 ),
+> 	 .W_mac_tile_bound_4_lpi_1_dfm_mx0( W_mac_tile_bound_4_lpi_1_dfm_mx0 ),
+> 	 .tile_bound_out_2( libraries_O_addr_cnt_5_O_addr_type_L1_1_7448a59bcc55848f49259c21df88d8bc12ff1_30 ),
+> 	 .I_mac_tile_bound_2_lpi_1_dfm_mx0( I_mac_tile_bound_2_lpi_1_dfm_mx0 ),
+> 	 .mux_tmp_76( mux_tmp_76 ),
+> 	 .if_6_or_itm( if_6_or_itm ),
+> 	 .if_6_if_if_not_5_nl( if_6_if_if_not_5_nl ),
+> 	 .clk( clk ),
+> 	 .rst( rst ));
+before 5981,7
+>        if ( cg_c_O_mac_pntr_sva_en ) //PowerPro-CG
+before 5984,7
+>        if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 5985,7
+>        if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 5986,7
+>        if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 5987,7
+>        if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 5988,7
+>        if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 5989,7
+>        if ( cg_c_W_mac_counter_4_sva_en ) //PowerPro-CG
+before 5991,7
+>        if ( cg_c_W_mac_counter_2_sva_en ) //PowerPro-CG
+before 5992,7
+>        if ( cg_c_W_mac_counter_1_sva_en ) //PowerPro-CG
+before 5995,7
+>        if ( cg_c_I_mac_counter_3_sva_en ) //PowerPro-CG
+before 5996,7
+>        if ( cg_c_I_mac_counter_2_sva_en ) //PowerPro-CG
+before 5997,7
+>        if ( cg_c_I_mac_counter_1_sva_en ) //PowerPro-CG
+before 5998,7
+>        if ( cg_c_I_mac_counter_0_sva_en ) //PowerPro-CG
+before 6003,7
+>          if ( cg_c_O_mac_pntr_sva_en ) //PowerPro-CG
+before 6006,7
+>          if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 6007,7
+>          if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 6008,7
+>          if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 6009,7
+>          if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 6010,7
+>          if ( cg_c_O_mac_counter_4_sva_en ) //PowerPro-CG
+before 6011,7
+>          if ( cg_c_W_mac_counter_4_sva_en ) //PowerPro-CG
+before 6013,7
+>          if ( cg_c_W_mac_counter_2_sva_en ) //PowerPro-CG
+before 6014,7
+>          if ( cg_c_W_mac_counter_1_sva_en ) //PowerPro-CG
+before 6017,7
+>          if ( cg_c_I_mac_counter_3_sva_en ) //PowerPro-CG
+before 6018,7
+>          if ( cg_c_I_mac_counter_2_sva_en ) //PowerPro-CG
+before 6019,7
+>          if ( cg_c_I_mac_counter_1_sva_en ) //PowerPro-CG
+before 6020,7
+>          if ( cg_c_I_mac_counter_0_sva_en ) //PowerPro-CG
+before 6570,7
+>     begin
+>        if ( cg_o_O_write_data_data_sva_en ) //PowerPro-CG
+before 6570,53
+>        end
+before 6573,7
+>     begin
+>          if ( cg_o_O_write_data_data_sva_en ) //PowerPro-CG
+before 6573,58
+>        end
+before 6650,7
+>     begin
+>        if ( cg_c_O_vld_zg_pntr_sva_en ) //PowerPro-CG
+before 6650,37
+>        end
+before 6653,7
+>     begin
+>          if ( cg_c_O_vld_zg_pntr_sva_en ) //PowerPro-CG
+before 6653,48
+>        end
+before 6689,7
+>        if ( cg_c_O_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+before 6690,7
+>        if ( cg_c_O_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+before 6691,7
+>        if ( cg_c_O_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+before 6692,7
+>        if ( cg_c_O_mac_tile_bound_1_lpi_1_en ) //PowerPro-CG
+before 6693,7
+>        if ( cg_c_O_mac_tile_bound_0_lpi_1_en ) //PowerPro-CG
+before 6694,7
+>        if ( cg_c_W_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+before 6699,7
+>        if ( cg_c_I_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+before 6700,7
+>        if ( cg_c_I_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+before 6701,7
+>        if ( cg_c_I_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+before 6706,7
+>          if ( cg_c_O_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+before 6708,7
+>          if ( cg_c_O_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+before 6710,7
+>          if ( cg_c_O_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+before 6712,7
+>          if ( cg_c_O_mac_tile_bound_1_lpi_1_en ) //PowerPro-CG
+before 6714,7
+>          if ( cg_c_O_mac_tile_bound_0_lpi_1_en ) //PowerPro-CG
+before 6716,7
+>          if ( cg_c_W_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+before 6726,7
+>          if ( cg_c_I_mac_tile_bound_4_lpi_1_en ) //PowerPro-CG
+before 6728,7
+>          if ( cg_c_I_mac_tile_bound_3_lpi_1_en ) //PowerPro-CG
+before 6730,7
+>          if ( cg_c_I_mac_tile_bound_2_lpi_1_en ) //PowerPro-CG
+after 7636,24
+>   , //PowerPro-CG
+>   ppro_reset_CLOCKclk_out_port
+after 7663,10 until ';'
+>  input wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+after 7696,45
+>       , //PowerPro-CG
+>        .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port )
+after 7719,102
+>   , //PowerPro-CG
+>   ppro_reset_CLOCKclk_out_port
+after 7757,10 until ';'
+>  input wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+after 7865,53
+>       , //PowerPro-CG
+>        .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port )
+after 7967,15 until ';'
+>  wire		[0:0]		ppro_reset_CLOCKclk_out_port; // PowerPro-CG
+after 8009,65
+>       , //PowerPro-CG
+>        .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port )
+before 8011,3 for cginst top_5_32_1_1_O_addr_type_L1_32_1_1_I_add
+>  //PowerPro-CG
+>  top_5_32_1_1_O_addr_type_L1_32_1_1_I_addr_type_L1_32_1_1_W_addr_type_L1_5_288_8_8_O_addr_type_L2_312_8_8_I_addr_type_L2_1728_8_8_W_addr_type_L2_5_8640_8_8_O_addr_type_L3_8640_8_8_I_addr_type_L3_55296_8_8_W_addr_type_L3_O_partial_000000_powerpro_reset_mod top_5_32_1_1_O_addr_type_L1_32_1_1_I_add( .rst( rst ),
+> 	 .ppro_reset_CLOCKclk_out_port( ppro_reset_CLOCKclk_out_port ));
