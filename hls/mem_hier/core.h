@@ -470,9 +470,6 @@ public:
     if (setup){
       if (instr_in.available(1)){
         instr = instr_in.read();
-/*#ifndef __SYNTHESIS__
-printf("WEIGHT/INPUT instruction:\n\n");
-#endif*/
       }
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
@@ -485,9 +482,6 @@ printf("WEIGHT/INPUT instruction:\n\n");
         rd_tile_bound[x] = tile_size[x];
         irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
       }
-/*#ifndef __SYNTHESIS__
-	printf("\n\n");
-#endif*/
       setup = false;
     }
         
@@ -680,9 +674,9 @@ public:
         wr_irrel_at_max = loop_bound[x] != 1 ? false : wr_irrel_at_max;
       }
         if (tile_size[0] >= tile_size[nb_cnt-1]){skid_buf_wr_zero_guard.pop();}
-#ifndef __SYNTHESIS__
-        printf("TILE SIZE %d \t | \t data in zero guard buffer @ setup: %d\n", tile_size[nb_cnt-1], data_zg);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("TILE SIZE %d \t | \t data in zero guard buffer @ setup: %d\n", tile_size[nb_cnt-1], data_zg);
+//#endif
       setup = false;
       }
     } else {
@@ -770,12 +764,12 @@ public:
     if (read_flag0 | skid_buf_bot.not_empty()) {
 #ifndef __SYNTHESIS__
       debug_cnt0++;
-      if (read_flag0){
-        printf("TILE SIZE %d \t | \t data in buffer down: %d",  tile_size[nb_cnt-1], read_data_bot.data[0].to_uint());
-        printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d", rd_pntr, wr_pntr, vld_zg_pntr);
-        printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d, reuse: %d\n",
-               data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt, reuse);
-      }
+      //if (read_flag0){
+        //printf("TILE SIZE %d \t | \t data in buffer down: %d",  tile_size[nb_cnt-1], read_data_bot.data[0].to_uint());
+        //printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d", rd_pntr, wr_pntr, vld_zg_pntr);
+        //printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d, reuse: %d\n",
+               //data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt, reuse);
+      //}
 #endif
       if (read_flag0 & skid_buf_bot.not_empty()) {
         skid_buf_bot.push(read_data_bot);
@@ -861,8 +855,9 @@ public:
       if (read_flag2){
         printf("TILE SIZE %d \t | \t zero guard in skid buf: %d", tile_size[nb_cnt-1], zero_guard);
         printf("\t | \t rd_pntr: %d, rd_pntr_out: %d, wr_pntr: %d, vld_zg_pntr: %d", rd_pntr, rd_pntr_out, wr_pntr, vld_zg_pntr);
-        printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d\n",
+        printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d",
                data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt);
+        printf("\n");
       }
 #endif
       if (read_flag2 & skid_buf_zero_guard.not_empty()) {
@@ -944,9 +939,9 @@ public:
       zero_guard_top_flag = wr_data_zero_guard.nb_read(wr_zero_guard);
       if (zero_guard_top_flag){
         skid_buf_wr_zero_guard.push(wr_zero_guard);
-#ifndef __SYNTHESIS__
-        printf("TILE SIZE %d \t | \t zero guard from level above: %d\n", tile_size[nb_cnt-1], wr_zero_guard);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("TILE SIZE %d \t | \t zero guard from level above: %d\n", tile_size[nb_cnt-1], wr_zero_guard);
+//#endif
         data_zg = skid_buf_wr_zero_guard.peek();
       }
     }
@@ -960,16 +955,16 @@ public:
       // read in data from bot (and top) depending on the reuse opportunities
       if ((wr_irrel_at_max && !flags_top[1] && skid_buf_wr_zero_guard.not_empty() && !read_data_top_flag) || !wr_irrel_at_max){
         if (!write_flag_bot){write_flag_bot = wr_data_bot.nb_read(write_data_bot);}
-        if (!write_flag_top && wr_irrel_at_max && !data_zg){write_flag_top = wr_data_top.nb_read(write_data_top);}
+        if (!write_flag_top && wr_irrel_at_max && !skid_buf_wr_zero_guard.peek()){write_flag_top = wr_data_top.nb_read(write_data_top);}
       }
-      if (write_flag_bot && ((!wr_irrel_at_max) || (wr_irrel_at_max && ((!data_zg && write_flag_top) || data_zg)))){
+      if (write_flag_bot && ((!wr_irrel_at_max) || (wr_irrel_at_max && ((!skid_buf_wr_zero_guard.peek() && write_flag_top) || skid_buf_wr_zero_guard.peek())))){
         // if data coming from below cannot be reused anymore at this level,
         // forward it to the level above or out of the accelerator
         // read in partial sums if available at higher levels
         if (wr_irrel_at_max){
           read_data_top = write_data_bot;
           read_data_top_flag = true;
-          if (!data_zg){
+          if (!skid_buf_wr_zero_guard.peek()){
 #pragma hls_unroll yes
           WR_IN_MEM_FROM_TOP: for (int i=0; i<WORDS_in; i++){
             mem[wr_pntr+i] = write_data_top.data[i];
@@ -977,15 +972,15 @@ public:
           }
           // pop data from buffer if iterated over all relevant mapped loops/coordinates/memory cells
           if (wr_pntr+WORDS_in >= tile_size[nb_cnt-1]){
-#ifndef __SYNTHESIS__
-            printf("TILE SIZE %d \t | \t popped %d from zero_guard_buf", tile_size[nb_cnt-1], skid_buf_wr_zero_guard.peek());
-            printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d, data_zg: %d", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
-            printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d\n", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
-#endif
+//#ifndef __SYNTHESIS__
+            //printf("TILE SIZE %d \t | \t popped %d from zero_guard_buf", tile_size[nb_cnt-1], skid_buf_wr_zero_guard.peek());
+            //printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d, data_zg: %d", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
+            //printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d\n", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
+//#endif
             skid_buf_wr_zero_guard.pop();
-#ifndef __SYNTHESIS__
-            printf(" => skid_buf_wr_zero_guard.not_empty(): %d, wr_tile_bound: %d\n", skid_buf_wr_zero_guard.not_empty(), wr_tile_bound[0]);
-#endif
+//#ifndef __SYNTHESIS__
+            //printf(" => skid_buf_wr_zero_guard.not_empty(): %d, wr_tile_bound: %d\n", skid_buf_wr_zero_guard.not_empty(), wr_tile_bound[0]);
+//#endif
           }
         // write partial sums from the level below in this memory level to be able to reuse in the near future
         } else if (!wr_irrel_at_max){
@@ -996,6 +991,9 @@ public:
             //printf("L2 data in | mem[%d] = %d\n", wr_pntr+i, mem[wr_pntr+i].to_uint());
 //#endif
           }
+        }
+        if (wr_pntr+WORDS_in >= tile_size[nb_cnt-1]){
+          data_zg = false;
         }
 
         // increment pointer based on word length
@@ -1008,9 +1006,12 @@ public:
         //}
 #ifndef __SYNTESIS__
         printf("TILE SIZE %d \t | \t write data bot ", tile_size[nb_cnt-1]);
-        if (!read_data_top_flag) {printf("@ mem[%d]: %d", (wr_pntr-1), write_data_bot.data[0].to_uint());} else if (read_data_top_flag) {printf("to L above: %d", write_data_bot.data[0].to_uint());}
-        if (write_flag_top) {printf("\t | \t write data top @ mem[%d]: %d", (wr_pntr-1), write_data_top.data[0].to_uint());}
-        printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
+        for (int i=0; i<WORDS_in; i++){
+          if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i), write_data_bot.data[i].to_uint());} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
+          if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i), write_data_top.data[i].to_uint());}
+        }
+        printf("\n");
+        //printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
         //printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
         //printf("\t | \t read_data_top_flag: %d\n", read_data_top_flag);
 #endif
@@ -1160,9 +1161,9 @@ public:
         W_instr = W_instr_in.read();
         data_zg = wr_data_zero_guard.read();
         skid_buf_wr_zero_guard.push(data_zg);
-#ifndef __SYNTHESIS__
-        printf("RF \t\t | \t wr zero guard @ setup: %d\n", data_zg);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("RF \t\t | \t wr zero guard @ setup: %d\n", data_zg);
+//#endif
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
         O_loop_bound[x] = O_instr.bound[x];
@@ -1285,8 +1286,8 @@ public:
     if (read_flag1 | skid_buf_top.not_empty()) {
 #ifndef __SYNTHESIS__
       debug_cnt++;
-      if (read_flag1)
-        printf("RF \t\t | \t data in buffer up: %d\n", O_read_data.data[0].to_uint());
+      //if (read_flag1)
+        //printf("RF \t\t | \t data in buffer up: %d\n", O_read_data.data[0].to_uint());
 #endif
       if (read_flag1 & skid_buf_top.not_empty()) {
         skid_buf_top.push(O_read_data);
@@ -1398,9 +1399,9 @@ public:
     if (!flags_wr_zero_guard[0]){
       zero_guard_top_flag = wr_data_zero_guard.nb_read(wr_zero_guard);
       if (zero_guard_top_flag){
-#ifndef __SYNTHESIS__
-        printf("RF \t\t | \t wr zero guard: %d\n", wr_zero_guard);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("RF \t\t | \t wr zero guard: %d\n", wr_zero_guard);
+//#endif
         skid_buf_wr_zero_guard.push(wr_zero_guard);
       }
     }
@@ -1426,10 +1427,10 @@ public:
 
     if (psum_top && O_mac_pntr == O_vld_zg_pntr && !O_write_flag){
       O_write_flag = O_wr_data.nb_read(O_write_data);
-#ifndef __SYNTHESIS__
-      if (O_write_flag)
-        printf("RF \t\t | \t data from above: %d\n", O_write_data.data[0].to_uint());
-#endif
+//#ifndef __SYNTHESIS__
+      //if (O_write_flag)
+        //printf("RF \t\t | \t data from above: %d\n", O_write_data.data[0].to_uint());
+//#endif
     }
     // write input data to input memory if reusable data is consumed
     if (!I_data_vld) {
@@ -1736,13 +1737,13 @@ public:
             
             if (cnt == 0){
               if (data_in.available(1)){
-#ifndef __SYNTHESIS__
-        printf("WR ZERO GUARD BUFFER SIZE: %d\n", data_in.size());
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("WR ZERO GUARD BUFFER SIZE: %d\n", data_in.size());
+//#endif
                 data_in_tmp = data_in.read();
-#ifndef __SYNTHESIS__
-        printf("WR ZERO GUARD BUFFER DATA IN: %d\n", data_in_tmp);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("WR ZERO GUARD BUFFER DATA IN: %d\n", data_in_tmp);
+//#endif
               } 
             }
             

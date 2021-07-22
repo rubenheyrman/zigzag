@@ -1,5 +1,5 @@
-#include "config_file.h"
-#include "top.h"
+#include "config_file2.h"
+#include "mh_top.h"
 #include "DNNlayerSW.h"
 #include <mc_scverify.h>
 
@@ -19,24 +19,36 @@ CCS_MAIN(int argv, char **argc)
 {
   cout << "Initilialization" << endl;
   // Check if relevant loops do not surpass memory bounds of HW
-  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {6,4,16,1,1}; // K B C # #
-  bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,1,1};
-  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {4,4,2,1,1};  // K K C # #
-  bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,1,1};
-  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {16,1,1,1,1}; // B # # # #
-  bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
+  // O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {3,3,3,3,1};
+  // bool O_loop_relevancy_L1[nb_cnt]       = {1,0,0,1,1};
+  // O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,2,2,3,5};
+  // bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,0,1};
+  // O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
+  // bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
+  // O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,1,1,1,1};
+  // bool O_loop_relevancy_L1[nb_cnt]       = {1,1,1,1,1};
+  // O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,3,3,3,3};
+  // bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,0,1};
+  // O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,2,2,3,5};
+  // bool O_loop_relevancy_L3[nb_cnt]       = {1,1,0,0,1};
+  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,3,3,3,3};
+  bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,0,1};
+  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,1,1,1,1};
+  bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
+  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,2,2,3,5};
+  bool O_loop_relevancy_L3[nb_cnt]       = {1,1,0,0,1};
 
-  I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {6,4,16,4,4};
-  bool I_loop_relevancy_L1[nb_cnt]       = {0,1,1,0,0};
-  I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {2,16,1,1,1};
+  I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {3,3,1,1,1};
+  bool I_loop_relevancy_L1[nb_cnt]       = {1,1,1,1,1};
+  I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {3,1,1,1,1};
   bool I_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
-  I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
-  bool I_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
+  I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {3,2,2,1,1};
+  bool I_loop_relevancy_L3[nb_cnt]       = {1,0,1,1,1};
 
-  W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {6,4,1,1,1};
-  bool W_loop_relevancy_L1[nb_cnt]       = {1,0,1,1,1};
-  W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {16,4,4,2,16};
-  bool W_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,0};
+  W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {3,3,3,3,2};
+  bool W_loop_relevancy_L1[nb_cnt]       = {0,1,1,0,1};
+  W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {2,3,5,1,1};
+  bool W_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
   W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
   bool W_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
    
@@ -163,7 +175,6 @@ CCS_MAIN(int argv, char **argc)
         }
       }
     }
-    wa++;
   }
 
   DNNlayer<B, K, C, OY, OX, IY, IX, FY, FX, SY, SX, SFY, SFX, O_ref_type, I_ref_type, W_ref_type> SWinst;
@@ -211,29 +222,32 @@ CCS_MAIN(int argv, char **argc)
   
   int I_cnt = 0;
   // INPUT channel
-  for (int oy0=0; oy0<OY0; oy0++){
-    for (int ox0=0; ox0<OX0; ox0++){
-      for (int fy0=0; fy0<FY0; fy0++){
-        for (int fx0=0; fx0<FX0; fx0++){
-          for (int b1=0; b1<B1; b1++){
-            for (int c1=0; c1<C1; c1++){
-              for (int c0=0; c0<C0; c0++){
-                for (int b0=0; b0<B0; b0++){
-                  if ((oy0+fy0 < IY) && (ox0+fx0 < IX)) {
-                    I_data_in.data[I_cnt] = *(*(*(*(input_array+b1*B0+b0)+c1*C0+c0)+(oy0+fy0))+(ox0+fx0));
-                    //cout << *(*(*(*(input_array+b0)+c3*c2*c1*c0)+(oy0+fy0))+(ox0+fx0)) << " =? " << I_data_in.data[I_cnt] << endl;
-                  } else {
-                    I_data_in.data[I_cnt] = 0;
-                  }
-                  I_cnt++;
-                  if (I_cnt == mem_words_I_L3_in){
-                    // printf("Writing Input  data: [ ");
-                    // for (int i=0; i<mem_words_I_L3_in; i++){
-                    //   printf(" %d ", I_data_in.data[i].to_uint());
-                    // }
-                    // printf(" ]\n");
-                    I_cnt = 0;
-                    I_wr_data.write(I_data_in);
+  for (int b0=0; b0<B0; b0++){
+    for (int c3=0; c3<C3; c3++){
+      for (int k2=0; k2<K2; k2++){
+        for (int c2=0; c2<C2; c2++){
+          for (int k1=0; k1<K1; k1++){
+            for (int fx0=0; fx0<FX0; fx0++){
+              for (int c1=0; c1<C1; c1++){
+                  for (int ox0=0; ox0<OX0; ox0++){
+                    for (int c0=0; c0<C0; c0++){
+                      for (int fy0=0; fy0<FY0; fy0++){
+                        for (int oy0=0; oy0<OY0; oy0++){
+                          if ((oy0+fy0 < IY) && (ox0+fx0 < IX)) {
+                            I_data_in.data[I_cnt] = *(*(*(*(input_array+b0)+c3*C2*C1*C0+c2*C1*C0+c1*C0+c0)+(oy0+fy0))+(ox0+fx0));
+//cout << *(*(*(*(input_array+b0)+c3*c2*c1*c0)+(oy0+fy0))+(ox0+fx0)) << " =? " << I_data_in.data[I_cnt] << endl;
+                          } else {
+                            I_data_in.data[I_cnt] = 0;
+                          }
+                          I_cnt++;
+                          if (I_cnt == mem_words_I_L3_in){
+                            //printf("Writing Input data: %d\n", I_data_in.data[I_cnt-1].to_uint());
+                            I_cnt = 0;
+                            I_wr_data.write(I_data_in);
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -241,31 +255,27 @@ CCS_MAIN(int argv, char **argc)
           }
         }
       }
-    }
   }
-  //for (int i=0; i<300; i++)
-    //I_wr_data.write(I_data_in);
+
   int W_cnt = 0;
   // WEIGHT channel
-  for (int oy0=0; oy0<OY0; oy0++){
-    for (int ox0=0; ox0<OX0; ox0++){
-      for (int fy0=0; fy0<FY0; fy0++){
-        for (int fx0=0; fx0<FX0; fx0++){
-          for (int c1=0; c1<C1; c1++){
-            for (int k2=0; k2<K2; k2++){
-              for (int k1=0; k1<K1; k1++){
-                for (int c0=0; c0<C0; c0++){
-                  for (int k0=0; k0<K0; k0++){
-                    W_data_in.data[W_cnt] = *(*(*(*(weight_array+k2*K1*K0+k1*K0+k0)+c1*C0+c0)+fy0)+fx0);// cout << *(*(*(*(weight_array+k2*k1*k0)+c3*c2*c1*c0)+fy0)+fx0) << "	";
-                    W_cnt++;
-                    if (W_cnt == mem_words_W_L3_in){
-                      // printf("Writing Weight data: [ ");
-                      // for (int i=0; i<mem_words_W_L3_in; i++){
-                      //   printf(" %d ", W_data_in.data[i].to_uint());
-                      // }
-                      // printf(" ]\n");
-                      W_cnt = 0;
-                      W_wr_data.write(W_data_in);
+  for (int b0=0; b0<B0; b0++){
+    for (int c3=0; c3<C3; c3++){
+      for (int k2=0; k2<K2; k2++){
+        for (int c2=0; c2<C2; c2++){
+          for (int k1=0; k1<K1; k1++){
+            for (int fx0=0; fx0<FX0; fx0++){
+              for (int c1=0; c1<C1; c1++){
+                for (int k0=0; k0<K0; k0++){
+                  for (int c0=0; c0<C0; c0++){
+                    for (int fy0=0; fy0<FY0; fy0++){
+                      W_data_in.data[W_cnt] = *(*(*(*(weight_array+k2*K1*K0+k1*K0+k0)+c3*C2*C1*C0+c2*C1*C0+c1*C0+c0)+fy0)+fx0);// cout << *(*(*(*(weight_array+k2*k1*k0)+c3*c2*c1*c0)+fy0)+fx0) << "	";
+                      W_cnt++;
+                      if (W_cnt == mem_words_W_L3_in){
+                        //printf("Writing Weight data: %d\n\n", W_data_in.data[W_cnt-1].to_uint());
+                        W_cnt = 0;
+                        W_wr_data.write(W_data_in);
+                      }
                     }
                   }
                 }
@@ -276,44 +286,58 @@ CCS_MAIN(int argv, char **argc)
       }
     }
   }
-  //for (int i=0; i<300; i++)
-    //W_wr_data.write(W_data_in);
+
   bool HWdone = false;
+
   cout << endl;
   cout << "Finished loading channels" << endl;
+
   //printf("Size: O input channel: %5d, W input channel: %5d, I input channel: %5d, Size zero guard channel: %5d, ", O_wr_data.size(), W_wr_data.size(), I_wr_data.size(), wr_zero_guard.size());
   cout << "Running HW instance" << endl;
   int its = 0;
   int O_cnt = 0;
   int O_cnt_wr = 0;
-  for (int oy0=0; oy0<OY0; oy0++){
-    for (int ox0=0; ox0<OX0; ox0++){
-      for (int fy0=0; fy0<FY0; fy0++){
-        for (int fx0=0; fx0<FX0; fx0++){
-          if (fy0 == 0 && fx0 == 0){
+  for (int b0=0; b0<B0; b0++){
+    for (int c3=0; c3<C3; c3++){
+      for (int k2=0; k2<K2; k2++){
+        for (int c2=0; c2<C2; c2++){
+          if (c3==0 && c2==0){
             wr_zero_guard.write(1);
+            printf("1 -> ");
           } else {
             wr_zero_guard.write(0);
+            printf("0 -> ");
           }
         }
       }
     }
   }
-  for (int i=0; i<1; i++)
+  // for (int i=0; i<50; i++)
     wr_zero_guard.write(1);
-  //printf("\n");
-  int max_HW_its = 1000;
-  bool failed;
-  for (int oy0=0; oy0<OY0; oy0++){
-    for (int ox0=0; ox0<OX0; ox0++){
-      for (int fy0=0; fy0<FY0; fy0++){
-        for (int fx0=0; fx0<FX0; fx0++){
-          for (int b1=0; b1<B1; b1++){
-            for (int k2=0; k2<K2; k2++){
-              for (int k1=0; k1<K1; k1++){
-                for (int b0=0; b0<B0; b0++){
-                  for (int k0=0; k0<K0; k0++){
-                    its++;
+  printf("\n");
+  //for (int i=0; i<20; i++)
+    //wr_zero_guard.write(1);
+  for (int b0=0; b0<B0; b0++){
+    for (int c3=0; c3<C3; c3++){
+      for (int k2=0; k2<K2; k2++){
+        for (int c2=0; c2<C2; c2++){
+          for (int k1=0; k1<K1; k1++){
+            for (int k0=0; k0<K0; k0++){
+              for (int ox0=0; ox0<OX0; ox0++){
+                for (int oy0=0; oy0<OY0; oy0++){
+                  if (*(*(*(*(output_array_hw+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) != 0){
+                    O_data_in.data[O_cnt_wr] = *(*(*(*(output_array_hw+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0);
+                    O_cnt_wr++;
+                    if (O_cnt_wr == mem_words_O_L3_out){
+                      O_wr_data.write(O_data_in);
+                      O_cnt_wr = 0;
+                    }
+                  }
+                }
+              }
+              for (int ox0=0; ox0<OX0; ox0++){
+                for (int oy0=0; oy0<OY0; oy0++){
+                  its++;
 //printf("O: (%d,%d,%d,%d), W: (%d,%d,%d,%d), I: (%d,%d,%d,%d) => ",
 //b0, k2*K1*K0+k1*K0+k0, oy0, ox0,
 //k2*K1*K0+k1*K0+k0, c3*C2*C1*C0+c2*C1*C0+c1*C0+c0, fy0, fx0,
@@ -323,32 +347,25 @@ CCS_MAIN(int argv, char **argc)
                   //printf("Size: O input channel: %5d, W input channel: %5d, I input channel: %5d, Size zero guard channel: %5d, ",
                          //O_wr_data.size(), W_wr_data.size(), I_wr_data.size(), wr_zero_guard.size());
                   //printf("\n");
-                    int debug_cnt = 0;
-                    while (!HWdone){
-                      HWinst.run(O_wr_data,O_rd_data,I_wr_data,W_wr_data,wr_zero_guard,layer_instruction_in);
-                      if (O_rd_data.available(1)){
-                        HWdone = true;
-                        O_data_out = O_rd_data.read();
-                      }
-                      debug_cnt++;
-                      //if (debug_cnt == max_HW_its) { HWdone = true; }//break; }
+                  int debug_cnt = 0;
+                  while (!HWdone){
+                    HWinst.run(O_wr_data,O_rd_data,I_wr_data,W_wr_data,wr_zero_guard,layer_instruction_in);
+                    if (O_rd_data.available(1)){
+                      HWdone = true;
+                      O_data_out = O_rd_data.read();
                     }
-                    //if (debug_cnt != max_HW_its){
-                      *(*(*(*(output_array_hw+b1*B0+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) = O_data_out.data[O_cnt];
-                      O_cnt++;
-                      if (O_cnt == mem_words_O_L3_out){
-                        O_cnt = 0;
-                        HWdone = false;
-                      }
-                    if (*(*(*(*(output_array_hw+b1*B0+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) != *(*(*(*(output_array_sw+b1*B0+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0)){
-                      cout << "Paused due to wrong output result:" << endl;
-                      cout << "OFMAPhw " << *(*(*(*(output_array_hw+b1*B0+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) << " | ";
-                      cout << "OFMAPsw " << *(*(*(*(output_array_sw+b1*B0+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0);
-                      cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k2*K1*K0+k1*K0+k0 << "]" << endl;
-                      cin.get(); // to pause the console and control by pressing enter
-                    }
-                    //} else {HWdone = false; failed=true;}
+                    debug_cnt++;
+                    // if (debug_cnt == 1000) { break; }
                   }
+                  *(*(*(*(output_array_hw+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) = O_data_out.data[O_cnt];
+                  O_cnt++;
+                  if (O_cnt == mem_words_O_L3_out){
+                    O_cnt = 0;
+                    HWdone = false;
+                  }
+                  cout << "OFMAPhw " << *(*(*(*(output_array_hw+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) << " | ";
+                  cout << "OFMAPsw " << *(*(*(*(output_array_sw+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0);
+                  cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k2*K1*K0+k1*K0+k0 << "]" << endl;
                 }
               }
             }
@@ -357,7 +374,35 @@ CCS_MAIN(int argv, char **argc)
       }
     }
   }
-  cout << "Finished Reading output channel" << endl << endl;
+
+  /*cout << "Reading output channel" << endl << endl;
+  //printf("Size output channel: %d\n\n", O_rd_data.size());
+  int O_cnt = 0;
+  // OUTPUT channel
+  for (int b0=0; b0<B0; b0++){
+    for (int k2=0; k2<K2; k2++){
+      for (int k1=0; k1<K1; k1++){
+        for (int k0=0; k0<K0; k0++){
+          for (int ox0=0; ox0<OX0; ox0++){
+            for (int oy0=0; oy0<OY0; oy0++){
+              if (O_rd_data.available(1)){
+                if (O_cnt == 0) {
+                  O_data_out = O_rd_data.read();
+                }
+                *(*(*(*(output_array_hw+b0)+k2*K1*K0+k1*K0+k0)+oy0)+ox0) += O_data_out.data[O_cnt]; // cout << *(*(*(*(output_array_hw+b0)+k2*k1*k0)+oy0)+ox0) << "	";
+                //printf("DATA @ index (%d, %d, %d, %d): %d\n\n", b0, k2*K1*K0+k1*K0+k0, oy0, ox0, O_data_out.data[O_cnt].to_uint());
+                O_cnt++;
+                if (O_cnt == mem_words_O_L3_out){
+                  O_cnt = 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  cout << "Finished Reading output channel" << endl << endl;*/
   // ------------------------ Hardware DUT ------------------------
 
   unsigned long int cnt[K];
@@ -433,11 +478,7 @@ CCS_MAIN(int argv, char **argc)
   delete[] weight_array;
 
   cout << endl;
-  if (failed){
-    cout << "Testbench Failed: Hardware stuck" << endl;
-  } else {
-    cout << "Testbench Finished" << endl;
-  }
+  cout << "Testbench Finished" << endl;
 
   CCS_RETURN(0);
 }

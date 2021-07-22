@@ -38,12 +38,16 @@ public:
     I_L3.run(I_data_in,I_L3_L2,I_instr_L3_out);
     W_L3.run(W_data_in,W_L3_L2,W_instr_L3_out);
 
-    O_L2.run(O_L3_L2,O_L2_L3,O_L1_L2,O_L2_L1,zg_L3_L2,zg_L2_L1,O_instr_L2_out);
-    I_L2.run(I_L3_L2,I_L2_L1,I_instr_L2_out);
-    W_L2.run(W_L3_L2,W_L2_L1,W_instr_L2_out);
+    O_L2.run(O_L3_L2,O_L2_L3,O_L1_L2_out,O_L2_L1_in,zg_L3_L2,zg_L2_L1,O_instr_L2_out);
+    I_L2.run(I_L3_L2,I_L2_L1_in,I_instr_L2_out);
+    W_L2.run(W_L3_L2,W_L2_L1_in,W_instr_L2_out);
 
+    O_BW_buffer_L2_L1.run(O_L2_L1_in, O_L2_L1_out);
+    I_BW_buffer_L2_L1.run(I_L2_L1_in, I_L2_L1_out);
+    W_BW_buffer_L2_L1.run(W_L2_L1_in, W_L2_L1_out);
+    O_BW_buffer_L1_L2.run(O_L1_L2_in, O_L1_L2_out);
 
-    PE.run(O_L2_L1,O_L1_L2,I_L2_L1,W_L2_L1,zg_L2_L1,O_instr_L1_out,I_instr_L1_out,W_instr_L1_out);
+    PE.run(O_L2_L1_out,O_L1_L2_in,I_L2_L1_out,W_L2_L1_out,zg_L2_L1,O_instr_L1_out,I_instr_L1_out,W_instr_L1_out);
 
   }
 private:
@@ -76,20 +80,20 @@ private:
   ac_channel<packedData<I_type, mem_words_I_L3_out> > I_L3_L2;
   ac_channel<packedData<W_type, mem_words_W_L3_out> > W_L3_L2;
 
-  ac_channel<packedData<O_partial_type, mem_words_O_L2_out> > O_L2_L1;
+  ac_channel<packedData<O_partial_type, mem_words_O_L2_out> > O_L2_L1_in;
   ac_channel<packedData<O_partial_type, mem_words_O_L1_in> > O_L2_L1_out;
-  ac_channel<packedData<I_type, mem_words_I_L2_out> > I_L2_L1;
+  ac_channel<packedData<I_type, mem_words_I_L2_out> > I_L2_L1_in;
   ac_channel<packedData<I_type, mem_words_I_L1_in> > I_L2_L1_out;
-  ac_channel<packedData<W_type, mem_words_W_L2_out> > W_L2_L1;
+  ac_channel<packedData<W_type, mem_words_W_L2_out> > W_L2_L1_in;
   ac_channel<packedData<W_type, mem_words_W_L1_in> > W_L2_L1_out;
-  ac_channel<packedData<O_partial_type, mem_words_O_L1_out> > O_L1_L2;
+  ac_channel<packedData<O_partial_type, mem_words_O_L1_out> > O_L1_L2_in;
   ac_channel<packedData<O_partial_type, mem_words_O_L2_in> > O_L1_L2_out;
 
   // interconnecting buffers where BW of blocks doesn't match
-  //BW_buffer_down<O_partial_type, mem_words_O_L2_out, mem_words_O_L1_in> O_BW_buffer_L2_L1;
-  //BW_buffer_down<I_type, mem_words_I_L2_out, mem_words_I_L1_in> I_BW_buffer_L2_L1;
-  //BW_buffer_down<W_type, mem_words_W_L2_out, mem_words_W_L1_in> W_BW_buffer_L2_L1;
-  //BW_buffer_up<O_partial_type, mem_words_O_L1_out, mem_words_O_L2_in> O_BW_buffer_L1_L2;
+  BW_buffer_down<O_partial_type, mem_words_O_L2_out, mem_words_O_L1_in> O_BW_buffer_L2_L1;
+  BW_buffer_down<I_type, mem_words_I_L2_out, mem_words_I_L1_in> I_BW_buffer_L2_L1;
+  BW_buffer_down<W_type, mem_words_W_L2_out, mem_words_W_L1_in> W_BW_buffer_L2_L1;
+  BW_buffer_up<O_partial_type, mem_words_O_L1_out, mem_words_O_L2_in> O_BW_buffer_L1_L2;
   //BW_conv_zero_guard<mem_words_O_L2_out, mem_words_O_L1_in> ZG_L2_L1;
 
   // output memory hierarchy

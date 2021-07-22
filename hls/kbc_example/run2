@@ -7,4 +7,4 @@ set rootdir = `dirname $0`
 set abs_rootdir = `cd $rootdir && pwd`
 cd abs_rootdir
 
-g++ -g -O0 -std=c++11 -I $CCS_HOME/shared/include testbench.cpp -o testbench && ./testbench
+g++ -g -O0 -std=c++11 -I $CCS_HOME/shared/include testbench2.cpp -o testbench2 && ./testbench2

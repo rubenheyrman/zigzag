@@ -65,23 +65,31 @@ public:
   tiling_unit(){}
     
 #pragma hls_design interface ccore
-  void CCS_BLOCK(run)(loopData<type, nb_counters> &loops, type &tile_size, memlevelInstr<type, nb_counters> &instr){
-    tile_size_int = tile_size;
+  void CCS_BLOCK(run)(loopData<type, nb_counters> &loops, type &tile_size, memlevelInstr<type, nb_counters+1> &instr){
+    irrel = rel = 1;
+    instr.tile[0] = tile_size_int = tile_size;
+    instr.bound[0] = 1;
     //#pragma hls_unroll yes
     for (int i=0; i<nb_counters; i++){
       if (loops.relevancy[i] == true) {
         tile_size_int *= loops.bound[i];
-        instr.tile[i] 	= tile_size_int;
-        instr.bound[i] 	= 1;
+        instr.bound[nb_counters+1-rel] = 1;
+        rel++;
       } else {
-        instr.tile[i] 	= tile_size_int;
-        instr.bound[i] 	= loops.bound[i];
+        instr.tile[irrel] = tile_size_int;
+        instr.bound[irrel] = loops.bound[i];
+        irrel++;
       }
-    } 
+    }
+    for (int i=0; i<nb_counters; i++){
+      instr.tile[i+1] = (instr.bound[i+1] == 1) ? tile_size_int : instr.tile[i+1];
+    }
     tile_size = tile_size_int;
   }
 private:
   type tile_size_int;
+  ac_int<ac::log2_ceil<nb_counters>::val,false> irrel;
+  ac_int<ac::log2_ceil<nb_counters>::val,false> rel;
 };
 
 // takes in loop mapping configuration of each of the memory levels and of the network on chip
@@ -102,15 +110,15 @@ public:
                       I_addr_type_L3, I_addr_type_L2, I_addr_type_L1, 
                       W_addr_type_L3, W_addr_type_L2, W_addr_type_L1, 
                       nb_cnt> > &layer_instruction_in,
-                      ac_channel<memlevelInstr<O_addr_type_L1, nb_cnt> > &O_instr_L1_out, 
-                      ac_channel<memlevelInstr<O_addr_type_L2, nb_cnt> > &O_instr_L2_out,
-                      ac_channel<memlevelInstr<O_addr_type_L3, nb_cnt> > &O_instr_L3_out,
-                      ac_channel<memlevelInstr<I_addr_type_L1, nb_cnt> > &I_instr_L1_out, 
-                      ac_channel<memlevelInstr<I_addr_type_L2, nb_cnt> > &I_instr_L2_out,
-                      ac_channel<memlevelInstr<I_addr_type_L3, nb_cnt> > &I_instr_L3_out,
-                      ac_channel<memlevelInstr<W_addr_type_L1, nb_cnt> > &W_instr_L1_out, 
-                      ac_channel<memlevelInstr<W_addr_type_L2, nb_cnt> > &W_instr_L2_out,
-                      ac_channel<memlevelInstr<W_addr_type_L3, nb_cnt> > &W_instr_L3_out) {
+                      ac_channel<memlevelInstr<O_addr_type_L1, nb_cnt+1> > &O_instr_L1_out,
+                      ac_channel<memlevelInstr<O_addr_type_L2, nb_cnt+1> > &O_instr_L2_out,
+                      ac_channel<memlevelInstr<O_addr_type_L3, nb_cnt+1> > &O_instr_L3_out,
+                      ac_channel<memlevelInstr<I_addr_type_L1, nb_cnt+1> > &I_instr_L1_out,
+                      ac_channel<memlevelInstr<I_addr_type_L2, nb_cnt+1> > &I_instr_L2_out,
+                      ac_channel<memlevelInstr<I_addr_type_L3, nb_cnt+1> > &I_instr_L3_out,
+                      ac_channel<memlevelInstr<W_addr_type_L1, nb_cnt+1> > &W_instr_L1_out,
+                      ac_channel<memlevelInstr<W_addr_type_L2, nb_cnt+1> > &W_instr_L2_out,
+                      ac_channel<memlevelInstr<W_addr_type_L3, nb_cnt+1> > &W_instr_L3_out) {
 
     if (layer_instruction_in.available(1)){
       layer_instruction = layer_instruction_in.read();
@@ -144,17 +152,17 @@ public:
       W_tile_size_L3 = (W_addr_type_L3) W_tile_size_L2;
       W_tiling_unit_L3.run(W_loops_L3, W_tile_size_L3, W_instr_L3);
 
-      O_instr_L1_out.write(O_instr_L1);
-      O_instr_L2_out.write(O_instr_L2);
       O_instr_L3_out.write(O_instr_L3);
-
-      I_instr_L1_out.write(I_instr_L1);
-      I_instr_L2_out.write(I_instr_L2);
       I_instr_L3_out.write(I_instr_L3);
-
-      W_instr_L1_out.write(W_instr_L1);
-      W_instr_L2_out.write(W_instr_L2);
       W_instr_L3_out.write(W_instr_L3);
+
+      O_instr_L2_out.write(O_instr_L2);
+      I_instr_L2_out.write(I_instr_L2);
+      W_instr_L2_out.write(W_instr_L2);
+
+      O_instr_L1_out.write(O_instr_L1);
+      I_instr_L1_out.write(I_instr_L1);
+      W_instr_L1_out.write(W_instr_L1);
 
     }
   }
@@ -191,17 +199,17 @@ private:
   loopData<W_addr_type_L2, nb_cnt> W_loops_L2;
   loopData<W_addr_type_L3, nb_cnt> W_loops_L3;
 
-  memlevelInstr<O_addr_type_L1, nb_cnt> O_instr_L1;
-  memlevelInstr<O_addr_type_L2, nb_cnt> O_instr_L2;
-  memlevelInstr<O_addr_type_L3, nb_cnt> O_instr_L3;
+  memlevelInstr<O_addr_type_L1, nb_cnt+1> O_instr_L1;
+  memlevelInstr<O_addr_type_L2, nb_cnt+1> O_instr_L2;
+  memlevelInstr<O_addr_type_L3, nb_cnt+1> O_instr_L3;
 
-  memlevelInstr<I_addr_type_L1, nb_cnt> I_instr_L1;
-  memlevelInstr<I_addr_type_L2, nb_cnt> I_instr_L2;
-  memlevelInstr<I_addr_type_L3, nb_cnt> I_instr_L3;
+  memlevelInstr<I_addr_type_L1, nb_cnt+1> I_instr_L1;
+  memlevelInstr<I_addr_type_L2, nb_cnt+1> I_instr_L2;
+  memlevelInstr<I_addr_type_L3, nb_cnt+1> I_instr_L3;
 
-  memlevelInstr<W_addr_type_L1, nb_cnt> W_instr_L1;
-  memlevelInstr<W_addr_type_L2, nb_cnt> W_instr_L2;
-  memlevelInstr<W_addr_type_L3, nb_cnt> W_instr_L3;
+  memlevelInstr<W_addr_type_L1, nb_cnt+1> W_instr_L1;
+  memlevelInstr<W_addr_type_L2, nb_cnt+1> W_instr_L2;
+  memlevelInstr<W_addr_type_L3, nb_cnt+1> W_instr_L3;
   
   O_addr_type_L1 O_tile_size_L1;
   O_addr_type_L2 O_tile_size_L2;
@@ -463,31 +471,25 @@ public:
 #pragma hls_design interface
 #pragma hls_pipeline_init_interval 1
   void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &wr_data, ac_channel<packedData<type,WORDS_out> > &rd_data,
-                      ac_channel<memlevelInstr<addr_type, nb_cnt> > &instr_in) {
+                      ac_channel<memlevelInstr<addr_type, nb_cnt+1> > &instr_in) {
 
 
 
     if (setup){
       if (instr_in.available(1)){
         instr = instr_in.read();
-/*#ifndef __SYNTHESIS__
-printf("WEIGHT/INPUT instruction:\n\n");
-#endif*/
       }
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
-	/*#ifndef __SYNTHESIS__
-        printf("inst_tile_%d: %d\n", x, instr.tile[x].to_uint());
-        printf("inst_bound_%d: %d\n", x, instr.bound[x].to_uint());
-	#endif*/
-        loop_bound[x] = instr.bound[x];
-        tile_size[x] = instr.tile[x];
+        loop_bound[x] = instr.bound[x+1];
+        tile_size[x] = instr.tile[x+1];
         rd_tile_bound[x] = tile_size[x];
         irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
+#ifndef __SYNTHESIS__
+        printf("tile_size[%d]: %d", x, tile_size[x].to_uint());
+        printf("\t | \t loop_bound[%d]: %d\n", x, loop_bound[x].to_uint());
+#endif
       }
-/*#ifndef __SYNTHESIS__
-	printf("\n\n");
-#endif*/
       setup = false;
     }
         
@@ -519,38 +521,38 @@ printf("WEIGHT/INPUT instruction:\n\n");
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
-/*#ifndef __SYNTHESIS__
-      debug_cnt++;
-#endif*/
+// #ifndef __SYNTHESIS__
+//       debug_cnt++;
+// #endif
       if (read_flag0 & skid_buf.not_empty()) {
         skid_buf.push(read_data);
         read_data = skid_buf.peek();
-/*#ifndef __SYNTHESIS__
-        if (debug_cnt&1) {
-          write_stall = true;
-        } else
-#endif*/
+// #ifndef __SYNTHESIS__
+//         if (debug_cnt&1) {
+//           write_stall = true;
+//         } else
+// #endif
           NB_WRITE_READ_DATA: write_stall = !rd_data.nb_write(read_data);
         if (!write_stall) {
           skid_buf.pop(); //Merely pop out the data from skid_buffer as nb_write was successful
         }
       } else if (skid_buf.not_empty()) {
         read_data = skid_buf.peek();
-/*#ifndef __SYNTHESIS__
-        if (debug_cnt&1) {
-          write_stall = true;
-        } else
-#endif*/
+// #ifndef __SYNTHESIS__
+//         if (debug_cnt&1) {
+//           write_stall = true;
+//         } else
+// #endif
           write_stall = !rd_data.nb_write(read_data);
         if (!write_stall) {
           skid_buf.pop();
         }
       } else if (read_flag0) {
-/*#ifndef __SYNTHESIS__
-        if (debug_cnt&1) {
-          write_stall = true;
-        } else
-#endif*/
+// #ifndef __SYNTHESIS__
+//         if (debug_cnt&1) {
+//           write_stall = true;
+//         } else
+// #endif
           write_stall = !rd_data.nb_write(read_data);
         if (write_stall) {
           skid_buf.push(read_data);//Push data into skid buffer if nb_write fails
@@ -579,7 +581,7 @@ printf("WEIGHT/INPUT instruction:\n\n");
 
 private: 
   // instruction interconnection
-  memlevelInstr<addr_type, nb_cnt> instr;
+  memlevelInstr<addr_type, nb_cnt+1> instr;
   
   // data
   bool        write_flag;
@@ -626,11 +628,11 @@ public:
                 zero_guard_top_flag(0), zero_guard(1),
                 read_flag0(0), read_flag1(0), read_flag2(0),
                 wr_pntr(0), rd_pntr(0), data_vld(1),
-                vld_zg_pntr(0), data_zg(1),
+                vld_zg_pntr(0), rd_data_zg(1), wr_data_zg(1), refresh_zg(0),
                 flags_top(0), flags_bot(0), flags_zero_guard(0), flags_wr_zero_guard(0), skid(0),
                 zg_cnt(0), rd_increment(1),
                 read_data_top_flag(0),
-                debug_cnt0(0), debug_cnt1(0), debug_cnt2(0)
+                debug_cnt0(0), debug_cnt1(0), debug_cnt2(0), flag0cnt(0), flag2cnt(0)
     {
     #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
@@ -645,7 +647,7 @@ public:
   void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &wr_data_top, ac_channel<packedData<type,WORDS_out> > &rd_data_top,
                       ac_channel<packedData<type,WORDS_in> > &wr_data_bot, ac_channel<packedData<type,WORDS_out> > &rd_data_bot,
                       ac_channel<bool> &wr_data_zero_guard, ac_channel<bool> &rd_data_zero_guard,
-                      ac_channel<memlevelInstr<addr_type, nb_cnt> > &instr_in) {
+                      ac_channel<memlevelInstr<addr_type, nb_cnt+1> > &instr_in) {
     
 
 
@@ -662,30 +664,34 @@ public:
       wr_data_zero_guard.read(wr_zero_guard);
 
       skid_buf_wr_zero_guard.push(wr_zero_guard);
-      data_zg = skid_buf_wr_zero_guard.peek();
+      rd_data_zg = skid_buf_wr_zero_guard.peek();
 
-
+      tile_size_down = instr.tile[0];
 
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
-	/*#ifndef __SYNTHESIS__
-        printf("inst_tile_%d: %d\n", x, instr.tile[x].to_uint());
-        printf("inst_bound_%d: %d\n", x, instr.bound[x].to_uint());
-	#endif*/
-        loop_bound[x] = instr.bound[x];
-        tile_size[x] = instr.tile[x];
+        loop_bound[x] = instr.bound[x+1];
+        tile_size[x] = instr.tile[x+1];
         rd_tile_bound[x] = tile_size[x];
         wr_tile_bound[x] = tile_size[x];
         rd_irrel_at_max = loop_bound[x] != 1 ? false : rd_irrel_at_max;
         wr_irrel_at_max = loop_bound[x] != 1 ? false : wr_irrel_at_max;
-      }
-        if (tile_size[0] >= tile_size[nb_cnt-1]){skid_buf_wr_zero_guard.pop();}
 #ifndef __SYNTHESIS__
-        printf("TILE SIZE %d \t | \t data in zero guard buffer @ setup: %d\n", tile_size[nb_cnt-1], data_zg);
+        printf("tile_size[%d]: %d", x, tile_size[x].to_uint());
+        printf("\t | \t loop_bound[%d]: %d\n", x, loop_bound[x].to_uint());
 #endif
-      setup = false;
+      }
+      if (tile_size_down == tile_size[nb_cnt-1]){skid_buf_wr_zero_guard.pop();}
+//#ifndef __SYNTHESIS__
+        //printf("TILE SIZE %d \t | \t data in zero guard buffer @ setup: %d\n", tile_size[nb_cnt-1], data_zg);
+//#endif
+        flags_wr_zero_guard <<=1;
+        flags_wr_zero_guard[0] = skid_buf_wr_zero_guard.not_empty();
+        setup = false;
       }
     } else {
+
+
 
 //#ifndef __SYNTHESIS__
         //printf("TILE SIZE %d",  tile_size[nb_cnt-1]);
@@ -693,33 +699,18 @@ public:
         //printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d, reuse: %d\n",
                //data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt, reuse);
 //#endif
-
-    // calculate if read data towards level below should be guarded
-    zero_guard = (data_zg || rd_pntr != 0) && (rd_pntr == vld_zg_pntr);
-    // set increment amount of read pointer
-    if (zero_guard && tile_size[0] > WORDS_out){
-      rd_cnt = tile_size[0];
-    } else {
-      rd_cnt = WORDS_out;
-    }
-    // calculate new value of read pointer if flag (previous calculation is committed) is true and new conditions for read_flag0 and/or read_flag2 are met
-    //if (rd_pntr == rd_pntr_out){
-    if (rd_increment && ((!flags_zero_guard[0] && zg_cnt == 0) || (zg_cnt !=0)) && ((((!flags_bot[2] && !zero_guard) || (zero_guard)) && (rd_pntr != wr_pntr || data_vld)))){
-      rd_pntr_cntInst.run(loop_bound, tile_size, rd_pntr, rd_pntr_out, rd_cnt, rd_irrel_at_max_out, rd_irrel_at_zero_out, rd_all_at_max_out, rd_counter, rd_tile_bound);
-      rd_increment = false;
-//#ifndef __SYNTHESIS__
-        //printf("TILE SIZE %d \t | \t increment read pointer", tile_size[nb_cnt-1]);
-        //printf("\t | \t rd_pntr: %d, rd_pntr_out: %d, wr_pntr:%d, vld_zg_pntr: %d, data_zg: %d", rd_pntr, rd_pntr_out, wr_pntr, vld_zg_pntr, data_zg);
-        //printf("\t | \t read_flag0: %d, read_flag2: %d, zero_guard: %d\n", read_flag0, read_flag2, zero_guard);
-//#endif
-    }
+    zero_guard = rd_data_zg && (rd_pntr == vld_zg_pntr);
     // set flags to enable data and zero guard pipeline buffers towards the memory level below and above
     //  --> read_flag0 to read out data from this memory level towards the memory level below
     //  --> read_flag0 and read_flag2 to read out data from this memory level or the level above towards the memory level below and above together with a zero guard = 0
     //  --> read_flag1 to forward data coming from the memory level below towards the memory level above
     //  --> read_flag2 to send out a zero guard flag = 1 to the memory level below
-    
-    if (!flags_bot[2] && (rd_pntr != wr_pntr || data_vld) && !zero_guard){ // Access MSB bit of the flags 2bit variable. Please note the bit access method [].
+    addr_type largest = (tile_size_down > WORDS_out) ? tile_size_down : (addr_type) WORDS_out;
+    addr_type sum_value = (zero_guard) ? largest : (addr_type) WORDS_out;
+    addr_type diff = (rd_pntr+sum_value > wr_pntr) ? (addr_type) (rd_pntr + sum_value - wr_pntr) : (addr_type) (wr_pntr - rd_pntr);
+    bool in_between = rd_pntr < wr_pntr && wr_pntr < rd_pntr + sum_value;
+
+    if (!flags_bot[2] && (rd_pntr != wr_pntr || data_vld) && !zero_guard && !refresh_zg && (diff <= tile_size[0])){ // Access MSB bit of the flags 2bit variable. Please note the bit access method [].
       read_flag0 = ((!flags_zero_guard[0] && zg_cnt == 0) || (zg_cnt != 0));
     } else {
       read_flag0 = false;
@@ -729,7 +720,9 @@ public:
     } else {
       read_flag1 = false;
     }
-    if (!flags_zero_guard[0] && zg_cnt == 0 && ((((!flags_bot[2] && !zero_guard) || (zero_guard && !(wr_irrel_at_max && (rd_pntr_out < rd_pntr)) && (tile_size[0] != tile_size[nb_cnt-1] || wr_pntr == 0))) && (rd_pntr != wr_pntr || data_vld)))){
+    if (!flags_zero_guard[0] && zg_cnt == 0
+        && ((!flags_bot[2] && !zero_guard && !refresh_zg) || (zero_guard && !in_between && (tile_size_down != tile_size[nb_cnt-1] || wr_pntr == 0)))
+        && (rd_pntr != wr_pntr || data_vld) && (diff <= tile_size[0] || (zero_guard && rd_pntr == 0))){
       read_flag2 = true;
     } else {
       read_flag2 = false;   
@@ -770,12 +763,17 @@ public:
     if (read_flag0 | skid_buf_bot.not_empty()) {
 #ifndef __SYNTHESIS__
       debug_cnt0++;
-      if (read_flag0){
-        printf("TILE SIZE %d \t | \t data in buffer down: %d",  tile_size[nb_cnt-1], read_data_bot.data[0].to_uint());
-        printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d", rd_pntr, wr_pntr, vld_zg_pntr);
-        printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d, reuse: %d\n",
-               data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt, reuse);
-      }
+      // if (read_flag0 && tile_size[0] == 384){
+      //   flag0cnt += 8;
+      //   printf("TILE SIZE %d \t | \t data in buffer down: (CNT: %d) ",  tile_size[0], flag0cnt%tile_size[0]);
+      //   for (int i=0; i<WORDS_out; i++){
+      //     printf(" %d ",read_data_bot.data[i].to_uint());
+      //   }
+      //   printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d, rd_data_zg: %d, wr_data_zg: %d", rd_pntr, wr_pntr, vld_zg_pntr, rd_data_zg, wr_data_zg);
+        // printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d, reuse: %d\n",
+        //        data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt, reuse);
+      //   printf("\n");
+      // }
 #endif
       if (read_flag0 & skid_buf_bot.not_empty()) {
         skid_buf_bot.push(read_data_bot);
@@ -817,7 +815,7 @@ public:
 #ifndef __SYNTHESIS__
       debug_cnt1++;
       //if (read_flag1)
-        //printf("TILE SIZE %d \t | \t data in buffer up: %d\n", tile_size[nb_cnt-1], read_data_top.data[0].to_uint());
+        //printf("TILE SIZE %d \t | \t data in buffer up: %d\n", tile_size[0], read_data_top.data[0].to_uint());
 #endif
       if (read_flag1 & skid_buf_top.not_empty()) {
         skid_buf_top.push(read_data_top);
@@ -858,12 +856,14 @@ public:
     if (read_flag2 | skid_buf_zero_guard.not_empty()) {
 #ifndef __SYNTHESIS__
       debug_cnt2++;
-      if (read_flag2){
-        printf("TILE SIZE %d \t | \t zero guard in skid buf: %d", tile_size[nb_cnt-1], zero_guard);
-        printf("\t | \t rd_pntr: %d, rd_pntr_out: %d, wr_pntr: %d, vld_zg_pntr: %d", rd_pntr, rd_pntr_out, wr_pntr, vld_zg_pntr);
-        printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d, flags_bot: %d, zero_guard: %d, zg_cnt: %d\n",
-               data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max, flags_bot, zero_guard, zg_cnt);
-      }
+      // if (read_flag2 && tile_size[0] == 384){
+      //   printf("TILE SIZE %d \t | \t zero guard in skid buf: %d (CNT: %d)", tile_size[0], zero_guard, ++flag2cnt%(tile_size[0]/tile_size_down));
+      //   printf("\t | \t rd_pntr: %d, rd_pntr_out: %d, wr_pntr: %d, vld_zg_pntr: %d, rd_data_zg: %d, wr_data_zg: %d", rd_pntr, rd_pntr_out, wr_pntr, vld_zg_pntr,  rd_data_zg, wr_data_zg);
+      //   printf("\t | \t diff: %d", diff);
+      //   printf("\t | \t rd_irrel: %d, zg_cnt: %d",
+      //          rd_irrel_at_max, zg_cnt);
+      //   printf("\n");
+      // }
 #endif
       if (read_flag2 & skid_buf_zero_guard.not_empty()) {
         skid_buf_zero_guard.push(zero_guard);
@@ -904,29 +904,35 @@ public:
     if (read_flag0 || (read_flag2 && zero_guard)){
       //increment pointer based on wordlength
       if (zero_guard){
-        if (tile_size[0] > WORDS_out){
-          if (vld_zg_pntr + tile_size[0] >= tile_size[nb_cnt-1]){
+        rd_cnt = largest;
+          if (vld_zg_pntr + largest >= tile_size[nb_cnt-1]){
+            rd_data_zg = false;
             vld_zg_pntr = 0;
+             if (rd_irrel_at_max){refresh_zg = true;}
           } else {
-            vld_zg_pntr += tile_size[0];
+            vld_zg_pntr += largest;
           }
-        } else {
-          if (vld_zg_pntr + WORDS_out >= tile_size[nb_cnt-1]){
-            vld_zg_pntr = 0;
-          } else {
-            vld_zg_pntr += WORDS_out;
-          }
+      } else {
+        rd_cnt = WORDS_out;
+        if (rd_pntr + WORDS_in >= tile_size[nb_cnt-1] && rd_irrel_at_max){
+           refresh_zg = true;
+// #ifndef __SYNTHESIS__
+//           printf("TILE SIZE: %d \t | \t rd_tile_bound: %d, rd_pntr: %d, rd_irrel: %d\n", tile_size[0], rd_tile_bound[0].to_uint(), rd_pntr, rd_irrel_at_max);
+// #endif
         }
       }
-      if (zg_cnt + rd_cnt >= tile_size[0]){
+      if (zg_cnt + rd_cnt >= tile_size_down){
         zg_cnt = 0;
       } else {
         zg_cnt += rd_cnt;
       }
+
+      rd_pntr_cntInst.run(loop_bound, tile_size, rd_pntr, rd_pntr_out, rd_cnt, rd_irrel_at_max_out, rd_irrel_at_zero_out, rd_all_at_max_out, rd_counter, rd_tile_bound);
       rd_pntr = rd_pntr_out;
       rd_irrel_at_max = rd_irrel_at_max_out;
       rd_all_at_max = rd_all_at_max_out;
       rd_irrel_at_zero = rd_irrel_at_zero_out;
+
 
       rd_increment = true;
 
@@ -940,17 +946,17 @@ public:
     flags_zero_guard <<=1;
     flags_zero_guard[0] = skid_buf_zero_guard.not_empty();
 
+
     if (!flags_wr_zero_guard[1]){
       zero_guard_top_flag = wr_data_zero_guard.nb_read(wr_zero_guard);
       if (zero_guard_top_flag){
         skid_buf_wr_zero_guard.push(wr_zero_guard);
-#ifndef __SYNTHESIS__
-        printf("TILE SIZE %d \t | \t zero guard from level above: %d\n", tile_size[nb_cnt-1], wr_zero_guard);
-#endif
-        data_zg = skid_buf_wr_zero_guard.peek();
+//#ifndef __SYNTHESIS__
+        //printf("TILE SIZE %d \t | \t zero guard from level above: %d\n", tile_size[nb_cnt-1], wr_zero_guard);
+//#endif
       }
     }
-    
+
 
     // if partial sums are read out of the memory, the data at that spot is invalidated and needs to be updated
     if (!data_vld){
@@ -960,16 +966,21 @@ public:
       // read in data from bot (and top) depending on the reuse opportunities
       if ((wr_irrel_at_max && !flags_top[1] && skid_buf_wr_zero_guard.not_empty() && !read_data_top_flag) || !wr_irrel_at_max){
         if (!write_flag_bot){write_flag_bot = wr_data_bot.nb_read(write_data_bot);}
-        if (!write_flag_top && wr_irrel_at_max && !data_zg){write_flag_top = wr_data_top.nb_read(write_data_top);}
+        if (!write_flag_top && wr_irrel_at_max && !skid_buf_wr_zero_guard.peek()){write_flag_top = wr_data_top.nb_read(write_data_top);}
+        wr_data_zg = skid_buf_wr_zero_guard.peek();
+        if (refresh_zg){rd_data_zg = wr_data_zg; refresh_zg = false;}
       }
-      if (write_flag_bot && ((!wr_irrel_at_max) || (wr_irrel_at_max && ((!data_zg && write_flag_top) || data_zg)))){
+// #ifndef __SYNTHESIS__
+//       printf("write_irrel: %d, wr_pntr: %d, write_flag_bot: %d\n", wr_irrel_at_max, wr_pntr, write_flag_bot);
+// #endif
+      if (write_flag_bot && ((!wr_irrel_at_max) || (wr_irrel_at_max && ((!skid_buf_wr_zero_guard.peek() && write_flag_top) || skid_buf_wr_zero_guard.peek())))){
         // if data coming from below cannot be reused anymore at this level,
         // forward it to the level above or out of the accelerator
         // read in partial sums if available at higher levels
         if (wr_irrel_at_max){
           read_data_top = write_data_bot;
           read_data_top_flag = true;
-          if (!data_zg){
+          if (!skid_buf_wr_zero_guard.peek()){
 #pragma hls_unroll yes
           WR_IN_MEM_FROM_TOP: for (int i=0; i<WORDS_in; i++){
             mem[wr_pntr+i] = write_data_top.data[i];
@@ -977,15 +988,15 @@ public:
           }
           // pop data from buffer if iterated over all relevant mapped loops/coordinates/memory cells
           if (wr_pntr+WORDS_in >= tile_size[nb_cnt-1]){
-#ifndef __SYNTHESIS__
-            printf("TILE SIZE %d \t | \t popped %d from zero_guard_buf", tile_size[nb_cnt-1], skid_buf_wr_zero_guard.peek());
-            printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d, data_zg: %d", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
-            printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d\n", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
-#endif
+//#ifndef __SYNTHESIS__
+            //printf("TILE SIZE %d \t | \t popped %d from zero_guard_buf", tile_size[nb_cnt-1], skid_buf_wr_zero_guard.peek());
+            //printf("\t | \t rd_pntr: %d, wr_pntr: %d, vld_zg_pntr: %d, data_zg: %d", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
+            //printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d\n", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
+//#endif
             skid_buf_wr_zero_guard.pop();
-#ifndef __SYNTHESIS__
-            printf(" => skid_buf_wr_zero_guard.not_empty(): %d, wr_tile_bound: %d\n", skid_buf_wr_zero_guard.not_empty(), wr_tile_bound[0]);
-#endif
+//#ifndef __SYNTHESIS__
+            //printf(" => skid_buf_wr_zero_guard.not_empty(): %d, wr_tile_bound: %d\n", skid_buf_wr_zero_guard.not_empty(), wr_tile_bound[0]);
+//#endif
           }
         // write partial sums from the level below in this memory level to be able to reuse in the near future
         } else if (!wr_irrel_at_max){
@@ -1002,18 +1013,21 @@ public:
         wr_cnt = WORDS_in;
         wr_pntr_cntInst.run(loop_bound, tile_size, wr_pntr, wr_pntr_out, wr_cnt, wr_irrel_at_max, wr_irrel_at_zero, wr_all_at_max, wr_counter, wr_tile_bound);
         wr_pntr = wr_pntr_out;
-        //if (!wr_irrel_at_max){
-        //if (skid_buf_wr_zero_guard.not_empty())
-          data_vld = wr_pntr == rd_pntr;
-        //}
-#ifndef __SYNTESIS__
-        printf("TILE SIZE %d \t | \t write data bot ", tile_size[nb_cnt-1]);
-        if (!read_data_top_flag) {printf("@ mem[%d]: %d", (wr_pntr-1), write_data_bot.data[0].to_uint());} else if (read_data_top_flag) {printf("to L above: %d", write_data_bot.data[0].to_uint());}
-        if (write_flag_top) {printf("\t | \t write data top @ mem[%d]: %d", (wr_pntr-1), write_data_top.data[0].to_uint());}
-        printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, data_zg);
-        //printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
-        //printf("\t | \t read_data_top_flag: %d\n", read_data_top_flag);
-#endif
+        data_vld = wr_pntr == rd_pntr;
+// #ifndef __SYNTESIS__
+        // if (tile_size[0] == 384){
+        // std::cin.get();
+        // printf("TILE SIZE %d \t | \t write data bot", tile_size[0]);
+        // for (int i=0; i<WORDS_in; i++){
+        //   if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint());} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
+        //   if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
+        // }
+        // printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, rd_data_zg: %d, wr_data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, rd_data_zg, wr_data_zg);
+        // printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
+//         printf("\t | \t read_data_top_flag: %d\n", read_data_top_flag);
+        // printf("\n");
+        // }
+// #endif
         // clear write_flags for next write iteration
         write_flag_bot = write_flag_top = false;
       }
@@ -1024,7 +1038,7 @@ public:
   }
 private:
   // instruction interconnection
-  memlevelInstr<addr_type, nb_cnt> instr;
+  memlevelInstr<addr_type, nb_cnt+1> instr;
   
   // data
   bool        write_flag_top;
@@ -1057,8 +1071,12 @@ private:
   int         debug_cnt0;
   int         debug_cnt1;
   int         debug_cnt2;
+  int         flag0cnt;
+  int         flag2cnt;
   
-  bool        data_zg;
+  bool        rd_data_zg;
+  bool        wr_data_zg;
+  bool        refresh_zg;
   bool        start_flag;
   addr_type   zg_cnt;
   bool        reuse;
@@ -1095,7 +1113,7 @@ private:
   addr_type pointer_value[nb_cnt];
   addr_type loop_bound[nb_cnt];
   addr_type tile_size[nb_cnt];
-  
+  addr_type tile_size_down;
   // control
   bool setup;
   addr_type setup_counter;
@@ -1126,7 +1144,7 @@ public:
                    I_wr_pntr(0), W_wr_pntr(0), O_mac_pntr(0), I_mac_pntr(0), W_mac_pntr(0),
                    O_vld_zg_pntr(0), O_data_vld(0), I_vld_pntr(0), I_data_vld(0), W_vld_pntr(0), W_data_vld(0),
                    flags_top(0), write_stall_top(1), flags_wr_zero_guard(0), skid(0),
-                   debug_cnt(0) {
+                   debug_cnt(0), flag1cnt(0), flag2cnt(0), psumflagcnt(0) {
     #pragma hls_unroll yes
     for (int x=0; x<nb_cnt; x++){
       O_mac_counter[x] = 0;
@@ -1143,9 +1161,9 @@ public:
                         ac_channel<packedData<I_type,I_WORDS_in> > &I_wr_data,
                         ac_channel<packedData<W_type,W_WORDS_in> > &W_wr_data,
                         ac_channel<bool> &wr_data_zero_guard,
-                        ac_channel<memlevelInstr<O_addr_type, nb_cnt> > &O_instr_in,
-                        ac_channel<memlevelInstr<I_addr_type, nb_cnt> > &I_instr_in,
-                        ac_channel<memlevelInstr<W_addr_type, nb_cnt> > &W_instr_in) {
+                        ac_channel<memlevelInstr<O_addr_type, nb_cnt+1> > &O_instr_in,
+                        ac_channel<memlevelInstr<I_addr_type, nb_cnt+1> > &I_instr_in,
+                        ac_channel<memlevelInstr<W_addr_type, nb_cnt+1> > &W_instr_in) {
 #pragma hls_resource O_mem:rsc variables="O_mem" \
       map_to_module="ram_nangate-45nm-register-file_beh.REGISTER_FILE"
 #pragma hls_resource I_mem:rsc variables="I_mem" \
@@ -1160,17 +1178,17 @@ public:
         W_instr = W_instr_in.read();
         data_zg = wr_data_zero_guard.read();
         skid_buf_wr_zero_guard.push(data_zg);
-#ifndef __SYNTHESIS__
-        printf("RF \t\t | \t wr zero guard @ setup: %d\n", data_zg);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("RF \t\t | \t wr zero guard @ setup: %d\n", data_zg);
+//#endif
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
-        O_loop_bound[x] = O_instr.bound[x];
-        O_tile_size[x] = O_instr.tile[x];
-        I_loop_bound[x] = I_instr.bound[x];
-        I_tile_size[x] = I_instr.tile[x];
-        W_loop_bound[x] = W_instr.bound[x];
-        W_tile_size[x] = W_instr.tile[x];
+        O_loop_bound[x] = O_instr.bound[x+1];
+        O_tile_size[x] = O_instr.tile[x+1];
+        I_loop_bound[x] = I_instr.bound[x+1];
+        I_tile_size[x] = I_instr.tile[x+1];
+        W_loop_bound[x] = W_instr.bound[x+1];
+        W_tile_size[x] = W_instr.tile[x+1];
         O_mac_tile_bound[x] = O_tile_size[x];
         I_mac_tile_bound[x] = I_tile_size[x];
         W_mac_tile_bound[x] = W_tile_size[x];
@@ -1178,7 +1196,22 @@ public:
         I_mac_irrel_at_maxBuf = I_mac_irrel_at_max = I_loop_bound[x] != 1 ? false : I_mac_irrel_at_max;
         W_mac_irrel_at_maxBuf = W_mac_irrel_at_max = W_loop_bound[x] != 1 ? false : W_mac_irrel_at_max;
       }
+      if (O_WORDS_in >= O_tile_size[nb_cnt-1]){skid_buf_wr_zero_guard.pop();}
       setup = false;
+#ifndef __SYNTHESIS__
+      for (int x=0; x<nb_cnt; x++){
+        printf("O_tile_size[%d] = %d \t | \t O_loop_bound[%d] = %d\n", x, O_tile_size[x], x, O_loop_bound[x]);
+      }
+      printf("\n");
+      for (int x=0; x<nb_cnt; x++){
+        printf("I_tile_size[%d] = %d \t | \t  I_loop_bound[%d] = %d\n", x, I_tile_size[x], x, I_loop_bound[x]);
+      }
+      printf("\n");
+      for (int x=0; x<nb_cnt; x++){
+        printf("W_tile_size[%d] = %d \t | \t W_loop_bound[%d] = %d\n", x, W_tile_size[x], x, W_loop_bound[x]);
+      }
+      printf("\n");
+#endif
       }
     } else {
 
@@ -1198,10 +1231,10 @@ public:
     psum_top_flag = read_flag0 && (O_write_flag && I_read_flag && W_read_flag);
     read_flag =  (psum_flag || psum_top_flag);
 
-//#ifndef __SYNTHESIS__
-    //if (O_write_flag)
-      //printf("psum top flag %d\n", psum_top_flag);
-//#endif
+// #ifndef __SYNTHESIS__
+//     if (O_write_flag)
+//       printf("psum top flag %d\n", psum_top_flag);
+// #endif
     // set flag which decides if data is transfered out of the memory level upwards
     if (!flags_top[1] && O_mac_irrel_at_max && read_flag) { // Access MSB bit of the flags 3bit variable. Please note the bit access method [].
       read_flag1 = true;
@@ -1226,13 +1259,13 @@ public:
       UPDATE_PSUM: for (int i=0; i<O_WORDS_out; i++){
 
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i] + O_mem[O_mac_pntr+i];
-//#ifndef __SYNTHESIS__
-        //printf("MAC psum L1     = W[%5d] %5d * I[%5d] %5d + O[%5d] %5d  = %5d | ",
-               //W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
-               //I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
-               //O_mac_pntr+i, O_mem[O_mac_pntr+i].to_uint(),
-               //mac_data.data[i].to_uint());
-//#endif
+// #ifndef __SYNTHESIS__
+//         printf("MAC psum L1     = W[%5d] %5d * I[%5d] %5d + O[%5d] %5d  = %5d | ",
+//                W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
+//                I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
+//                O_mac_pntr+i, O_mem[O_mac_pntr+i].to_uint(),
+//                mac_data.data[i].to_uint());
+// #endif
       }
     // guard accumulation
     } else if (psum_flag && zero_guard){
@@ -1240,53 +1273,53 @@ public:
       UPDATE_PSUM_ZERO_GUARD: for (int i=0; i<O_WORDS_out; i++){
 
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i];
-//#ifndef __SYNTHESIS__
-        //printf("MAC zero guard  = W[%5d] %5d * I[%5d] %5d                   = %5d | ",
-               //W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
-               //I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
-               //mac_data.data[i].to_uint());
-//#endif
+// #ifndef __SYNTHESIS__
+//         printf("MAC zero guard  = W[%5d] %5d * I[%5d] %5d                   = %5d | ",
+//                W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
+//                I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
+//                mac_data.data[i].to_uint());
+// #endif
       }
     // accumulate with partial sum coming from memory above
     } else if (psum_top_flag){
       #pragma hls_unroll yes
       UPDATE_PSUM_FROM_TOP: for (int i=0; i<O_WORDS_out; i++){
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i] + O_write_data.data[i];
-//#ifndef __SYNTHESIS__
-        //printf("MAC psum L2     = W[%5d] %5d * I[%5d] %5d + %5d           = %5d | ",
-               //W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
-               //I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
-               //O_write_data.data[i].to_uint(),
-               //mac_data.data[i].to_uint());
-//#endif
+// #ifndef __SYNTHESIS__
+//         printf("MAC psum L2     = W[%5d] %5d * I[%5d] %5d + %5d           = %5d | ",
+//                W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
+//                I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
+//                O_write_data.data[i].to_uint(),
+//                mac_data.data[i].to_uint());
+// #endif
       }
     }
 
     // if data coming from below cannot be reused anymore at this level, forward it to the level above or out of the accelerator
     if (read_flag1){
       O_read_data = mac_data;
-//#ifndef __SYNTHESIS__
-      //printf("L1 output data = ");
-      //for (int i=0; i<O_WORDS_out; i++)
-        //printf("%d | ", mac_data.data[i].to_uint());
-      //printf("\n");
-//#endif
+// #ifndef __SYNTHESIS__
+//       printf("L1 output data = ");
+//       for (int i=0; i<O_WORDS_out; i++)
+//         printf("%d | ", mac_data.data[i].to_uint());
+//       printf("\n");
+// #endif
     } else if (read_flag) {
       #pragma hls_unroll yes
       WRITE_PSUM_TO_RF: for (int i=0; i<O_WORDS_out; i++){
         O_mem[O_mac_pntr+i] = mac_data.data[i];
-//#ifndef __SYNTHESIS__
-        //printf("O[%d] = %d\n",
-               //O_mac_pntr+i, O_mem[O_mac_pntr+i].to_uint());
-//#endif
+// #ifndef __SYNTHESIS__
+//         printf("O[%d] = %d\n",
+//                O_mac_pntr+i, O_mem[O_mac_pntr+i].to_uint());
+// #endif
       }
     }
 
     if (read_flag1 | skid_buf_top.not_empty()) {
 #ifndef __SYNTHESIS__
       debug_cnt++;
-      if (read_flag1)
-        printf("RF \t\t | \t data in buffer up: %d\n", O_read_data.data[0].to_uint());
+      // if (read_flag1)
+      //   printf("RF \t\t | \t data in buffer up: %d (DEBUG CNT: %d)\n", O_read_data.data[0].to_uint(), ++flag1cnt%384);
 #endif
       if (read_flag1 & skid_buf_top.not_empty()) {
         skid_buf_top.push(O_read_data);
@@ -1398,20 +1431,20 @@ public:
     if (!flags_wr_zero_guard[0]){
       zero_guard_top_flag = wr_data_zero_guard.nb_read(wr_zero_guard);
       if (zero_guard_top_flag){
-#ifndef __SYNTHESIS__
-        printf("RF \t\t | \t wr zero guard: %d\n", wr_zero_guard);
-#endif
+// #ifndef __SYNTHESIS__
+//         printf("RF \t\t | \t wr zero guard: %d (CNT: %d)\n", wr_zero_guard, ++flag2cnt%(384/O_tile_size[nb_cnt-1]));
+// #endif
         skid_buf_wr_zero_guard.push(wr_zero_guard);
       }
     }
 
     // flag to detect if level is at startup or data is not reusable anymore
     start_flag = !O_data_vld && O_mac_pntr == O_vld_zg_pntr && skid_buf_wr_zero_guard.not_empty() && !psum_top;
-//#ifndef __SYNTHESIS__
-    //if (start_flag)
-      //printf("O_data_vld: %d, O_mac_pntr: %d, O_vld_zg_pntr: %d, skid_buf_wr_zero_guard.peek %d, psum_top: %d\n",
-             //O_data_vld, O_mac_pntr, O_vld_zg_pntr, skid_buf_wr_zero_guard.peek(), psum_top);
-//#endif
+// #ifndef __SYNTHESIS__
+//     if (start_flag)
+//       printf("O_data_vld: %d, O_mac_pntr: %d, O_vld_zg_pntr: %d, skid_buf_wr_zero_guard.peek %d, psum_top: %d\n",
+//              O_data_vld, O_mac_pntr, O_vld_zg_pntr, skid_buf_wr_zero_guard.peek(), psum_top);
+// #endif
 
     // read in partial sum from memory level above or zero guard memory level
     if (!skid_buf_wr_zero_guard.peek() && start_flag){
@@ -1426,10 +1459,10 @@ public:
 
     if (psum_top && O_mac_pntr == O_vld_zg_pntr && !O_write_flag){
       O_write_flag = O_wr_data.nb_read(O_write_data);
-#ifndef __SYNTHESIS__
-      if (O_write_flag)
-        printf("RF \t\t | \t data from above: %d\n", O_write_data.data[0].to_uint());
-#endif
+// #ifndef __SYNTHESIS__
+//       if (O_write_flag)
+//         printf("RF \t\t | \t data from above: %d (CNT: %d)\n", O_write_data.data[0].to_uint(), ++psumflagcnt%384);
+// #endif
     }
     // write input data to input memory if reusable data is consumed
     if (!I_data_vld) {
@@ -1455,6 +1488,9 @@ public:
         #pragma hls_unroll yes
         W_WR_IN_MEM: for (int i=0; i<W_WORDS_in; i++){
           W_mem[W_wr_pntr+i] = W_write_data.data[i];
+// #ifndef __SYNTHESIS__
+//           printf("Read in weight @ RF \t | \t mem[%d] = %d\n", W_wr_pntr+i, W_write_data.data[i].to_uint());
+// #endif
         }
         W_wr_pntr = (W_wr_pntr+W_WORDS_in);
         if (W_wr_pntr == W_tile_size[nb_cnt-1]){
@@ -1470,9 +1506,9 @@ public:
   }
 private:
   // instruction interconnection
-  memlevelInstr<O_addr_type, nb_cnt> O_instr;
-  memlevelInstr<I_addr_type, nb_cnt> I_instr;
-  memlevelInstr<W_addr_type, nb_cnt> W_instr;
+  memlevelInstr<O_addr_type, nb_cnt+1> O_instr;
+  memlevelInstr<I_addr_type, nb_cnt+1> I_instr;
+  memlevelInstr<W_addr_type, nb_cnt+1> W_instr;
   // data
   bool                                   write_flag0;
   bool                                   write_stall_top;
@@ -1501,6 +1537,9 @@ private:
   fifo<bool,2>                           skid_buf_wr_zero_guard;
   int                                    debug_cnt;
 
+    int flag1cnt;
+    int flag2cnt;
+    int psumflagcnt;
   // OUTPUT
   // memory level
   O_type        O_mem[O_N];
@@ -1608,43 +1647,62 @@ class BW_buffer_down
 {
 public:
     // constructor
-    BW_buffer_down() : cnt(0), pntr(0), write_flag(0), read_flag(0) {}
+    BW_buffer_down() : cnt(false), pntr(0), write_flag(0), read_flag(0), debug_cnt(0) {}
     
 #pragma hls_design
 #pragma hls_design interface
 #pragma hls_pipeline_init_interval 1
     void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &data_in,
                         ac_channel<packedData<type,WORDS_out> > &data_out){
-        
-      if (data_in.available(1)){
-        if (cnt != 1){
-          data_in_tmp = data_in.read();
+
+        if (cnt == false){
+          if (data_in.available(1)){
+            data_in_tmp = data_in.read();
 
 #pragma hls_unroll yes
-          for (int i=0; i<WORDS_in; i++){
-            buf[i] = data_in_tmp.data[i];
+            for (int i=0; i<WORDS_in; i++){
+              buf[i] = data_in_tmp.data[i];
+            }
+          cnt = true;
+// #ifndef __SYNTHESIS__
+//           if (typeid(type) == typeid(W_type) && buf[0] != buf[1]){
+//           printf("WORDS IN BUFFER \t | \t");
+//           for (int i=0; i<WORDS_in; i++){
+//             printf("buf[%d] = %d ", i, buf[i].to_uint());
+//           }
+//           printf("\n");
+//           }
+// #endif
           }
-          cnt = 1;
-
-        } 
-        if (cnt == 1){
+        }
+        if (cnt == true){
 
 #pragma hls_unroll yes
           for (int i=0; i<WORDS_out; i++){
             data_out_tmp.data[i] = buf[pntr+i];
           }
+// #ifndef __SYNTHESIS__
+//           if (typeid(type) == typeid(W_type) && buf[0] != buf[1]){
+//             printf("pntr: %d, cnt: %d \t | \t", pntr.to_uint(), cnt);
+//           printf("WORDS OUT BUFFER (CNT: %d)\t | \t", ++debug_cnt);
+//           for (int i=0; i<WORDS_out; i++){
+//             printf("buf[%d] = %d \t | \t OUT: %d", pntr+i, buf[pntr+i].to_uint(), data_out_tmp.data[i].to_uint());
+//           }
+//           printf("\n");
+//           }
+// #endif
           data_out.write(data_out_tmp);
 
-
-          if (pntr == WORDS_in-WORDS_out){
-            pntr = 0;
-            cnt = 0;
-          } else {
-            pntr += WORDS_out;
-          }
+          ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-WORDS_out;
+          ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr == pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
+          cnt  = (pntr == pntr_max) ? false : cnt;
+          pntr = pntr_new;
+// #ifndef __SYNTHESIS__
+//           if (typeid(type) == typeid(W_type) && buf[0] != buf[1]){
+//           printf("\t | \t cnt: %d, WORDS_in: %d, WORDS_out: %d, PREC: %d\n", cnt, WORDS_in, WORDS_out, ac::log2_ceil<WORDS_in>::val);
+//           }
+// #endif
         }
-      }
-
     }
 
 private: 
@@ -1661,6 +1719,8 @@ private:
     
     bool write_flag;
     bool read_flag;
+
+    int debug_cnt;
 };
 
 template<class type, int WORDS_in, int WORDS_out>
@@ -1668,7 +1728,7 @@ class BW_buffer_up
 {
 public:
     // constructor
-    BW_buffer_up() : cnt(0), pntr(0), write_flag(0), read_flag(0) {}
+    BW_buffer_up() : cnt(0), pntr(0), write_flag(0), read_flag(0), debug_cnt(0) {}
     
 #pragma hls_design
 #pragma hls_design interface
@@ -1700,12 +1760,18 @@ public:
             data_out_tmp.data[i] = buf[i];
           }
           data_out.write(data_out_tmp);
+//#ifndef __SYNTHESIS__
+          //debug_cnt++;
+          //printf("RF -> L2 \t | \t Data going up: #%d x %d words\n",debug_cnt%48, WORDS_out);
+//#endif
           cnt = 0;
         }
       }
     }
 
-  private: 
+  private:
+    // debug
+    int debug_cnt;
     //buffer
     type buf[WORDS_out]; // TO DO: write function to dynamically calculate max 
     
@@ -1736,13 +1802,13 @@ public:
             
             if (cnt == 0){
               if (data_in.available(1)){
-#ifndef __SYNTHESIS__
-        printf("WR ZERO GUARD BUFFER SIZE: %d\n", data_in.size());
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("WR ZERO GUARD BUFFER SIZE: %d\n", data_in.size());
+//#endif
                 data_in_tmp = data_in.read();
-#ifndef __SYNTHESIS__
-        printf("WR ZERO GUARD BUFFER DATA IN: %d\n", data_in_tmp);
-#endif
+//#ifndef __SYNTHESIS__
+        //printf("WR ZERO GUARD BUFFER DATA IN: %d\n", data_in_tmp);
+//#endif
               } 
             }
             
