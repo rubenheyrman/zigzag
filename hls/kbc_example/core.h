@@ -1014,20 +1014,20 @@ public:
         wr_pntr_cntInst.run(loop_bound, tile_size, wr_pntr, wr_pntr_out, wr_cnt, wr_irrel_at_max, wr_irrel_at_zero, wr_all_at_max, wr_counter, wr_tile_bound);
         wr_pntr = wr_pntr_out;
         data_vld = wr_pntr == rd_pntr;
-// #ifndef __SYNTESIS__
-        // if (tile_size[0] == 384){
+ #ifndef __SYNTESIS__
+         if (tile_size[0] == 384){
         // std::cin.get();
-        // printf("TILE SIZE %d \t | \t write data bot", tile_size[0]);
-        // for (int i=0; i<WORDS_in; i++){
-        //   if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint());} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
-        //   if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
-        // }
+         printf("TILE SIZE %d \t | \t write data bot", tile_size[0]);
+         for (int i=0; i<WORDS_in; i++){
+           if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d (CNT: %d)", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint(), ++flag2cnt);} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
+           if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
+         }
         // printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, rd_data_zg: %d, wr_data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, rd_data_zg, wr_data_zg);
         // printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
 //         printf("\t | \t read_data_top_flag: %d\n", read_data_top_flag);
-        // printf("\n");
-        // }
-// #endif
+         printf("\n");
+         }
+ #endif
         // clear write_flags for next write iteration
         write_flag_bot = write_flag_top = false;
       }
@@ -1655,15 +1655,14 @@ public:
     void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &data_in,
                         ac_channel<packedData<type,WORDS_out> > &data_out){
 
-        if (cnt == false){
-          if (data_in.available(1)){
-            data_in_tmp = data_in.read();
-
+          if (cnt == false){
+             cnt = data_in.nb_read(data_in_tmp);
+             if (cnt){
 #pragma hls_unroll yes
-            for (int i=0; i<WORDS_in; i++){
-              buf[i] = data_in_tmp.data[i];
-            }
-          cnt = true;
+              for (int i=0; i<WORDS_in; i++){
+                buf[i] = data_in_tmp.data[i];
+              }
+             }
 // #ifndef __SYNTHESIS__
 //           if (typeid(type) == typeid(W_type) && buf[0] != buf[1]){
 //           printf("WORDS IN BUFFER \t | \t");
@@ -1673,7 +1672,6 @@ public:
 //           printf("\n");
 //           }
 // #endif
-          }
         }
         if (cnt == true){
 

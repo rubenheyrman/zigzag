@@ -299,11 +299,11 @@ CCS_MAIN(int argv, char **argc)
       }
     }
   }
-  for (int i=0; i<1; i++)
-    wr_zero_guard.write(1);
+  //for (int i=0; i<1; i++)
+    //wr_zero_guard.write(1);
   //printf("\n");
   int max_HW_its = 1000;
-  bool failed;
+  bool failed = false;
   for (int oy0=0; oy0<OY0; oy0++){
     for (int ox0=0; ox0<OX0; ox0++){
       for (int fy0=0; fy0<FY0; fy0++){

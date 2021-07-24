@@ -31,7 +31,7 @@ CCS_MAIN(int argv, char **argc)
   // bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,0,1};
   // O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {1,2,2,3,5};
   // bool O_loop_relevancy_L3[nb_cnt]       = {1,1,0,0,1};
-  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,3,3,3,3};
+  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {1,3,3,3,3}; // Latency = 489450 ns or 48945 CCs @ 100 MHz // Power = 4833 uW // Energy = Power * Latency = 236 575 pJ
   bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,0,1};
   O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {1,1,1,1,1};
   bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};

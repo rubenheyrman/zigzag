@@ -28,13 +28,13 @@ typedef ac_fixed<precision_bit_O_final ,16,false> O_final_type;
 // Memory hierarchy
 const int mem_size_bit_I_L1 = 512;
 const int mem_size_bit_I_L2 = 27648;
-const int mem_size_bit_I_L3 = 138240;
+const int mem_size_bit_I_L3 = 165888;
 const int mem_size_bit_O_L1 = 512;
 const int mem_size_bit_O_L2 = 27648;
-const int mem_size_bit_O_L3 = 162000;
+const int mem_size_bit_O_L3 = 165888;
 const int mem_size_bit_W_L1 = 512;
 const int mem_size_bit_W_L2 = 27648;
-const int mem_size_bit_W_L3 = 162000;
+const int mem_size_bit_W_L3 = 165888;
 
 const int mem_size_word_I_L1 = mem_size_bit_I_L1/precision_bit_I; // mem_size_bit/precision_bit
 const int mem_size_word_I_L2 = mem_size_bit_I_L2/precision_bit_I; 
