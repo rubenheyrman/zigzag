@@ -102,9 +102,9 @@ private:
   O_dp_sb<nb_counters_L2, mem_size_word_O_L2, mem_words_O_L2_in, mem_words_O_L2_out, O_partial_type, O_addr_type_L2> O_L2;
 
   // input memory hierarchy
-  W_dp_sb<nb_counters_L3, mem_size_word_I_L3, mem_words_I_L3_in, mem_words_I_L3_out, I_type, I_addr_type_L3> I_L3;
+  I_dp_sb<nb_counters_L3, mem_size_word_I_L3, mem_words_I_L3_in, mem_words_I_L3_out, I_type, I_addr_type_L3> I_L3;
 
-  W_dp_sb<nb_counters_L2, mem_size_word_I_L2, mem_words_I_L2_in, mem_words_I_L2_out, I_type, I_addr_type_L2> I_L2;
+  I_dp_sb<nb_counters_L2, mem_size_word_I_L2, mem_words_I_L2_in, mem_words_I_L2_out, I_type, I_addr_type_L2> I_L2;
 
   // weight memory hierarchy
   W_dp_sb<nb_counters_L3, mem_size_word_W_L3, mem_words_W_L3_in, mem_words_W_L3_out, W_type, W_addr_type_L3> W_L3;

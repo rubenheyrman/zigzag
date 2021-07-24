@@ -5,6 +5,40 @@
 #include <ac_int.h>         // Algortihmic C integer data types
 #include "config_file.h"
 #include <mc_scverify.h>
+#include "config_file.h"
+
+#ifndef __SYNTHESIS__
+O_addr_type_L3 O_L3_tile_small;
+O_addr_type_L3 O_L3_tile_big;
+O_addr_type_L2 O_L2_tile_small;
+O_addr_type_L2 O_L2_tile_big;
+I_addr_type_L3 I_L3_tile_small;
+I_addr_type_L3 I_L3_tile_big;
+I_addr_type_L2 I_L2_tile_small;
+I_addr_type_L2 I_L2_tile_big;
+W_addr_type_L3 W_L3_tile_small;
+W_addr_type_L3 W_L3_tile_big;
+W_addr_type_L2 W_L2_tile_small;
+W_addr_type_L2 W_L2_tile_big;
+int O_L3_top_wr_cnt = 0; int O_L3_bot_wr_cnt = 0;
+int O_L3_top_rd_cnt = 0; int O_L3_bot_rd_cnt = 0;
+int O_L2_top_wr_cnt = 0; int O_L2_bot_wr_cnt = 0;
+int O_L2_top_rd_cnt = 0; int O_L2_bot_rd_cnt = 0;
+int O_L1_top_wr_cnt = 0; int O_L1_bot_wr_cnt = 0;
+int O_L1_top_rd_cnt = 0; int O_L1_bot_rd_cnt = 0;
+int I_L3_wr_cnt = 0;
+int I_L3_rd_cnt = 0;
+int I_L2_wr_cnt = 0;
+int I_L2_rd_cnt = 0;
+int I_L1_wr_cnt = 0;
+int I_L1_rd_cnt = 0;
+int W_L3_wr_cnt = 0;
+int W_L3_rd_cnt = 0;
+int W_L2_wr_cnt = 0;
+int W_L2_rd_cnt = 0;
+int W_L1_wr_cnt = 0;
+int W_L1_rd_cnt = 0;
+#endif
 
 template<typename T, int N>
 class fifo
@@ -151,6 +185,23 @@ public:
       W_tiling_unit_L2.run(W_loops_L2, W_tile_size_L2, W_instr_L2);
       W_tile_size_L3 = (W_addr_type_L3) W_tile_size_L2;
       W_tiling_unit_L3.run(W_loops_L3, W_tile_size_L3, W_instr_L3);
+
+#ifndef __SYNTHESIS__
+      O_L3_tile_small = O_instr_L3.tile[1];
+      O_L3_tile_big   = O_instr_L3.tile[5];
+      O_L2_tile_small = O_instr_L2.tile[1];
+      O_L2_tile_big   = O_instr_L2.tile[5];
+
+      I_L3_tile_small = I_instr_L3.tile[0];
+      I_L3_tile_big   = I_instr_L3.tile[5];
+      I_L2_tile_small = I_instr_L2.tile[0];
+      I_L2_tile_big   = I_instr_L2.tile[5];
+
+      W_L3_tile_small = W_instr_L3.tile[0];
+      W_L3_tile_big   = W_instr_L3.tile[5];
+      W_L2_tile_small = W_instr_L2.tile[0];
+      W_L2_tile_big   = W_instr_L2.tile[5];
+#endif
 
       O_instr_L3_out.write(O_instr_L3);
       I_instr_L3_out.write(I_instr_L3);
@@ -461,7 +512,9 @@ class W_dp_sb
 {
 public:
   // Constructor
-  W_dp_sb() : setup(1), irrel_at_max(1), write_flag(0), read_flag0(0), wr_pntr(0), rd_pntr(0), vld_pntr(0), data_vld(0), flags(0), skid(0), debug_cnt(0) {
+    W_dp_sb() : setup(1), irrel_at_max(1), irrel_cnt(0), write_flag(0), read_flag0(0),
+                wr_pntr(0), rd_pntr(0), vld_pntr(0), data_vld(0),
+                flags(0), skid(0), debug_cnt(0) {
     #pragma hls_unroll yes
     for (int x=0; x<nb_cnt; x++){
       rd_counter[x] = 0;
@@ -505,7 +558,21 @@ public:
       #pragma hls_unroll yes
       RD_OUT_MEM: for (int i=0; i<WORDS_out; i++){
         read_data.data[i] = mem[rd_pntr+i]; //to prove that the access starts at word bounderies [even: (pntr>>(1))<<1)]
+#ifndef __SYNTHESIS__
+            if (instr.tile[0] == W_L3_tile_small && instr.tile[nb_cnt-1] == W_L3_tile_big)
+              W_L3_rd_cnt++; //printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, W_L3_rd_cnt: %d", rd_pntr, wr_pntr, data_vld, W_L3_rd_cnt);
+            if (instr.tile[0] == W_L2_tile_small && instr.tile[nb_cnt-1] == W_L2_tile_big)
+              W_L2_rd_cnt++; //printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, W_L2_rd_cnt: %d", rd_pntr, wr_pntr, data_vld, W_L2_rd_cnt);
+            //printf("\n");
+#endif
       }
+// #ifndef __SYNTHESIS__
+//       if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big){
+//         printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, irrel_cnt: %d, W_L2_rd_cnt: %d",
+//                rd_pntr, wr_pntr, data_vld, irrel_cnt, W_L2_rd_cnt);
+//         printf("\n");
+//       }
+// #endif
       //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
       if (irrel_at_max){
         irrel_cnt += WORDS_out;;
@@ -569,6 +636,12 @@ public:
         #pragma hls_unroll yes
         WR_IN_MEM: for (int i=0; i<WORDS_in; i++){
           mem[wr_pntr+i] = write_data.data[i];
+#ifndef __SYNTHESIS__
+            if (instr.tile[0] == W_L3_tile_small && tile_size[nb_cnt-1] == W_L3_tile_big)
+              W_L3_wr_cnt++;
+            if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big)
+              W_L2_wr_cnt++;
+#endif
         }
         wr_pntr = (wr_pntr+WORDS_in); 
         if (wr_pntr == tile_size[nb_cnt-1]){
@@ -616,6 +689,189 @@ private:
   // control
   bool setup;
 };
+
+template<int nb_cnt, int N, int WORDS_in, int WORDS_out, class type, class addr_type>
+class I_dp_sb
+{
+public:
+  // Constructor
+    I_dp_sb() : setup(1), irrel_at_max(1), irrel_cnt(0), write_flag(0),
+                read_flag0(0), wr_pntr(0), rd_pntr(0), vld_pntr(0), data_vld(0),
+                flags(0), skid(0), debug_cnt(0) {
+    #pragma hls_unroll yes
+    for (int x=0; x<nb_cnt; x++){
+      rd_counter[x] = 0;
+    }
+  }
+
+#pragma hls_design interface
+#pragma hls_pipeline_init_interval 1
+  void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &wr_data, ac_channel<packedData<type,WORDS_out> > &rd_data,
+                      ac_channel<memlevelInstr<addr_type, nb_cnt+1> > &instr_in) {
+
+
+
+    if (setup){
+      if (instr_in.available(1)){
+        instr = instr_in.read();
+      }
+      #pragma hls_unroll yes
+      for (int x=0; x<nb_cnt; x++){
+        loop_bound[x] = instr.bound[x+1];
+        tile_size[x] = instr.tile[x+1];
+        rd_tile_bound[x] = tile_size[x];
+        irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
+#ifndef __SYNTHESIS__
+        printf("tile_size[%d]: %d", x, tile_size[x].to_uint());
+        printf("\t | \t loop_bound[%d]: %d\n", x, loop_bound[x].to_uint());
+#endif
+      }
+      setup = false;
+    }
+
+    if (!flags[2] && (rd_pntr != wr_pntr || data_vld)) { // Access MSB bit of the flags 4bit variable. Please note the bit access method [].
+      read_flag0 = true;
+    } else {
+      read_flag0 = false;
+    }
+
+    if (read_flag0) {
+      rd_pntr = ((rd_pntr/WORDS_out)*WORDS_out);
+
+      #pragma hls_unroll yes
+      RD_OUT_MEM: for (int i=0; i<WORDS_out; i++){
+        read_data.data[i] = mem[rd_pntr+i]; //to prove that the access starts at word bounderies [even: (pntr>>(1))<<1)]
+#ifndef __SYNTHESIS__
+            if (instr.tile[0] == I_L3_tile_small && tile_size[nb_cnt-1] == I_L3_tile_big)
+              I_L3_rd_cnt++; //printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, I_L3_rd_cnt: %d", rd_pntr, wr_pntr, data_vld, I_L3_rd_cnt);
+            if (instr.tile[0] == I_L2_tile_small && tile_size[nb_cnt-1] == I_L2_tile_big)
+              I_L2_rd_cnt++; //printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, I_L2_rd_cnt: %d", rd_pntr, wr_pntr, data_vld, I_L2_rd_cnt);
+            //printf("\n");
+#endif
+      }
+// #ifndef __SYNTHESIS__
+//       if (instr.tile[0] == I_L2_tile_small && tile_size[nb_cnt-1] == I_L2_tile_big){
+//         printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, I_L2_rd_cnt: %d", rd_pntr, wr_pntr, data_vld, I_L2_rd_cnt);
+//         printf("\n");
+//       }
+// #endif
+      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
+      if (irrel_at_max){
+        irrel_cnt += WORDS_out;;
+      }
+      if (irrel_cnt == WORDS_in){
+        vld_pntr = rd_pntr;
+        data_vld = false;
+        irrel_cnt = 0;
+      }
+      //increment pointer based on wordlength
+      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
+
+    }
+
+    if (read_flag0 | skid_buf.not_empty()) {
+// #ifndef __SYNTHESIS__
+//       debug_cnt++;
+// #endif
+      if (read_flag0 & skid_buf.not_empty()) {
+        skid_buf.push(read_data);
+        read_data = skid_buf.peek();
+// #ifndef __SYNTHESIS__
+//         if (debug_cnt&1) {
+//           write_stall = true;
+//         } else
+// #endif
+          NB_WRITE_READ_DATA: write_stall = !rd_data.nb_write(read_data);
+        if (!write_stall) {
+          skid_buf.pop(); //Merely pop out the data from skid_buffer as nb_write was successful
+        }
+      } else if (skid_buf.not_empty()) {
+        read_data = skid_buf.peek();
+// #ifndef __SYNTHESIS__
+//         if (debug_cnt&1) {
+//           write_stall = true;
+//         } else
+// #endif
+          write_stall = !rd_data.nb_write(read_data);
+        if (!write_stall) {
+          skid_buf.pop();
+        }
+      } else if (read_flag0) {
+// #ifndef __SYNTHESIS__
+//         if (debug_cnt&1) {
+//           write_stall = true;
+//         } else
+// #endif
+          write_stall = !rd_data.nb_write(read_data);
+        if (write_stall) {
+          skid_buf.push(read_data);//Push data into skid buffer if nb_write fails
+        }
+      }
+    }
+
+    flags <<=1;
+    flags[0] = skid_buf.not_empty();
+    if (!data_vld) {
+      NB_READ_WRITE_DATA: write_flag = wr_data.nb_read(write_data);
+
+      if (write_flag) {
+        #pragma hls_unroll yes
+        WR_IN_MEM: for (int i=0; i<WORDS_in; i++){
+          mem[wr_pntr+i] = write_data.data[i];
+#ifndef __SYNTHESIS__
+          if (instr.tile[0] == I_L3_tile_small && instr.tile[nb_cnt-1] == I_L3_tile_big)
+            I_L3_wr_cnt++;
+          if (instr.tile[0] == I_L2_tile_small && instr.tile[nb_cnt-1] == I_L2_tile_big)
+            I_L2_wr_cnt++;
+#endif
+        }
+        wr_pntr = (wr_pntr+WORDS_in);
+        if (wr_pntr == tile_size[nb_cnt-1]){
+          wr_pntr = 0;
+        }
+        data_vld = (wr_pntr==vld_pntr);
+      }
+    }
+  }
+
+private:
+  // instruction interconnection
+  memlevelInstr<addr_type, nb_cnt+1> instr;
+
+  // data
+  bool        write_flag;
+  packedData<type,WORDS_in> write_data;
+  addr_type   wr_pntr;
+  bool        read_flag0;
+  type        mem[N];
+  uint3       flags;
+  packedData<type,WORDS_out> read_data;
+  addr_type   rd_pntr;
+  addr_type   vld_pntr;
+  bool        data_vld;
+  uint3       skid;
+  fifo<packedData<type,WORDS_out>,4> skid_buf;
+  bool        write_stall;
+  int         debug_cnt;
+  addr_type   irrel_cnt;
+
+  // counter array mapped to this memory level
+  W_addr_cnt<nb_cnt, addr_type, WORDS_out> addr_cntInst;
+  bool accumulated[nb_cnt];
+  bool all_at_max;
+  bool irrel_at_max;
+  addr_type rd_counter[nb_cnt];
+  addr_type rd_tile_bound[nb_cnt];
+
+  // interconnections
+  addr_type pointer_value[nb_cnt];
+  addr_type loop_bound[nb_cnt];
+  addr_type tile_size[nb_cnt];
+
+  // control
+  bool setup;
+};
+
 
 template<int nb_cnt, int N, int WORDS_in, int WORDS_out, class type, class addr_type> 
 class O_dp_sb
@@ -753,9 +1009,13 @@ public:
 #pragma hls_unroll yes
     RD_OUT_MEM_BOT: for (int i=0; i<WORDS_out; i++){
         read_data_bot.data[i] = mem[rd_pntr+i]; //to prove that the access starts at word bounderies [even: (pntr>>(1))<<1)]
-//#ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+            if (tile_size[0] == O_L3_tile_small && tile_size[nb_cnt-1] == O_L3_tile_big)
+              O_L3_bot_rd_cnt++;
+            if (tile_size[0] == O_L2_tile_small && tile_size[nb_cnt-1] == O_L2_tile_big)
+              O_L2_bot_rd_cnt++;
           //printf("data bot out = mem[%d] = %d\n", rd_pntr+i, mem[rd_pntr+i].to_uint());
-//#endif
+#endif
       }
     }
     
@@ -984,6 +1244,12 @@ public:
 #pragma hls_unroll yes
           WR_IN_MEM_FROM_TOP: for (int i=0; i<WORDS_in; i++){
             mem[wr_pntr+i] = write_data_top.data[i];
+#ifndef __SYNTHESIS__
+            if (tile_size[0] == O_L3_tile_small && tile_size[nb_cnt-1] == O_L3_tile_big)
+              O_L3_top_wr_cnt++;
+            if (tile_size[0] == O_L2_tile_small && tile_size[nb_cnt-1] == O_L2_tile_big)
+              O_L2_top_wr_cnt++;
+#endif
             }
           }
           // pop data from buffer if iterated over all relevant mapped loops/coordinates/memory cells
@@ -1003,9 +1269,13 @@ public:
 #pragma hls_unroll yes
           WR_IN_MEM_FROM_BOT: for (int i=0; i<WORDS_in; i++){
             mem[wr_pntr+i] = write_data_bot.data[i];
-//#ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+            if (tile_size[0] == O_L3_tile_small && tile_size[nb_cnt-1] == O_L3_tile_big)
+              O_L3_bot_wr_cnt++;
+            if (tile_size[0] == O_L2_tile_small && tile_size[nb_cnt-1] == O_L2_tile_big)
+              O_L2_bot_wr_cnt++;
             //printf("L2 data in | mem[%d] = %d\n", wr_pntr+i, mem[wr_pntr+i].to_uint());
-//#endif
+#endif
           }
         }
 
@@ -1014,20 +1284,20 @@ public:
         wr_pntr_cntInst.run(loop_bound, tile_size, wr_pntr, wr_pntr_out, wr_cnt, wr_irrel_at_max, wr_irrel_at_zero, wr_all_at_max, wr_counter, wr_tile_bound);
         wr_pntr = wr_pntr_out;
         data_vld = wr_pntr == rd_pntr;
- #ifndef __SYNTESIS__
-         if (tile_size[0] == 384){
+ // #ifndef __SYNTESIS__
+         // if (tile_size[0] == 384){
         // std::cin.get();
-         printf("TILE SIZE %d \t | \t write data bot", tile_size[0]);
-         for (int i=0; i<WORDS_in; i++){
-           if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d (CNT: %d)", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint(), ++flag2cnt);} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
-           if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
-         }
+         // printf("TILE SIZE %d \t | \t write data bot", tile_size[0]);
+         // for (int i=0; i<WORDS_in; i++){
+           // if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint());} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
+           // if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
+         // }
         // printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, rd_data_zg: %d, wr_data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, rd_data_zg, wr_data_zg);
         // printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
 //         printf("\t | \t read_data_top_flag: %d\n", read_data_top_flag);
-         printf("\n");
-         }
- #endif
+         // printf("\n");
+         // }
+ // #endif
         // clear write_flags for next write iteration
         write_flag_bot = write_flag_top = false;
       }
@@ -1259,13 +1529,15 @@ public:
       UPDATE_PSUM: for (int i=0; i<O_WORDS_out; i++){
 
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i] + O_mem[O_mac_pntr+i];
-// #ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+        W_L1_rd_cnt++;
+        I_L1_rd_cnt++;
 //         printf("MAC psum L1     = W[%5d] %5d * I[%5d] %5d + O[%5d] %5d  = %5d | ",
 //                W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
 //                I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
 //                O_mac_pntr+i, O_mem[O_mac_pntr+i].to_uint(),
 //                mac_data.data[i].to_uint());
-// #endif
+#endif
       }
     // guard accumulation
     } else if (psum_flag && zero_guard){
@@ -1273,45 +1545,57 @@ public:
       UPDATE_PSUM_ZERO_GUARD: for (int i=0; i<O_WORDS_out; i++){
 
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i];
-// #ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+        W_L1_rd_cnt++;
+        I_L1_rd_cnt++;
 //         printf("MAC zero guard  = W[%5d] %5d * I[%5d] %5d                   = %5d | ",
 //                W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
 //                I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
 //                mac_data.data[i].to_uint());
-// #endif
+#endif
       }
     // accumulate with partial sum coming from memory above
     } else if (psum_top_flag){
       #pragma hls_unroll yes
       UPDATE_PSUM_FROM_TOP: for (int i=0; i<O_WORDS_out; i++){
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i] + O_write_data.data[i];
-// #ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+        W_L1_rd_cnt++;
+        I_L1_rd_cnt++;
 //         printf("MAC psum L2     = W[%5d] %5d * I[%5d] %5d + %5d           = %5d | ",
 //                W_mac_pntr+i, W_mem[W_mac_pntr+i].to_uint(),
 //                I_mac_pntr+i, I_mem[I_mac_pntr+i].to_uint(),
 //                O_write_data.data[i].to_uint(),
 //                mac_data.data[i].to_uint());
-// #endif
+#endif
       }
     }
 
     // if data coming from below cannot be reused anymore at this level, forward it to the level above or out of the accelerator
     if (read_flag1){
       O_read_data = mac_data;
-// #ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+      if (psum_flag && !zero_guard)
+        O_L1_top_rd_cnt++;
 //       printf("L1 output data = ");
 //       for (int i=0; i<O_WORDS_out; i++)
 //         printf("%d | ", mac_data.data[i].to_uint());
 //       printf("\n");
-// #endif
+#endif
     } else if (read_flag) {
       #pragma hls_unroll yes
       WRITE_PSUM_TO_RF: for (int i=0; i<O_WORDS_out; i++){
         O_mem[O_mac_pntr+i] = mac_data.data[i];
-// #ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+        if (psum_flag && !zero_guard){
+          O_L1_bot_rd_cnt++;
+        } else if (psum_top_flag) {
+          O_L1_top_wr_cnt++;
+        }
+        O_L1_bot_wr_cnt++;
 //         printf("O[%d] = %d\n",
 //                O_mac_pntr+i, O_mem[O_mac_pntr+i].to_uint());
-// #endif
+#endif
       }
     }
 
@@ -1472,6 +1756,9 @@ public:
         #pragma hls_unroll yes
         I_WR_IN_MEM: for (int i=0; i<I_WORDS_in; i++){
           I_mem[I_wr_pntr+i] = I_write_data.data[i];
+#ifndef __SYNTHESIS__
+          I_L1_wr_cnt++;
+#endif
         }
         I_wr_pntr = (I_wr_pntr+I_WORDS_in);
         if (I_wr_pntr == I_tile_size[nb_cnt-1]){
@@ -1488,9 +1775,10 @@ public:
         #pragma hls_unroll yes
         W_WR_IN_MEM: for (int i=0; i<W_WORDS_in; i++){
           W_mem[W_wr_pntr+i] = W_write_data.data[i];
-// #ifndef __SYNTHESIS__
+#ifndef __SYNTHESIS__
+          W_L1_wr_cnt++;
 //           printf("Read in weight @ RF \t | \t mem[%d] = %d\n", W_wr_pntr+i, W_write_data.data[i].to_uint());
-// #endif
+#endif
         }
         W_wr_pntr = (W_wr_pntr+W_WORDS_in);
         if (W_wr_pntr == W_tile_size[nb_cnt-1]){

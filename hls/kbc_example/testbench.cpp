@@ -386,7 +386,22 @@ CCS_MAIN(int argv, char **argc)
     cout << " --> number of outputs per output feature map:    " << cnt[k] << endl;
     cout << " --> average error:                               " << err[k]/cnt[k] << endl << endl;
   }
-
+  cout << "Memory Access Count: [in words]:" << endl;
+  cout << "O: [";
+  cout << "[(" << O_L1_bot_rd_cnt << ", " << O_L1_bot_wr_cnt << ")(" << O_L1_top_rd_cnt << ", " << O_L1_top_wr_cnt << ")]";
+  cout << "[(" << O_L2_bot_rd_cnt << ", " << O_L2_bot_wr_cnt << ")(" << O_L2_top_rd_cnt << ", " << O_L2_top_wr_cnt << ")]";
+  cout << "[(" << O_L3_bot_rd_cnt << ", " << O_L3_bot_wr_cnt << ")(" << O_L3_top_rd_cnt << ", " << O_L3_top_wr_cnt << ")]";
+  cout << "]" << endl;
+  cout << "I: [";
+  cout << "[" << I_L1_rd_cnt << ", " << I_L1_wr_cnt << "]";
+  cout << "[" << I_L2_rd_cnt << ", " << I_L2_wr_cnt << "]";
+  cout << "[" << I_L3_rd_cnt << ", " << I_L3_wr_cnt << "]";
+  cout << "]" << endl;
+  cout << "W: [";
+  cout << "[" << W_L1_rd_cnt << ", " << W_L1_wr_cnt << "]";
+  cout << "[" << W_L2_rd_cnt << ", " << W_L2_wr_cnt << "]";
+  cout << "[" << W_L3_rd_cnt << ", " << W_L3_wr_cnt << "]";
+  cout << "]" << endl;
   // memory is released
   for (int i=0; i<B; i++) {
     for (int j=0; j<K; j++) {
