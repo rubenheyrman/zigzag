@@ -7,6 +7,8 @@ solution options set /Output/GenerateCycleNetlist false
 solution options set /Flows/LowPower/SWITCHING_ACTIVITY_TYPE saif
 flow package require /MemGen
 solution file add ./testbench.cpp -type C++
+solution file add ./top.h -type CHEADER
+solution file add ./core.h -type CHEADER
 directive set -PIPELINE_RAMP_UP true
 directive set -PROTOTYPING_ENGINE oasys
 directive set -CLUSTER_TYPE combinational
@@ -68,11 +70,24 @@ directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_t
 directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/O_dp_sb<5,1728,8,8,O_partial_type,O_addr_type_L2>/run/mem -WORD_WIDTH 128
 directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/O_dp_sb<5,1728,8,8,O_partial_type,O_addr_type_L2>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
 
-directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,20736,16,16,I_type,I_addr_type_L3>/run/mem -WORD_WIDTH 128
-directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,20736,16,16,I_type,I_addr_type_L3>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,3456,16,16,W_type,W_addr_type_L2>/run/mem -WORD_WIDTH 128
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,3456,16,16,W_type,W_addr_type_L2>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
 
-directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,3456,16,16,I_type,I_addr_type_L2>/run/mem -WORD_WIDTH 128
-directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,3456,16,16,I_type,I_addr_type_L2>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,20736,16,16,W_type,W_addr_type_L3>/run/mem -WORD_WIDTH 128
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,20736,16,16,W_type,W_addr_type_L3>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
+
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/I_dp_sb<5,3456,16,16,I_type,I_addr_type_L2>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/I_dp_sb<5,3456,16,16,I_type,I_addr_type_L2>/run/mem -WORD_WIDTH 128
+
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/I_dp_sb<5,20736,16,16,I_type,I_addr_type_L3>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
+directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/I_dp_sb<5,20736,16,16,I_type,I_addr_type_L3>/run/mem -WORD_WIDTH 128
+
+
+#directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,20736,16,16,I_type,I_addr_type_L3>/run/mem -WORD_WIDTH 128
+#directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,20736,16,16,I_type,I_addr_type_L3>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
+
+#directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,3456,16,16,I_type,I_addr_type_L2>/run/mem -WORD_WIDTH 128
+#directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/W_dp_sb<5,3456,16,16,I_type,I_addr_type_L2>/run/mem:rsc -MAP_TO_MODULE sram_128_1296_freepdk45_TT_1p0V_25C_lib.sram_128_1296_freepdk45
 
 directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/rf<5,32,64,64,1,1,1,1,1,1,O_partial_type,O_addr_type_L1,I_type,I_addr_type_L1,W_type,W_addr_type_L1>/run/W_mem:rsc -MAP_TO_MODULE {[Register]}
 directive set /top<5,32,1,1,O_addr_type_L1,64,1,1,I_addr_type_L1,64,1,1,W_addr_type_L1,5,1728,8,8,O_addr_type_L2,3456,16,16,I_addr_type_L2,3456,16,16,W_addr_type_L2,5,10368,8,8,O_addr_type_L3,20736,16,16,I_addr_type_L3,20736,16,16,W_addr_type_L3,O_partial_type,I_type,W_type>/rf<5,32,64,64,1,1,1,1,1,1,O_partial_type,O_addr_type_L1,I_type,I_addr_type_L1,W_type,W_addr_type_L1>/run/I_mem:rsc -MAP_TO_MODULE {[Register]}
@@ -88,6 +103,6 @@ ignore_memory_precedences -from *:read_mem(mem:rsc.@)* -to *:write_mem(mem:rsc.@
 go allocate
 go schedule
 go extract
-go switching
-go power
-#flow run /SCVerify/launch_make ./scverify/Verify_rtl_v_msim.mk {} SIMTOOL=msim simgui
+#go switching
+#go power
+flow run /SCVerify/launch_make ./scverify/Verify_rtl_v_msim.mk {} SIMTOOL=msim simgui

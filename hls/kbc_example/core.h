@@ -3,42 +3,8 @@
 
 #include <ac_channel.h>     // Algorithmic C channel class
 #include <ac_int.h>         // Algortihmic C integer data types
-#include "config_file.h"
 #include <mc_scverify.h>
 #include "config_file.h"
-
-#ifndef __SYNTHESIS__
-O_addr_type_L3 O_L3_tile_small;
-O_addr_type_L3 O_L3_tile_big;
-O_addr_type_L2 O_L2_tile_small;
-O_addr_type_L2 O_L2_tile_big;
-I_addr_type_L3 I_L3_tile_small;
-I_addr_type_L3 I_L3_tile_big;
-I_addr_type_L2 I_L2_tile_small;
-I_addr_type_L2 I_L2_tile_big;
-W_addr_type_L3 W_L3_tile_small;
-W_addr_type_L3 W_L3_tile_big;
-W_addr_type_L2 W_L2_tile_small;
-W_addr_type_L2 W_L2_tile_big;
-int O_L3_top_wr_cnt = 0; int O_L3_bot_wr_cnt = 0;
-int O_L3_top_rd_cnt = 0; int O_L3_bot_rd_cnt = 0;
-int O_L2_top_wr_cnt = 0; int O_L2_bot_wr_cnt = 0;
-int O_L2_top_rd_cnt = 0; int O_L2_bot_rd_cnt = 0;
-int O_L1_top_wr_cnt = 0; int O_L1_bot_wr_cnt = 0;
-int O_L1_top_rd_cnt = 0; int O_L1_bot_rd_cnt = 0;
-int I_L3_wr_cnt = 0;
-int I_L3_rd_cnt = 0;
-int I_L2_wr_cnt = 0;
-int I_L2_rd_cnt = 0;
-int I_L1_wr_cnt = 0;
-int I_L1_rd_cnt = 0;
-int W_L3_wr_cnt = 0;
-int W_L3_rd_cnt = 0;
-int W_L2_wr_cnt = 0;
-int W_L2_rd_cnt = 0;
-int W_L1_wr_cnt = 0;
-int W_L1_rd_cnt = 0;
-#endif
 
 template<typename T, int N>
 class fifo

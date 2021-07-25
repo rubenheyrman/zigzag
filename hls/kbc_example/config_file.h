@@ -191,5 +191,36 @@ const uint8_t inputMAX = 255;
 const uint8_t weightMIN = 0;
 const uint8_t weightMAX = 4;
 
+// variables for high level memory access count calculation
+static O_addr_type_L3 O_L3_tile_small;
+static O_addr_type_L3 O_L3_tile_big;
+static O_addr_type_L2 O_L2_tile_small;
+static O_addr_type_L2 O_L2_tile_big;
+static I_addr_type_L3 I_L3_tile_small;
+static I_addr_type_L3 I_L3_tile_big;
+static I_addr_type_L2 I_L2_tile_small;
+static I_addr_type_L2 I_L2_tile_big;
+static W_addr_type_L3 W_L3_tile_small;
+static W_addr_type_L3 W_L3_tile_big;
+static W_addr_type_L2 W_L2_tile_small;
+static W_addr_type_L2 W_L2_tile_big;
+static int O_L3_top_wr_cnt = 0;  static int O_L3_bot_wr_cnt = 0;
+static int O_L3_top_rd_cnt = 0;  static int O_L3_bot_rd_cnt = 0;
+static int O_L2_top_wr_cnt = 0;  static int O_L2_bot_wr_cnt = 0;
+static int O_L2_top_rd_cnt = 0;  static int O_L2_bot_rd_cnt = 0;
+static int O_L1_top_wr_cnt = 0;  static int O_L1_bot_wr_cnt = 0;
+static int O_L1_top_rd_cnt = 0;  static int O_L1_bot_rd_cnt = 0;
+static int I_L3_wr_cnt = 0;
+static int I_L3_rd_cnt = 0;
+static int I_L2_wr_cnt = 0;
+static int I_L2_rd_cnt = 0;
+static int I_L1_wr_cnt = 0;
+static int I_L1_rd_cnt = 0;
+static int W_L3_wr_cnt = 0;
+static int W_L3_rd_cnt = 0;
+static int W_L2_wr_cnt = 0;
+static int W_L2_rd_cnt = 0;
+static int W_L1_wr_cnt = 0;
+static int W_L1_rd_cnt = 0;
 
 #endif

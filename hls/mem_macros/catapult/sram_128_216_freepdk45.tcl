@@ -5,29 +5,29 @@ RTLTOOL          DesignCompiler
 TECHNOLOGY       045nm
 LIBRARY          sram_128_216_freepdk45_TT_1p0V_25C_lib
 MODULE           sram_128_216_freepdk45
-OUTPUT_DIR       /users/students/r0678912/Documents/zigzag/hls/mem_macros/new
+OUTPUT_DIR       /users/students/r0678912/Documents/zigzag/hls/mem_macros/catapult
 FILES {
-  { FILENAME /users/students/r0678912/Documents/zigzag/hls/mem_macros/sram_128_216_freepdk45.v               FILETYPE Verilog MODELTYPE generic   PARSE 1 PATHTYPE copy STATICFILE 1 VHDL_LIB_MAPS work }
-  { FILENAME /users/students/r0678912/Documents/zigzag/hls/mem_macros/sram_128_216_freepdk45_TT_1p0V_25C.lib FILETYPE Liberty MODELTYPE synthesis PARSE 1 PATHTYPE copy STATICFILE 1 VHDL_LIB_MAPS work }
+  { FILENAME /users/students/r0678912/Documents/zigzag/hls/mem_macros/openram/sram_128_216_freepdk45.v               FILETYPE Verilog MODELTYPE generic   PARSE 1 PATHTYPE copy STATICFILE 1 VHDL_LIB_MAPS work }
+  { FILENAME /users/students/r0678912/Documents/zigzag/hls/mem_macros/openram/sram_128_216_freepdk45_TT_1p0V_25C.lib FILETYPE Liberty MODELTYPE synthesis PARSE 1 PATHTYPE copy STATICFILE 1 VHDL_LIB_MAPS work }
 }
 VHDLARRAYPATH    {}
 WRITEDELAY       0.1
 INITDELAY        1
 READDELAY        0.0
 VERILOGARRAYPATH {}
-INPUTDELAY       0.01
 TIMEUNIT         1ns
+INPUTDELAY       0.01
 WIDTH            128.0
 AREA             87281.39210000001
-RDWRRESOLUTION   UNKNOWN
 WRITELATENCY     1
+RDWRRESOLUTION   UNKNOWN
 READLATENCY      1
 DEPTH            256.0
 PARAMETERS {
-  { PARAMETER DATA_WIDTH TYPE hdl IGNORE 0 MIN 8 MAX 128 DEFAULT 128 }
-  { PARAMETER ADDR_WIDTH TYPE hdl IGNORE 0 MIN 0 MAX 11  DEFAULT 11  }
-  { PARAMETER RAM_DEPTH  TYPE hdl IGNORE 1 MIN 0 MAX 512 DEFAULT 256 }
-  { PARAMETER DELAY      TYPE hdl IGNORE 1 MIN 0 MAX 12  DEFAULT 3   }
+  { PARAMETER DATA_WIDTH TYPE hdl IGNORE 0 MIN 128 MAX 128 DEFAULT 128 }
+  { PARAMETER ADDR_WIDTH TYPE hdl IGNORE 0 MIN 0   MAX 11  DEFAULT 11  }
+  { PARAMETER RAM_DEPTH  TYPE hdl IGNORE 1 MIN 0   MAX 512 DEFAULT 256 }
+  { PARAMETER DELAY      TYPE hdl IGNORE 1 MIN 0   MAX 12  DEFAULT 3   }
 }
 PORTS {
   { NAME port_0 MODE ReadWrite }
