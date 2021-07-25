@@ -20,17 +20,25 @@ sram_216_word_128b_per_word :
   size_bit: 27648
   mem_bw: [128]
   area: [0.087]
-  cost:
-    read_word: [1.771]
-    write_word: [1.771]
+  cost: # values according to tb: 3017 uW *10e-9 ns = 30,17 pJ
+    read_word: [30,17] # [1.771]
+    write_word: [30,17] # [1.771]
   mem_type: dual_port_single_buffered
 
 sram_1296_word_128b_per_word :
   size_bit: 165888
   mem_bw: [128]
   area: [0.423]
-  cost:
-    read_word: [13.031]
-    write_word: [13.031]
+  cost: # values according to tb: 16310 uW *10e-9 ns = 163.1 pJ
+    read_word: [163.1] #[13.031]
+    write_word: [163.1] #[13.031]
   mem_type: dual_port_single_buffered
 
+dram :
+  size_bit: 331776000
+  mem_bw: [128]
+  area: [0]
+  cost:
+    read_word: [0]
+    write_word: [0]
+  mem_type: dual_port_single_buffered

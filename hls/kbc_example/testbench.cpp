@@ -386,7 +386,7 @@ CCS_MAIN(int argv, char **argc)
     cout << " --> number of outputs per output feature map:    " << cnt[k] << endl;
     cout << " --> average error:                               " << err[k]/cnt[k] << endl << endl;
   }
-  cout << "Memory Access Count: [in words]:" << endl;
+  cout << "Memory Access Count: [in elements]:" << endl;
   cout << "O: [";
   cout << "[(" << O_L1_bot_rd_cnt << ", " << O_L1_bot_wr_cnt << ")(" << O_L1_top_rd_cnt << ", " << O_L1_top_wr_cnt << ")]";
   cout << "[(" << O_L2_bot_rd_cnt << ", " << O_L2_bot_wr_cnt << ")(" << O_L2_top_rd_cnt << ", " << O_L2_top_wr_cnt << ")]";
@@ -401,6 +401,22 @@ CCS_MAIN(int argv, char **argc)
   cout << "[" << W_L1_rd_cnt << ", " << W_L1_wr_cnt << "]";
   cout << "[" << W_L2_rd_cnt << ", " << W_L2_wr_cnt << "]";
   cout << "[" << W_L3_rd_cnt << ", " << W_L3_wr_cnt << "]";
+  cout << "]" << endl;
+  cout << "Memory Access Count: [in words]:" << endl;
+  cout << "O: [";
+  cout << "[(" << O_L1_bot_rd_cnt/mem_words_O_L1_out << ", " << O_L1_bot_wr_cnt/mem_words_O_L1_in << ")(" << O_L1_top_rd_cnt/mem_words_O_L1_out << ", " << O_L1_top_wr_cnt/mem_words_O_L1_in << ")]";
+  cout << "[(" << O_L2_bot_rd_cnt/mem_words_O_L2_out << ", " << O_L2_bot_wr_cnt/mem_words_O_L2_in << ")(" << O_L2_top_rd_cnt/mem_words_O_L2_out << ", " << O_L2_top_wr_cnt/mem_words_O_L2_in << ")]";
+  cout << "[(" << O_L3_bot_rd_cnt/mem_words_O_L3_out << ", " << O_L3_bot_wr_cnt/mem_words_O_L3_in << ")(" << O_L3_top_rd_cnt/mem_words_O_L3_out << ", " << O_L3_top_wr_cnt/mem_words_O_L3_in << ")]";
+  cout << "]" << endl;
+  cout << "I: [";
+  cout << "[" << I_L1_rd_cnt/mem_words_I_L1_out << ", " << I_L1_wr_cnt/mem_words_I_L1_in << "]";
+  cout << "[" << I_L2_rd_cnt/mem_words_I_L2_out << ", " << I_L2_wr_cnt/mem_words_I_L2_in << "]";
+  cout << "[" << I_L3_rd_cnt/mem_words_I_L3_out << ", " << I_L3_wr_cnt/mem_words_I_L3_in << "]";
+  cout << "]" << endl;
+  cout << "W: [";
+  cout << "[" << W_L1_rd_cnt/mem_words_W_L1_out << ", " << W_L1_wr_cnt/mem_words_W_L1_in << "]";
+  cout << "[" << W_L2_rd_cnt/mem_words_W_L2_out << ", " << W_L2_wr_cnt/mem_words_W_L2_in << "]";
+  cout << "[" << W_L3_rd_cnt/mem_words_W_L3_out << ", " << W_L3_wr_cnt/mem_words_W_L3_in << "]";
   cout << "]" << endl;
   // memory is released
   for (int i=0; i<B; i++) {

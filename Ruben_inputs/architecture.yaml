@@ -80,7 +80,10 @@ memory_hierarchy:
     memory_instance: sram_1296_word_128b_per_word
     memory_unroll: 1
     operand_stored: [ O ]
-
+  DRAM:
+    memory_instance: dram
+    memory_unroll: 1
+    operand_stored: [O,I,W]
 #################################################################################
 
 # If the below parameter is set as True and fixed_spatial_unrolling (in settings.yaml) is False,
