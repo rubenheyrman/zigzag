@@ -1,7 +1,8 @@
 ##
 # HLS template
 #
-
+tb:
+	multi-layer/run
 clean:
 	@echo "Cleaning up..."
 	rm -rf **/Catapult*

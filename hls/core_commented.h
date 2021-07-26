@@ -4,7 +4,6 @@
 #include <ac_channel.h>     // Algorithmic C channel class
 #include <ac_int.h>         // Algortihmic C integer data types
 #include <mc_scverify.h>
-#include "config_file.h"
 
 template<typename T, int N>
 class fifo

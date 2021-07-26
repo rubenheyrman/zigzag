@@ -1,6 +1,8 @@
 ##
 # Ruben zigzag
 #
+multi-layer:
+	hls/multi-layer/run
 ruben_inputs:
 	python top_module.py\
 		--set Ruben_inputs/settings.yaml\
