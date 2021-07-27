@@ -129,7 +129,12 @@ struct memlevelInstr {
   type tile[N];
 };
 
-template<class O_addr_type_L3, class O_addr_type_L2, class O_addr_type_L1,
+template<class type, int col, int row>
+  struct NoC_transfer {
+    ac_channel<type> data[col][row];
+  };
+
+template<class O_addr_type_L3, class O_addr_type_L2, class O_addr_type_L1, 
   class I_addr_type_L3, class I_addr_type_L2, class I_addr_type_L1,
   class W_addr_type_L3, class W_addr_type_L2, class W_addr_type_L1,
   int N>
