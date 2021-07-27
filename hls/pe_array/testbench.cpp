@@ -236,7 +236,7 @@ CCS_MAIN(int argv, char **argc)
 
   DNNlayer<B, K, C, OY, OX, IY, IX, FY, FX, SY, SX, SFY, SFX, O_ref_type, I_ref_type, W_ref_type> SWinst;
 
-  top<nb_counters_W_L1, 
+  top<nb_counters_W_L1, nb_col, nb_row,
               mem_size_word_O_L1, mem_words_O_L1_in, mem_words_O_L1_out, O_addr_type_L1,
               mem_size_word_I_L1, mem_words_I_L1_in, mem_words_I_L1_out, I_addr_type_L1,
               mem_size_word_W_L1, mem_words_W_L1_in, mem_words_W_L1_out, W_addr_type_L1,
@@ -255,11 +255,11 @@ CCS_MAIN(int argv, char **argc)
   packedData<O_final_type,mem_words_O_L1_out> O_data_out;
   bool zero_guard = true;
   
-  ac_channel<packedData<W_type,mem_words_W_L1_in> > W_wr_data[4][3];
-  ac_channel<packedData<I_type,mem_words_I_L1_in> > I_wr_data[4][3];
-  ac_channel<packedData<O_final_type,mem_words_O_L1_in> > O_wr_data[4][3];
-  ac_channel<packedData<O_final_type,mem_words_O_L1_out> > O_rd_data[4][3];
-  ac_channel<bool> wr_zero_guard;
+  ac_channel<packedData<W_type,mem_words_W_L1_in> > W_wr_data[nb_col][nb_row];
+  ac_channel<packedData<I_type,mem_words_I_L1_in> > I_wr_data[nb_col][nb_row];
+  ac_channel<packedData<O_final_type,mem_words_O_L1_in> > O_wr_data[nb_col][nb_row];
+  ac_channel<packedData<O_final_type,mem_words_O_L1_out> > O_rd_data[nb_col][nb_row];
+  ac_channel<bool> wr_zero_guard[nb_col][nb_row];
 
   cout << "Initilialization done" << endl << endl;
 
@@ -303,7 +303,7 @@ CCS_MAIN(int argv, char **argc)
       I_data_in.data[I_cnt] = 0;
     }
     I_cnt++;
-    if (I_cnt == mem_words_I_L3_in){
+    if (I_cnt == mem_words_I_L1_in){
       I_cnt = 0;
       I_wr_data[0][0].write(I_data_in);
     }
@@ -328,7 +328,7 @@ CCS_MAIN(int argv, char **argc)
 
     W_data_in.data[W_cnt] = *(*(*(*(weight_array+k)+c)+fy)+fx);
     W_cnt++;
-    if (W_cnt == mem_words_W_L3_in){
+    if (W_cnt == mem_words_W_L1_in){
       W_cnt = 0;
       W_wr_data[0][0].write(W_data_in);
     }
@@ -340,7 +340,7 @@ CCS_MAIN(int argv, char **argc)
   //printf("Size: O input channel: %5d, W input channel: %5d, I input channel: %5d, Size zero guard channel: %5d, ", O_wr_data.size(), W_wr_data.size(), I_wr_data.size(), wr_zero_guard.size());
   cout << "Running HW instance" << endl;
   for (int i=0; i<8; i++)
-    wr_zero_guard.write(1);
+    wr_zero_guard[0][0].write(1);
   int its = 0;
   int O_cnt = 0;
   int O_cnt_wr = 0;
@@ -372,7 +372,7 @@ CCS_MAIN(int argv, char **argc)
     }
     *(*(*(*(output_array_hw+b)+k)+oy)+ox) = O_data_out.data[O_cnt];
     O_cnt++;
-    if (O_cnt == mem_words_O_L3_out){
+    if (O_cnt == mem_words_O_L1_out){
       O_cnt = 0;
       HWdone = false;
     }
@@ -383,6 +383,10 @@ CCS_MAIN(int argv, char **argc)
       cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k << "]" << endl;
       failed = true;
       cin.get(); // to pause the console and control by pressing enter
+    } else {
+      cout << "OFMAPhw " << *(*(*(*(output_array_hw+b)+k)+oy)+ox) << " | ";
+      cout << "OFMAPsw " << *(*(*(*(output_array_sw+b)+k)+oy)+ox);
+      cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k << "]" << endl;
     }
   }
   cout << "Finished Reading output channel" << endl << endl;

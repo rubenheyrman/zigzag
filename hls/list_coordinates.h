@@ -14,8 +14,8 @@ using namespace std;
 
 
 inline void list_coordinates(list<int> iterations,     list<string> dimensions, list<bool> mapped_to_DRAM,
-                      list<int> coordinate_val, list<string> coordinate_name,
-                      list<list<int>> &result){
+                             list<int> coordinate_val, list<string> coordinate_name,
+                             list<list<int>> &result){
     assertm(iterations.size() == dimensions.size() && dimensions.size() == mapped_to_DRAM.size(),
             "Lists of first argument row in list_coordinate() function do not have the same dimensions!");
     assertm(coordinate_val.size() == coordinate_name.size(),

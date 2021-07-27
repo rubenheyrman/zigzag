@@ -22,6 +22,8 @@ typedef ac_fixed<precision_bit_I ,8,false> I_type;
 typedef ac_fixed<precision_bit_O_partial ,16,false> O_partial_type;
 typedef ac_fixed<precision_bit_O_final ,16,false> O_final_type;
 
+const int nb_col = 1;
+const int nb_row = 1;
 
 // Memory hierarchy
 const int mem_size_bit_I_L1 = 512;
