@@ -1,3 +1,6 @@
+#ifndef LIST_COORD_
+#define LIST_COORD_
+
 #include <iostream>
 #include <iterator>
 #include <string>
@@ -10,7 +13,7 @@
 using namespace std;
 
 
-void list_coordinates(list<int> iterations,     list<string> dimensions, list<bool> mapped_to_DRAM,
+inline void list_coordinates(list<int> iterations,     list<string> dimensions, list<bool> mapped_to_DRAM,
                       list<int> coordinate_val, list<string> coordinate_name,
                       list<list<int>> &result){
     assertm(iterations.size() == dimensions.size() && dimensions.size() == mapped_to_DRAM.size(),
@@ -74,3 +77,5 @@ void list_coordinates(list<int> iterations,     list<string> dimensions, list<bo
     result.push_back(temp); // cout << endl;
   }
 }
+#endif // LIST_COORD_
+

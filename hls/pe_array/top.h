@@ -1,7 +1,8 @@
-#ifndef PE_TOP_
-#define PE_TOP_
+#ifndef TOP_
+#define TOP_
 
 #include "core.h"
+#include "config_file.h"
 
 template<int nb_counters_L1,
          int mem_size_word_O_L1, int mem_words_O_L1_in, int mem_words_O_L1_out, class O_addr_type_L1,

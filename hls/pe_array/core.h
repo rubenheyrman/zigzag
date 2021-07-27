@@ -1297,7 +1297,10 @@ public:
       setup = false;
       }
     } else {
-
+#pragma hls_unroll yes
+for (int x=0; x<4; x++){
+#pragma hls_unroll yes
+    for (int y=0; y<3; y++) {
     // set flags which decides if a new partial sum can be calculated
     O_read_flag = (O_data_vld || O_mac_pntr != O_vld_zg_pntr);
     I_read_flag = (I_data_vld || I_mac_pntr != I_wr_pntr);
@@ -1395,7 +1398,7 @@ public:
           write_stall_top = true;
         } else
 #endif
-          write_stall_top = !O_rd_data[0][0].nb_write(O_read_data);
+          write_stall_top = !O_rd_data[x][y].nb_write(O_read_data);
         if (!write_stall_top) {
           skid_buf_top.pop(); //Merely pop out the data from skid_buffer as nb_write was successful
         }
@@ -1406,7 +1409,7 @@ public:
           write_stall_top = true;
         } else
 #endif
-          write_stall_top = !O_rd_data[0][0].nb_write(O_read_data);
+          write_stall_top = !O_rd_data[x][y].nb_write(O_read_data);
         if (!write_stall_top) {
           skid_buf_top.pop();
         }
@@ -1416,7 +1419,7 @@ public:
           write_stall_top = true;
         } else
 #endif
-          write_stall_top = !O_rd_data[0][0].nb_write(O_read_data);
+          write_stall_top = !O_rd_data[x][y].nb_write(O_read_data);
         if (write_stall_top) {
           skid_buf_top.push(O_read_data);//Push data into skid buffer if nb_write fails
         }
@@ -1504,11 +1507,11 @@ public:
     }
 
     if (psum_top && O_mac_pntr == O_vld_zg_pntr && !O_write_flag){
-      O_write_flag = O_wr_data[0][0].nb_read(O_write_data);
+      O_write_flag = O_wr_data[x][y].nb_read(O_write_data);
     }
     // write input data to input memory if reusable data is consumed
     if (!I_data_vld) {
-      I_write_flag = I_wr_data[0][0].nb_read(I_write_data);
+      I_write_flag = I_wr_data[x][y].nb_read(I_write_data);
 
       if (I_write_flag) {
         #pragma hls_unroll yes
@@ -1527,7 +1530,7 @@ public:
     }
     // write weight data to weight memory if reusable data is consumed
     if (!W_data_vld) {
-      W_write_flag = W_wr_data[0][0].nb_read(W_write_data);
+      W_write_flag = W_wr_data[x][y].nb_read(W_write_data);
 
       if (W_write_flag) {
         #pragma hls_unroll yes
@@ -1547,6 +1550,8 @@ public:
     flags_wr_zero_guard <<=1;
     flags_wr_zero_guard[0] = skid_buf_wr_zero_guard.not_empty();
 
+  }
+  }
   }
   }
 private:
