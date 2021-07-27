@@ -511,14 +511,14 @@ public:
       if (irrel_at_max){
         irrel_cnt += WORDS_out;;
       }
+      //increment pointer based on wordlength
+      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound); 
+
       if (irrel_cnt == WORDS_in){
         vld_pntr = rd_pntr;
         data_vld = false;
         irrel_cnt = 0;
       }
-      //increment pointer based on wordlength
-      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound); 
-      
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
@@ -682,14 +682,14 @@ public:
       if (irrel_at_max){
         irrel_cnt += WORDS_out;;
       }
+      //increment pointer based on wordlength
+      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
+
       if (irrel_cnt == WORDS_in){
         vld_pntr = rd_pntr;
         data_vld = false;
         irrel_cnt = 0;
       }
-      //increment pointer based on wordlength
-      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
-
     }
 
     if (read_flag0 | skid_buf.not_empty()) {

@@ -531,25 +531,28 @@ public:
             //printf("\n");
 #endif
       }
-// #ifndef __SYNTHESIS__
-//       if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big){
-//         printf("rd_pntr: %d, wr_pntr: %d, data_vld: %d, irrel_cnt: %d, W_L2_rd_cnt: %d",
-//                rd_pntr, wr_pntr, data_vld, irrel_cnt, W_L2_rd_cnt);
-//         printf("\n");
-//       }
-// #endif
       //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
       if (irrel_at_max){
         irrel_cnt += WORDS_out;;
       }
       if (irrel_cnt == WORDS_in){
-        vld_pntr = rd_pntr;
         data_vld = false;
-        irrel_cnt = 0;
       }
       //increment pointer based on wordlength
-      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound); 
-      
+      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
+
+      if (irrel_cnt == WORDS_in){
+        vld_pntr = rd_pntr;
+        irrel_cnt = 0;
+      }
+
+#ifndef __SYNTHESIS__
+      if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big){
+        printf("RD: \t | \t rd_pntr: %5d, wr_pntr: %5d, data_vld: %5d, irrel_cnt: %5d, counter: %5d, W_L2_rd_cnt: %d5",
+               rd_pntr, wr_pntr, data_vld, irrel_cnt, rd_counter[0], W_L2_rd_cnt);
+        printf("\n");
+      }
+#endif
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
@@ -613,6 +616,13 @@ public:
           wr_pntr = 0;
         }
         data_vld = (wr_pntr==vld_pntr);
+#ifndef __SYNTHESIS__
+      if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big){
+        printf("WR: \t | \t rd_pntr: %5d, wr_pntr: %5d, data_vld: %5d, irrel_cnt: %5d, counter: %5d, W_L2_rd_cnt: 5%d",
+               rd_pntr, wr_pntr, data_vld, irrel_cnt, rd_counter[0], W_L2_rd_cnt);
+        printf("\n\n");
+      }
+#endif
       }
     }
   }
@@ -725,12 +735,15 @@ public:
         irrel_cnt += WORDS_out;;
       }
       if (irrel_cnt == WORDS_in){
-        vld_pntr = rd_pntr;
         data_vld = false;
-        irrel_cnt = 0;
       }
       //increment pointer based on wordlength
       addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
+
+      if (irrel_cnt == WORDS_in){
+        vld_pntr = rd_pntr;
+        irrel_cnt = 0;
+      }
 
     }
 
@@ -1254,8 +1267,8 @@ public:
         // std::cin.get();
          // printf("TILE SIZE %d \t | \t write data bot", tile_size[0]);
          // for (int i=0; i<WORDS_in; i++){
-           // if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint());} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
-           // if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
+         //   if (!read_data_top_flag) {printf(" @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_bot.data[i].to_uint());} else if (read_data_top_flag) {printf(" to L above: %3d", write_data_bot.data[i].to_uint());}
+         //   if (write_flag_top) {printf(" write data top @ mem[%3d]: %3d", (wr_pntr-WORDS_in+i)%tile_size[0], write_data_top.data[i].to_uint());}
          // }
         // printf("\t | \t rd_pntr: %d, wr_pntr:%d, vld_zg_pntr: %d, rd_data_zg: %d, wr_data_zg: %d\n", rd_pntr, wr_pntr, vld_zg_pntr, rd_data_zg, wr_data_zg);
         // printf("\t | \t data_vld: %d, rd_irrel: %d, wr_irrel: %d, wr_all: %d", data_vld, rd_irrel_at_max, wr_irrel_at_max, wr_all_at_max);
@@ -1449,6 +1462,13 @@ public:
 #endif
       }
     } else {
+// #ifndef __SYNTHESIS__
+//       printf("Channels: O_in: %d, I: %d, W: %d, O_out: %d\n",
+//              O_wr_data.size(),
+//              I_wr_data.size(),
+//              W_wr_data.size(),
+//              O_rd_data.size());
+// #endif
 
     // set flags which decides if a new partial sum can be calculated
     O_read_flag = (O_data_vld || O_mac_pntr != O_vld_zg_pntr);

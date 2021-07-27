@@ -148,22 +148,6 @@ struct loopinstrData {
 };
 
 //------------------------ SOFTWARE REFERENCE MODEL ------------------------//
-// Layer specification
-const int B   = 64;
-const int K   = 96;
-const int C   = 32;
-const int OY  = 1;
-const int OX  = 1;
-const int IY  = 1;
-const int IX  = 1;
-const int FY  = 1;
-const int FX  = 1;
-const int SY  = 1;
-const int SX  = 1;
-const int SFY = 1;
-const int SFX = 1;
-const int G   = 1;
-
 // Software precision
 typedef uint16_t O_ref_type;
 typedef uint8_t I_ref_type;
