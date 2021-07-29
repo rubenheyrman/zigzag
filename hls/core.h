@@ -1353,6 +1353,7 @@ public:
 #ifndef __SYNTHESIS__
         W_L1_rd_cnt++;
         I_L1_rd_cnt++;
+          O_L1_bot_rd_cnt++;
 #endif
       }
     // guard accumulation
@@ -1391,7 +1392,6 @@ public:
         O_mem[O_mac_pntr+i] = mac_data.data[i];
 #ifndef __SYNTHESIS__
         if (psum_flag && !zero_guard){
-          O_L1_bot_rd_cnt++;
         } else if (psum_top_flag) {
           O_L1_top_wr_cnt++;
         }

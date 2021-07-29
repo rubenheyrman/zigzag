@@ -1,5 +1,5 @@
 #include "config_file.h"
-#include "top.h"
+#include "topv2.h"
 #include "../DNNlayerSW.h"
 #include "../list_coordinates.h"
 #include <mc_scverify.h>
@@ -36,32 +36,32 @@ CCS_MAIN(int argv, char **argc)
   G   = 1
   };
   // Check if relevant loops do not surpass memory bounds of HW
-  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {8,16,1,1,1}; // B K K C #
+  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {4,16,1,1,1}; // B K K C #
   bool O_loop_relevancy_L1[nb_cnt]       = {1,0,1,1,1};
-  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {12,1,1,1,1};  // K B # # #
+  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {16,3,1,1,1};  // K B # # #
   bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
-  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {16,1,1,1,1}; // B # # # #
+  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {8,1,1,1,1}; // B # # # #
   bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
 
-  I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {8,1,1,1,1};
-  bool I_loop_relevancy_L1[nb_cnt]       = {1,1,1,1,1};
-  I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {16,12,1,1,1};
+  I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {4,16,1,1,1};
+  bool I_loop_relevancy_L1[nb_cnt]       = {0,1,1,1,1};
+  I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {16,3,1,1,1};
   bool I_loop_relevancy_L2[nb_cnt]       = {1,0,1,1,1};
-  I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {16,2,1,1,1};
+  I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {8,2,1,1,1};
   bool I_loop_relevancy_L3[nb_cnt]       = {1,0,1,1,1};
 
-  W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {8,1,1,1,1};
-  bool W_loop_relevancy_L1[nb_cnt]       = {0,1,1,1,1};
-  W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {16,12,16,1,1};
-  bool W_loop_relevancy_L2[nb_cnt]       = {1,1,0,1,1};
+  W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {4,16,16,1,1};
+  bool W_loop_relevancy_L1[nb_cnt]       = {1,1,0,1,1};
+  W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {3,8,1,1,1};
+  bool W_loop_relevancy_L2[nb_cnt]       = {1,0,1,1,1};
   W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {2,1,1,1,1};
   bool W_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
 
-  list<int>    layer_iterations  {4  , 4  , 8  , 16  , 12  , 16 , 2};
-  list<string> layer_dimensions  {"K", "C", "B", "C", "K", "B", "K"};
-  list<bool>   O_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 1  };
-  list<bool>   I_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
-  list<bool>   W_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
+  list<int>    layer_iterations  {4,4, 4  , 16 , 16  , 3  , 8  , 2};
+  list<string> layer_dimensions  {"K", "C", "K", "C", "B","K", "B", "K"};
+  list<bool>   O_mapped_to_DRAM  {0  , 0  ,0  , 0  , 0  , 0  , 0  , 1  };
+  list<bool>   I_mapped_to_DRAM  {0  , 0  ,0  , 0  , 0 , 0  , 0  , 0  };
+  list<bool>   W_mapped_to_DRAM  {0  , 0  ,0  , 0  , 0 , 0  , 0  , 0  };
 
   list<string> output_dimensions {"B", "K", "OY", "OX"};
   list<string> input_dimensions  {"B", "C", "OY", "OX", "FY", "FX"};
