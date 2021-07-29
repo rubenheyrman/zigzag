@@ -1142,7 +1142,9 @@ public:
         wr_pntr_cntInst.run(loop_bound, tile_size, wr_pntr, wr_pntr_out, wr_cnt, wr_irrel_at_max, wr_irrel_at_zero, wr_all_at_max, wr_counter, wr_tile_bound);
         wr_pntr = wr_pntr_out;
         data_vld = wr_pntr == rd_pntr;
-
+#ifndef __SYNTHESIS__
+        O_L2_bot_wr_cnt++;
+#endif
         // clear write_flags for next write iteration
         write_flag_bot = write_flag_top = false;
       }
@@ -2188,12 +2190,14 @@ class NoC_W_down
       if (!read_flag){
         read_flag = data_in.nb_read(data_in_tmp);
         if (read_flag){
+#pragma hls_unroll yes
           for (int i=0; i<WORDS_in; i++){
             buf[i] = data_in_tmp.data[i];
           }
         }
       }
       if (read_flag){
+        // no spatial reuse for K and C unrolling
 #pragma hls_unroll yes
         for (int x=0; x<nb_col; x++){
 #pragma hls_unroll yes
@@ -2203,6 +2207,59 @@ class NoC_W_down
               data_out_tmp.data[i] = buf[pntr+i];
             }
             data_out[x][y].write(data_out_tmp);
+            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-WORDS_out;
+            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
+            read_flag = (pntr >= pntr_max) ? false : read_flag;
+            pntr = pntr_new;
+          }
+        }
+      }
+    }
+  private:
+    //buffer
+    type buf[WORDS_in];
+
+    // interconnections
+    packedData<type,WORDS_in> data_in_tmp;
+    packedData<type,WORDS_out> data_out_tmp;
+
+    // control
+    bool read_flag;
+    ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr;
+};
+
+template<class type, int WORDS_in, int WORDS_out, int nb_col, int nb_row>
+class NoC_I_down
+{
+  public:
+// constructor
+    NoC_I_down() : read_flag(0), pntr(0) {}
+
+#pragma hls_design interface
+#pragma hls_pipeline_init_interval 1
+    void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &data_in,
+                        ac_channel<packedData<type, WORDS_out> > data_out[nb_col][nb_row])
+    {
+      if (!read_flag){
+        read_flag = data_in.nb_read(data_in_tmp);
+        if (read_flag){
+#pragma hls_unroll yes
+          for (int i=0; i<WORDS_in; i++){
+            buf[i] = data_in_tmp.data[i];
+          }
+        }
+      }
+      if (read_flag){
+        // spatial reuse because of irrelevant K dimension
+#pragma hls_unroll yes
+        for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+            for (int i=0; i<WORDS_out; i++){
+              data_out_tmp.data[i] = buf[pntr+i];
+#pragma hls_unroll yes
+              for (int y=0; y<nb_row; y++){
+                data_out[x][y].write(data_out_tmp);
+              }
             ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-WORDS_out;
             ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
             read_flag = (pntr >= pntr_max) ? false : read_flag;
@@ -2240,7 +2297,9 @@ class NoC_O_down
     {
       if (!read_flag_zero_guard){read_flag_zero_guard = zero_guard_in.nb_read(zero_guard_tmp);}
       if (read_flag_zero_guard){
+#pragma hls_unroll yes
         for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
           for (int y=0; y<nb_row; y++){
             if (x==0){
               zero_guard_out[x][y].write(zero_guard_tmp);
@@ -2254,6 +2313,7 @@ class NoC_O_down
       if (!read_flag){
         read_flag = data_in.nb_read(data_in_tmp);
         if (read_flag){
+#pragma hls_unroll yes
           for (int i=0; i<WORDS_in; i++){
             buf[i] = data_in_tmp.data[i];
           }
@@ -2301,8 +2361,10 @@ class NoC_O_up
   public:
 // constructor
     NoC_O_up() : write_flag(0), pntr(0) {
+#pragma hls_unroll yes
       for (int i=0; i<WORDS_out; i++)
         buf[i] = 0;
+      pntr_max = WORDS_out-nb_row*WORDS_in;
     }
 
 #pragma hls_design interface
@@ -2312,23 +2374,27 @@ class NoC_O_up
     {
       if (!write_flag){
         if (data_in[0][0].available(1)){
+          // spatial reuse (adder tree) because irrelevant C loop as x dimension
+#pragma hls_unroll yes
           for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
             for (int y=0; y<nb_row; y++){
               if (data_in[x][y].available(1)){
                 data_in[x][y].read(data_in_tmp);
+#pragma hls_unroll yes
                 for (int i=0; i<WORDS_in; i++){
                   buf[pntr+y+i] += data_in_tmp.data[i];
                 }
               }
             }
           }
-          ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_max = WORDS_out-nb_row*WORDS_in;
           ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_row*WORDS_in);
           write_flag = (pntr >= pntr_max) ? true : write_flag;
           pntr = pntr_new;
         }
       }
       if (write_flag){
+#pragma hls_unroll yes
         for (int i=0; i<WORDS_out; i++){
           data_out_tmp.data[i] = buf[i];
           buf[i] = 0;
@@ -2348,6 +2414,7 @@ class NoC_O_up
     // control
     bool write_flag;
     ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr;
+    ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_max;
 };
 
 template<class type, int WORDS_in, int WORDS_out>
