@@ -1394,6 +1394,7 @@ public:
           O_L1_top_wr_cnt++;
         }
         O_L1_bot_wr_cnt++;
+        printf("PSUM STORE L1: O_mem[%d][%d][%d] = %d\n", x, y, O_mac_pntr[x][y]+i, O_mem[x][y][O_mac_pntr[x][y]+i].to_uint());
 #endif
       }
     }
@@ -1401,6 +1402,8 @@ public:
     if (read_flag1[x][y] | skid_buf_top[x][y].not_empty()) {
 #ifndef __SYNTHESIS__
       debug_cnt[x][y]++;
+      if (read_flag1)
+        printf("PSUM STORE OUT: O_read_data[%d][%d] = %d\n", x, y, O_read_data[x][y].data[0].to_uint());
 #endif
       if (read_flag1[x][y] & skid_buf_top[x][y].not_empty()) {
         skid_buf_top[x][y].push(O_read_data[x][y]);

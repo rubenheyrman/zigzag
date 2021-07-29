@@ -22,8 +22,9 @@ typedef ac_fixed<precision_bit_I ,8,false> I_type;
 typedef ac_fixed<precision_bit_O_partial ,16,false> O_partial_type;
 typedef ac_fixed<precision_bit_O_final ,16,false> O_final_type;
 
-const int nb_col = 4;
-const int nb_row = 3;
+// PE Array size
+const int nb_col = 16;
+const int nb_row = 1;
 
 // Memory hierarchy
 const int mem_size_bit_I_L1 = 512;
@@ -131,12 +132,7 @@ struct memlevelInstr {
   type tile[N];
 };
 
-template<class type, int col, int row>
-  struct NoC_transfer {
-    ac_channel<type> data[col][row];
-  };
-
-template<class O_addr_type_L3, class O_addr_type_L2, class O_addr_type_L1, 
+template<class O_addr_type_L3, class O_addr_type_L2, class O_addr_type_L1,
   class I_addr_type_L3, class I_addr_type_L2, class I_addr_type_L1,
   class W_addr_type_L3, class W_addr_type_L2, class W_addr_type_L1,
   int N>

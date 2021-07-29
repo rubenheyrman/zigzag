@@ -88,7 +88,7 @@ private:
 };
 
 // takes in loop mapping configuration of each of the memory levels and of the network on chip
-template<int nb_cnt, 
+template<int nb_cnt, int nb_col, int nb_row,
 	 class O_addr_type_L1, class O_addr_type_L2, class O_addr_type_L3,
 	 class I_addr_type_L1, class I_addr_type_L2, class I_addr_type_L3,
 	 class W_addr_type_L1, class W_addr_type_L2, class W_addr_type_L3> 
@@ -97,7 +97,9 @@ class config_control_unit
 public:
   // Constructor
   config_control_unit() {
-    O_tile_size_L1 = I_tile_size_L1 = W_tile_size_L1 = 1;
+    O_tile_size_L1 = 1;
+    I_tile_size_L1 = 1;
+    W_tile_size_L1 = 1;
   }
 
 #pragma hls_design interface
@@ -105,13 +107,16 @@ public:
                       I_addr_type_L3, I_addr_type_L2, I_addr_type_L1, 
                       W_addr_type_L3, W_addr_type_L2, W_addr_type_L1, 
                       nb_cnt> > &layer_instruction_in,
-                      ac_channel<memlevelInstr<O_addr_type_L1, nb_cnt+1> > &O_instr_L1_out,
+                      ac_channel<memlevelInstr<O_addr_type_L1, nb_cnt+1> > O_instr_L1_out[nb_col][nb_row],
+                      // ac_channel<memlevelInstr<O_addr_type_L1, nb_cnt+1> > &O_instr_L1_out,
                       ac_channel<memlevelInstr<O_addr_type_L2, nb_cnt+1> > &O_instr_L2_out,
                       ac_channel<memlevelInstr<O_addr_type_L3, nb_cnt+1> > &O_instr_L3_out,
-                      ac_channel<memlevelInstr<I_addr_type_L1, nb_cnt+1> > &I_instr_L1_out,
+                      ac_channel<memlevelInstr<I_addr_type_L1, nb_cnt+1> > I_instr_L1_out[nb_col][nb_row],
+                      // ac_channel<memlevelInstr<I_addr_type_L1, nb_cnt+1> > &I_instr_L1_out,
                       ac_channel<memlevelInstr<I_addr_type_L2, nb_cnt+1> > &I_instr_L2_out,
                       ac_channel<memlevelInstr<I_addr_type_L3, nb_cnt+1> > &I_instr_L3_out,
-                      ac_channel<memlevelInstr<W_addr_type_L1, nb_cnt+1> > &W_instr_L1_out,
+                      ac_channel<memlevelInstr<W_addr_type_L1, nb_cnt+1> > W_instr_L1_out[nb_col][nb_row],
+                      // ac_channel<memlevelInstr<W_addr_type_L1, nb_cnt+1> > &W_instr_L1_out,
                       ac_channel<memlevelInstr<W_addr_type_L2, nb_cnt+1> > &W_instr_L2_out,
                       ac_channel<memlevelInstr<W_addr_type_L3, nb_cnt+1> > &W_instr_L3_out) {
 
@@ -129,20 +134,21 @@ public:
       W_loops_L2 = layer_instruction.W_loopData_L2;
       W_loops_L3 = layer_instruction.W_loopData_L3;
 
+      // Tailored to NoC multiply L2 base tile size with col dimension = C and/or row dimension = K
       O_tiling_unit_L1.run(O_loops_L1, O_tile_size_L1, O_instr_L1);
-      O_tile_size_L2 = (O_addr_type_L2) O_tile_size_L1;
+      O_tile_size_L2 = (O_addr_type_L2) O_tile_size_L1*nb_row;
       O_tiling_unit_L2.run(O_loops_L2, O_tile_size_L2, O_instr_L2);
       O_tile_size_L3 = (O_addr_type_L3) O_tile_size_L2;
       O_tiling_unit_L3.run(O_loops_L3, O_tile_size_L3, O_instr_L3);
 
       I_tiling_unit_L1.run(I_loops_L1, I_tile_size_L1, I_instr_L1);
-      I_tile_size_L2 = (I_addr_type_L2) I_tile_size_L1;
+      I_tile_size_L2 = (I_addr_type_L2) I_tile_size_L1*nb_col;
       I_tiling_unit_L2.run(I_loops_L2, I_tile_size_L2, I_instr_L2);
       I_tile_size_L3 = (I_addr_type_L3) I_tile_size_L2;
       I_tiling_unit_L3.run(I_loops_L3, I_tile_size_L3, I_instr_L3);
 
       W_tiling_unit_L1.run(W_loops_L1, W_tile_size_L1, W_instr_L1);
-      W_tile_size_L2 = (W_addr_type_L2) W_tile_size_L1;
+      W_tile_size_L2 = (W_addr_type_L2) W_tile_size_L1*nb_col*nb_row;
       W_tiling_unit_L2.run(W_loops_L2, W_tile_size_L2, W_instr_L2);
       W_tile_size_L3 = (W_addr_type_L3) W_tile_size_L2;
       W_tiling_unit_L3.run(W_loops_L3, W_tile_size_L3, W_instr_L3);
@@ -172,10 +178,18 @@ public:
       I_instr_L2_out.write(I_instr_L2);
       W_instr_L2_out.write(W_instr_L2);
 
-      O_instr_L1_out.write(O_instr_L1);
-      I_instr_L1_out.write(I_instr_L1);
-      W_instr_L1_out.write(W_instr_L1);
-
+      // O_instr_L1_out.write(O_instr_L1);
+      // I_instr_L1_out.write(I_instr_L1);
+      // W_instr_L1_out.write(W_instr_L1);
+#pragma hls_unroll yes
+      for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+        for (int y=0; y<nb_row; y++){
+          O_instr_L1_out[x][y].write(O_instr_L1);
+          I_instr_L1_out[x][y].write(I_instr_L1);
+          W_instr_L1_out[x][y].write(W_instr_L1);
+        }
+      }
     }
   }
 
@@ -1128,6 +1142,7 @@ public:
         wr_pntr_cntInst.run(loop_bound, tile_size, wr_pntr, wr_pntr_out, wr_cnt, wr_irrel_at_max, wr_irrel_at_zero, wr_all_at_max, wr_counter, wr_tile_bound);
         wr_pntr = wr_pntr_out;
         data_vld = wr_pntr == rd_pntr;
+
         // clear write_flags for next write iteration
         write_flag_bot = write_flag_top = false;
       }
@@ -1686,6 +1701,654 @@ private:
 
 };
 
+template<int nb_cnt, int O_N, int I_N, int W_N, int nb_col, int nb_row,
+         int O_WORDS_in, int O_WORDS_out, int I_WORDS_in, int I_WORDS_out, int W_WORDS_in, int W_WORDS_out,
+         class O_type, class O_addr_type, class I_type, class I_addr_type, class W_type, class W_addr_type>
+class pe_array
+{
+public:
+  // Constructor
+  pe_array() {
+
+#pragma hls_unroll yes
+    for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+      for (int y=0; y<nb_row; y++){
+#pragma hls_unroll yes
+        for (int z=0; z<nb_cnt; z++){
+          O_mac_counter[x][y][z] = 0;
+          I_mac_counter[x][y][z] = 0;
+          W_mac_counter[x][y][z] = 0;
+        }
+        setup[x][y] = 1;
+        O_mac_irrel_at_max[x][y] = 1; O_mac_irrel_at_zero[x][y] = 1; O_mac_all_at_max[x][y] = 0;
+        I_mac_irrel_at_max[x][y] = 1; I_mac_irrel_at_zero[x][y] = 1; I_mac_all_at_max[x][y] = 0;
+        W_mac_irrel_at_max[x][y] = 1; W_mac_irrel_at_zero[x][y] = 1; W_mac_all_at_max[x][y] = 0;
+        O_wr_irrel_at_max[x][y] = 1; O_wr_irrel_at_zero[x][y] = 1;
+        I_irrel_cnt[x][y] = 0; W_irrel_cnt[x][y] = 0;
+        I_mac_irrel_at_maxBuf[x][y] = 1; W_mac_irrel_at_maxBuf[x][y] = 1; O_mac_irrel_at_maxBuf[x][y] = 1;
+        psum_flag[x][y] = 0; psum_top_flag[x][y] = 0; psum_top[x][y] = 0; read_flag[x][y] = 0;
+        write_flag0[x][y] = 0; O_write_flag[x][y] = 0; I_write_flag[x][y] = 0; W_write_flag[x][y] = 0;
+        zero_guard[x][y] = 0; zero_guard_top_flag[x][y] = 0; read_flag0[x][y] = 0; read_flag1[x][y] = 0;
+        I_wr_pntr[x][y] = 0; W_wr_pntr[x][y] = 0; O_mac_pntr[x][y] = 0; I_mac_pntr[x][y] = 0; W_mac_pntr[x][y] = 0;
+        O_vld_zg_pntr[x][y] = 0; O_data_vld[x][y] = 0; I_vld_pntr[x][y] = 0; I_data_vld[x][y] = 0; W_vld_pntr[x][y] = 0; W_data_vld[x][y] = 0;
+        flags_top[x][y] = 0; write_stall_top[x][y] = 1; flags_wr_zero_guard[x][y] = 0; skid[x][y] = 0;
+        debug_cnt[x][y] = 0;
+      }
+    }
+  }
+
+#pragma hls_design top
+#pragma hls_design interface
+#pragma hls_pipeline_init_interval 1
+    void CCS_BLOCK(run)(ac_channel<packedData<O_type,O_WORDS_in> > O_wr_data[nb_col][nb_row],
+                        ac_channel<packedData<O_type,O_WORDS_out> > O_rd_data[nb_col][nb_row],
+                        ac_channel<packedData<I_type,I_WORDS_in> > I_wr_data[nb_col][nb_row],
+                        ac_channel<packedData<W_type,W_WORDS_in> > W_wr_data[nb_col][nb_row],
+                        ac_channel<bool> wr_data_zero_guard[nb_col][nb_row],
+                        ac_channel<memlevelInstr<O_addr_type, nb_cnt+1> > O_instr_in[nb_col][nb_row],
+                        ac_channel<memlevelInstr<I_addr_type, nb_cnt+1> > I_instr_in[nb_col][nb_row],
+                        ac_channel<memlevelInstr<W_addr_type, nb_cnt+1> > W_instr_in[nb_col][nb_row]) {
+#pragma hls_resource O_mem:rsc variables="O_mem" \
+      map_to_module="ram_nangate-45nm-register-file_beh.REGISTER_FILE"
+#pragma hls_resource I_mem:rsc variables="I_mem" \
+      map_to_module="ram_nangate-45nm-register-file_beh.REGISTER_FILE"
+#pragma hls_resource W_mem:rsc variables="W_mem" \
+      map_to_module="ram_nangate-45nm-register-file_beh.REGISTER_FILE"
+
+#pragma hls_unroll yes
+  for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+    for (int y=0; y<nb_row; y++) {
+      if (setup[x][y]){
+        if (O_instr_in[x][y].available(1) && I_instr_in[x][y].available(1) && W_instr_in[x][y].available(1) && wr_data_zero_guard[x][y].available(1)){
+          O_instr[x][y] = O_instr_in[x][y].read();
+          I_instr[x][y] = I_instr_in[x][y].read();
+          W_instr[x][y] = W_instr_in[x][y].read();
+#pragma hls_unroll yes
+          for (int z=0; z<nb_cnt; z++){
+            O_loop_bound[x][y][z] = O_instr[x][y].bound[z+1];
+            O_tile_size[x][y][z] = O_instr[x][y].tile[z+1];
+            I_loop_bound[x][y][z] = I_instr[x][y].bound[z+1];
+            I_tile_size[x][y][z] = I_instr[x][y].tile[z+1];
+            W_loop_bound[x][y][z] = W_instr[x][y].bound[z+1];
+            W_tile_size[x][y][z] = W_instr[x][y].tile[z+1];
+            O_mac_tile_bound[x][y][z] = O_tile_size[x][y][z];
+            I_mac_tile_bound[x][y][z] = I_tile_size[x][y][z];
+            W_mac_tile_bound[x][y][z] = W_tile_size[x][y][z];
+            O_mac_irrel_at_maxBuf[x][y] = O_mac_irrel_at_max[x][y] = O_loop_bound[x][y][z] != 1 ? false : O_mac_irrel_at_max[x][y];
+            I_mac_irrel_at_maxBuf[x][y] = I_mac_irrel_at_max[x][y] = I_loop_bound[x][y][z] != 1 ? false : I_mac_irrel_at_max[x][y];
+            W_mac_irrel_at_maxBuf[x][y] = W_mac_irrel_at_max[x][y] = W_loop_bound[x][y][z] != 1 ? false : W_mac_irrel_at_max[x][y];
+          }
+          data_zg[x][y] = wr_data_zero_guard[x][y].read();
+          skid_buf_wr_zero_guard[x][y].push(data_zg[x][y]);
+          if (O_WORDS_in >= O_tile_size[x][y][nb_cnt-1]){skid_buf_wr_zero_guard[x][y].pop();}
+          setup[x][y] = false;
+        }
+      } else {
+    // set flags which decides if a new partial sum can be calculated
+    O_read_flag[x][y] = (O_data_vld[x][y] || O_mac_pntr[x][y] != O_vld_zg_pntr[x][y]);
+    I_read_flag[x][y] = (I_data_vld[x][y] || I_mac_pntr[x][y] != I_wr_pntr[x][y]);
+    W_read_flag[x][y] = (W_data_vld[x][y] || W_mac_pntr[x][y] != W_wr_pntr[x][y]);
+    zero_guard[x][y] = (data_zg[x][y] && O_mac_pntr[x][y] == O_vld_zg_pntr[x][y]);
+
+    if (((O_mac_irrel_at_max[x][y] && !flags_top[x][y][1]) || !O_mac_irrel_at_max[x][y])) { // Access MSB bit of the flags 3bit variable. Please note the bit access method [].
+      read_flag0[x][y] = true;
+    } else {
+      read_flag0[x][y] = false;
+    }
+
+    psum_flag[x][y] = read_flag0[x][y] && (O_read_flag[x][y] && I_read_flag[x][y] && W_read_flag[x][y] && !(psum_top[x][y] && O_mac_pntr[x][y] == O_vld_zg_pntr[x][y]));
+    psum_top_flag[x][y] = read_flag0[x][y] && (O_write_flag[x][y] && I_read_flag[x][y] && W_read_flag[x][y]);
+    read_flag[x][y] =  (psum_flag[x][y] || psum_top_flag[x][y]);
+
+    // set flag which decides if data is transfered out of the memory level upwards
+    if (!flags_top[x][y][1] && O_mac_irrel_at_max[x][y] && read_flag[x][y]) { // Access MSB bit of the flags 3bit variable. Please note the bit access method [].
+      read_flag1[x][y] = true;
+    } else {
+      read_flag1[x][y] = false;
+    }
+
+    // proof that pointer is multiple of the wordlength
+    O_mac_pntr[x][y] = ((O_mac_pntr[x][y]/O_WORDS_out)*O_WORDS_out);
+    I_mac_pntr[x][y] = ((I_mac_pntr[x][y]/I_WORDS_out)*I_WORDS_out);
+    W_mac_pntr[x][y] = ((W_mac_pntr[x][y]/W_WORDS_out)*W_WORDS_out);
+
+    // update partial sums and guard the fetching when no partial sum is available yet for a certain output coordinate
+    // accumulate with partial sum from scratchpad memory
+    if (psum_flag[x][y] && !zero_guard[x][y]){
+      #pragma hls_unroll yes
+      UPDATE_PSUM: for (int i=0; i<O_WORDS_out; i++){
+
+        mac_data[x][y].data[i] = W_mem[x][y][W_mac_pntr[x][y]+i] * I_mem[x][y][I_mac_pntr[x][y]+i] + O_mem[x][y][O_mac_pntr[x][y]+i];
+#ifndef __SYNTHESIS__
+        W_L1_rd_cnt++;
+        I_L1_rd_cnt++;
+#endif
+      }
+    // guard accumulation
+    } else if (psum_flag[x][y] && zero_guard[x][y]){
+      #pragma hls_unroll yes
+      UPDATE_PSUM_ZERO_GUARD: for (int i=0; i<O_WORDS_out; i++){
+
+        mac_data[x][y].data[i] = W_mem[x][y][W_mac_pntr[x][y]+i] * I_mem[x][y][I_mac_pntr[x][y]+i];
+#ifndef __SYNTHESIS__
+        W_L1_rd_cnt++;
+        I_L1_rd_cnt++;
+#endif
+      }
+    // accumulate with partial sum coming from memory above
+    } else if (psum_top_flag[x][y]){
+      #pragma hls_unroll yes
+      UPDATE_PSUM_FROM_TOP: for (int i=0; i<O_WORDS_out; i++){
+        mac_data[x][y].data[i] = W_mem[x][y][W_mac_pntr[x][y]+i] * I_mem[x][y][I_mac_pntr[x][y]+i] + O_write_data[x][y].data[i];
+#ifndef __SYNTHESIS__
+        W_L1_rd_cnt++;
+        I_L1_rd_cnt++;
+#endif
+      }
+    }
+
+    // if data coming from below cannot be reused anymore at this level, forward it to the level above or out of the accelerator
+    if (read_flag1[x][y]){
+      O_read_data[x][y] = mac_data[x][y];
+#ifndef __SYNTHESIS__
+      if (psum_flag[x][y] && !zero_guard[x][y])
+        O_L1_top_rd_cnt++;
+#endif
+    } else if (read_flag[x][y]) {
+      #pragma hls_unroll yes
+      WRITE_PSUM_TO_RF: for (int i=0; i<O_WORDS_out; i++){
+        O_mem[x][y][O_mac_pntr[x][y]+i] = mac_data[x][y].data[i];
+#ifndef __SYNTHESIS__
+        if (psum_flag[x][y] && !zero_guard[x][y]){
+          O_L1_bot_rd_cnt++;
+        } else if (psum_top_flag[x][y]) {
+          O_L1_top_wr_cnt++;
+        }
+        O_L1_bot_wr_cnt++;
+#endif
+      }
+    }
+
+    if (read_flag1[x][y] | skid_buf_top[x][y].not_empty()) {
+#ifndef __SYNTHESIS__
+      debug_cnt[x][y]++;
+#endif
+      if (read_flag1[x][y] & skid_buf_top[x][y].not_empty()) {
+        skid_buf_top[x][y].push(O_read_data[x][y]);
+        O_read_data[x][y] = skid_buf_top[x][y].peek();
+#ifndef __SYNTHESIS__
+        if (debug_cnt[x][y]&1) {
+          write_stall_top[x][y] = true;
+        } else
+#endif
+          write_stall_top[x][y] = !O_rd_data[x][y].nb_write(O_read_data[x][y]);
+        if (!write_stall_top[x][y]) {
+          skid_buf_top[x][y].pop(); //Merely pop out the data from skid_buffer as nb_write was successful
+        }
+      } else if (skid_buf_top[x][y].not_empty()) {
+        O_read_data[x][y] = skid_buf_top[x][y].peek();
+#ifndef __SYNTHESIS__
+        if (debug_cnt[x][y]&1) {
+          write_stall_top[x][y] = true;
+        } else
+#endif
+          write_stall_top[x][y] = !O_rd_data[x][y].nb_write(O_read_data[x][y]);
+        if (!write_stall_top[x][y]) {
+          skid_buf_top[x][y].pop();
+        }
+      } else if (read_flag1[x][y]) {
+#ifndef __SYNTHESIS__
+        if (debug_cnt[x][y]&1) {
+          write_stall_top[x][y] = true;
+        } else
+#endif
+          write_stall_top[x][y] = !O_rd_data[x][y].nb_write(O_read_data[x][y]);
+        if (write_stall_top[x][y]) {
+          skid_buf_top[x][y].push(O_read_data[x][y]);//Push data into skid buffer if nb_write fails
+        }
+      }
+    }
+
+    if (read_flag[x][y]){
+      // remove zero guard tag from memory address
+      if (zero_guard[x][y]){
+        O_vld_zg_pntr[x][y]++;
+        if (O_vld_zg_pntr[x][y] == O_tile_size[x][y][nb_cnt-1]){
+          O_vld_zg_pntr[x][y] = 0;
+          data_zg[x][y] = false;
+        }
+      }
+      // accumulated with psum data from level above
+      else if (O_write_flag[x][y]){
+        O_write_flag[x][y] = false;
+        O_vld_zg_pntr[x][y]++;
+        // all data in memory is reusable
+        if (O_vld_zg_pntr[x][y] == O_tile_size[x][y][nb_cnt-1]){
+          O_vld_zg_pntr[x][y] = 0;
+          O_data_vld[x][y] = true;
+          psum_top[x][y] = false;
+        }
+      }
+
+      // put old values in the buffer and calculate new ones
+      I_mac_irrel_at_maxBuf[x][y] = I_mac_irrel_at_max[x][y];
+      W_mac_irrel_at_maxBuf[x][y] = W_mac_irrel_at_max[x][y];
+      O_mac_irrel_at_maxBuf[x][y] = O_mac_irrel_at_max[x][y];
+
+      O_mac_pntr_cntInst[x][y].run(O_loop_bound[x][y], O_tile_size[x][y], O_mac_pntr[x][y], O_mac_irrel_at_max[x][y], O_mac_irrel_at_zero[x][y], O_mac_all_at_max[x][y], O_mac_counter[x][y], O_mac_tile_bound[x][y]);
+      I_mac_pntr_cntInst[x][y].run(I_loop_bound[x][y], I_tile_size[x][y], I_mac_pntr[x][y], I_mac_irrel_at_max[x][y], I_mac_irrel_at_zero[x][y], I_mac_all_at_max[x][y], I_mac_counter[x][y], I_mac_tile_bound[x][y]);
+      W_mac_pntr_cntInst[x][y].run(W_loop_bound[x][y], W_tile_size[x][y], W_mac_pntr[x][y], W_mac_irrel_at_max[x][y], W_mac_irrel_at_zero[x][y], W_mac_all_at_max[x][y], W_mac_counter[x][y], W_mac_tile_bound[x][y]);
+
+      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
+      if (I_mac_irrel_at_maxBuf[x][y]){
+        I_irrel_cnt[x][y]++;
+      }
+      if (I_irrel_cnt[x][y] == I_WORDS_in){
+        I_vld_pntr[x][y] = I_mac_pntr[x][y];
+        I_data_vld[x][y] = false;
+        I_irrel_cnt[x][y] = 0;
+      }
+      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
+      if (W_mac_irrel_at_maxBuf[x][y]){
+        W_irrel_cnt[x][y]++;
+      }
+      if (W_irrel_cnt[x][y] == W_WORDS_in){
+        W_vld_pntr[x][y] = W_mac_pntr[x][y];
+        W_data_vld[x][y] = false;
+        W_irrel_cnt[x][y] = 0;
+      }
+
+      // data of memory level can't be reused anymore and will be moved to the memory levels above
+      if (O_mac_irrel_at_maxBuf[x][y] && O_mac_pntr[x][y] == O_vld_zg_pntr[x][y] && O_vld_zg_pntr[x][y] == 0){
+        O_data_vld[x][y] = false;
+      }
+    }
+
+    flags_top[x][y] <<=1;
+    flags_top[x][y][0] = skid_buf_top[x][y].not_empty();
+
+    // read in zero guard data from level above
+    if (!flags_wr_zero_guard[x][y][0]){
+      zero_guard_top_flag[x][y] = wr_data_zero_guard[x][y].nb_read(wr_zero_guard[x][y]);
+      if (zero_guard_top_flag[x][y]){
+        skid_buf_wr_zero_guard[x][y].push(wr_zero_guard[x][y]);
+      }
+    }
+
+    // flag to detect if level is at startup or data is not reusable anymore
+    start_flag[x][y] = !O_data_vld[x][y] && O_mac_pntr[x][y] == O_vld_zg_pntr[x][y] && skid_buf_wr_zero_guard[x][y].not_empty() && !psum_top[x][y];
+
+    // read in partial sum from memory level above or zero guard memory level
+    if (!skid_buf_wr_zero_guard[x][y].peek() && start_flag[x][y]){
+      psum_top[x][y] = true;
+      data_zg[x][y] = false;
+      skid_buf_wr_zero_guard[x][y].pop();
+    } else if (skid_buf_wr_zero_guard[x][y].peek() && start_flag[x][y]){
+      data_zg[x][y] = true;
+      O_data_vld[x][y] = true;
+      skid_buf_wr_zero_guard[x][y].pop();
+    }
+
+    if (psum_top[x][y] && O_mac_pntr[x][y] == O_vld_zg_pntr[x][y] && !O_write_flag[x][y]){
+      O_write_flag[x][y] = O_wr_data[x][y].nb_read(O_write_data[x][y]);
+    }
+    // write input data to input memory if reusable data is consumed
+    if (!I_data_vld[x][y]) {
+      I_write_flag[x][y] = I_wr_data[x][y].nb_read(I_write_data[x][y]);
+
+      if (I_write_flag[x][y]) {
+        #pragma hls_unroll yes
+        I_WR_IN_MEM: for (int i=0; i<I_WORDS_in; i++){
+          I_mem[x][y][I_wr_pntr[x][y]+i] = I_write_data[x][y].data[i];
+#ifndef __SYNTHESIS__
+          I_L1_wr_cnt++;
+#endif
+        }
+        I_wr_pntr[x][y] = (I_wr_pntr[x][y]+I_WORDS_in);
+        if (I_wr_pntr[x][y] == I_tile_size[x][y][nb_cnt-1]){
+          I_wr_pntr[x][y] = 0;
+        }
+        I_data_vld[x][y] = (I_wr_pntr[x][y]==I_vld_pntr[x][y]);
+      }
+    }
+    // write weight data to weight memory if reusable data is consumed
+    if (!W_data_vld[x][y]) {
+      W_write_flag[x][y] = W_wr_data[x][y].nb_read(W_write_data[x][y]);
+
+      if (W_write_flag[x][y]) {
+        #pragma hls_unroll yes
+        W_WR_IN_MEM: for (int i=0; i<W_WORDS_in; i++){
+          W_mem[x][y][W_wr_pntr[x][y]+i] = W_write_data[x][y].data[i];
+#ifndef __SYNTHESIS__
+          W_L1_wr_cnt++;
+#endif
+        }
+        W_wr_pntr[x][y] = (W_wr_pntr[x][y]+W_WORDS_in);
+        if (W_wr_pntr[x][y] == W_tile_size[x][y][nb_cnt-1]){
+          W_wr_pntr[x][y] = 0;
+        }
+        W_data_vld[x][y] = (W_wr_pntr[x][y]==W_vld_pntr[x][y]);
+      }
+    }
+    flags_wr_zero_guard[x][y] <<=1;
+    flags_wr_zero_guard[x][y][0] = skid_buf_wr_zero_guard[x][y].not_empty();
+
+  }
+  }
+  }
+  }
+private:
+  // instruction interconnection
+  memlevelInstr<O_addr_type, nb_cnt+1> O_instr[nb_col][nb_row];
+  memlevelInstr<I_addr_type, nb_cnt+1> I_instr[nb_col][nb_row];
+  memlevelInstr<W_addr_type, nb_cnt+1> W_instr[nb_col][nb_row];
+  // data
+  bool                                   write_flag0[nb_col][nb_row];
+  bool                                   write_stall_top[nb_col][nb_row];
+  bool                                   O_write_flag[nb_col][nb_row];
+  bool                                   I_write_flag[nb_col][nb_row];
+  bool                                   W_write_flag[nb_col][nb_row];
+  bool                                   O_read_flag[nb_col][nb_row];
+  bool                                   I_read_flag[nb_col][nb_row];
+  bool                                   W_read_flag[nb_col][nb_row];
+  bool                                   psum_flag[nb_col][nb_row];
+  bool                                   psum_top_flag[nb_col][nb_row];
+  bool                                   psum_top[nb_col][nb_row];
+  bool                                   read_flag[nb_col][nb_row];
+  bool                                   start_flag[nb_col][nb_row];
+  bool                                   wr_zero_guard[nb_col][nb_row];
+  bool                                   zero_guard_top_flag[nb_col][nb_row];
+  bool                                   read_flag0[nb_col][nb_row];
+  bool                                   read_flag1[nb_col][nb_row];
+  ac_int<2,false>                        flags_top[nb_col][nb_row];
+  ac_int<1,false>                        flags_wr_zero_guard[nb_col][nb_row];
+  packedData<O_type,O_WORDS_out>         mac_data[nb_col][nb_row];
+  bool                                   zero_guard[nb_col][nb_row];
+  bool                                   zero_guard_top[nb_col][nb_row];
+  ac_int<2,false>                        skid[nb_col][nb_row];
+  fifo<packedData<O_type,O_WORDS_out>,3> skid_buf_top[nb_col][nb_row];
+  fifo<bool,2>                           skid_buf_wr_zero_guard[nb_col][nb_row];
+  int                                    debug_cnt[nb_col][nb_row];
+
+  // OUTPUT
+  // memory level
+  O_type        O_mem[nb_col][nb_row][O_N];
+
+  // I/O
+  packedData<O_type,O_WORDS_in> O_write_data[nb_col][nb_row];
+  packedData<O_type,O_WORDS_out> O_read_data[nb_col][nb_row];
+
+  // mac pointer counter mapped to this memory level
+  O_addr_cnt<nb_cnt, O_addr_type, O_WORDS_out> O_mac_pntr_cntInst[nb_col][nb_row];
+  bool O_mac_all_at_max[nb_col][nb_row];
+  bool O_mac_irrel_at_max[nb_col][nb_row];
+  bool O_mac_irrel_at_maxBuf[nb_col][nb_row];
+  bool O_mac_irrel_at_zero[nb_col][nb_row];
+
+  O_addr_type O_mac_counter[nb_col][nb_row][nb_cnt];
+  O_addr_type O_mac_tile_bound[nb_col][nb_row][nb_cnt];
+
+  // pointers
+  O_addr_type   O_mac_pntr[nb_col][nb_row];
+  O_addr_type   O_vld_zg_pntr[nb_col][nb_row];
+  bool          O_data_vld[nb_col][nb_row];
+  bool          data_zg[nb_col][nb_row];
+
+  // counter
+  ac_int<ac::nbits<O_WORDS_in>::val+1, false>   O_irrel_cnt[nb_col][nb_row];
+
+  // INPUT
+  // memory level
+  I_type        I_mem[nb_col][nb_row][I_N];
+
+  // I/O
+  packedData<I_type,I_WORDS_in> I_write_data[nb_col][nb_row];
+
+  // mac pointer counter mapped to this memory level
+  O_addr_cnt<nb_cnt, I_addr_type, I_WORDS_out> I_mac_pntr_cntInst[nb_col][nb_row];
+  bool I_mac_all_at_max[nb_col][nb_row];
+  bool I_mac_irrel_at_max[nb_col][nb_row];
+  bool I_mac_irrel_at_maxBuf[nb_col][nb_row];
+  bool I_mac_irrel_at_zero[nb_col][nb_row];
+
+  I_addr_type I_mac_counter[nb_col][nb_row][nb_cnt];
+  I_addr_type I_mac_tile_bound[nb_col][nb_row][nb_cnt];
+
+  // pointers
+  I_addr_type   I_mac_pntr[nb_col][nb_row];
+  I_addr_type   I_wr_pntr[nb_col][nb_row];
+  I_addr_type   I_vld_pntr[nb_col][nb_row];
+  bool          I_data_vld[nb_col][nb_row];
+
+  // counter
+  I_addr_type   I_irrel_cnt[nb_col][nb_row];
+
+  // WEIGHT
+  // memory level
+  W_type        W_mem[nb_col][nb_row][W_N];
+
+  // I/O
+  packedData<W_type,W_WORDS_in> W_write_data[nb_col][nb_row];
+
+  // mac pointer counter mapped to this memory level
+  O_addr_cnt<nb_cnt, W_addr_type, W_WORDS_out> W_mac_pntr_cntInst[nb_col][nb_row];
+  bool W_mac_all_at_max[nb_col][nb_row];
+  bool W_mac_irrel_at_max[nb_col][nb_row];
+  bool W_mac_irrel_at_maxBuf[nb_col][nb_row];
+  bool W_mac_irrel_at_zero[nb_col][nb_row];
+  W_addr_type W_mac_counter[nb_col][nb_row][nb_cnt];
+  W_addr_type W_mac_tile_bound[nb_col][nb_row][nb_cnt];
+
+  // write pointer counter mapped to this memory level
+  O_addr_cnt<nb_cnt, O_addr_type, O_WORDS_in> O_wr_pntr_cntInst[nb_col][nb_row];
+  bool O_wr_all_at_max[nb_col][nb_row];
+  bool O_wr_irrel_at_max[nb_col][nb_row];
+  bool O_wr_irrel_at_zero[nb_col][nb_row];
+
+  O_addr_type O_wr_counter[nb_col][nb_row][nb_cnt];
+  O_addr_type O_wr_tile_bound[nb_col][nb_row][nb_cnt];
+
+  // pointers
+  W_addr_type   W_mac_pntr[nb_col][nb_row];
+  W_addr_type   W_wr_pntr[nb_col][nb_row];
+  W_addr_type   W_vld_pntr[nb_col][nb_row];
+  bool          W_data_vld[nb_col][nb_row];
+
+  // counter
+  W_addr_type   W_irrel_cnt[nb_col][nb_row]; // must be nbits W_words_in!
+
+  // interconnections
+  O_addr_type O_loop_bound[nb_col][nb_row][nb_cnt];
+  O_addr_type O_tile_size[nb_col][nb_row][nb_cnt];
+  I_addr_type I_loop_bound[nb_col][nb_row][nb_cnt];
+  I_addr_type I_tile_size[nb_col][nb_row][nb_cnt];
+  W_addr_type W_loop_bound[nb_col][nb_row][nb_cnt];
+  W_addr_type W_tile_size[nb_col][nb_row][nb_cnt];
+
+  // control
+  bool setup[nb_col][nb_row];
+  bool read_data_top_flag[nb_col][nb_row];
+
+};
+
+template<class type, int WORDS_in, int WORDS_out, int nb_col, int nb_row>
+class NoC_W_down
+{
+  public:
+// constructor
+    NoC_W_down() : read_flag(0), pntr(0) {}
+
+#pragma hls_design interface
+#pragma hls_pipeline_init_interval 1
+    void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &data_in,
+                        ac_channel<packedData<type, WORDS_out> > data_out[nb_col][nb_row])
+    {
+      if (!read_flag){
+        read_flag = data_in.nb_read(data_in_tmp);
+        if (read_flag){
+          for (int i=0; i<WORDS_in; i++){
+            buf[i] = data_in_tmp.data[i];
+          }
+        }
+      }
+      if (read_flag){
+#pragma hls_unroll yes
+        for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+          for (int y=0; y<nb_row; y++){
+#pragma hls_unroll yes
+            for (int i=0; i<WORDS_out; i++){
+              data_out_tmp.data[i] = buf[pntr+i];
+            }
+            data_out[x][y].write(data_out_tmp);
+            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-WORDS_out;
+            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
+            read_flag = (pntr >= pntr_max) ? false : read_flag;
+            pntr = pntr_new;
+          }
+        }
+      }
+    }
+  private:
+    //buffer
+    type buf[WORDS_in];
+
+    // interconnections
+    packedData<type,WORDS_in> data_in_tmp;
+    packedData<type,WORDS_out> data_out_tmp;
+
+    // control
+    bool read_flag;
+    ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr;
+};
+
+template<class type, int WORDS_in, int WORDS_out, int nb_col, int nb_row>
+class NoC_O_down
+{
+  public:
+// constructor
+    NoC_O_down() : read_flag(0), read_flag_zero_guard(0), pntr(0) {}
+
+#pragma hls_design interface
+#pragma hls_pipeline_init_interval 1
+    void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > &data_in,
+                        ac_channel<packedData<type, WORDS_out> > data_out[nb_col][nb_row],
+                        ac_channel<bool> &zero_guard_in,
+                        ac_channel<bool> zero_guard_out[nb_col][nb_row])
+    {
+      if (!read_flag_zero_guard){read_flag_zero_guard = zero_guard_in.nb_read(zero_guard_tmp);}
+      if (read_flag_zero_guard){
+        for (int x=0; x<nb_col; x++){
+          for (int y=0; y<nb_row; y++){
+            if (x==0){
+              zero_guard_out[x][y].write(zero_guard_tmp);
+            } else {
+              zero_guard_out[x][y].write(1);
+            }
+          }
+        }
+        read_flag_zero_guard = false;
+      }
+      if (!read_flag){
+        read_flag = data_in.nb_read(data_in_tmp);
+        if (read_flag){
+          for (int i=0; i<WORDS_in; i++){
+            buf[i] = data_in_tmp.data[i];
+          }
+        }
+      }
+      if (read_flag){
+#pragma hls_unroll yes
+        for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+          for (int y=0; y<nb_row; y++){
+            if (x==0){
+#pragma hls_unroll yes
+              for (int i=0; i<WORDS_out; i++){
+                data_out_tmp.data[i] = buf[pntr+i];
+              }
+              data_out[x][y].write(data_out_tmp);
+            }
+          }
+        }
+
+        ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-nb_row*WORDS_out;
+        ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+nb_row*WORDS_out);
+        read_flag = (pntr >= pntr_max) ? false : read_flag;
+        pntr = pntr_new;
+      }
+    }
+  private:
+    //buffer
+    type buf[WORDS_in];
+
+    // interconnections
+    packedData<type,WORDS_in> data_in_tmp;
+    packedData<type,WORDS_out> data_out_tmp;
+    bool zero_guard_tmp;
+
+    // control
+    bool read_flag;
+    bool read_flag_zero_guard;
+    ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr;
+};
+
+template<class type, int WORDS_in, int WORDS_out, int nb_col, int nb_row>
+class NoC_O_up
+{
+  public:
+// constructor
+    NoC_O_up() : write_flag(0), pntr(0) {
+      for (int i=0; i<WORDS_out; i++)
+        buf[i] = 0;
+    }
+
+#pragma hls_design interface
+#pragma hls_pipeline_init_interval 1
+    void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > data_in[nb_col][nb_row],
+                        ac_channel<packedData<type, WORDS_out> > &data_out)
+    {
+      if (!write_flag){
+        if (data_in[0][0].available(1)){
+          for (int x=0; x<nb_col; x++){
+            for (int y=0; y<nb_row; y++){
+              if (data_in[x][y].available(1)){
+                data_in[x][y].read(data_in_tmp);
+                for (int i=0; i<WORDS_in; i++){
+                  buf[pntr+y+i] += data_in_tmp.data[i];
+                }
+              }
+            }
+          }
+          ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_max = WORDS_out-nb_row*WORDS_in;
+          ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_row*WORDS_in);
+          write_flag = (pntr >= pntr_max) ? true : write_flag;
+          pntr = pntr_new;
+        }
+      }
+      if (write_flag){
+        for (int i=0; i<WORDS_out; i++){
+          data_out_tmp.data[i] = buf[i];
+          buf[i] = 0;
+        }
+        data_out.write(data_out_tmp);
+        write_flag = false;
+      }
+    }
+  private:
+    //buffer
+    type buf[WORDS_out];
+
+    // interconnections
+    packedData<type,WORDS_in> data_in_tmp;
+    packedData<type,WORDS_out> data_out_tmp;
+
+    // control
+    bool write_flag;
+    ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr;
+};
 
 template<class type, int WORDS_in, int WORDS_out>
 class BW_buffer_down

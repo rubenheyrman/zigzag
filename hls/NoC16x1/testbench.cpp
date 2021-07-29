@@ -19,92 +19,49 @@ using namespace std;
 CCS_MAIN(int argv, char **argc)
 {
   cout << "Initilialization" << endl;
-   enum {
-   B   = 64,
-   K   = 96,
-   C   = 32,
-   OY  = 1,
-   OX  = 1,
-   IY  = 1,
-   IX  = 1,
-   FY  = 1,
-   FX  = 1,
-   SY  = 1,
-   SX  = 1,
-   SFY = 1,
-   SFX = 1,
-   G   = 1
-   };
-   // Check if relevant loops do not surpass memory bounds of HW
-   O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {6,4,16,1,1}; // K B C # #
-   bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,1,1};
-   O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {4,4,2,1,1};  // K K C # #
-   bool O_loop_relevancy_L2[nb_cnt]       = {1,1,0,1,1};
-   O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {16,1,1,1,1}; // B # # # #
-   bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
-   I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {6,4,16,4,4};
-   bool I_loop_relevancy_L1[nb_cnt]       = {0,1,1,0,0};
-   I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {2,16,1,1,1};
-   bool I_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
-   I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
-   bool I_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
-   W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {6,4,1,1,1};
-   bool W_loop_relevancy_L1[nb_cnt]       = {1,0,1,1,1};
-   W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {16,4,4,2,16};
-   bool W_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,0};
-   W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
-   bool W_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
+  enum {
+  B   = 64,
+  K   = 96,
+  C   = 32,
+  OY  = 1,
+  OX  = 1,
+  IY  = 1,
+  IX  = 1,
+  FY  = 1,
+  FX  = 1,
+  SY  = 1,
+  SX  = 1,
+  SFY = 1,
+  SFX = 1,
+  G   = 1
+  };
+  // Check if relevant loops do not surpass memory bounds of HW
+  O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {4,2,4,2,1}; // B K K C #
+  bool O_loop_relevancy_L1[nb_cnt]       = {1,1,1,0,1};
+  O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {12,4,1,1,1};  // K B # # #
+  bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
+  O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {4,1,1,1,1}; // B # # # #
+  bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
 
-   list<int>    layer_iterations  {6  , 4  , 16 , 4  , 4  , 2  , 16 };
-   list<string> layer_dimensions  {"K", "B", "C", "K", "K", "C", "B"};
-   list<bool>   O_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
-   list<bool>   I_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
-   list<bool>   W_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
-  //NoC_transfer<int, 4, 3> test;
-  //test.data[0][0].write(0);
-  //enum {
-  //B   = 128,
-  //K   = 96,
-  //C   = 64,
-  //OY  = 1,
-  //OX  = 1,
-  //IY  = 1,
-  //IX  = 1,
-  //FY  = 1,
-  //FX  = 1,
-  //SY  = 1,
-  //SX  = 1,
-  //SFY = 1,
-  //SFX = 1,
-  //G   = 1
-  //};
-  //O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {8,4,4,16,1}; // B K C C #
-  //bool O_loop_relevancy_L1[nb_cnt]       = {1,1,0,0,1};
-  //O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {6,1,1,1,1};  // K # # # #
-  //bool O_loop_relevancy_L2[nb_cnt]       = {1,1,1,1,1};
-  //O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {16,1,1,1,1}; // B # # # #
-  //bool O_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
-//
-  //I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {8,4,4,1,1};
-  //bool I_loop_relevancy_L1[nb_cnt]       = {1,0,1,1,1};
-  //I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {16,6,1,1,1};
-  //bool I_loop_relevancy_L2[nb_cnt]       = {1,0,1,1,1};
-  //I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {16,4,1,1,1};
-  //bool I_loop_relevancy_L3[nb_cnt]       = {1,0,1,1,1};
-//
-  //W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {8,4,4,1,1};
-  //bool W_loop_relevancy_L1[nb_cnt]       = {0,1,1,1,1};
-  //W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {16,6,16,1,1};
-  //bool W_loop_relevancy_L2[nb_cnt]       = {1,1,0,1,1};
-  //W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {4,1,1,1,1};
-  //bool W_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
-//
-  //list<int>    layer_iterations  {8  , 4  , 4  , 16 , 6  , 16 , 4  };
-  //list<string> layer_dimensions  {"B", "K", "C", "C", "K", "B", "K"};
-  //list<bool>   O_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 1  };
-  //list<bool>   I_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
-  //list<bool>   W_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  };
+  I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {4,2,4,1,1};
+  bool I_loop_relevancy_L1[nb_cnt]       = {1,0,0,1,1};
+  I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {2,12,4,4,1};
+  bool I_loop_relevancy_L2[nb_cnt]       = {1,0,1,1,1};
+  I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
+  bool I_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
 
+  W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {4,2,1,1,1};
+  bool W_loop_relevancy_L1[nb_cnt]       = {0,1,1,1,1};
+  W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {4,2,12,4,4};
+  bool W_loop_relevancy_L2[nb_cnt]       = {1,1,1,0,0};
+  W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {1,1,1,1,1};
+  bool W_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
+
+  list<int>    layer_iterations  {16 , 4  , 2  , 4  , 2  , 12 , 4  , 4  };
+  list<string> layer_dimensions  {"C", "B", "K", "K", "C", "K", "B", "B"};
+  list<bool>   O_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+  list<bool>   I_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
+  list<bool>   W_mapped_to_DRAM  {0  , 0  , 0  , 0  , 0  , 0  , 0  , 0  };
 
   list<string> output_dimensions {"B", "K", "OY", "OX"};
   list<string> input_dimensions  {"B", "C", "OY", "OX", "FY", "FX"};
@@ -209,7 +166,7 @@ CCS_MAIN(int argv, char **argc)
           std::default_random_engine eng(rd());
           std::uniform_real_distribution<double> distr(inputMIN, inputMAX);
           input_array[i][j][k][l] = (I_ref_type) distr(eng);
-          // input_array[i][j][k][l] = ia++;
+          // input_array[i][j][k][l] = ia;
         }
       }
     }
@@ -249,17 +206,17 @@ CCS_MAIN(int argv, char **argc)
               mem_size_word_I_L3, mem_words_I_L3_in, mem_words_I_L3_out, I_addr_type_L3,
               mem_size_word_W_L3, mem_words_W_L3_in, mem_words_W_L3_out, W_addr_type_L3,
               O_partial_type, I_type, W_type> HWinst;
-  packedData<W_type,mem_words_W_L1_in> W_data_in;
-  packedData<I_type,mem_words_I_L1_in> I_data_in;
-  packedData<O_final_type,mem_words_O_L1_in> O_data_in;
-  packedData<O_final_type,mem_words_O_L1_out> O_data_out;
+  packedData<W_type,mem_words_W_L3_in> W_data_in;
+  packedData<I_type,mem_words_I_L3_in> I_data_in;
+  packedData<O_final_type,mem_words_O_L3_in> O_data_in;
+  packedData<O_final_type,mem_words_O_L3_out> O_data_out;
   bool zero_guard = true;
   
-  ac_channel<packedData<W_type,mem_words_W_L1_in> > W_wr_data[nb_col][nb_row];
-  ac_channel<packedData<I_type,mem_words_I_L1_in> > I_wr_data[nb_col][nb_row];
-  ac_channel<packedData<O_final_type,mem_words_O_L1_in> > O_wr_data[nb_col][nb_row];
-  ac_channel<packedData<O_final_type,mem_words_O_L1_out> > O_rd_data[nb_col][nb_row];
-  ac_channel<bool> wr_zero_guard[nb_col][nb_row];
+  ac_channel<packedData<W_type,mem_words_W_L3_in> > W_wr_data;
+  ac_channel<packedData<I_type,mem_words_I_L3_in> > I_wr_data;
+  ac_channel<packedData<O_final_type,mem_words_O_L3_in> > O_wr_data;
+  ac_channel<packedData<O_final_type,mem_words_O_L3_out> > O_rd_data;
+  ac_channel<bool> wr_zero_guard;
 
   cout << "Initilialization done" << endl << endl;
 
@@ -303,14 +260,9 @@ CCS_MAIN(int argv, char **argc)
       I_data_in.data[I_cnt] = 0;
     }
     I_cnt++;
-    if (I_cnt == mem_words_I_L1_in){
+    if (I_cnt == mem_words_I_L3_in){
       I_cnt = 0;
-      // I_wr_data[0][0].write(I_data_in);
-      for (int x=0; x<nb_col; x++){
-        for (int y=0; y<nb_row; y++){
-          I_wr_data[x][y].write(I_data_in);
-        }
-      }
+      I_wr_data.write(I_data_in);
     }
   }
   // make start_coordinate list of same size as weight_coordinates list
@@ -333,14 +285,9 @@ CCS_MAIN(int argv, char **argc)
 
     W_data_in.data[W_cnt] = *(*(*(*(weight_array+k)+c)+fy)+fx);
     W_cnt++;
-    if (W_cnt == mem_words_W_L1_in){
+    if (W_cnt == mem_words_W_L3_in){
       W_cnt = 0;
-      // W_wr_data[0][0].write(W_data_in);
-      for (int x=0; x<nb_col; x++){
-        for (int y=0; y<nb_row; y++){
-          W_wr_data[x][y].write(W_data_in);
-        }
-      }
+      W_wr_data.write(W_data_in);
     }
   }
 
@@ -350,12 +297,7 @@ CCS_MAIN(int argv, char **argc)
   //printf("Size: O input channel: %5d, W input channel: %5d, I input channel: %5d, Size zero guard channel: %5d, ", O_wr_data.size(), W_wr_data.size(), I_wr_data.size(), wr_zero_guard.size());
   cout << "Running HW instance" << endl;
   for (int i=0; i<8; i++)
-      for (int x=0; x<nb_col; x++){
-        for (int y=0; y<nb_row; y++){
-          wr_zero_guard[x][y].write(1);
-        }
-      }
-    // wr_zero_guard[0][0].write(1);
+    wr_zero_guard.write(1);
   int its = 0;
   int O_cnt = 0;
   int O_cnt_wr = 0;
@@ -378,24 +320,16 @@ CCS_MAIN(int argv, char **argc)
     int debug_cnt = 0;
     while (!HWdone){
       HWinst.run(O_wr_data,O_rd_data,I_wr_data,W_wr_data,wr_zero_guard,layer_instruction_in);
-      if (O_rd_data[0][0].available(1)){
+      if (O_rd_data.available(1)){
         HWdone = true;
-        // O_data_out = O_rd_data[0][0].read();
-      for (int x=0; x<nb_col; x++){
-        for (int y=0; y<nb_row; y++){
-          if (O_rd_data[x][y].available(1)){
-            O_rd_data[x][y].read(O_data_out);
-            printf("O_data_out: %d\n", O_data_out.data[0].to_uint());
-          }
-        }
-      }
+        O_data_out = O_rd_data.read();
       }
       debug_cnt++;
       // if (debug_cnt == max_HW_its) { HWdone = true; }
     }
     *(*(*(*(output_array_hw+b)+k)+oy)+ox) = O_data_out.data[O_cnt];
     O_cnt++;
-    if (O_cnt == mem_words_O_L1_out){
+    if (O_cnt == mem_words_O_L3_out){
       O_cnt = 0;
       HWdone = false;
     }
@@ -406,10 +340,6 @@ CCS_MAIN(int argv, char **argc)
       cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k << "]" << endl;
       failed = true;
       cin.get(); // to pause the console and control by pressing enter
-    } else {
-      cout << "OFMAPhw " << *(*(*(*(output_array_hw+b)+k)+oy)+ox) << " | ";
-      cout << "OFMAPsw " << *(*(*(*(output_array_sw+b)+k)+oy)+ox);
-      cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k << "]" << endl;
     }
   }
   cout << "Finished Reading output channel" << endl << endl;
