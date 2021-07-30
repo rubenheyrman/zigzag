@@ -13,10 +13,10 @@
 using namespace std;
 
 
-inline void list_coordinates(list<int> iterations,     list<string> dimensions, list<bool> mapped_to_DRAM,
+inline void list_coordinates(list<int> iterations,     list<string> dimensions,
                              list<int> coordinate_val, list<string> coordinate_name,
                              list<list<int>> &result){
-    assertm(iterations.size() == dimensions.size() && dimensions.size() == mapped_to_DRAM.size(),
+    assertm(iterations.size() == dimensions.size(),
             "Lists of first argument row in list_coordinate() function do not have the same dimensions!");
     assertm(coordinate_val.size() == coordinate_name.size(),
             "Lists of second argument row in list_coordinate() function do not have the same dimensions!");
@@ -39,8 +39,6 @@ inline void list_coordinates(list<int> iterations,     list<string> dimensions, 
             dimensions.pop_back();
             int iter = iterations.back();
             iterations.pop_back();
-            bool dram = mapped_to_DRAM.back();
-            mapped_to_DRAM.pop_back();
 
             auto loops = iterations.begin();
             for (auto k = dimensions.begin(); k != dimensions.end(); k++){
@@ -53,10 +51,9 @@ inline void list_coordinates(list<int> iterations,     list<string> dimensions, 
             relevant = true;
 
             // push data in same function with the last dimension cut off
-            list_coordinates(iterations, dimensions, mapped_to_DRAM, coordinate_val, coordinate_name, result);
+            list_coordinates(iterations, dimensions, coordinate_val, coordinate_name, result);
             dimensions.push_back(dim);
             iterations.push_back(iter);
-            mapped_to_DRAM.push_back(dram);
             *coordinate_it -= product;
             break;
         }
@@ -66,8 +63,7 @@ inline void list_coordinates(list<int> iterations,     list<string> dimensions, 
     if (!relevant) {
         dimensions.pop_back();
         iterations.pop_back();
-        mapped_to_DRAM.pop_back();
-        list_coordinates(iterations, dimensions, mapped_to_DRAM, coordinate_val, coordinate_name, result);
+        list_coordinates(iterations, dimensions, coordinate_val, coordinate_name, result);
     }
   } else {
     list<int> temp;
