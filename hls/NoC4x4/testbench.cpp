@@ -57,11 +57,11 @@ CCS_MAIN(int argv, char **argc)
   W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {2,1,1,1,1};
   bool W_loop_relevancy_L3[nb_cnt]       = {1,1,1,1,1};
 
-  list<int>    layer_iterations  {4,4, 4  , 16 , 16  , 3  , 8  , 2};
+  list<int>    layer_iterations  {  4,   4,   4,  16,  16,  3,   8,   2};
   list<string> layer_dimensions  {"K", "C", "K", "C", "B","K", "B", "K"};
-  list<bool>   O_mapped_to_DRAM  {0  , 0  ,0  , 0  , 0  , 0  , 0  , 1  };
-  list<bool>   I_mapped_to_DRAM  {0  , 0  ,0  , 0  , 0 , 0  , 0  , 0  };
-  list<bool>   W_mapped_to_DRAM  {0  , 0  ,0  , 0  , 0 , 0  , 0  , 0  };
+  list<bool>   O_mapped_to_DRAM  {0  , 0  ,0  , 0   , 0 , 0  , 0  , 1  };
+  list<bool>   I_mapped_to_DRAM  {0  , 0  ,0  , 0   , 0 , 0  , 0  , 0  };
+  list<bool>   W_mapped_to_DRAM  {0  , 0  ,0  , 0   , 0 , 0  , 0  , 0  };
 
   list<string> output_dimensions {"B", "K", "OY", "OX"};
   list<string> input_dimensions  {"B", "C", "OY", "OX", "FY", "FX"};
@@ -162,11 +162,11 @@ CCS_MAIN(int argv, char **argc)
       for (int k=0; k<IY; k++) {
         input_array[i][j][k] = new I_ref_type[IX];
         for (int l=0; l<IX; l++){
-          // std::random_device rd;
-          // std::default_random_engine eng(rd());
-          // std::uniform_real_distribution<double> distr(inputMIN, inputMAX);
-          // input_array[i][j][k][l] = (I_ref_type) distr(eng);
-          input_array[i][j][k][l] = ia;
+          std::random_device rd;
+          std::default_random_engine eng(rd());
+          std::uniform_real_distribution<double> distr(inputMIN, inputMAX);
+          input_array[i][j][k][l] = (I_ref_type) distr(eng);
+          // input_array[i][j][k][l] = ia;
         }
       }
     }
@@ -236,7 +236,7 @@ CCS_MAIN(int argv, char **argc)
 
   list<int> start_coordinate{0,0,0,0,0,0};
   list<list<int>> input_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, input_dimensions, input_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, I_mapped_to_DRAM, start_coordinate, input_dimensions, input_coordinates);
   int I_cnt = 0;
   // INPUT channel
   for (auto elem = input_coordinates.begin(); elem != input_coordinates.end(); elem++){
@@ -269,7 +269,7 @@ CCS_MAIN(int argv, char **argc)
   start_coordinate.pop_back();
   start_coordinate.pop_back();
   list<list<int>> weight_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, weight_dimensions, weight_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, W_mapped_to_DRAM, start_coordinate, weight_dimensions, weight_coordinates);
   int W_cnt = 0;
   // WEIGHT channel
   for (auto elem = weight_coordinates.begin(); elem != weight_coordinates.end(); elem++){
@@ -304,7 +304,7 @@ CCS_MAIN(int argv, char **argc)
   int max_HW_its = 250;
   bool failed = false;
   list<list<int>> output_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, output_dimensions, output_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, O_mapped_to_DRAM, start_coordinate, output_dimensions, output_coordinates);
   // OUTPUT channel
   for (auto elem = output_coordinates.begin(); elem != output_coordinates.end(); elem++){
     list<int> temp = *elem;

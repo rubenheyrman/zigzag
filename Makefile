@@ -3,12 +3,16 @@
 #
 XML := Ruben_results/all_su_best_tm_otf/Test_layer_L3_M1_SU1_min_en.xml
 OUTPUT_DIR := hls/new_test/
+all: zigzag open_xml config_files run_tb
+tb: config_files run_tb
 zigzag:
 	python top_module.py \
 		--set Ruben_inputs/settings.yaml \
 		--arch Ruben_inputs/architecture.yaml \
 		--map Ruben_inputs/mapping.yaml \
 		--mempool Ruben_inputs/memory_pool.yaml
+open_xml:
+	firefox $(XML) &
 config_files:
 	mkdir -p $(OUTPUT_DIR)
 	python xml_to_hls_extraction.py $(XML) $(OUTPUT_DIR)
@@ -18,5 +22,6 @@ run_tb:
 	$(OUTPUT_DIR)/run
 clean:
 	rm -rf ./Ruben_results
+	rm -rf $(OUTPUT_DIR)
 
 # end

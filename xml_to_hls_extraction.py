@@ -247,6 +247,8 @@ def make_config_file(precision_bit, array_size, mem_size, mem_bw, nb_cnt):
     return config_string
 
 def make_tb(layer_spec, spatial_unrolling, temporal_mapping, nb_cnt):
+
+
     dimensions = {'W': ["K", "C", "FX", "FY"], 'I': ["B", "C", "OX", "OY", "FX", "FY"], 'O': ["B", "K", "OX", "OY"]}
     operands = ["W", "I", "O"]
 
@@ -258,37 +260,44 @@ def make_tb(layer_spec, spatial_unrolling, temporal_mapping, nb_cnt):
     mapping_string = mapping_string[:-2] + "\n"
     mapping_string += "};\n"
 
-    for operand in range(len(temporal_mapping)):
-        for mem_level in range(len(temporal_mapping[operand])):
-            loops     = [1]*nb_cnt
-            relevancy = [1]*nb_cnt
-            for mapping in range(len(temporal_mapping[operand][mem_level])):
-                for rel in range(len(dimensions[operands[operand]])):
-                    if temporal_mapping[operand][mem_level][mapping][0] == dimensions[operands[operand]][rel]:
-                        relevant = True
-                if relevant == False:
-                    relevancy[mapping] = 0
-                relevant = False
-                loops[mapping] = temporal_mapping[operand][mem_level][mapping][1]
-
-            mapping_string += operands[operand] + "_addr_type_L" + str(mem_level+1) + " " + operands[operand] + "_loop_bound_L" + str(mem_level+1) + "[nb_cnt] = {" + ", ".join( repr(e) for e in loops ) + "};\n" + \
-                "bool " + operands[operand] + "_loop_relevancy_L" + str(mem_level+1) + "[nb_cnt]       = {" + ", ".join( repr(e) for e in relevancy ) + "};\n"
-
     layer_iterations = []
     layer_dimensions = []
-
+    nb_spatial_loops = 0
     for mem_level in spatial_unrolling[0][0]:
         for dimension in mem_level:
             for mapping in dimension:
                 layer_dimensions.append(mapping[0])
                 layer_iterations.append(mapping[1])
+                nb_spatial_loops += 1
     for mem_level in temporal_mapping[0]:
         for mapping in mem_level:
             layer_dimensions.append(mapping[0])
             layer_iterations.append(mapping[1])
 
     mapping_string += "\n" + "list<int>    layer_iterations  {" + ", ".join( repr(e) for e in layer_iterations ) + "};\n" + \
-    "list<string> layer_dimensions  {" +  ", ".join( repr(e) for e in layer_dimensions ).replace("\'", "\"") + "};\n"
+    "list<string> layer_dimensions  {" +  ", ".join( repr(e) for e in layer_dimensions ).replace("\'", "\"") + "};\n\n"
+
+    for operand in range(len(temporal_mapping)):
+        mapped_to_dram = [0]*nb_spatial_loops
+        for mem_level in range(len(temporal_mapping[operand])):
+            loops     = [1]*nb_cnt
+            relevancy = [1]*nb_cnt
+            for mapping in range(len(temporal_mapping[operand][mem_level])):
+                relevant = False
+                for rel in range(len(dimensions[operands[operand]])):
+                    if temporal_mapping[operand][mem_level][mapping][0] == dimensions[operands[operand]][rel]:
+                        relevant = True
+                if relevant == False:
+                    relevancy[mapping] = 0
+                if mem_level == len(temporal_mapping[operand])-1:
+                    mapped_to_dram.append(1)
+                else:
+                    mapped_to_dram.append(0)
+                loops[mapping] = temporal_mapping[operand][mem_level][mapping][1]
+
+            mapping_string += operands[operand] + "_addr_type_L" + str(mem_level+1) + " " + operands[operand] + "_loop_bound_L" + str(mem_level+1) + "[nb_cnt] = {" + ", ".join( repr(e) for e in loops ) + "};\n" + \
+                "bool " + operands[operand] + "_loop_relevancy_L" + str(mem_level+1) + "[nb_cnt]       = {" + ", ".join( repr(e) for e in relevancy ) + "};\n"
+        mapping_string += "list<bool> " + operands[operand] + "_mapped_to_DRAM = {"  + ", ".join( repr(e) for e in mapped_to_dram) + "};\n\n"
 
     newline = "\n"
     header_string = \
@@ -314,7 +323,7 @@ using namespace std;
 CCS_MAIN(int argv, char **argc)
 {
   cout << "Initilialization" << endl;
-        """
+"""
 
     testing_string = \
     """
@@ -409,7 +418,6 @@ CCS_MAIN(int argv, char **argc)
     }
   }
 
-  int ia = 1;
   I_ref_type ****input_array = new I_ref_type***[B]; // input array for software implementation // 3D array definition // begin of mem allocation
   for (int i=0; i<B; i++){
     input_array[i] = new I_ref_type**[C];
@@ -422,13 +430,11 @@ CCS_MAIN(int argv, char **argc)
           std::default_random_engine eng(rd());
           std::uniform_real_distribution<double> distr(inputMIN, inputMAX);
           input_array[i][j][k][l] = (I_ref_type) distr(eng);
-          // input_array[i][j][k][l] = ia;
         }
       }
     }
   }
 
-  int wa = 1;
   W_ref_type ****weight_array = new W_ref_type***[K]; // weight array for software implementation // 3D array definition // begin of mem allocation
   for (int i=0; i<K; i++) {
     weight_array[i] = new W_ref_type**[C];
@@ -441,7 +447,6 @@ CCS_MAIN(int argv, char **argc)
           std::default_random_engine eng(rd());
           std::uniform_real_distribution<double> distr(weightMIN, weightMAX);
           weight_array[i][j][k][l] = (W_ref_type) distr(eng);
-          // weight_array[i][j][k][l] = wa;
         }
       }
     }
@@ -492,7 +497,7 @@ CCS_MAIN(int argv, char **argc)
 
   list<int> start_coordinate{0,0,0,0,0,0};
   list<list<int>> input_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, input_dimensions, input_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, I_mapped_to_DRAM, start_coordinate, input_dimensions, input_coordinates);
   int I_cnt = 0;
   // INPUT channel
   for (auto elem = input_coordinates.begin(); elem != input_coordinates.end(); elem++){
@@ -525,7 +530,7 @@ CCS_MAIN(int argv, char **argc)
   start_coordinate.pop_back();
   start_coordinate.pop_back();
   list<list<int>> weight_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, weight_dimensions, weight_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, W_mapped_to_DRAM, start_coordinate, weight_dimensions, weight_coordinates);
   int W_cnt = 0;
   // WEIGHT channel
   for (auto elem = weight_coordinates.begin(); elem != weight_coordinates.end(); elem++){
@@ -556,10 +561,10 @@ CCS_MAIN(int argv, char **argc)
   int its = 0;
   int O_cnt = 0;
   int O_cnt_wr = 0;
-  int max_HW_its = 250;
+  int max_HW_its = 10000;
   bool failed = false;
   list<list<int>> output_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, output_dimensions, output_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, O_mapped_to_DRAM, start_coordinate, output_dimensions, output_coordinates);
   // OUTPUT channel
   for (auto elem = output_coordinates.begin(); elem != output_coordinates.end(); elem++){
     list<int> temp = *elem;
@@ -579,7 +584,7 @@ CCS_MAIN(int argv, char **argc)
         O_data_out = O_rd_data.read();
       }
       debug_cnt++;
-      if (debug_cnt == max_HW_its) { HWdone = true; failed = true;}
+      // if (debug_cnt == max_HW_its) { HWdone = true; failed = true;}
     }
     *(*(*(*(output_array_hw+b)+k)+oy)+ox) = O_data_out.data[O_cnt];
     O_cnt++;
