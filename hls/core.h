@@ -472,7 +472,7 @@ class W_dp_sb
 {
 public:
   // Constructor
-    W_dp_sb() : setup(1), irrel_at_max(1), irrel_cnt(0), write_flag(0), read_flag0(0),
+    W_dp_sb() : setup(1), irrel_at_max(1), irrel_at_maxBuf(1), irrel_cnt(0), write_flag(0), read_flag0(0),
                 wr_pntr(0), rd_pntr(0), vld_pntr(0), data_vld(0),
                 flags(0), skid(0), debug_cnt(0) {
     #pragma hls_unroll yes
@@ -497,7 +497,7 @@ public:
         loop_bound[x] = instr.bound[x+1];
         tile_size[x] = instr.tile[x+1];
         rd_tile_bound[x] = tile_size[x];
-        irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
+        irrel_at_maxBuf =  irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
       }
       setup = false;
     }
@@ -517,57 +517,59 @@ public:
 #ifndef __SYNTHESIS__
             if (instr.tile[0] == W_L3_tile_small && instr.tile[nb_cnt-1] == W_L3_tile_big)
               W_L3_rd_cnt++;
-            if (instr.tile[0] == W_L2_tile_small && instr.tile[nb_cnt-1] == W_L2_tile_big)
+            if (instr.tile[0] == W_L2_tile_small && instr.tile[nb_cnt-1] == W_L2_tile_big){
               W_L2_rd_cnt++;
+	    }
 #endif
       }
       //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
-      if (irrel_at_max){
+      if (irrel_at_maxBuf){
         irrel_cnt += WORDS_out;;
+        vld_pntr = rd_pntr;
       }
+      irrel_at_maxBuf = irrel_at_max;
       //increment pointer based on wordlength
       addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound); 
 
       if (irrel_cnt == WORDS_in){
-        vld_pntr = rd_pntr;
         data_vld = false;
         irrel_cnt = 0;
       }
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
-// #ifndef __SYNTHESIS__
-//       debug_cnt++;
-// #endif
+#ifndef __SYNTHESIS__
+      debug_cnt++;
+#endif
       if (read_flag0 & skid_buf.not_empty()) {
         skid_buf.push(read_data);
         read_data = skid_buf.peek();
-// #ifndef __SYNTHESIS__
-//         if (debug_cnt&1) {
-//           write_stall = true;
-//         } else
-// #endif
+#ifndef __SYNTHESIS__
+        if (debug_cnt&1) {
+          write_stall = true;
+        } else
+#endif
           NB_WRITE_READ_DATA: write_stall = !rd_data.nb_write(read_data);
         if (!write_stall) {
           skid_buf.pop(); //Merely pop out the data from skid_buffer as nb_write was successful
         }
       } else if (skid_buf.not_empty()) {
         read_data = skid_buf.peek();
-// #ifndef __SYNTHESIS__
-//         if (debug_cnt&1) {
-//           write_stall = true;
-//         } else
-// #endif
+#ifndef __SYNTHESIS__
+        if (debug_cnt&1) {
+          write_stall = true;
+        } else
+#endif
           write_stall = !rd_data.nb_write(read_data);
         if (!write_stall) {
           skid_buf.pop();
         }
       } else if (read_flag0) {
-// #ifndef __SYNTHESIS__
-//         if (debug_cnt&1) {
-//           write_stall = true;
-//         } else
-// #endif
+#ifndef __SYNTHESIS__
+        if (debug_cnt&1) {
+          write_stall = true;
+        } else
+#endif
           write_stall = !rd_data.nb_write(read_data);
         if (write_stall) {
           skid_buf.push(read_data);//Push data into skid buffer if nb_write fails
@@ -587,8 +589,9 @@ public:
 #ifndef __SYNTHESIS__
             if (instr.tile[0] == W_L3_tile_small && tile_size[nb_cnt-1] == W_L3_tile_big)
               W_L3_wr_cnt++;
-            if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big)
+            if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big){
               W_L2_wr_cnt++;
+	    }
 #endif
         }
         wr_pntr = (wr_pntr+WORDS_in); 
@@ -626,6 +629,7 @@ private:
   bool accumulated[nb_cnt];
   bool all_at_max;
   bool irrel_at_max;
+  bool irrel_at_maxBuf;
   addr_type rd_counter[nb_cnt];
   addr_type rd_tile_bound[nb_cnt];
   
@@ -643,7 +647,7 @@ class I_dp_sb
 {
 public:
   // Constructor
-    I_dp_sb() : setup(1), irrel_at_max(1), irrel_cnt(0), write_flag(0),
+    I_dp_sb() : setup(1), irrel_at_max(1), irrel_at_maxBuf(1), irrel_cnt(0), write_flag(0),
                 read_flag0(0), wr_pntr(0), rd_pntr(0), vld_pntr(0), data_vld(0),
                 flags(0), skid(0), debug_cnt(0) {
     #pragma hls_unroll yes
@@ -668,7 +672,7 @@ public:
         loop_bound[x] = instr.bound[x+1];
         tile_size[x] = instr.tile[x+1];
         rd_tile_bound[x] = tile_size[x];
-        irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
+        irrel_at_maxBuf = irrel_at_max = loop_bound[x] != 1 ? false : irrel_at_max;
       }
       setup = false;
     }
@@ -693,52 +697,53 @@ public:
 #endif
       }
       //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
-      if (irrel_at_max){
+      if (irrel_at_maxBuf){
+        vld_pntr = rd_pntr;
         irrel_cnt += WORDS_out;;
       }
+      irrel_at_maxBuf = irrel_at_max;
       //increment pointer based on wordlength
       addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
 
       if (irrel_cnt == WORDS_in){
-        vld_pntr = rd_pntr;
         data_vld = false;
         irrel_cnt = 0;
       }
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
-// #ifndef __SYNTHESIS__
-//       debug_cnt++;
-// #endif
+#ifndef __SYNTHESIS__
+       debug_cnt++;
+#endif
       if (read_flag0 & skid_buf.not_empty()) {
         skid_buf.push(read_data);
         read_data = skid_buf.peek();
-// #ifndef __SYNTHESIS__
-//         if (debug_cnt&1) {
-//           write_stall = true;
-//         } else
-// #endif
+#ifndef __SYNTHESIS__
+        if (debug_cnt&1) {
+          write_stall = true;
+        } else
+#endif
           NB_WRITE_READ_DATA: write_stall = !rd_data.nb_write(read_data);
         if (!write_stall) {
           skid_buf.pop(); //Merely pop out the data from skid_buffer as nb_write was successful
         }
       } else if (skid_buf.not_empty()) {
         read_data = skid_buf.peek();
-// #ifndef __SYNTHESIS__
-//         if (debug_cnt&1) {
-//           write_stall = true;
-//         } else
-// #endif
+#ifndef __SYNTHESIS__
+        if (debug_cnt&1) {
+          write_stall = true;
+        } else
+#endif
           write_stall = !rd_data.nb_write(read_data);
         if (!write_stall) {
           skid_buf.pop();
         }
       } else if (read_flag0) {
-// #ifndef __SYNTHESIS__
-//         if (debug_cnt&1) {
-//           write_stall = true;
-//         } else
-// #endif
+#ifndef __SYNTHESIS__
+        if (debug_cnt&1) {
+          write_stall = true;
+        } else
+#endif
           write_stall = !rd_data.nb_write(read_data);
         if (write_stall) {
           skid_buf.push(read_data);//Push data into skid buffer if nb_write fails
@@ -797,6 +802,7 @@ private:
   bool accumulated[nb_cnt];
   bool all_at_max;
   bool irrel_at_max;
+  bool irrel_at_maxBuf;
   addr_type rd_counter[nb_cnt];
   addr_type rd_tile_bound[nb_cnt];
 
@@ -2372,27 +2378,25 @@ class NoC_O_up
     void CCS_BLOCK(run)(ac_channel<packedData<type,WORDS_in> > data_in[nb_col][nb_row],
                         ac_channel<packedData<type, WORDS_out> > &data_out)
     {
+// spatial reuse (adder tree) because irrelevant C loop as x dimension
+#pragma hls_unroll yes
+ 	for (int x=0; x<nb_col; x++){
+#pragma hls_unroll yes
+	  for (int y=0; y<nb_row; y++){
+            if (data_in[x][y].available(1)){
+
       if (!write_flag){
-        if (data_in[0][0].available(1)){
-          // spatial reuse (adder tree) because irrelevant C loop as x dimension
-#pragma hls_unroll yes
-          for (int x=0; x<nb_col; x++){
-#pragma hls_unroll yes
-            for (int y=0; y<nb_row; y++){
-              if (data_in[x][y].available(1)){
-                data_in[x][y].read(data_in_tmp);
+                          data_in[x][y].read(data_in_tmp);
 #pragma hls_unroll yes
                 for (int i=0; i<WORDS_in; i++){
                   buf[pntr+y+i] += data_in_tmp.data[i];
                 }
-              }
-            }
-          }
+		if (x==nb_col-1 && y==nb_row-1){
           ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_row*WORDS_in);
           write_flag = (pntr >= pntr_max) ? true : write_flag;
           pntr = pntr_new;
+		}
         }
-      }
       if (write_flag){
 #pragma hls_unroll yes
         for (int i=0; i<WORDS_out; i++){
@@ -2402,7 +2406,10 @@ class NoC_O_up
         data_out.write(data_out_tmp);
         write_flag = false;
       }
-    }
+               }
+            }
+          }
+   }
   private:
     //buffer
     type buf[WORDS_out];
