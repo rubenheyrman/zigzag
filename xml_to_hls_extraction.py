@@ -50,6 +50,7 @@ def make_config_file(precision_bit, array_size, mem_size, mem_bw, nb_cnt):
                      f"#include <ac_channel.h>{newline}"
                      f"#include <ac_fixed.h>{newline}"
                      f"#include <ac_int.h>{newline}"
+                     f"#include <math.h>{newline}"
                      f"{newline}"
                      f"// DESIGN TIME CONFIGURATION{newline}"
                      f"// Data precision of the different operands{newline}"
@@ -204,10 +205,10 @@ def make_config_file(precision_bit, array_size, mem_size, mem_bw, nb_cnt):
                      f"{newline}"
                      f"// min and max values of weight and input random values{newline}"
                      f"const int inputMIN = 0;{newline}"
-                     f"const int inputMAX = 255;{newline}"
+                     f"const int inputMAX = 255; // pow(2.0, (double) precision_bit_I)-1;{newline}"
                      f"{newline}"
                      f"const int weightMIN = 0;{newline}"
-                     f"const int weightMAX = 4;{newline}"
+                     f"const int weightMAX = 5;{newline}"
                      f"{newline}"
                      f"// variables for high level memory access count calculation{newline}"
                      f"static O_addr_type_L3 O_L3_tile_small;{newline}"
@@ -323,6 +324,8 @@ using namespace std;
 CCS_MAIN(int argv, char **argc)
 {
   cout << "Initilialization" << endl;
+  bool log_all_outputs = true;
+
 """
 
     testing_string = \
@@ -556,7 +559,16 @@ CCS_MAIN(int argv, char **argc)
   cout << endl;
   cout << "Finished loading channels" << endl;
   cout << "Running HW instance" << endl;
-  for (int i=0; i<8; i++)
+  // assuming all loops mapped to DRAM are relevant for the output
+  int dram_iterations = 1;
+  auto it = layer_iterations.begin();
+  for (auto i = O_mapped_to_DRAM.begin(); i != O_mapped_to_DRAM.end(); i++){
+    if (*i == 1){
+      dram_iterations *= *it;
+    }
+    it++;
+  }
+  for (int i=0; i<dram_iterations; i++)
     wr_zero_guard.write(1);
   int its = 0;
   int O_cnt = 0;
@@ -599,6 +611,11 @@ CCS_MAIN(int argv, char **argc)
       cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k << "]" << endl;
       failed = true;
       cin.get(); // to pause the console and control by pressing enter
+    } else if (log_all_outputs){
+      cout << "Correct output:" << endl;
+      cout << "OFMAPhw " << *(*(*(*(output_array_hw+b)+k)+oy)+ox) << " | ";
+      cout << "OFMAPsw " << *(*(*(*(output_array_sw+b)+k)+oy)+ox);
+      cout << " [iteration = " << its << " of " << B*K*OY*OX << " K = " << k << "]" << endl;
     }
   }
   cout << "Finished Reading output channel" << endl << endl;

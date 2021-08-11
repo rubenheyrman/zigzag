@@ -1,7 +1,8 @@
 ##
 # Ruben zigzag
 #
-XML := Ruben_results/all_su_best_tm_otf/Test_layer_L3_M1_SU1_min_en.xml
+# MAKE SURE THAT IM2COL IS SET TO TRUE
+XML := Ruben_results/all_su_best_tm_otf/MobileNet_v1_L3_M1_SU1_min_en.xml
 OUTPUT_DIR := hls/new_test/
 all: zigzag open_xml config_files run_tb
 tb: config_files run_tb

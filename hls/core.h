@@ -168,6 +168,16 @@ public:
       W_L3_tile_big   = W_instr_L3.tile[5];
       W_L2_tile_small = W_instr_L2.tile[0];
       W_L2_tile_big   = W_instr_L2.tile[5];
+
+      printf("O_L3_tile_small: %d \t O_L3_tile_big: %d\n", O_instr_L3.tile[0], O_L3_tile_big);
+      printf("O_L2_tile_small: %d \t O_L2_tile_big: %d\n", O_instr_L2.tile[0], O_L2_tile_big);
+      printf("O_L1_tile_small: %d \t O_L1_tile_big: %d\n", O_instr_L1.tile[0], O_instr_L1.tile[5]);
+      printf("I_L3_tile_small: %d \t I_L3_tile_big: %d\n", I_instr_L3.tile[0], I_L3_tile_big);
+      printf("I_L2_tile_small: %d \t I_L2_tile_big: %d\n", I_instr_L2.tile[0], I_L2_tile_big);
+      printf("I_L1_tile_small: %d \t I_L1_tile_big: %d\n", I_instr_L1.tile[0], I_instr_L1.tile[5]);
+      printf("W_L3_tile_small: %d \t W_L3_tile_big: %d\n", W_instr_L3.tile[0], W_L3_tile_big);
+      printf("W_L2_tile_small: %d \t W_L2_tile_big: %d\n", W_instr_L2.tile[0], W_L2_tile_big);
+      printf("W_L1_tile_small: %d \t W_L1_tile_big: %d\n", W_instr_L1.tile[0], W_instr_L1.tile[5]);
 #endif
 
       O_instr_L3_out.write(O_instr_L3);
@@ -501,7 +511,14 @@ public:
       }
       setup = false;
     }
-        
+
+    // calculation of control signals for the next cycle
+    if (irrel_cnt == WORDS_in){
+      vld_pntr = rd_pntr;
+      data_vld = false;
+      irrel_cnt = 0;
+    }
+   
     if (!flags[2] && (rd_pntr != wr_pntr || data_vld)) { // Access MSB bit of the flags 4bit variable. Please note the bit access method [].
       read_flag0 = true; 
     } else {
@@ -519,22 +536,17 @@ public:
               W_L3_rd_cnt++;
             if (instr.tile[0] == W_L2_tile_small && instr.tile[nb_cnt-1] == W_L2_tile_big){
               W_L2_rd_cnt++;
-	    }
+              // printf("W_L2_RD \t rd_pntr: %d, wr_pntr: %d \n", rd_pntr, wr_pntr);
+            }
 #endif
       }
-      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
-      if (irrel_at_maxBuf){
+      //if all irrelevant loops are at their maximum, the read out data can't be reused anymore
+      if (irrel_at_max){
         irrel_cnt += WORDS_out;;
-        vld_pntr = rd_pntr;
       }
       irrel_at_maxBuf = irrel_at_max;
       //increment pointer based on wordlength
       addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound); 
-
-      if (irrel_cnt == WORDS_in){
-        data_vld = false;
-        irrel_cnt = 0;
-      }
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
@@ -591,7 +603,7 @@ public:
               W_L3_wr_cnt++;
             if (instr.tile[0] == W_L2_tile_small && tile_size[nb_cnt-1] == W_L2_tile_big){
               W_L2_wr_cnt++;
-	    }
+            }
 #endif
         }
         wr_pntr = (wr_pntr+WORDS_in); 
@@ -677,6 +689,13 @@ public:
       setup = false;
     }
 
+    // calculation of control signals for the next cycle
+    if (irrel_cnt == WORDS_in){
+      vld_pntr = rd_pntr;
+      data_vld = false;
+      irrel_cnt = 0;
+    }
+
     if (!flags[2] && (rd_pntr != wr_pntr || data_vld)) { // Access MSB bit of the flags 4bit variable. Please note the bit access method [].
       read_flag0 = true;
     } else {
@@ -696,19 +715,13 @@ public:
               I_L2_rd_cnt++;
 #endif
       }
-      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
-      if (irrel_at_maxBuf){
-        vld_pntr = rd_pntr;
+      //if all irrelevant loops are at their maximum, the read out data can't be reused anymore
+      if (irrel_at_max){
         irrel_cnt += WORDS_out;;
       }
       irrel_at_maxBuf = irrel_at_max;
       //increment pointer based on wordlength
       addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
-
-      if (irrel_cnt == WORDS_in){
-        data_vld = false;
-        irrel_cnt = 0;
-      }
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
@@ -821,17 +834,17 @@ class O_dp_sb
 {
 public:
   // Constructor
-    O_dp_sb() : setup(1),
-                rd_irrel_at_max(1), rd_irrel_at_zero(1), wr_irrel_at_max(1), wr_irrel_at_zero(1),
-                write_flag_top(0), write_flag_bot(0),
-                zero_guard_top_flag(0), zero_guard(1),
-                read_flag0(0), read_flag1(0), read_flag2(0),
-                wr_pntr(0), rd_pntr(0), data_vld(1),
-                vld_zg_pntr(0), rd_data_zg(1), wr_data_zg(1), refresh_zg(0),
-                flags_top(0), flags_bot(0), flags_zero_guard(0), flags_wr_zero_guard(0), skid(0),
-                zg_cnt(0), rd_increment(1),
-                read_data_top_flag(0),
-                debug_cnt0(0), debug_cnt1(0), debug_cnt2(0), flag0cnt(0), flag2cnt(0)
+  O_dp_sb() : setup(1),
+    rd_irrel_at_max(1), rd_irrel_at_zero(1), wr_irrel_at_max(1), wr_irrel_at_zero(1),
+    write_flag_top(0), write_flag_bot(0),
+    zero_guard_top_flag(0), zero_guard(1),
+    read_flag0(0), read_flag1(0), read_flag2(0),
+    wr_pntr(0), rd_pntr(0), data_vld(1),
+    vld_zg_pntr(0), rd_data_zg(1), wr_data_zg(1), refresh_zg(0),
+    flags_top(0), flags_bot(0), flags_zero_guard(0), flags_wr_zero_guard(0), skid(0),
+    zg_cnt(0), rd_increment(1),
+    read_data_top_flag(0),
+    debug_cnt0(0), debug_cnt1(0), debug_cnt2(0), flag0cnt(0), flag2cnt(0)
     {
     #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
@@ -916,8 +929,10 @@ public:
 #ifndef __SYNTHESIS__
             if (tile_size[0] == O_L3_tile_small && tile_size[nb_cnt-1] == O_L3_tile_big)
               O_L3_bot_rd_cnt++;
-            if (tile_size[0] == O_L2_tile_small && tile_size[nb_cnt-1] == O_L2_tile_big)
+            if (tile_size[0] == O_L2_tile_small && tile_size[nb_cnt-1] == O_L2_tile_big){
               O_L2_bot_rd_cnt++;
+              // printf("O_L2_RD \t rd_pntr: %d, wr_pntr: %d \n", rd_pntr, wr_pntr);
+            }
 #endif
       }
     }
@@ -1321,6 +1336,7 @@ public:
       }
     } else {
 
+    // printf("Guard: %d, O_rd: %d, O_wr: %d I: %d W: %d\n", wr_data_zero_guard.size(), O_rd_data.size(), O_wr_data.size(), I_wr_data.size(), W_wr_data.size());
     // set flags which decides if a new partial sum can be calculated
     O_read_flag = (O_data_vld || O_mac_pntr != O_vld_zg_pntr);
     I_read_flag = (I_data_vld || I_mac_pntr != I_wr_pntr);
@@ -2380,36 +2396,36 @@ class NoC_O_up
     {
 // spatial reuse (adder tree) because irrelevant C loop as x dimension
 #pragma hls_unroll yes
- 	for (int x=0; x<nb_col; x++){
+      for (int x=0; x<nb_col; x++){
 #pragma hls_unroll yes
-	  for (int y=0; y<nb_row; y++){
-            if (data_in[x][y].available(1)){
+        for (int y=0; y<nb_row; y++){
+          if (data_in[x][y].available(1)){
 
-      if (!write_flag){
-                          data_in[x][y].read(data_in_tmp);
+            if (!write_flag){
+              data_in[x][y].read(data_in_tmp);
 #pragma hls_unroll yes
-                for (int i=0; i<WORDS_in; i++){
-                  buf[pntr+y+i] += data_in_tmp.data[i];
-                }
-		if (x==nb_col-1 && y==nb_row-1){
-          ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_row*WORDS_in);
-          write_flag = (pntr >= pntr_max) ? true : write_flag;
-          pntr = pntr_new;
-		}
-        }
-      if (write_flag){
+              for (int i=0; i<WORDS_in; i++){
+                buf[pntr+y+i] += data_in_tmp.data[i];
+              }
+              if (x==nb_col-1 && y==nb_row-1){
+                ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_row*WORDS_in);
+                write_flag = (pntr >= pntr_max) ? true : write_flag;
+                pntr = pntr_new;
+              }
+            }
+            if (write_flag){
 #pragma hls_unroll yes
-        for (int i=0; i<WORDS_out; i++){
-          data_out_tmp.data[i] = buf[i];
-          buf[i] = 0;
-        }
-        data_out.write(data_out_tmp);
-        write_flag = false;
-      }
-               }
+              for (int i=0; i<WORDS_out; i++){
+                data_out_tmp.data[i] = buf[i];
+                buf[i] = 0;
+              }
+              data_out.write(data_out_tmp);
+              write_flag = false;
             }
           }
-   }
+        }
+      }
+    }
   private:
     //buffer
     type buf[WORDS_out];
