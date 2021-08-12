@@ -136,13 +136,13 @@ public:
 
       // Tailored to NoC multiply L2 base tile size with col dimension = C and/or row dimension = K
       O_tiling_unit_L1.run(O_loops_L1, O_tile_size_L1, O_instr_L1);
-      O_tile_size_L2 = (O_addr_type_L2) O_tile_size_L1*nb_row;
+      O_tile_size_L2 = (O_addr_type_L2) O_tile_size_L1*nb_col;
       O_tiling_unit_L2.run(O_loops_L2, O_tile_size_L2, O_instr_L2);
       O_tile_size_L3 = (O_addr_type_L3) O_tile_size_L2;
       O_tiling_unit_L3.run(O_loops_L3, O_tile_size_L3, O_instr_L3);
 
       I_tiling_unit_L1.run(I_loops_L1, I_tile_size_L1, I_instr_L1);
-      I_tile_size_L2 = (I_addr_type_L2) I_tile_size_L1*nb_col;
+      I_tile_size_L2 = (I_addr_type_L2) I_tile_size_L1*nb_row;
       I_tiling_unit_L2.run(I_loops_L2, I_tile_size_L2, I_instr_L2);
       I_tile_size_L3 = (I_addr_type_L3) I_tile_size_L2;
       I_tiling_unit_L3.run(I_loops_L3, I_tile_size_L3, I_instr_L3);
@@ -192,9 +192,9 @@ public:
       // I_instr_L1_out.write(I_instr_L1);
       // W_instr_L1_out.write(W_instr_L1);
 #pragma hls_unroll yes
-      for (int x=0; x<nb_col; x++){
+      for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
-        for (int y=0; y<nb_row; y++){
+        for (int x=0; x<nb_col; x++){
           O_instr_L1_out[x][y].write(O_instr_L1);
           I_instr_L1_out[x][y].write(I_instr_L1);
           W_instr_L1_out[x][y].write(W_instr_L1);
@@ -286,7 +286,7 @@ public:
                 reset_tile[i] = (counter[j] == loop_bound[j]-1) ? reset_tile[i] : false;
             }
         }
-        all_at_max = (pntr == tile_size[nb_counters-1] && reset_tile[nb_counters-1] && update_tile_bound[nb_counters-1]);
+        all_at_max = (pntr >= tile_size[nb_counters-1] && reset_tile[nb_counters-1] && update_tile_bound[nb_counters-1]);
         update_pntr = false;
         #pragma hls_unroll yes
         for (int i=0; i<nb_counters; i++){
@@ -355,7 +355,7 @@ public:
                 reset_tile[i] = (counter[j] == loop_bound[j]-1) ? reset_tile[i] : false;
             }
         }
-        all_at_max = (pntr == tile_size[nb_counters-1] && reset_tile[nb_counters-1] && update_tile_bound[nb_counters-1]);
+        all_at_max = (pntr >= tile_size[nb_counters-1] && reset_tile[nb_counters-1] && update_tile_bound[nb_counters-1]);
         update_pntr = false;
         #pragma hls_unroll yes
         for (int i=0; i<nb_counters; i++){
@@ -542,11 +542,11 @@ public:
       }
       //if all irrelevant loops are at their maximum, the read out data can't be reused anymore
       if (irrel_at_max){
-        irrel_cnt += WORDS_out;;
+        irrel_cnt += WORDS_out;
       }
       irrel_at_maxBuf = irrel_at_max;
       //increment pointer based on wordlength
-      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound); 
+      addr_cntInst.run(loop_bound, tile_size, rd_pntr, irrel_at_max, rd_counter, rd_tile_bound);
     }
 
     if (read_flag0 | skid_buf.not_empty()) {
@@ -607,7 +607,7 @@ public:
 #endif
         }
         wr_pntr = (wr_pntr+WORDS_in); 
-        if (wr_pntr == tile_size[nb_cnt-1]){
+        if (wr_pntr >= tile_size[nb_cnt-1]){
           wr_pntr = 0;
         }
         data_vld = (wr_pntr==vld_pntr);
@@ -717,7 +717,7 @@ public:
       }
       //if all irrelevant loops are at their maximum, the read out data can't be reused anymore
       if (irrel_at_max){
-        irrel_cnt += WORDS_out;;
+        irrel_cnt += WORDS_out;
       }
       irrel_at_maxBuf = irrel_at_max;
       //increment pointer based on wordlength
@@ -781,7 +781,7 @@ public:
 #endif
         }
         wr_pntr = (wr_pntr+WORDS_in);
-        if (wr_pntr == tile_size[nb_cnt-1]){
+        if (wr_pntr >= tile_size[nb_cnt-1]){
           wr_pntr = 0;
         }
         data_vld = (wr_pntr==vld_pntr);
@@ -1154,6 +1154,7 @@ public:
               O_L3_bot_wr_cnt++;
             if (tile_size[0] == O_L2_tile_small && tile_size[nb_cnt-1] == O_L2_tile_big)
               O_L2_bot_wr_cnt++;
+
 #endif
           }
         }
@@ -1164,7 +1165,6 @@ public:
         wr_pntr = wr_pntr_out;
         data_vld = wr_pntr == rd_pntr;
 #ifndef __SYNTHESIS__
-        O_L2_bot_wr_cnt++;
 #endif
         // clear write_flags for next write iteration
         write_flag_bot = write_flag_top = false;
@@ -1278,10 +1278,10 @@ public:
                    I_mac_irrel_at_maxBuf(1), W_mac_irrel_at_maxBuf(1), O_mac_irrel_at_maxBuf(1),
                    psum_flag(0), psum_top_flag(0), psum_top(0), read_flag(0),
                    write_flag0(0), O_write_flag(0), I_write_flag(0), W_write_flag(0),
-                   zero_guard(0), zero_guard_top_flag(0), read_flag0(0), read_flag1(0),
+                   guard_accumulation(0), guard_accumulation_top_flag(0), read_flag0(0), read_flag1(0),
                    I_wr_pntr(0), W_wr_pntr(0), O_mac_pntr(0), I_mac_pntr(0), W_mac_pntr(0),
-                   O_vld_zg_pntr(0), O_data_vld(0), I_vld_pntr(0), I_data_vld(0), W_vld_pntr(0), W_data_vld(0),
-                   flags_top(0), write_stall_top(1), flags_wr_zero_guard(0), skid(0),
+                   O_invalid_guard_pntr(0), O_data_vld(0), I_vld_pntr(0), I_data_vld(0), W_vld_pntr(0), W_data_vld(0),
+                   flags_top(0), write_stall_top(1), flags_wr_guard_accumulation(0), skid(0),
                    debug_cnt(0), flag1cnt(0), flag2cnt(0), psumflagcnt(0) {
     #pragma hls_unroll yes
     for (int x=0; x<nb_cnt; x++){
@@ -1298,7 +1298,7 @@ public:
                         ac_channel<packedData<O_type,O_WORDS_out> > &O_rd_data,
                         ac_channel<packedData<I_type,I_WORDS_in> > &I_wr_data,
                         ac_channel<packedData<W_type,W_WORDS_in> > &W_wr_data,
-                        ac_channel<bool> &wr_data_zero_guard,
+                        ac_channel<bool> &wr_data_guard_accumulation,
                         ac_channel<memlevelInstr<O_addr_type, nb_cnt+1> > &O_instr_in,
                         ac_channel<memlevelInstr<I_addr_type, nb_cnt+1> > &I_instr_in,
                         ac_channel<memlevelInstr<W_addr_type, nb_cnt+1> > &W_instr_in) {
@@ -1310,12 +1310,12 @@ public:
       map_to_module="ram_nangate-45nm-register-file_beh.REGISTER_FILE"
 
     if (setup){
-      if (O_instr_in.available(1) && I_instr_in.available(1) && W_instr_in.available(1) && wr_data_zero_guard.available(1)){
+      if (O_instr_in.available(1) && I_instr_in.available(1) && W_instr_in.available(1) && wr_data_guard_accumulation.available(1)){
         O_instr = O_instr_in.read();
         I_instr = I_instr_in.read();
         W_instr = W_instr_in.read();
-        data_zg = wr_data_zero_guard.read();
-        skid_buf_wr_zero_guard.push(data_zg);
+        guard_data_fetch = wr_data_guard_accumulation.read();
+        skid_buf_wr_guard_accumulation.push(guard_data_fetch);
       #pragma hls_unroll yes
       for (int x=0; x<nb_cnt; x++){
         O_loop_bound[x] = O_instr.bound[x+1];
@@ -1331,17 +1331,16 @@ public:
         I_mac_irrel_at_maxBuf = I_mac_irrel_at_max = I_loop_bound[x] != 1 ? false : I_mac_irrel_at_max;
         W_mac_irrel_at_maxBuf = W_mac_irrel_at_max = W_loop_bound[x] != 1 ? false : W_mac_irrel_at_max;
       }
-      if (O_WORDS_in >= O_tile_size[nb_cnt-1]){skid_buf_wr_zero_guard.pop();}
+      if (O_WORDS_in >= O_tile_size[nb_cnt-1]){skid_buf_wr_guard_accumulation.pop();}
       setup = false;
       }
     } else {
-
-    // printf("Guard: %d, O_rd: %d, O_wr: %d I: %d W: %d\n", wr_data_zero_guard.size(), O_rd_data.size(), O_wr_data.size(), I_wr_data.size(), W_wr_data.size());
+    // printf("Guard: %d, O_rd: %d, O_wr: %d I: %d W: %d -> GUARDACCUM: %d\n", wr_data_guard_accumulation.size(), O_rd_data.size(), O_wr_data.size(), I_wr_data.size(), W_wr_data.size(), guard_accumulation);
     // set flags which decides if a new partial sum can be calculated
-    O_read_flag = (O_data_vld || O_mac_pntr != O_vld_zg_pntr);
+    O_read_flag = (O_data_vld || O_mac_pntr != O_invalid_guard_pntr);
     I_read_flag = (I_data_vld || I_mac_pntr != I_wr_pntr);
     W_read_flag = (W_data_vld || W_mac_pntr != W_wr_pntr);
-    zero_guard = (data_zg && O_mac_pntr == O_vld_zg_pntr);
+    guard_accumulation = (guard_data_fetch && O_mac_pntr == O_invalid_guard_pntr);
 
     if (((O_mac_irrel_at_max && !flags_top[1]) || !O_mac_irrel_at_max)) { // Access MSB bit of the flags 3bit variable. Please note the bit access method [].
       read_flag0 = true;
@@ -1349,7 +1348,7 @@ public:
       read_flag0 = false;
     }
 
-    psum_flag = read_flag0 && (O_read_flag && I_read_flag && W_read_flag && !(psum_top && O_mac_pntr == O_vld_zg_pntr));
+    psum_flag = read_flag0 && (O_read_flag && I_read_flag && W_read_flag && !(psum_top && O_mac_pntr == O_invalid_guard_pntr));
     psum_top_flag = read_flag0 && (O_write_flag && I_read_flag && W_read_flag);
     read_flag =  (psum_flag || psum_top_flag);
 
@@ -1367,7 +1366,7 @@ public:
 
     // update partial sums and guard the fetching when no partial sum is available yet for a certain output coordinate
     // accumulate with partial sum from scratchpad memory
-    if (psum_flag && !zero_guard){
+    if (psum_flag && !guard_accumulation){
       #pragma hls_unroll yes
       UPDATE_PSUM: for (int i=0; i<O_WORDS_out; i++){
 
@@ -1375,13 +1374,13 @@ public:
 #ifndef __SYNTHESIS__
         W_L1_rd_cnt++;
         I_L1_rd_cnt++;
-          O_L1_bot_rd_cnt++;
+        O_L1_bot_rd_cnt++;
 #endif
       }
     // guard accumulation
-    } else if (psum_flag && zero_guard){
+    } else if (psum_flag && guard_accumulation){
       #pragma hls_unroll yes
-      UPDATE_PSUM_ZERO_GUARD: for (int i=0; i<O_WORDS_out; i++){
+      UPDATE_PSUM_GUARD_ACCUMULATION: for (int i=0; i<O_WORDS_out; i++){
 
         mac_data.data[i] = W_mem[W_mac_pntr+i] * I_mem[I_mac_pntr+i];
 #ifndef __SYNTHESIS__
@@ -1405,7 +1404,7 @@ public:
     if (read_flag1){
       O_read_data = mac_data;
 #ifndef __SYNTHESIS__
-      if (psum_flag && !zero_guard)
+      if (psum_flag && !guard_accumulation)
         O_L1_top_rd_cnt++;
 #endif
     } else if (read_flag) {
@@ -1413,7 +1412,7 @@ public:
       WRITE_PSUM_TO_RF: for (int i=0; i<O_WORDS_out; i++){
         O_mem[O_mac_pntr+i] = mac_data.data[i];
 #ifndef __SYNTHESIS__
-        if (psum_flag && !zero_guard){
+        if (psum_flag && !guard_accumulation){
         } else if (psum_top_flag) {
           O_L1_top_wr_cnt++;
         }
@@ -1464,20 +1463,20 @@ public:
 
     if (read_flag){
       // remove zero guard tag from memory address
-      if (zero_guard){
-        O_vld_zg_pntr++;
-        if (O_vld_zg_pntr == O_tile_size[nb_cnt-1]){
-          O_vld_zg_pntr = 0;
-          data_zg = false;
+      if (guard_accumulation){
+        O_invalid_guard_pntr++;
+        if (O_invalid_guard_pntr == O_tile_size[nb_cnt-1]){
+          O_invalid_guard_pntr = 0;
+          guard_data_fetch = false;
         }
       }
       // accumulated with psum data from level above
       else if (O_write_flag){
         O_write_flag = false;
-        O_vld_zg_pntr++;
+        O_invalid_guard_pntr++;
         // all data in memory is reusable
-        if (O_vld_zg_pntr == O_tile_size[nb_cnt-1]){
-          O_vld_zg_pntr = 0;
+        if (O_invalid_guard_pntr == O_tile_size[nb_cnt-1]){
+          O_invalid_guard_pntr = 0;
           O_data_vld = true;
           psum_top = false;
         }
@@ -1496,14 +1495,14 @@ public:
       if (I_mac_irrel_at_maxBuf){
         I_irrel_cnt++;
       }
+      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
+      if (W_mac_irrel_at_maxBuf){
+        W_irrel_cnt++;
+      }
       if (I_irrel_cnt == I_WORDS_in){
         I_vld_pntr = I_mac_pntr;
         I_data_vld = false;
         I_irrel_cnt = 0;
-      }
-      //if all irrelevant loops are at their maximum, consumed data in this level can't be reused anymore
-      if (W_mac_irrel_at_maxBuf){
-        W_irrel_cnt++;
       }
       if (W_irrel_cnt == W_WORDS_in){
         W_vld_pntr = W_mac_pntr;
@@ -1511,8 +1510,9 @@ public:
         W_irrel_cnt = 0;
       }
 
-      // data of memory level can't be reused anymore and will be moved to the memory levels above
-      if (O_mac_irrel_at_maxBuf && O_mac_pntr == O_vld_zg_pntr && O_vld_zg_pntr == 0){
+
+      // data is invalidated because complete tile is moved to the memory level above because reuse is the near future isn't possible anymore
+      if (O_mac_irrel_at_maxBuf && O_mac_pntr == O_invalid_guard_pntr && O_invalid_guard_pntr == 0){
         O_data_vld = false;
       }
     }
@@ -1521,28 +1521,29 @@ public:
     flags_top[0] = skid_buf_top.not_empty();
 
     // read in zero guard data from level above
-    if (!flags_wr_zero_guard[0]){
-      zero_guard_top_flag = wr_data_zero_guard.nb_read(wr_zero_guard);
-      if (zero_guard_top_flag){
-        skid_buf_wr_zero_guard.push(wr_zero_guard);
+    if (!flags_wr_guard_accumulation[0]){
+      guard_accumulation_top_flag = wr_data_guard_accumulation.nb_read(wr_guard_accumulation);
+      if (guard_accumulation_top_flag){
+        skid_buf_wr_guard_accumulation.push(wr_guard_accumulation);
       }
     }
 
-    // flag to detect if level is at startup or data is not reusable anymore
-    start_flag = !O_data_vld && O_mac_pntr == O_vld_zg_pntr && skid_buf_wr_zero_guard.not_empty() && !psum_top;
+    // new data is required from memory level above or data fetching is guarded (computing on a new tile)
+    tile_refresh = !O_data_vld && O_mac_pntr == O_invalid_guard_pntr && skid_buf_wr_guard_accumulation.not_empty() && !psum_top;
 
-    // read in partial sum from memory level above or zero guard memory level
-    if (!skid_buf_wr_zero_guard.peek() && start_flag){
+    // read in partial sum from memory level above or guard accumulation with fetched data from memory level above
+    if (!skid_buf_wr_guard_accumulation.peek() && tile_refresh){
       psum_top = true;
-      data_zg = false;
-      skid_buf_wr_zero_guard.pop();
-    } else if (skid_buf_wr_zero_guard.peek() && start_flag){
-      data_zg = true;
+      guard_data_fetch = false;
+      skid_buf_wr_guard_accumulation.pop();
+    } else if (skid_buf_wr_guard_accumulation.peek() && tile_refresh){
+      guard_data_fetch = true;
       O_data_vld = true;
-      skid_buf_wr_zero_guard.pop();
+      skid_buf_wr_guard_accumulation.pop();
     }
 
-    if (psum_top && O_mac_pntr == O_vld_zg_pntr && !O_write_flag){
+    // data at this memory address has not been refreshed yet
+    if (psum_top && O_mac_pntr == O_invalid_guard_pntr && !O_write_flag){
       O_write_flag = O_wr_data.nb_read(O_write_data);
     }
     // write input data to input memory if reusable data is consumed
@@ -1558,7 +1559,7 @@ public:
 #endif
         }
         I_wr_pntr = (I_wr_pntr+I_WORDS_in);
-        if (I_wr_pntr == I_tile_size[nb_cnt-1]){
+        if (I_wr_pntr >= I_tile_size[nb_cnt-1]){
           I_wr_pntr = 0;
         }
         I_data_vld = (I_wr_pntr==I_vld_pntr);
@@ -1577,14 +1578,14 @@ public:
 #endif
         }
         W_wr_pntr = (W_wr_pntr+W_WORDS_in);
-        if (W_wr_pntr == W_tile_size[nb_cnt-1]){
+        if (W_wr_pntr >= W_tile_size[nb_cnt-1]){
           W_wr_pntr = 0;
         }
         W_data_vld = (W_wr_pntr==W_vld_pntr);
       }
     }
-    flags_wr_zero_guard <<=1;
-    flags_wr_zero_guard[0] = skid_buf_wr_zero_guard.not_empty();
+    flags_wr_guard_accumulation <<=1;
+    flags_wr_guard_accumulation[0] = skid_buf_wr_guard_accumulation.not_empty();
 
   }
   }
@@ -1606,19 +1607,19 @@ private:
   bool                                   psum_top_flag;
   bool                                   psum_top;
   bool                                   read_flag;
-  bool                                   start_flag;
-  bool                                   wr_zero_guard;
-  bool                                   zero_guard_top_flag;
+  bool                                   tile_refresh;
+  bool                                   wr_guard_accumulation;
+  bool                                   guard_accumulation_top_flag;
   bool                                   read_flag0;
   bool                                   read_flag1;
   ac_int<2,false>                        flags_top;
-  ac_int<1,false>                        flags_wr_zero_guard;
+  ac_int<1,false>                        flags_wr_guard_accumulation;
   packedData<O_type,O_WORDS_out>         mac_data;
-  bool                                   zero_guard;
-  bool                                   zero_guard_top;
+  bool                                   guard_accumulation;
+  bool                                   guard_accumulation_top;
   ac_int<2,false>                        skid;
   fifo<packedData<O_type,O_WORDS_out>,3> skid_buf_top;
-  fifo<bool,2>                           skid_buf_wr_zero_guard;
+  fifo<bool,2>                           skid_buf_wr_guard_accumulation;
   int                                    debug_cnt;
 
     int flag1cnt;
@@ -1644,9 +1645,9 @@ private:
 
   // pointers
   O_addr_type   O_mac_pntr;
-  O_addr_type   O_vld_zg_pntr;
+  O_addr_type   O_invalid_guard_pntr;
   bool          O_data_vld;
-  bool          data_zg;
+  bool          guard_data_fetch;
 
   // counter
   ac_int<ac::nbits<O_WORDS_in>::val+1, false>   O_irrel_cnt;
@@ -2219,18 +2220,20 @@ class NoC_W_down
         }
       }
       if (read_flag){
-        // no spatial reuse for K and C unrolling
+        // no spatial reuse for K [x] and C [y] unrolling
 #pragma hls_unroll yes
-        for (int x=0; x<nb_col; x++){
+        for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
-          for (int y=0; y<nb_row; y++){
+          for (int x=0; x<nb_col; x++){
 #pragma hls_unroll yes
             for (int i=0; i<WORDS_out; i++){
               data_out_tmp.data[i] = buf[pntr+i];
             }
             data_out[x][y].write(data_out_tmp);
+
             ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-WORDS_out;
-            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
+            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ?
+              (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
             read_flag = (pntr >= pntr_max) ? false : read_flag;
             pntr = pntr_new;
           }
@@ -2274,19 +2277,29 @@ class NoC_I_down
       if (read_flag){
         // spatial reuse because of irrelevant K dimension
 #pragma hls_unroll yes
-        for (int x=0; x<nb_col; x++){
+        for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
             for (int i=0; i<WORDS_out; i++){
               data_out_tmp.data[i] = buf[pntr+i];
+            }
 #pragma hls_unroll yes
-              for (int y=0; y<nb_row; y++){
-                data_out[x][y].write(data_out_tmp);
-              }
+            for (int x=0; x<nb_col; x++){
+              data_out[x][y].write(data_out_tmp);
+            }
             ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-WORDS_out;
-            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
+            ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ?
+              (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
             read_flag = (pntr >= pntr_max) ? false : read_flag;
             pntr = pntr_new;
-          }
+            while (!read_flag){
+              read_flag = data_in.nb_read(data_in_tmp);
+              if (read_flag){
+#pragma hls_unroll yes
+                for (int i=0; i<WORDS_in; i++){
+                  buf[i] = data_in_tmp.data[i];
+                }
+              }
+            }
         }
       }
     }
@@ -2320,10 +2333,10 @@ class NoC_O_down
       if (!read_flag_zero_guard){read_flag_zero_guard = zero_guard_in.nb_read(zero_guard_tmp);}
       if (read_flag_zero_guard){
 #pragma hls_unroll yes
-        for (int x=0; x<nb_col; x++){
+        for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
-          for (int y=0; y<nb_row; y++){
-            if (x==0){
+          for (int x=0; x<nb_col; x++){
+            if (y==0){
               zero_guard_out[x][y].write(zero_guard_tmp);
             } else {
               zero_guard_out[x][y].write(1);
@@ -2343,21 +2356,21 @@ class NoC_O_down
       }
       if (read_flag){
 #pragma hls_unroll yes
-        for (int x=0; x<nb_col; x++){
+        for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
-          for (int y=0; y<nb_row; y++){
-            if (x==0){
+          for (int x=0; x<nb_col; x++){
+            if (y==0){ // first PE in irrelevant row
 #pragma hls_unroll yes
               for (int i=0; i<WORDS_out; i++){
-                data_out_tmp.data[i] = buf[pntr+i];
+                data_out_tmp.data[i] = buf[pntr+x*WORDS_out+i];
               }
               data_out[x][y].write(data_out_tmp);
             }
           }
         }
-
-        ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-nb_row*WORDS_out;
-        ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+nb_row*WORDS_out);
+        ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_max = WORDS_in-nb_col*WORDS_out;
+        ac_int<ac::log2_ceil<WORDS_in>::val,false> pntr_new = (pntr >= pntr_max) ?
+          (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+nb_col*WORDS_out);
         read_flag = (pntr >= pntr_max) ? false : read_flag;
         pntr = pntr_new;
       }
@@ -2386,7 +2399,7 @@ class NoC_O_up
 #pragma hls_unroll yes
       for (int i=0; i<WORDS_out; i++)
         buf[i] = 0;
-      pntr_max = WORDS_out-nb_row*WORDS_in;
+      pntr_max = WORDS_out-nb_col*WORDS_in;
     }
 
 #pragma hls_design interface
@@ -2396,19 +2409,20 @@ class NoC_O_up
     {
 // spatial reuse (adder tree) because irrelevant C loop as x dimension
 #pragma hls_unroll yes
-      for (int x=0; x<nb_col; x++){
+      for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
-        for (int y=0; y<nb_row; y++){
+        for (int x=0; x<nb_col; x++){
           if (data_in[x][y].available(1)){
 
             if (!write_flag){
               data_in[x][y].read(data_in_tmp);
 #pragma hls_unroll yes
               for (int i=0; i<WORDS_in; i++){
-                buf[pntr+y+i] += data_in_tmp.data[i];
+                buf[pntr+x*WORDS_in+i] += data_in_tmp.data[i];
               }
               if (x==nb_col-1 && y==nb_row-1){
-                ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ? (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_row*WORDS_in);
+                ac_int<ac::log2_ceil<WORDS_out>::val,false> pntr_new = (pntr >= pntr_max) ?
+                  (ac_int<ac::log2_ceil<WORDS_out>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_out>::val,false>) (pntr+nb_col*WORDS_in);
                 write_flag = (pntr >= pntr_max) ? true : write_flag;
                 pntr = pntr_new;
               }

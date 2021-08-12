@@ -529,6 +529,8 @@ CCS_MAIN(int argv, char **argc)
       I_wr_data.write(I_data_in);
     }
   }
+  if (I_cnt != 0)
+    I_wr_data.write(I_data_in);
   // make start_coordinate list of same size as weight_coordinates list
   start_coordinate.pop_back();
   start_coordinate.pop_back();
@@ -554,6 +556,10 @@ CCS_MAIN(int argv, char **argc)
       W_wr_data.write(W_data_in);
     }
   }
+  if (W_cnt != 0)
+    W_wr_data.write(W_data_in);
+
+
 
   bool HWdone = false;
   cout << endl;
@@ -568,7 +574,7 @@ CCS_MAIN(int argv, char **argc)
     }
     it++;
   }
-  for (int i=0; i<dram_iterations; i++)
+  for (int i=0; i<dram_iterations+1; i++)
     wr_zero_guard.write(1);
   int its = 0;
   int O_cnt = 0;
@@ -641,36 +647,36 @@ CCS_MAIN(int argv, char **argc)
   cout << " --> average error:                               " << err/cnt << endl << endl;
 
   cout << "Memory Access Count: [in elements]:" << endl;
-  cout << "O: [";
-  cout << "[(" << O_L1_bot_rd_cnt << ", " << O_L1_bot_wr_cnt << ")(" << O_L1_top_rd_cnt << ", " << O_L1_top_wr_cnt << ")]";
-  cout << "[(" << O_L2_bot_rd_cnt << ", " << O_L2_bot_wr_cnt << ")(" << O_L2_top_rd_cnt << ", " << O_L2_top_wr_cnt << ")]";
-  cout << "[(" << O_L3_bot_rd_cnt << ", " << O_L3_bot_wr_cnt << ")(" << O_L3_top_rd_cnt << ", " << O_L3_top_wr_cnt << ")]";
+  cout << "W: [";
+  cout << "[" << W_L1_rd_cnt << ", " << W_L1_wr_cnt << "]";
+  cout << "[" << W_L2_rd_cnt << ", " << W_L2_wr_cnt << "]";
+  cout << "[" << W_L3_rd_cnt << ", " << W_L3_wr_cnt << "]";
   cout << "]" << endl;
   cout << "I: [";
   cout << "[" << I_L1_rd_cnt << ", " << I_L1_wr_cnt << "]";
   cout << "[" << I_L2_rd_cnt << ", " << I_L2_wr_cnt << "]";
   cout << "[" << I_L3_rd_cnt << ", " << I_L3_wr_cnt << "]";
   cout << "]" << endl;
-  cout << "W: [";
-  cout << "[" << W_L1_rd_cnt << ", " << W_L1_wr_cnt << "]";
-  cout << "[" << W_L2_rd_cnt << ", " << W_L2_wr_cnt << "]";
-  cout << "[" << W_L3_rd_cnt << ", " << W_L3_wr_cnt << "]";
-  cout << "]" << endl;
-  cout << "Memory Access Count: [in words]:" << endl;
   cout << "O: [";
-  cout << "[(" << O_L1_bot_rd_cnt/mem_words_O_L1_out << ", " << O_L1_bot_wr_cnt/mem_words_O_L1_in << ")(" << O_L1_top_rd_cnt/mem_words_O_L1_out << ", " << O_L1_top_wr_cnt/mem_words_O_L1_in << ")]";
-  cout << "[(" << O_L2_bot_rd_cnt/mem_words_O_L2_out << ", " << O_L2_bot_wr_cnt/mem_words_O_L2_in << ")(" << O_L2_top_rd_cnt/mem_words_O_L2_out << ", " << O_L2_top_wr_cnt/mem_words_O_L2_in << ")]";
-  cout << "[(" << O_L3_bot_rd_cnt/mem_words_O_L3_out << ", " << O_L3_bot_wr_cnt/mem_words_O_L3_in << ")(" << O_L3_top_rd_cnt/mem_words_O_L3_out << ", " << O_L3_top_wr_cnt/mem_words_O_L3_in << ")]";
+  cout << "[(" << O_L1_bot_rd_cnt << ", " << O_L1_bot_wr_cnt << ")(" << O_L1_top_rd_cnt << ", " << O_L1_top_wr_cnt << ")]";
+  cout << "[(" << O_L2_bot_rd_cnt << ", " << O_L2_bot_wr_cnt << ")(" << O_L2_top_rd_cnt << ", " << O_L2_top_wr_cnt << ")]";
+  cout << "[(" << O_L3_bot_rd_cnt << ", " << O_L3_bot_wr_cnt << ")(" << O_L3_top_rd_cnt << ", " << O_L3_top_wr_cnt << ")]";
+  cout << "]" << endl;
+  cout << endl << "Memory Access Count: [in words]:" << endl;
+  cout << "W: [";
+  cout << "[" << W_L1_rd_cnt/mem_words_W_L1_out << ", " << W_L1_wr_cnt/mem_words_W_L1_in << "]";
+  cout << "[" << W_L2_rd_cnt/mem_words_W_L2_out << ", " << W_L2_wr_cnt/mem_words_W_L2_in << "]";
+  cout << "[" << W_L3_rd_cnt/mem_words_W_L3_out << ", " << W_L3_wr_cnt/mem_words_W_L3_in << "]";
   cout << "]" << endl;
   cout << "I: [";
   cout << "[" << I_L1_rd_cnt/mem_words_I_L1_out << ", " << I_L1_wr_cnt/mem_words_I_L1_in << "]";
   cout << "[" << I_L2_rd_cnt/mem_words_I_L2_out << ", " << I_L2_wr_cnt/mem_words_I_L2_in << "]";
   cout << "[" << I_L3_rd_cnt/mem_words_I_L3_out << ", " << I_L3_wr_cnt/mem_words_I_L3_in << "]";
   cout << "]" << endl;
-  cout << "W: [";
-  cout << "[" << W_L1_rd_cnt/mem_words_W_L1_out << ", " << W_L1_wr_cnt/mem_words_W_L1_in << "]";
-  cout << "[" << W_L2_rd_cnt/mem_words_W_L2_out << ", " << W_L2_wr_cnt/mem_words_W_L2_in << "]";
-  cout << "[" << W_L3_rd_cnt/mem_words_W_L3_out << ", " << W_L3_wr_cnt/mem_words_W_L3_in << "]";
+  cout << "O: [";
+  cout << "[(" << O_L1_bot_rd_cnt/mem_words_O_L1_out << ", " << O_L1_bot_wr_cnt/mem_words_O_L1_in << ")(" << O_L1_top_rd_cnt/mem_words_O_L1_out << ", " << O_L1_top_wr_cnt/mem_words_O_L1_in << ")]";
+  cout << "[(" << O_L2_bot_rd_cnt/mem_words_O_L2_out << ", " << O_L2_bot_wr_cnt/mem_words_O_L2_in << ")(" << O_L2_top_rd_cnt/mem_words_O_L2_out << ", " << O_L2_top_wr_cnt/mem_words_O_L2_in << ")]";
+  cout << "[(" << O_L3_bot_rd_cnt/mem_words_O_L3_out << ", " << O_L3_bot_wr_cnt/mem_words_O_L3_in << ")(" << O_L3_top_rd_cnt/mem_words_O_L3_out << ", " << O_L3_top_wr_cnt/mem_words_O_L3_in << ")]";
   cout << "]" << endl;
   // memory is released
   for (int i=0; i<B; i++) {
@@ -733,9 +739,12 @@ CCS_MAIN(int argv, char **argc)
 
 def main(input_file, output_dir):
     nb_cnt = 5;
-    layer_spec_collect, precision_collect, array_size_collect, mem_size_collect, mem_bw_collect, spatial_unrolling_collect, temporal_mapping_collect =  xml_info_extraction(input_file)
-    config_string = make_config_file(precision_collect[0], array_size_collect[0], mem_size_collect[0], mem_bw_collect[0], nb_cnt)
-    tb_string = make_tb(layer_spec_collect[0], spatial_unrolling_collect, temporal_mapping_collect, nb_cnt)
+    try:
+        layer_spec_collect, precision_collect, array_size_collect, mem_size_collect, mem_bw_collect, spatial_unrolling_collect, temporal_mapping_collect =  xml_info_extraction(input_file)
+        config_string = make_config_file(precision_collect[0], array_size_collect[0], mem_size_collect[0], mem_bw_collect[0], nb_cnt)
+        tb_string = make_tb(layer_spec_collect[0], spatial_unrolling_collect, temporal_mapping_collect, nb_cnt)
+    except IndexError:
+        print("Number of counters per memory level might be insufficient to support the generated algorithmic description.")
 
     config_file = open(output_dir + "config_file.h", "w")
     config_file.write(config_string)

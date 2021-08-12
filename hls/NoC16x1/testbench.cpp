@@ -236,7 +236,7 @@ CCS_MAIN(int argv, char **argc)
 
   list<int> start_coordinate{0,0,0,0,0,0};
   list<list<int>> input_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, input_dimensions, input_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, I_mapped_to_DRAM, start_coordinate, input_dimensions, input_coordinates);
   int I_cnt = 0;
   // INPUT channel
   for (auto elem = input_coordinates.begin(); elem != input_coordinates.end(); elem++){
@@ -269,7 +269,7 @@ CCS_MAIN(int argv, char **argc)
   start_coordinate.pop_back();
   start_coordinate.pop_back();
   list<list<int>> weight_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, weight_dimensions, weight_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, W_mapped_to_DRAM, start_coordinate, weight_dimensions, weight_coordinates);
   int W_cnt = 0;
   // WEIGHT channel
   for (auto elem = weight_coordinates.begin(); elem != weight_coordinates.end(); elem++){
@@ -304,7 +304,7 @@ CCS_MAIN(int argv, char **argc)
   int max_HW_its = 5000;
   bool failed = false;
   list<list<int>> output_coordinates;
-  list_coordinates(layer_iterations, layer_dimensions, start_coordinate, output_dimensions, output_coordinates);
+  list_coordinates(layer_iterations, layer_dimensions, O_mapped_to_DRAM, start_coordinate, output_dimensions, output_coordinates);
   // OUTPUT channel
   for (auto elem = output_coordinates.begin(); elem != output_coordinates.end(); elem++){
     list<int> temp = *elem;

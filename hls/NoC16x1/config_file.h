@@ -23,8 +23,8 @@ typedef ac_fixed<precision_bit_O_partial ,16,false> O_partial_type;
 typedef ac_fixed<precision_bit_O_final ,16,false> O_final_type;
 
 // PE Array size
-const int nb_col = 16;
-const int nb_row = 1;
+const int nb_col = 1; // K
+const int nb_row = 16; // C
 
 // Memory hierarchy
 const int mem_size_bit_I_L1 = 512;

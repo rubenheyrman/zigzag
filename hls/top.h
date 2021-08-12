@@ -48,9 +48,9 @@ public:
     NoC_W_L2_L1.run(W_L2_L1_in, W_L2_L1_out);
     NoC_O_L1_L2.run(O_L1_L2_in, O_L1_L2_out);
 #pragma hls_unroll yes
-    for (int x=0; x<nb_col; x++){
+    for (int y=0; y<nb_row; y++){
 #pragma hls_unroll yes
-      for (int y=0; y<nb_row; y++){
+      for (int x=0; x<nb_col; x++){
         PE[x][y].run(O_L2_L1_out[x][y],O_L1_L2_in[x][y],I_L2_L1_out[x][y],W_L2_L1_out[x][y],zg_L2_L1_out[x][y],
                      O_instr_L1_out[x][y],I_instr_L1_out[x][y],W_instr_L1_out[x][y]);
       }

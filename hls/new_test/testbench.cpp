@@ -23,9 +23,9 @@ CCS_MAIN(int argv, char **argc)
   bool log_all_outputs = true;
 
 enum {
-B = 12544,
-K = 64,
-C = 32,
+B = 3136,
+K = 128,
+C = 128,
 OY = 1,
 OX = 1,
 IY = 1,
@@ -39,36 +39,36 @@ SFX = 1,
 G = 1
 };
 
-list<int>    layer_iterations  {4, 4, 2, 4, 2, 4, 49, 2, 256};
-list<string> layer_dimensions  {"K", "C", "K", "K", "C", "C", "B", "K", "B"};
+list<int>    layer_iterations  {4, 4, 4, 16, 28, 2, 2, 4, 112};
+list<string> layer_dimensions  {"K", "C", "K", "C", "B", "K", "C", "K", "B"};
 
-W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {2, 4, 2, 4, 49};
-bool W_loop_relevancy_L1[nb_cnt]       = {1, 1, 1, 1, 0};
-W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {2, 256, 1, 1, 1};
-bool W_loop_relevancy_L2[nb_cnt]       = {1, 0, 1, 1, 1};
-W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {1, 1, 1, 1, 1};
-bool W_loop_relevancy_L3[nb_cnt]       = {1, 1, 1, 1, 1};
+W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {4, 16, 28, 1, 1};
+bool W_loop_relevancy_L1[nb_cnt]       = {1, 1, 0, 1, 1};
+W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {2, 1, 1, 1, 1};
+bool W_loop_relevancy_L2[nb_cnt]       = {1, 1, 1, 1, 1};
+W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {2, 4, 112, 1, 1};
+bool W_loop_relevancy_L3[nb_cnt]       = {1, 1, 0, 1, 1};
 W_addr_type_L4 W_loop_bound_L4[nb_cnt] = {1, 1, 1, 1, 1};
 bool W_loop_relevancy_L4[nb_cnt]       = {1, 1, 1, 1, 1};
 list<bool> W_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {2, 4, 2, 4, 1};
-bool I_loop_relevancy_L1[nb_cnt]       = {0, 0, 1, 1, 1};
-I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {49, 2, 1, 1, 1};
+I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {4, 16, 1, 1, 1};
+bool I_loop_relevancy_L1[nb_cnt]       = {0, 1, 1, 1, 1};
+I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {28, 2, 1, 1, 1};
 bool I_loop_relevancy_L2[nb_cnt]       = {1, 0, 1, 1, 1};
-I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {1, 1, 1, 1, 1};
-bool I_loop_relevancy_L3[nb_cnt]       = {1, 1, 1, 1, 1};
-I_addr_type_L4 I_loop_bound_L4[nb_cnt] = {256, 1, 1, 1, 1};
+I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {2, 4, 1, 1, 1};
+bool I_loop_relevancy_L3[nb_cnt]       = {1, 0, 1, 1, 1};
+I_addr_type_L4 I_loop_bound_L4[nb_cnt] = {112, 1, 1, 1, 1};
 bool I_loop_relevancy_L4[nb_cnt]       = {1, 1, 1, 1, 1};
 list<bool> I_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {2, 4, 2, 4, 1};
-bool O_loop_relevancy_L1[nb_cnt]       = {1, 1, 0, 0, 1};
-O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {49, 1, 1, 1, 1};
-bool O_loop_relevancy_L2[nb_cnt]       = {1, 1, 1, 1, 1};
-O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {2, 1, 1, 1, 1};
+O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {4, 16, 1, 1, 1};
+bool O_loop_relevancy_L1[nb_cnt]       = {1, 0, 1, 1, 1};
+O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {28, 2, 2, 1, 1};
+bool O_loop_relevancy_L2[nb_cnt]       = {1, 1, 0, 1, 1};
+O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {4, 1, 1, 1, 1};
 bool O_loop_relevancy_L3[nb_cnt]       = {1, 1, 1, 1, 1};
-O_addr_type_L4 O_loop_bound_L4[nb_cnt] = {256, 1, 1, 1, 1};
+O_addr_type_L4 O_loop_bound_L4[nb_cnt] = {112, 1, 1, 1, 1};
 bool O_loop_relevancy_L4[nb_cnt]       = {1, 1, 1, 1, 1};
 list<bool> O_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
 
@@ -272,6 +272,8 @@ list<bool> O_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
       I_wr_data.write(I_data_in);
     }
   }
+  if (I_cnt != 0)
+    I_wr_data.write(I_data_in);
   // make start_coordinate list of same size as weight_coordinates list
   start_coordinate.pop_back();
   start_coordinate.pop_back();
@@ -297,6 +299,10 @@ list<bool> O_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
       W_wr_data.write(W_data_in);
     }
   }
+  if (W_cnt != 0)
+    W_wr_data.write(W_data_in);
+
+
 
   bool HWdone = false;
   cout << endl;
@@ -311,7 +317,7 @@ list<bool> O_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
     }
     it++;
   }
-  for (int i=0; i<dram_iterations; i++)
+  for (int i=0; i<dram_iterations+1; i++)
     wr_zero_guard.write(1);
   int its = 0;
   int O_cnt = 0;
@@ -384,36 +390,36 @@ list<bool> O_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
   cout << " --> average error:                               " << err/cnt << endl << endl;
 
   cout << "Memory Access Count: [in elements]:" << endl;
-  cout << "O: [";
-  cout << "[(" << O_L1_bot_rd_cnt << ", " << O_L1_bot_wr_cnt << ")(" << O_L1_top_rd_cnt << ", " << O_L1_top_wr_cnt << ")]";
-  cout << "[(" << O_L2_bot_rd_cnt << ", " << O_L2_bot_wr_cnt << ")(" << O_L2_top_rd_cnt << ", " << O_L2_top_wr_cnt << ")]";
-  cout << "[(" << O_L3_bot_rd_cnt << ", " << O_L3_bot_wr_cnt << ")(" << O_L3_top_rd_cnt << ", " << O_L3_top_wr_cnt << ")]";
+  cout << "W: [";
+  cout << "[" << W_L1_rd_cnt << ", " << W_L1_wr_cnt << "]";
+  cout << "[" << W_L2_rd_cnt << ", " << W_L2_wr_cnt << "]";
+  cout << "[" << W_L3_rd_cnt << ", " << W_L3_wr_cnt << "]";
   cout << "]" << endl;
   cout << "I: [";
   cout << "[" << I_L1_rd_cnt << ", " << I_L1_wr_cnt << "]";
   cout << "[" << I_L2_rd_cnt << ", " << I_L2_wr_cnt << "]";
   cout << "[" << I_L3_rd_cnt << ", " << I_L3_wr_cnt << "]";
   cout << "]" << endl;
-  cout << "W: [";
-  cout << "[" << W_L1_rd_cnt << ", " << W_L1_wr_cnt << "]";
-  cout << "[" << W_L2_rd_cnt << ", " << W_L2_wr_cnt << "]";
-  cout << "[" << W_L3_rd_cnt << ", " << W_L3_wr_cnt << "]";
-  cout << "]" << endl;
-  cout << "Memory Access Count: [in words]:" << endl;
   cout << "O: [";
-  cout << "[(" << O_L1_bot_rd_cnt/mem_words_O_L1_out << ", " << O_L1_bot_wr_cnt/mem_words_O_L1_in << ")(" << O_L1_top_rd_cnt/mem_words_O_L1_out << ", " << O_L1_top_wr_cnt/mem_words_O_L1_in << ")]";
-  cout << "[(" << O_L2_bot_rd_cnt/mem_words_O_L2_out << ", " << O_L2_bot_wr_cnt/mem_words_O_L2_in << ")(" << O_L2_top_rd_cnt/mem_words_O_L2_out << ", " << O_L2_top_wr_cnt/mem_words_O_L2_in << ")]";
-  cout << "[(" << O_L3_bot_rd_cnt/mem_words_O_L3_out << ", " << O_L3_bot_wr_cnt/mem_words_O_L3_in << ")(" << O_L3_top_rd_cnt/mem_words_O_L3_out << ", " << O_L3_top_wr_cnt/mem_words_O_L3_in << ")]";
+  cout << "[(" << O_L1_bot_rd_cnt << ", " << O_L1_bot_wr_cnt << ")(" << O_L1_top_rd_cnt << ", " << O_L1_top_wr_cnt << ")]";
+  cout << "[(" << O_L2_bot_rd_cnt << ", " << O_L2_bot_wr_cnt << ")(" << O_L2_top_rd_cnt << ", " << O_L2_top_wr_cnt << ")]";
+  cout << "[(" << O_L3_bot_rd_cnt << ", " << O_L3_bot_wr_cnt << ")(" << O_L3_top_rd_cnt << ", " << O_L3_top_wr_cnt << ")]";
+  cout << "]" << endl;
+  cout << endl << "Memory Access Count: [in words]:" << endl;
+  cout << "W: [";
+  cout << "[" << W_L1_rd_cnt/mem_words_W_L1_out << ", " << W_L1_wr_cnt/mem_words_W_L1_in << "]";
+  cout << "[" << W_L2_rd_cnt/mem_words_W_L2_out << ", " << W_L2_wr_cnt/mem_words_W_L2_in << "]";
+  cout << "[" << W_L3_rd_cnt/mem_words_W_L3_out << ", " << W_L3_wr_cnt/mem_words_W_L3_in << "]";
   cout << "]" << endl;
   cout << "I: [";
   cout << "[" << I_L1_rd_cnt/mem_words_I_L1_out << ", " << I_L1_wr_cnt/mem_words_I_L1_in << "]";
   cout << "[" << I_L2_rd_cnt/mem_words_I_L2_out << ", " << I_L2_wr_cnt/mem_words_I_L2_in << "]";
   cout << "[" << I_L3_rd_cnt/mem_words_I_L3_out << ", " << I_L3_wr_cnt/mem_words_I_L3_in << "]";
   cout << "]" << endl;
-  cout << "W: [";
-  cout << "[" << W_L1_rd_cnt/mem_words_W_L1_out << ", " << W_L1_wr_cnt/mem_words_W_L1_in << "]";
-  cout << "[" << W_L2_rd_cnt/mem_words_W_L2_out << ", " << W_L2_wr_cnt/mem_words_W_L2_in << "]";
-  cout << "[" << W_L3_rd_cnt/mem_words_W_L3_out << ", " << W_L3_wr_cnt/mem_words_W_L3_in << "]";
+  cout << "O: [";
+  cout << "[(" << O_L1_bot_rd_cnt/mem_words_O_L1_out << ", " << O_L1_bot_wr_cnt/mem_words_O_L1_in << ")(" << O_L1_top_rd_cnt/mem_words_O_L1_out << ", " << O_L1_top_wr_cnt/mem_words_O_L1_in << ")]";
+  cout << "[(" << O_L2_bot_rd_cnt/mem_words_O_L2_out << ", " << O_L2_bot_wr_cnt/mem_words_O_L2_in << ")(" << O_L2_top_rd_cnt/mem_words_O_L2_out << ", " << O_L2_top_wr_cnt/mem_words_O_L2_in << ")]";
+  cout << "[(" << O_L3_bot_rd_cnt/mem_words_O_L3_out << ", " << O_L3_bot_wr_cnt/mem_words_O_L3_in << ")(" << O_L3_top_rd_cnt/mem_words_O_L3_out << ", " << O_L3_top_wr_cnt/mem_words_O_L3_in << ")]";
   cout << "]" << endl;
   // memory is released
   for (int i=0; i<B; i++) {

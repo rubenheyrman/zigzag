@@ -26,7 +26,7 @@ save_all_temporal_mapping_result : False
 # WORKLOAD
 # layer_indices can be a single-element list or a multiple-element list or ALL.
 layer_filename : './NN_layers/MobileNet_v1'  # './NN_layers/Test_layers'
-layer_indices : [3]
+layer_indices : [3, 7]
 # layer_indices : ALL
 
 # MULTIPROCESSING
