@@ -2291,15 +2291,6 @@ class NoC_I_down
               (ac_int<ac::log2_ceil<WORDS_in>::val,false>) 0 : (ac_int<ac::log2_ceil<WORDS_in>::val,false>) (pntr+WORDS_out);
             read_flag = (pntr >= pntr_max) ? false : read_flag;
             pntr = pntr_new;
-            while (!read_flag){
-              read_flag = data_in.nb_read(data_in_tmp);
-              if (read_flag){
-#pragma hls_unroll yes
-                for (int i=0; i<WORDS_in; i++){
-                  buf[i] = data_in_tmp.data[i];
-                }
-              }
-            }
         }
       }
     }

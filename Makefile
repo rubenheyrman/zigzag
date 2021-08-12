@@ -17,10 +17,13 @@ open_xml:
 config_files:
 	mkdir -p $(OUTPUT_DIR)
 	python xml_to_hls_extraction.py $(XML) $(OUTPUT_DIR)
-	cp hls/top.h hls/run $(OUTPUT_DIR)
+	cp hls/top.h hls/run hls/directives.tcl $(OUTPUT_DIR)
 	@echo "For more excessive changes, you should take a look in the generated output files and the included source code!"
 run_tb:
 	$(OUTPUT_DIR)/run
+catapult:
+	cd $(OUTPUT_DIR)
+	catapult -file directives.tcl &
 clean:
 	rm -rf ./Ruben_results
 	rm -rf $(OUTPUT_DIR)
