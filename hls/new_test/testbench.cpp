@@ -23,9 +23,9 @@ CCS_MAIN(int argv, char **argc)
   bool log_all_outputs = true;
 
 enum {
-B = 3136,
-K = 128,
-C = 128,
+B = 12544,
+K = 64,
+C = 32,
 OY = 1,
 OX = 1,
 IY = 1,
@@ -39,36 +39,36 @@ SFX = 1,
 G = 1
 };
 
-list<int>    layer_iterations  {4, 4, 4, 16, 28, 2, 2, 4, 112};
-list<string> layer_dimensions  {"K", "C", "K", "C", "B", "K", "C", "K", "B"};
+list<int>    layer_iterations  {4, 4, 2, 4, 2, 4, 49, 2, 256};
+list<string> layer_dimensions  {"K", "C", "K", "K", "C", "C", "B", "K", "B"};
 
-W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {4, 16, 28, 1, 1};
-bool W_loop_relevancy_L1[nb_cnt]       = {1, 1, 0, 1, 1};
-W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {2, 1, 1, 1, 1};
-bool W_loop_relevancy_L2[nb_cnt]       = {1, 1, 1, 1, 1};
-W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {2, 4, 112, 1, 1};
-bool W_loop_relevancy_L3[nb_cnt]       = {1, 1, 0, 1, 1};
+W_addr_type_L1 W_loop_bound_L1[nb_cnt] = {2, 4, 2, 4, 49};
+bool W_loop_relevancy_L1[nb_cnt]       = {1, 1, 1, 1, 0};
+W_addr_type_L2 W_loop_bound_L2[nb_cnt] = {2, 256, 1, 1, 1};
+bool W_loop_relevancy_L2[nb_cnt]       = {1, 0, 1, 1, 1};
+W_addr_type_L3 W_loop_bound_L3[nb_cnt] = {1, 1, 1, 1, 1};
+bool W_loop_relevancy_L3[nb_cnt]       = {1, 1, 1, 1, 1};
 W_addr_type_L4 W_loop_bound_L4[nb_cnt] = {1, 1, 1, 1, 1};
 bool W_loop_relevancy_L4[nb_cnt]       = {1, 1, 1, 1, 1};
 list<bool> W_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {4, 16, 1, 1, 1};
-bool I_loop_relevancy_L1[nb_cnt]       = {0, 1, 1, 1, 1};
-I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {28, 2, 1, 1, 1};
+I_addr_type_L1 I_loop_bound_L1[nb_cnt] = {2, 4, 2, 4, 1};
+bool I_loop_relevancy_L1[nb_cnt]       = {0, 0, 1, 1, 1};
+I_addr_type_L2 I_loop_bound_L2[nb_cnt] = {49, 2, 1, 1, 1};
 bool I_loop_relevancy_L2[nb_cnt]       = {1, 0, 1, 1, 1};
-I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {2, 4, 1, 1, 1};
-bool I_loop_relevancy_L3[nb_cnt]       = {1, 0, 1, 1, 1};
-I_addr_type_L4 I_loop_bound_L4[nb_cnt] = {112, 1, 1, 1, 1};
+I_addr_type_L3 I_loop_bound_L3[nb_cnt] = {1, 1, 1, 1, 1};
+bool I_loop_relevancy_L3[nb_cnt]       = {1, 1, 1, 1, 1};
+I_addr_type_L4 I_loop_bound_L4[nb_cnt] = {256, 1, 1, 1, 1};
 bool I_loop_relevancy_L4[nb_cnt]       = {1, 1, 1, 1, 1};
 list<bool> I_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
 
-O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {4, 16, 1, 1, 1};
-bool O_loop_relevancy_L1[nb_cnt]       = {1, 0, 1, 1, 1};
-O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {28, 2, 2, 1, 1};
-bool O_loop_relevancy_L2[nb_cnt]       = {1, 1, 0, 1, 1};
-O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {4, 1, 1, 1, 1};
+O_addr_type_L1 O_loop_bound_L1[nb_cnt] = {2, 4, 2, 4, 1};
+bool O_loop_relevancy_L1[nb_cnt]       = {1, 1, 0, 0, 1};
+O_addr_type_L2 O_loop_bound_L2[nb_cnt] = {49, 1, 1, 1, 1};
+bool O_loop_relevancy_L2[nb_cnt]       = {1, 1, 1, 1, 1};
+O_addr_type_L3 O_loop_bound_L3[nb_cnt] = {2, 1, 1, 1, 1};
 bool O_loop_relevancy_L3[nb_cnt]       = {1, 1, 1, 1, 1};
-O_addr_type_L4 O_loop_bound_L4[nb_cnt] = {112, 1, 1, 1, 1};
+O_addr_type_L4 O_loop_bound_L4[nb_cnt] = {256, 1, 1, 1, 1};
 bool O_loop_relevancy_L4[nb_cnt]       = {1, 1, 1, 1, 1};
 list<bool> O_mapped_to_DRAM = {0, 0, 0, 0, 0, 0, 0, 0, 1};
 
