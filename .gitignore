@@ -13,3 +13,6 @@ mprofile_*
 env
 *.swp
 hls/mem_macros/openram/
+Catapult*
+catapult*
+design_checker*
