@@ -2,8 +2,8 @@
 # Ruben zigzag
 #
 # MAKE SURE THAT IM2COL IS SET TO TRUE
-XML := Ruben_results/all_su_best_tm_otf/MobileNet_v1_L3_M1_SU1_min_en.xml
-OUTPUT_DIR := hls/new_test/
+OUTPUT_DIR := hls/Test_layer_L4/
+XML := Ruben_results/all_su_best_tm_otf/Test_layer_L4_M1_SU1_min_en.xml
 all: zigzag open_xml config_files run_tb
 tb: config_files run_tb
 zigzag:
@@ -12,6 +12,8 @@ zigzag:
 		--arch Ruben_inputs/architecture.yaml \
 		--map Ruben_inputs/mapping.yaml \
 		--mempool Ruben_inputs/memory_pool.yaml
+	mkdir -p $(OUTPUT_DIR)
+	cp $(XML) $(OUTPUT_DIR)
 open_xml:
 	firefox $(XML) &
 config_files:
@@ -22,8 +24,7 @@ config_files:
 run_tb:
 	$(OUTPUT_DIR)/run
 catapult:
-	cd $(OUTPUT_DIR)
-	catapult -file directives.tcl &
+	cd $(OUTPUT_DIR) && catapult -file directives.tcl &
 clean:
 	rm -rf ./Ruben_results
 	rm -rf $(OUTPUT_DIR)
