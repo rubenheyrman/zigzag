@@ -2,8 +2,8 @@
 # Ruben zigzag
 #
 # MAKE SURE THAT IM2COL IS SET TO TRUE
-OUTPUT_DIR := hls/Test_layer_L4/
-XML := Ruben_results/all_su_best_tm_otf/Test_layer_L4_M1_SU1_min_en.xml
+OUTPUT_DIR := hls/MobileNet_v1_L3_4x8/ # Don't forget backslash behind folder name
+XML := Ruben_results/all_su_best_tm_otf/MobileNet_v1_L3_M1_SU1_min_en.xml
 all: zigzag open_xml config_files run_tb
 tb: config_files run_tb
 zigzag:
@@ -22,7 +22,7 @@ config_files:
 	cp hls/top.h hls/run hls/directives.tcl $(OUTPUT_DIR)
 	@echo "For more excessive changes, you should take a look in the generated output files and the included source code!"
 run_tb:
-	$(OUTPUT_DIR)/run
+	cd $(OUTPUT_DIR) && ./run
 catapult:
 	cd $(OUTPUT_DIR) && catapult -file directives.tcl &
 clean:
