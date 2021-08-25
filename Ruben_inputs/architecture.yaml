@@ -1,6 +1,6 @@
 PE_array:                                       
   Col : 4
-  Row : 8
+  Row : 4
 
 precision:
   I : 8
@@ -46,15 +46,15 @@ memory_hint:
 memory_hierarchy:
   reg_psum:
       memory_instance : reg_size_512b_BW_16b              # element in the memory pool which is taken;
-      memory_unroll : 32                        # number of separate instances present in the architecture
+      memory_unroll : 16                        # number of separate instances present in the architecture
       operand_stored : [O]
   reg_input:
       memory_instance: reg_size_512b_BW_8b
-      memory_unroll: 32
+      memory_unroll: 16
       operand_stored: [I]
   reg_weight:
       memory_instance: reg_size_512b_BW_8b
-      memory_unroll: 32
+      memory_unroll: 16
       operand_stored: [W]
   L1_weight:
       memory_instance: sram_216_word_128b_per_word
